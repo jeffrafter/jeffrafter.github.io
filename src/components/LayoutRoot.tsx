@@ -1,9 +1,7 @@
 import * as React from 'react'
-import { Global, css } from '@emotion/core'
-import styled from '@emotion/styled'
-import normalize from '../styles/normalize'
+import { GlobalStyle, styled } from '../styles/theme'
 
-const StyledLayoutRoot = styled.div`
+const StyledLayoutRoot = styled('div')<any>`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -15,7 +13,7 @@ interface LayoutRootProps {
 
 const LayoutRoot: React.SFC<LayoutRootProps> = ({ children, className }) => (
   <>
-    <Global styles={() => css(normalize)} />
+    <GlobalStyle />
     <StyledLayoutRoot className={className}>{children}</StyledLayoutRoot>
   </>
 )

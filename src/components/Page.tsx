@@ -1,13 +1,10 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
+import { styled } from '../styles/theme'
 
-import { dimensions } from '../styles/variables'
-
-const StyledPage = styled.div`
+const StyledPage = styled('div')<any>`
   display: block;
   flex: 1;
   position: relative;
-  padding: ${dimensions.containerPadding}rem;
   margin-bottom: 3rem;
 `
 

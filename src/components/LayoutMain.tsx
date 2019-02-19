@@ -1,7 +1,7 @@
 import * as React from 'react'
-import styled from '@emotion/styled'
+import { styled } from '../styles/theme'
 
-const StyledLayoutMain = styled.main`
+const StyledLayoutMain = styled('main')<any>`
   display: flex;
   flex-direction: column;
   flex: 1;
