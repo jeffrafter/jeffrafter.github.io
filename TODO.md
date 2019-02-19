@@ -1,0 +1,11 @@
+- Algolia Search
+- Desktop notifications
+- Icon
+- Footer
+- Comments
+- License
+- Favicon
+- Header images
+- Lazy
+- Fixed left tools
+- Highlights

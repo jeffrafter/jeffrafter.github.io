@@ -6,12 +6,12 @@ import { Link } from 'gatsby'
 import Container from './Container'
 
 const StyledHeader = styled('header')<any>`
-  height: ${theme.space[4]};
-  background-color: ${theme.colors.primary};
-  color: ${transparentize(0.5, theme.colors.white)};
+  height: 50px;
+  color: ${transparentize(0.5, theme.colors.black)};
 `
 
 const HeaderInner = styled(Container)`
+  padding: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -20,7 +20,7 @@ const HeaderInner = styled(Container)`
 
 const HomepageLink = styled(Link)`
   color: ${theme.colors.white};
-  font-size: 1.5rem;
+  font-size: 1rem;
   font-weight: 600;
 
   &:hover,
