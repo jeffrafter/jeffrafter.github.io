@@ -19,6 +19,10 @@ const StyledNav = styled.nav`
   }
 `
 
+const StyledFooter = styled.footer`
+  padding-bottom: 36px;
+`
+
 interface Props {
   readonly title?: string
   readonly children?: React.ReactNode[] | React.ReactNode
@@ -47,11 +51,12 @@ export default class Layout extends React.Component<Props> {
         <main className="content" role="main">
           {children}
         </main>
-        <footer className="footer">
-          © {new Date().getFullYear()}, Built with
+        <StyledFooter className="footer">
+          © {new Date().getFullYear()},{` `}
+          <a href="https://jeffrafter.com">jeffrafter.com</a>. Built with
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
+        </StyledFooter>
       </>
     )
   }
