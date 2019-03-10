@@ -3,23 +3,28 @@ import {Link, graphql} from 'gatsby'
 
 import Layout from '../components/layout'
 import Head from '../components/head'
-import Bio from '../components/bio'
 
 interface Props {
   readonly data: PageQueryData
+  readonly pageContext: {
+    tag: string
+  }
 }
 
-export default class Index extends React.Component<Props> {
+export default class TagTemplate extends React.Component<Props> {
   render() {
-    const {data} = this.props
+    const {pageContext, data} = this.props
+    const {tag} = pageContext
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
 
     return (
       <Layout title={siteTitle}>
-        <Head title="All posts" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
-        <Bio />
+        <Head title={`Posts tagged "${tag}"`} keywords={[`blog`, `gatsby`, `javascript`, `react`, tag]} />
         <article>
+          <header>
+            <h1>Posts tagged {tag}</h1>
+          </header>
           <div className={`page-content`}>
             {posts.map(({node}) => {
               const title = node.frontmatter.title || node.fields.slug
@@ -47,6 +52,7 @@ interface PageQueryData {
     }
   }
   allMarkdownRemark: {
+    totalCount: number
     edges: {
       node: {
         excerpt: string
@@ -63,13 +69,14 @@ interface PageQueryData {
 }
 
 export const pageQuery = graphql`
-  query {
+  query TagPage($tag: String) {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+    allMarkdownRemark(limit: 1000, filter: {frontmatter: {tags: {in: [$tag]}}}) {
+      totalCount
       edges {
         node {
           excerpt
@@ -77,7 +84,7 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
+            date
             title
           }
         }

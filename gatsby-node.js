@@ -1,85 +1,87 @@
-'use strict'
+const path = require(`path`)
+const {createFilePath} = require(`gatsby-source-filesystem`)
 
-const path = require('path')
+exports.createPages = ({graphql, actions}) => {
+  const {createPage} = actions
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+  const postTemplate = path.resolve(`./src/templates/post.tsx`)
+  const tagTemplate = path.resolve('./src/templates/tag.tsx')
 
-  // Sometimes, optional fields tend to get not picked up by the GraphQL
-  // interpreter if not a single content uses it. Therefore, we're putting them
-  // through `createNodeField` so that the fields still exist and GraphQL won't
-  // trip up. An empty string is still required in replacement to `null`.
-
-  switch (node.internal.type) {
-    case 'MarkdownRemark': {
-      const { permalink, layout } = node.frontmatter
-      const { relativePath } = getNode(node.parent)
-
-      let slug = permalink
-
-      if (!slug) {
-        slug = `/${relativePath.replace('.md', '')}/`
-      }
-
-      // Used to generate URL to view this content.
-      createNodeField({
-        node,
-        name: 'slug',
-        value: slug || ''
-      })
-
-      // Used to determine a page layout.
-      createNodeField({
-        node,
-        name: 'layout',
-        value: layout || ''
-      })
-    }
-  }
-}
-
-exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
-
-  const allMarkdown = await graphql(`
-    {
-      allMarkdownRemark(limit: 1000) {
-        edges {
-          node {
-            fields {
-              layout
-              slug
+  return graphql(
+    `
+      {
+        allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, limit: 1000) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                tags
+                title
+              }
             }
           }
         }
       }
+    `
+  ).then(result => {
+    if (result.errors) {
+      throw result.errors
     }
-  `)
 
-  if (allMarkdown.errors) {
-    console.error(allMarkdown.errors)
-    throw new Error(allMarkdown.errors)
-  }
+    // Create blog posts pages.
+    const posts = result.data.allMarkdownRemark.edges
 
-  allMarkdown.data.allMarkdownRemark.edges.forEach(({ node }) => {
-    const { slug, layout } = node.fields
+    posts.forEach((post, index) => {
+      const previous = index === posts.length - 1 ? null : posts[index + 1].node
+      const next = index === 0 ? null : posts[index - 1].node
 
-    createPage({
-      path: slug,
-      // This will automatically resolve the template to a corresponding
-      // `layout` frontmatter in the Markdown.
-      //
-      // Feel free to set any `layout` as you'd like in the frontmatter, as
-      // long as the corresponding template file exists in src/templates.
-      // If no template is set, it will fall back to the default `page`
-      // template.
-      //
-      // Note that the template has to exist first, or else the build will fail.
-      component: path.resolve(`./src/templates/${layout || 'page'}.tsx`),
-      context: {
-        // Data passed to context is available in page queries as GraphQL variables.
-        slug
+      createPage({
+        path: post.node.fields.slug,
+        component: postTemplate,
+        context: {
+          slug: post.node.fields.slug,
+          previous,
+          next
+        }
+      })
+    })
+
+    // Tag pages:
+    let tags = []
+    // Iterate through each post, putting all found tags into `tags`
+    posts.forEach(post => {
+      if (post.node.frontmatter.tags) {
+        tags = tags.concat(post.node.frontmatter.tags)
       }
     })
+
+    const uniqTags = [...new Set(tags)]
+
+    // Make tag pages
+    uniqTags.forEach(tag => {
+      if (!tag) return
+      createPage({
+        path: `/tags/${tag}/`,
+        component: tagTemplate,
+        context: {
+          tag
+        }
+      })
+    })
   })
+}
+
+exports.onCreateNode = ({node, actions, getNode}) => {
+  const {createNodeField} = actions
+
+  if (node.internal.type === `MarkdownRemark`) {
+    const value = createFilePath({node, getNode})
+    createNodeField({
+      name: `slug`,
+      node,
+      value
+    })
+  }
 }
