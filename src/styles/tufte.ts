@@ -150,15 +150,16 @@ figure.fullwidth figcaption { margin-right: 24%; }
 a:link, a:visited { color: inherit; }
 
 a:link { text-decoration: none;
+         display: inline-block;
          background: -webkit-linear-gradient(#fffff8, #fffff8), -webkit-linear-gradient(#fffff8, #fffff8), -webkit-linear-gradient(#333, #333);
          background: linear-gradient(#fffff8, #fffff8), linear-gradient(#fffff8, #fffff8), linear-gradient(#333, #333);
          -webkit-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
          -moz-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
          background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
          background-repeat: no-repeat, no-repeat, repeat-x;
-         background-position: 0% 93%, 100% 93%, 0% 93%; }
+         background-position: 0% 101%, 101% 101%, 0% 101%; }
 
-@media screen and (-webkit-min-device-pixel-ratio: 0) { a:link { background-position-y: 87%, 87%, 87%; } }
+@media screen and (-webkit-min-device-pixel-ratio: 0) { a:link { background-position-y: 101%, 101%, 101%; } }
 
 /* Sidenotes, margin notes, figures, captions */
 img { max-width: 100%; }
@@ -169,6 +170,7 @@ img { max-width: 100%; }
                          width: 50%;
                          margin-top: 0;
                          margin-bottom: 0;
+                         margin-left: 5%;
                          font-size: 1.1rem;
                          line-height: 1.3;
                          vertical-align: baseline;

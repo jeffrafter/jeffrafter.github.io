@@ -25,7 +25,6 @@ const StyledFooter = styled.footer`
 
 interface Props {
   readonly title?: string
-  readonly children?: React.ReactNode[] | React.ReactNode
 }
 
 export default class Layout extends React.Component<Props> {
