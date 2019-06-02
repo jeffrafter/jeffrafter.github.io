@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeff Rafter]]></title><description><![CDATA[How to.]]></description><link>https://jeffrafter.com</link><generator>RSS for Node</generator><lastBuildDate>Sun, 02 Jun 2019 22:39:15 GMT</lastBuildDate><item><title><![CDATA[Building a Static Gatsby-based Website with TypeScript]]></title><description><![CDATA[Before you read this it is important to point out: you should start with a template. In this post I
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeff Rafter]]></title><description><![CDATA[How to.]]></description><link>https://jeffrafter.com</link><generator>RSS for Node</generator><lastBuildDate>Sun, 02 Jun 2019 22:46:43 GMT</lastBuildDate><item><title><![CDATA[Building a Static Gatsby-based Website with TypeScript]]></title><description><![CDATA[Before you read this it is important to point out: you should start with a template. In this post I
 am going to work through all of the…]]></description><link>https://jeffrafter.com/gatsby-with-typescript/</link><guid isPermaLink="false">https://jeffrafter.com/gatsby-with-typescript/</guid><pubDate>Sat, 25 May 2019 07:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;p&gt;Before you read this it is important to point out: you should start with a template. In this post I
 am going to work through all of the steps and try to explain them along the way. Included
 in this journey are some of the reasons behind why I’ve chosen one particular plugin or skipped
@@ -1363,7 +1363,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+    allMarkdownRemark(
+      filter: {frontmatter: {published: {ne: false}}}
+      sort: {fields: [frontmatter___date], order: DESC}
+    ) {
       edges {
         node {
           excerpt
@@ -1446,7 +1449,10 @@ content on the client side and the &lt;code class=&quot;language-text&quot;&gt;&
         title
       }
     }
-    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+    allMarkdownRemark(
+      filter: {frontmatter: {published: {ne: false}}}
+      sort: {fields: [frontmatter___date], order: DESC}
+    ) {
       edges {
         node {
           excerpt
