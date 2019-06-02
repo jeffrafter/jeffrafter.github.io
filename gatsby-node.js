@@ -2,11 +2,6 @@ const path = require(`path`)
 const {createFilePath} = require(`gatsby-source-filesystem`)
 
 exports.createPages = ({graphql, actions}) => {
-  const {createPage} = actions
-
-  const postTemplate = path.resolve(`./src/templates/post.tsx`)
-  const tagTemplate = path.resolve('./src/templates/tag.tsx')
-
   return graphql(
     `
       {
@@ -24,50 +19,51 @@ exports.createPages = ({graphql, actions}) => {
           }
         }
       }
-    `
+    `,
   ).then(result => {
     if (result.errors) {
       throw result.errors
     }
 
-    // Create blog posts pages.
-    const posts = result.data.allMarkdownRemark.edges
+    // Get the templates
+    const postTemplate = path.resolve(`./src/templates/post.tsx`)
+    const tagTemplate = path.resolve('./src/templates/tag.tsx')
 
+    // Create post pages
+    const posts = result.data.allMarkdownRemark.edges
     posts.forEach((post, index) => {
       const previous = index === posts.length - 1 ? null : posts[index + 1].node
       const next = index === 0 ? null : posts[index - 1].node
 
-      createPage({
+      actions.createPage({
         path: post.node.fields.slug,
         component: postTemplate,
         context: {
           slug: post.node.fields.slug,
           previous,
-          next
-        }
+          next,
+        },
       })
     })
 
-    // Tag pages:
-    let tags = []
     // Iterate through each post, putting all found tags into `tags`
+    let tags = []
     posts.forEach(post => {
       if (post.node.frontmatter.tags) {
         tags = tags.concat(post.node.frontmatter.tags)
       }
     })
-
     const uniqTags = [...new Set(tags)]
 
-    // Make tag pages
+    // Create tag pages
     uniqTags.forEach(tag => {
       if (!tag) return
-      createPage({
+      actions.createPage({
         path: `/tags/${tag}/`,
         component: tagTemplate,
         context: {
-          tag
-        }
+          tag,
+        },
       })
     })
   })
@@ -81,7 +77,7 @@ exports.onCreateNode = ({node, actions, getNode}) => {
     createNodeField({
       name: `slug`,
       node,
-      value
+      value,
     })
   }
 }
