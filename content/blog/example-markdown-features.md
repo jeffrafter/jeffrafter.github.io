@@ -1,10 +1,10 @@
 ---
-title: Markdown Features Test
+title: Markdown Features Test With no Slug
 date: '2019-03-01T22:12:03.284Z'
-slug: example-markdown-features-test
 layout: post
 tags: ['markdown', 'code']
 category: example
+published: false
 ---
 
 ## Markdown: Syntax
