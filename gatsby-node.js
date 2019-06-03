@@ -5,7 +5,11 @@ exports.createPages = ({graphql, actions}) => {
   return graphql(
     `
       {
-        allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}, limit: 1000) {
+        allMarkdownRemark(
+          filter: {frontmatter: {published: {ne: false}}}
+          sort: {fields: [frontmatter___date], order: DESC}
+          limit: 1000
+        ) {
           edges {
             node {
               fields {
@@ -30,7 +34,7 @@ exports.createPages = ({graphql, actions}) => {
     const tagTemplate = path.resolve('./src/templates/tag.tsx')
 
     // Create post pages
-    const posts = result.data.allMarkdownRemark.edges
+    const posts = result.data.allMarkdownRemark ? result.data.allMarkdownRemark.edges : []
     posts.forEach((post, index) => {
       const previous = index === posts.length - 1 ? null : posts[index + 1].node
       const next = index === 0 ? null : posts[index - 1].node

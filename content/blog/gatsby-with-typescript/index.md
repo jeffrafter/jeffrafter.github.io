@@ -1,16 +1,22 @@
 ---
 title: Building a Static Gatsby-based Website with TypeScript
 date: '2019-05-25T00:01:00'
-published: false
+published: true
 slug: gatsby-with-typescript
 layout: post
 tags: ['javascript', 'typescript', 'node', 'gatsby']
 category: Web
 ---
 
+Creating a static website involves an almost infinite set of choices. Amongst the plethora of
+choices you'll find Gatsby – a static site framework based on `React`, `JSX`, `CSS-in-JS` and
+many other modern approaches. Gatsby is, in many ways, the JavaScript successor to
+[Jekyll](https://jekyllrb.com/). I've upgraded several sites to Gatsby (including this one) finding
+a way to integrate TypeScript as part of the journey.
+
 Before you read this it is important to point out: you should start with a template. In this post I
 am going to work through all of the steps and try to explain them along the way. Included
-in this journey are some of the reasons behind why I've chosen one particular plugin or skipped
+in this post are some of the reasons behind why I've chosen one particular plugin or skipped
 another. Often – especially when you choose a default Gatsby starter – it is difficult to understand
 how all of the pieces fit together, or how you might build your own starter template. Hopefully
 this post provides some helpful examples.
@@ -1904,7 +1910,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+    allMarkdownRemark(
+      filter: {frontmatter: {published: {ne: false}}}
+      sort: {fields: [frontmatter___date], order: DESC}
+    ) {
       edges {
         node {
           excerpt
@@ -2015,7 +2024,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+    allMarkdownRemark(
+      filter: {frontmatter: {published: {ne: false}}}
+      sort: {fields: [frontmatter___date], order: DESC}
+    ) {
       edges {
         node {
           excerpt
