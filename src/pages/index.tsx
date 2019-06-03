@@ -13,7 +13,7 @@ export default class Index extends React.Component<Props> {
   render() {
     const {data} = this.props
     const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges
+    const posts = data.allMarkdownRemark ? data.allMarkdownRemark.edges : []
 
     return (
       <Layout title={siteTitle}>
@@ -69,7 +69,10 @@ export const pageQuery = graphql`
         title
       }
     }
-    allMarkdownRemark(sort: {fields: [frontmatter___date], order: DESC}) {
+    allMarkdownRemark(
+      filter: {frontmatter: {published: {ne: false}}}
+      sort: {fields: [frontmatter___date], order: DESC}
+    ) {
       edges {
         node {
           excerpt
