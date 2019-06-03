@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeff Rafter]]></title><description><![CDATA[How to.]]></description><link>https://jeffrafter.com</link><generator>RSS for Node</generator><lastBuildDate>Sun, 02 Jun 2019 22:46:43 GMT</lastBuildDate><item><title><![CDATA[Building a Static Gatsby-based Website with TypeScript]]></title><description><![CDATA[Before you read this it is important to point out: you should start with a template. In this post I
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeff Rafter]]></title><description><![CDATA[How to.]]></description><link>https://jeffrafter.com</link><generator>RSS for Node</generator><lastBuildDate>Mon, 03 Jun 2019 01:03:39 GMT</lastBuildDate><item><title><![CDATA[Building a Static Gatsby-based Website with TypeScript]]></title><description><![CDATA[Before you read this it is important to point out: you should start with a template. In this post I
 am going to work through all of the…]]></description><link>https://jeffrafter.com/gatsby-with-typescript/</link><guid isPermaLink="false">https://jeffrafter.com/gatsby-with-typescript/</guid><pubDate>Sat, 25 May 2019 07:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;p&gt;Before you read this it is important to point out: you should start with a template. In this post I
 am going to work through all of the steps and try to explain them along the way. Included
 in this journey are some of the reasons behind why I’ve chosen one particular plugin or skipped
@@ -705,22 +705,22 @@ lots of &lt;a href=&quot;https://www.gatsbyjs.org/starters/?v=2&quot;&gt;starter
 very common so everything worked out. As Gatsby&apos;s popularity increased, the need for theming
 increased and themes were added. You can check those out on the
 &lt;a href=&quot;https://www.gatsbyjs.org/docs/themes/introduction/&quot;&gt;Gatsby Site&lt;/a&gt;.&lt;/span&gt; For now we will start with something very basic: a simple CSS reset
-and an inline stylesheet.Create the file &lt;code class=&quot;language-text&quot;&gt;src/styles/theme.ts&lt;/code&gt;:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;import styled, {css, createGlobalStyle} from &amp;#39;styled-components&amp;#39;
+and an inline stylesheet.Create the file &lt;code class=&quot;language-text&quot;&gt;src/styles/theme.ts&lt;/code&gt;:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; styled&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;css&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; createGlobalStyle&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;styled-components&apos;&lt;/span&gt;
 
-export {css, styled}
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;css&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; styled&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
-export const theme = {
-  colors: {
-    black: &amp;#39;#000000&amp;#39;,
-    background: &amp;#39;#fffff8&amp;#39;,
-    contrast: &amp;#39;#111&amp;#39;,
-    contrastLightest: &amp;#39;#dad9d9&amp;#39;,
-    accent: &amp;#39;red&amp;#39;,
-    white: &amp;#39;#ffffff&amp;#39;,
-  },
-}
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; theme &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  colors&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    black&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;#000000&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    background&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;#fffff8&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    contrast&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;#111&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    contrastLightest&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;#dad9d9&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    accent&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;red&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    white&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;#ffffff&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
-const reset = () =&amp;gt; `
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;reset&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`
 html {
   box-sizing: border-box;
   margin: 0;
@@ -737,7 +737,7 @@ body {
 }
 
 ::selection {
-  background-color: ${theme.colors.contrastLightest};
+  background-color: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;theme&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;colors&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;contrastLightest&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;;
   color: rgba(0, 0, 0, 0.70);
 }
 
@@ -754,10 +754,10 @@ figure {
     max-width: 100% !important;
   }
 }
-`
+`&lt;/span&gt;&lt;/span&gt;
 
-// These style are based on https://edwardtufte.github.io/tufte-css/
-const styles = () =&amp;gt; `
+&lt;span class=&quot;token comment&quot;&gt;// These style are based on https://edwardtufte.github.io/tufte-css/&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;styles&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`
 html {
   font-size: 15px;
 }
@@ -767,7 +767,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding-left: 12.5%;
-  font-family: Palatino, &amp;#39;Palatino Linotype&amp;#39;, &amp;#39;Palatino LT STD&amp;#39;, &amp;#39;Book Antiqua&amp;#39;, Georgia, serif;
+  font-family: Palatino, &apos;Palatino Linotype&apos;, &apos;Palatino LT STD&apos;, &apos;Book Antiqua&apos;, Georgia, serif;
   background-color: white;
   color: #111;
   max-width: 1400px;
@@ -848,14 +848,14 @@ blockquote footer {
   text-align: right;
 }
 
-section &amp;gt; p,
-section &amp;gt; footer,
-section &amp;gt; table {
+section &gt; p,
+section &gt; footer,
+section &gt; table {
   width: 55%;
 }
 
-section &amp;gt; ol,
-section &amp;gt; ul {
+section &gt; ol,
+section &gt; ul {
   width: 50%;
   -webkit-padding-start: 5%;
 }
@@ -908,18 +908,18 @@ table.fullwidth {
 
 div.table-wrapper {
   overflow-x: auto;
-  font-family: &amp;#39;Trebuchet MS&amp;#39;, &amp;#39;Gill Sans&amp;#39;, &amp;#39;Gill Sans MT&amp;#39;, sans-serif;
+  font-family: &apos;Trebuchet MS&apos;, &apos;Gill Sans&apos;, &apos;Gill Sans MT&apos;, sans-serif;
 }
 
 code {
-  font-family: Consolas, &amp;#39;Liberation Mono&amp;#39;, Menlo, Courier, monospace;
+  font-family: Consolas, &apos;Liberation Mono&apos;, Menlo, Courier, monospace;
   font-size: 1rem;
   line-height: 1.42;
 }
 
-h1 &amp;gt; code,
-h2 &amp;gt; code,
-h3 &amp;gt; code {
+h1 &gt; code,
+h2 &gt; code,
+h3 &gt; code {
   font-size: 0.8em;
 }
 
@@ -962,9 +962,9 @@ pre.code.fullwidth {
   }
 
   hr,
-  section &amp;gt; p,
-  section &amp;gt; footer,
-  section &amp;gt; table {
+  section &gt; p,
+  section &gt; footer,
+  section &gt; table {
     width: 100%;
   }
 
@@ -972,11 +972,11 @@ pre.code.fullwidth {
     width: 97%;
   }
 
-  section &amp;gt; ol {
+  section &gt; ol {
     width: 90%;
   }
 
-  section &amp;gt; ul {
+  section &gt; ul {
     width: 90%;
   }
 
@@ -1017,12 +1017,12 @@ pre.code.fullwidth {
     width: 100%;
   }
 }
-`
+`&lt;/span&gt;&lt;/span&gt;
 
-export const GlobalStyle = createGlobalStyle`
-${reset()}
-${styles()}
-`&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The important pieces here are &lt;code class=&quot;language-text&quot;&gt;createGlobalStyle&lt;/code&gt; and the generic reset. The styles that are in
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; GlobalStyle &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; createGlobalStyle&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`
+&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;reset&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;
+`&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The important pieces here are &lt;code class=&quot;language-text&quot;&gt;createGlobalStyle&lt;/code&gt; and the generic reset. The styles that are in
 the &lt;code class=&quot;language-text&quot;&gt;styles&lt;/code&gt; function are based on &lt;a href=&quot;https://edwardtufte.github.io/tufte-css/&quot;&gt;Edward Tufte’s&lt;/a&gt;
 styles. This provides a very minimalast theme to build on.&lt;/p&gt;&lt;/section&gt;
 &lt;section&gt;&lt;h2 id=&quot;layout&quot;&gt;&lt;a href=&quot;#layout&quot; aria-label=&quot;layout permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Layout&lt;/h2&gt;&lt;p&gt;Now that we have our basic styles we can move on to the layout. A website’s layout includes
