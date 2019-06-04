@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeff Rafter]]></title><description><![CDATA[How to.]]></description><link>https://jeffrafter.com</link><generator>RSS for Node</generator><lastBuildDate>Tue, 04 Jun 2019 04:29:41 GMT</lastBuildDate><item><title><![CDATA[Deploying Gatsby to GitHub Pages]]></title><description><![CDATA[Create a repository on github If you don’t already have an account on GitHub, create one. For me, my username is
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeff Rafter]]></title><description><![CDATA[How to.]]></description><link>https://jeffrafter.com</link><generator>RSS for Node</generator><lastBuildDate>Tue, 04 Jun 2019 18:49:03 GMT</lastBuildDate><item><title><![CDATA[Deploying Gatsby to GitHub Pages]]></title><description><![CDATA[Create a repository on github If you don’t already have an account on GitHub, create one. For me, my username is
  jeffrafter . You can sign…]]></description><link>https://jeffrafter.com/deploying-gatsby-to-github-pages/</link><guid isPermaLink="false">https://jeffrafter.com/deploying-gatsby-to-github-pages/</guid><pubDate>Sat, 01 Jun 2019 07:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;h2 id=&quot;create-a-repository-on-github&quot;&gt;&lt;a href=&quot;#create-a-repository-on-github&quot; aria-label=&quot;create a repository on github permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Create a repository on github&lt;/h2&gt;&lt;p&gt;If you don’t already have an account on GitHub, create one. For me, my username is
 &lt;a href=&quot;https://github.com/jeffrafter&quot;&gt;jeffrafter&lt;/a&gt;. You can sign up for a free account and still host your
 blog.&lt;/p&gt;&lt;blockquote&gt;
@@ -14,7 +14,31 @@ to your existing account; log in and press the &lt;code&gt;+&lt;/code&gt; in the
 your login.&lt;/p&gt;&lt;/section&gt;
 &lt;section&gt;&lt;h2 id=&quot;pull-requests-and-branches&quot;&gt;&lt;a href=&quot;#pull-requests-and-branches&quot; aria-label=&quot;pull requests and branches permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Pull requests and branches&lt;/h2&gt;&lt;/section&gt;
 &lt;section&gt;&lt;h2 id=&quot;custom-domains&quot;&gt;&lt;a href=&quot;#custom-domains&quot; aria-label=&quot;custom domains permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Custom domains&lt;/h2&gt;&lt;/section&gt;</content:encoded></item><item><title><![CDATA[Building a Static Gatsby-based Website with TypeScript]]></title><description><![CDATA[Creating a static website involves an almost infinite set of choices. Amongst the plethora of
-choices you’ll find Gatsby – a static site…]]></description><link>https://jeffrafter.com/gatsby-with-typescript/</link><guid isPermaLink="false">https://jeffrafter.com/gatsby-with-typescript/</guid><pubDate>Sat, 25 May 2019 07:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;p&gt;Creating a static website involves an almost infinite set of choices. Amongst the plethora of
+choices you’ll find Gatsby – a static site…]]></description><link>https://jeffrafter.com/gatsby-with-typescript/</link><guid isPermaLink="false">https://jeffrafter.com/gatsby-with-typescript/</guid><pubDate>Sat, 25 May 2019 07:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;figure class=&quot;fullwidth&quot;&gt;
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block; ; max-width: 1120px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 56.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAMB/8QAFgEBAQEAAAAAAAAAAAAAAAAAAgED/9oADAMBAAIQAxAAAAGbczdEEX//xAAaEAACAgMAAAAAAAAAAAAAAAABAhESMTJD/9oACAEBAAEFAgxixZFeR0TYY//EABURAQEAAAAAAAAAAAAAAAAAAAAB/9oACAEDAQE/AUf/xAAWEQEBAQAAAAAAAAAAAAAAAAAAESH/2gAIAQIBAT8BxI//xAAaEAACAgMAAAAAAAAAAAAAAAAAAQISEBEx/9oACAEBAAY/AnGpqpxDHj//xAAaEAEBAQADAQAAAAAAAAAAAAABABEhUZFh/9oACAEBAAE/IWZenyEMtOO596H2l6M5/9oADAMBAAIAAwAAABCbH//EABgRAAMBAQAAAAAAAAAAAAAAAAABETGB/9oACAEDAQE/EI84M5h//8QAGhEAAgIDAAAAAAAAAAAAAAAAAREAMUFhkf/aAAgBAgEBPxBCWt9mAVP/xAAcEAACAwADAQAAAAAAAAAAAAABEQAhQTFRkWH/2gAIAQEAAT8QRZGkWJZfGQEHoRNXzJWPaRD4hl9Dav2GV0J77DHHJyf/2Q==&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Great Gatsby Book Covers through the years from https://getliterary.com/the-great-gatsby-throughout-the-years/&quot;
+        title=&quot;&quot;
+        src=&quot;/static/71181a42a435425f2a461dbc83afdc9d/db6f7/Great-Gatsby-Covers.jpg&quot;
+        srcset=&quot;/static/71181a42a435425f2a461dbc83afdc9d/a2a0f/Great-Gatsby-Covers.jpg 320w,
+/static/71181a42a435425f2a461dbc83afdc9d/03704/Great-Gatsby-Covers.jpg 640w,
+/static/71181a42a435425f2a461dbc83afdc9d/db6f7/Great-Gatsby-Covers.jpg 1120w&quot;
+        sizes=&quot;(max-width: 1120px) 100vw, 1120px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  &lt;/figure&gt;&lt;figcaption class=&quot;fullwidth&quot;&gt;
+Image credit: &lt;a href=&quot;https://getliterary.com/the-great-gatsby-throughout-the-years/&quot;&gt;The Great Gatsby Throughout the Years&lt;/a&gt;
+&lt;/figcaption&gt;&lt;p&gt;Creating a static website involves an almost infinite set of choices. Amongst the plethora of
 choices you’ll find Gatsby – a static site framework based on &lt;code class=&quot;language-text&quot;&gt;React&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;JSX&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;CSS-in-JS&lt;/code&gt; and
 many other modern approaches. Gatsby is, in many ways, the JavaScript successor to
 &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;Jekyll&lt;/a&gt;. I’ve upgraded several sites to Gatsby (including this one) finding
@@ -152,7 +176,7 @@ indent_style &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; space
 indent_size &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; 2
 charset &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; utf-8
 trim_trailing_whitespace &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
-insert_final_newline &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Depending on the editor this may or may not be used. Not to worry, we’ll add &lt;code class=&quot;language-text&quot;&gt;prettier&lt;/code&gt; later which will ensure that the code is consistent. One final note: you might be using &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;VSCode&lt;/a&gt;. In that case you can add some additional configuration. To do that you can create a &lt;code class=&quot;language-text&quot;&gt;.vscode&lt;/code&gt; folder with the settings for your project.&lt;/p&gt;&lt;p&gt;Create the folder:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; .vscode&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And in that folder make &lt;code class=&quot;language-text&quot;&gt;settings.json&lt;/code&gt;&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+insert_final_newline &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Depending on the editor this may or may not be used. Not to worry, we’ll add &lt;code class=&quot;language-text&quot;&gt;prettier&lt;/code&gt; later which will ensure that the code is consistent. You might be using &lt;a href=&quot;https://code.visualstudio.com/&quot;&gt;VSCode&lt;/a&gt;. In that case you can add some additional configuration. To do that you can create a &lt;code class=&quot;language-text&quot;&gt;.vscode&lt;/code&gt; folder with the settings for your project.&lt;/p&gt;&lt;p&gt;Create the folder:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;mkdir&lt;/span&gt; .vscode&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And in that folder make &lt;code class=&quot;language-text&quot;&gt;settings.json&lt;/code&gt;&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
   &lt;span class=&quot;token property&quot;&gt;&quot;editor.tabSize&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
   &lt;span class=&quot;token property&quot;&gt;&quot;editor.insertSpaces&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
   &lt;span class=&quot;token property&quot;&gt;&quot;editor.renderWhitespace&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;boundary&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
@@ -726,22 +750,22 @@ lots of &lt;a href=&quot;https://www.gatsbyjs.org/starters/?v=2&quot;&gt;starter
 very common so everything worked out. As Gatsby&apos;s popularity increased, the need for theming
 increased and themes were added. You can check those out on the
 &lt;a href=&quot;https://www.gatsbyjs.org/docs/themes/introduction/&quot;&gt;Gatsby Site&lt;/a&gt;.&lt;/span&gt; For now we will start with something very basic: a simple CSS reset
-and an inline stylesheet.Create the file &lt;code class=&quot;language-text&quot;&gt;src/styles/theme.ts&lt;/code&gt;:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;import styled, {css, createGlobalStyle} from &amp;#39;styled-components&amp;#39;
+and an inline stylesheet.Create the file &lt;code class=&quot;language-text&quot;&gt;src/styles/theme.ts&lt;/code&gt;:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ts&quot;&gt;&lt;pre class=&quot;language-ts&quot;&gt;&lt;code class=&quot;language-ts&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; styled&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;css&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; createGlobalStyle&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;styled-components&apos;&lt;/span&gt;
 
-export {css, styled}
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;css&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; styled&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
-export const theme = {
-  colors: {
-    black: &amp;#39;#000000&amp;#39;,
-    background: &amp;#39;#fffff8&amp;#39;,
-    contrast: &amp;#39;#111&amp;#39;,
-    contrastLightest: &amp;#39;#dad9d9&amp;#39;,
-    accent: &amp;#39;red&amp;#39;,
-    white: &amp;#39;#ffffff&amp;#39;,
-  },
-}
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; theme &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  colors&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    black&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;#000000&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    background&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;#fffff8&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    contrast&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;#111&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    contrastLightest&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;#dad9d9&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    accent&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;red&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    white&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;#ffffff&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
-const reset = () =&amp;gt; `
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;reset&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`
 html {
   box-sizing: border-box;
   margin: 0;
@@ -758,7 +782,7 @@ body {
 }
 
 ::selection {
-  background-color: ${theme.colors.contrastLightest};
+  background-color: &lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;theme&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;colors&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;contrastLightest&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;;
   color: rgba(0, 0, 0, 0.70);
 }
 
@@ -775,10 +799,10 @@ figure {
     max-width: 100% !important;
   }
 }
-`
+`&lt;/span&gt;&lt;/span&gt;
 
-// These style are based on https://edwardtufte.github.io/tufte-css/
-const styles = () =&amp;gt; `
+&lt;span class=&quot;token comment&quot;&gt;// These style are based on https://edwardtufte.github.io/tufte-css/&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;styles&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`
 html {
   font-size: 15px;
 }
@@ -788,7 +812,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding-left: 12.5%;
-  font-family: Palatino, &amp;#39;Palatino Linotype&amp;#39;, &amp;#39;Palatino LT STD&amp;#39;, &amp;#39;Book Antiqua&amp;#39;, Georgia, serif;
+  font-family: Palatino, &apos;Palatino Linotype&apos;, &apos;Palatino LT STD&apos;, &apos;Book Antiqua&apos;, Georgia, serif;
   background-color: white;
   color: #111;
   max-width: 1400px;
@@ -869,14 +893,14 @@ blockquote footer {
   text-align: right;
 }
 
-section &amp;gt; p,
-section &amp;gt; footer,
-section &amp;gt; table {
+section &gt; p,
+section &gt; footer,
+section &gt; table {
   width: 55%;
 }
 
-section &amp;gt; ol,
-section &amp;gt; ul {
+section &gt; ol,
+section &gt; ul {
   width: 50%;
   -webkit-padding-start: 5%;
 }
@@ -929,18 +953,18 @@ table.fullwidth {
 
 div.table-wrapper {
   overflow-x: auto;
-  font-family: &amp;#39;Trebuchet MS&amp;#39;, &amp;#39;Gill Sans&amp;#39;, &amp;#39;Gill Sans MT&amp;#39;, sans-serif;
+  font-family: &apos;Trebuchet MS&apos;, &apos;Gill Sans&apos;, &apos;Gill Sans MT&apos;, sans-serif;
 }
 
 code {
-  font-family: Consolas, &amp;#39;Liberation Mono&amp;#39;, Menlo, Courier, monospace;
+  font-family: Consolas, &apos;Liberation Mono&apos;, Menlo, Courier, monospace;
   font-size: 1rem;
   line-height: 1.42;
 }
 
-h1 &amp;gt; code,
-h2 &amp;gt; code,
-h3 &amp;gt; code {
+h1 &gt; code,
+h2 &gt; code,
+h3 &gt; code {
   font-size: 0.8em;
 }
 
@@ -983,9 +1007,9 @@ pre.code.fullwidth {
   }
 
   hr,
-  section &amp;gt; p,
-  section &amp;gt; footer,
-  section &amp;gt; table {
+  section &gt; p,
+  section &gt; footer,
+  section &gt; table {
     width: 100%;
   }
 
@@ -993,11 +1017,11 @@ pre.code.fullwidth {
     width: 97%;
   }
 
-  section &amp;gt; ol {
+  section &gt; ol {
     width: 90%;
   }
 
-  section &amp;gt; ul {
+  section &gt; ul {
     width: 90%;
   }
 
@@ -1038,12 +1062,12 @@ pre.code.fullwidth {
     width: 100%;
   }
 }
-`
+`&lt;/span&gt;&lt;/span&gt;
 
-export const GlobalStyle = createGlobalStyle`
-${reset()}
-${styles()}
-`&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The important pieces here are &lt;code class=&quot;language-text&quot;&gt;createGlobalStyle&lt;/code&gt; and the generic reset. The styles that are in
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; GlobalStyle &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; createGlobalStyle&lt;span class=&quot;token template-string&quot;&gt;&lt;span class=&quot;token string&quot;&gt;`
+&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;reset&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;token interpolation&quot;&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;${&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;styles&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token interpolation-punctuation punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;
+`&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The important pieces here are &lt;code class=&quot;language-text&quot;&gt;createGlobalStyle&lt;/code&gt; and the generic reset. The styles that are in
 the &lt;code class=&quot;language-text&quot;&gt;styles&lt;/code&gt; function are based on &lt;a href=&quot;https://edwardtufte.github.io/tufte-css/&quot;&gt;Edward Tufte’s&lt;/a&gt;
 styles. This provides a very minimalast theme to build on.&lt;/p&gt;&lt;/section&gt;
 &lt;section&gt;&lt;h2 id=&quot;layout&quot;&gt;&lt;a href=&quot;#layout&quot; aria-label=&quot;layout permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Layout&lt;/h2&gt;&lt;p&gt;Now that we have our basic styles we can move on to the layout. A website’s layout includes
