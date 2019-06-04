@@ -176,7 +176,7 @@ $RECYCLE.BIN/
 
 ### Configure your editor
 
-> **Note**: this is completely optional. This is here mostly so I can copy and paste the configuration for myself. 🎡
+> This section is completely optional. This is here mostly so I can copy and paste the configuration for myself. 🎡
 
 If there are several people working on your project, the chances are high that they use different editors for their code. At the very least their settings might not be consistent. You can provide hints to their editors. This can be done by includig a generic `.editorconfig` file (based on the format from https://editorconfig.org):
 
@@ -2726,7 +2726,7 @@ At this point you should be able to open your website in your browser: http://lo
 The server utilizes Hot-module-reloading (HMR) so that, as you make changes, your webpage will be
 immediately updated in the browser. This is true for themes, structure changs and content.
 
-> _Note_ for some changes you do need to restart the server. Generally the changes that require
+> For some changes you do need to restart the server. Generally the changes that require
 > a restart are related to configuration changes, for example in `gatsby-config.js` or
 > `gatsby-node.js` or if you add a new package to your `package.json`.
 
