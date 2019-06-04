@@ -15,8 +15,8 @@ category: Web
 Image credit: <a href="https://getliterary.com/the-great-gatsby-throughout-the-years/">The Great Gatsby Throughout the Years</a>
 </figcaption>
 
-Creating a static website involves an almost infinite set of choices. Amongst the plethora of
-choices you'll find Gatsby – a static site framework based on `React`, `JSX`, `CSS-in-JS` and
+Creating a static website involves an almost infinite set of choices. Amongst these is
+[Gatsby](https://gatsbyjs.com) – a static site framework based on `React`, `JSX`, `CSS-in-JS` and
 many other modern approaches. Gatsby is, in many ways, the JavaScript successor to
 [Jekyll](https://jekyllrb.com/). I've upgraded several sites to Gatsby (including this one) finding
 a way to integrate TypeScript as part of the journey.
