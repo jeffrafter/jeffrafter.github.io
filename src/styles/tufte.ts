@@ -243,7 +243,7 @@ label.margin-toggle:not(.sidenote-number) { display: none; }
                          width: 100%;
                          height: 100%; }
 
-@media (max-width: 760px) { body { width: 84%;
+@media (max-width: 760px) { body { width: 100%;
                                    padding-left: 8%;
                                    padding-right: 8%; }
                             hr, section > p, section > footer, section > table { width: 100%; }
