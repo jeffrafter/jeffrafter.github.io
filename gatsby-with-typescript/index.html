@@ -51,7 +51,7 @@ choices you’ll find Gatsby – a static site framework based on…"/><style da
 /* sc-component-id: layout__StyledFooter-sc-4wr7ms-1 */
 .bsocPl{padding-bottom:36px;}
 /* sc-component-id: post__StyledUl-sc-11azflk-0 */
-.gHXHLD{list-style-type:none;} .gHXHLD li::before{content:'' !important;padding-right:0 !important;}</style><link as="script" rel="preload" href="/component---src-templates-post-tsx-16c56e57fbece981780c.js"/><link as="script" rel="preload" href="/0-8e0bd90e1fdeda641002.js"/><link as="script" rel="preload" href="/app-fa65be0711757b4669dc.js"/><link as="script" rel="preload" href="/webpack-runtime-68a5443f775e99487c28.js"/><link as="fetch" rel="preload" href="/static/d/655/path---gatsby-with-typescript-30-b-a98-laTxbNk7zAZ7KMAJ6oLMvAltjM.json" crossOrigin="use-credentials"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" role="group"><nav class="navigation layout__StyledNav-sc-4wr7ms-0 hbtdUA"><ul><li><a href="/">&amp;</a></li><li><a href="/tags">Tags</a></li><li><a href="/about">About</a></li></ul></nav><main class="content" role="main"><article><header><h1>Building a Static Gatsby-based Website with TypeScript</h1><p>May 25, 2019</p></header><div class="page-content"><div><section><p>Creating a static website involves an almost infinite set of choices. Amongst the plethora of
+.gHXHLD{list-style-type:none;} .gHXHLD li::before{content:'' !important;padding-right:0 !important;}</style><link as="script" rel="preload" href="/component---src-templates-post-tsx-16c56e57fbece981780c.js"/><link as="script" rel="preload" href="/0-8e0bd90e1fdeda641002.js"/><link as="script" rel="preload" href="/app-f1e12cae6fdcc8babd50.js"/><link as="script" rel="preload" href="/webpack-runtime-03806fe9becea97c3cb1.js"/><link as="fetch" rel="preload" href="/static/d/897/path---gatsby-with-typescript-30-b-a98-H3EWlawxnzKam8ad8cM1ixZ0A.json" crossOrigin="use-credentials"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" role="group"><nav class="navigation layout__StyledNav-sc-4wr7ms-0 hbtdUA"><ul><li><a href="/">&amp;</a></li><li><a href="/tags">Tags</a></li><li><a href="/about">About</a></li></ul></nav><main class="content" role="main"><article><header><h1>Building a Static Gatsby-based Website with TypeScript</h1><p>May 25, 2019</p></header><div class="page-content"><div><section><p>Creating a static website involves an almost infinite set of choices. Amongst the plethora of
 choices you’ll find Gatsby – a static site framework based on <code class="language-text">React</code>, <code class="language-text">JSX</code>, <code class="language-text">CSS-in-JS</code> and
 many other modern approaches. Gatsby is, in many ways, the JavaScript successor to
 <a href="https://jekyllrb.com/">Jekyll</a>. I’ve upgraded several sites to Gatsby (including this one) finding
@@ -763,22 +763,22 @@ lots of <a href="https://www.gatsbyjs.org/starters/?v=2">starters</a> available 
 very common so everything worked out. As Gatsby's popularity increased, the need for theming
 increased and themes were added. You can check those out on the
 <a href="https://www.gatsbyjs.org/docs/themes/introduction/">Gatsby Site</a>.</span> For now we will start with something very basic: a simple CSS reset
-and an inline stylesheet.Create the file <code class="language-text">src/styles/theme.ts</code>:</p><div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> styled<span class="token punctuation">,</span> <span class="token punctuation">{</span>css<span class="token punctuation">,</span> createGlobalStyle<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'styled-components'</span>
+and an inline stylesheet.Create the file <code class="language-text">src/styles/theme.ts</code>:</p><div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts">import styled, {css, createGlobalStyle} from &#39;styled-components&#39;
 
-<span class="token keyword">export</span> <span class="token punctuation">{</span>css<span class="token punctuation">,</span> styled<span class="token punctuation">}</span>
+export {css, styled}
 
-<span class="token keyword">export</span> <span class="token keyword">const</span> theme <span class="token operator">=</span> <span class="token punctuation">{</span>
-  colors<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    black<span class="token punctuation">:</span> <span class="token string">'#000000'</span><span class="token punctuation">,</span>
-    background<span class="token punctuation">:</span> <span class="token string">'#fffff8'</span><span class="token punctuation">,</span>
-    contrast<span class="token punctuation">:</span> <span class="token string">'#111'</span><span class="token punctuation">,</span>
-    contrastLightest<span class="token punctuation">:</span> <span class="token string">'#dad9d9'</span><span class="token punctuation">,</span>
-    accent<span class="token punctuation">:</span> <span class="token string">'red'</span><span class="token punctuation">,</span>
-    white<span class="token punctuation">:</span> <span class="token string">'#ffffff'</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
+export const theme = {
+  colors: {
+    black: &#39;#000000&#39;,
+    background: &#39;#fffff8&#39;,
+    contrast: &#39;#111&#39;,
+    contrastLightest: &#39;#dad9d9&#39;,
+    accent: &#39;red&#39;,
+    white: &#39;#ffffff&#39;,
+  },
+}
 
-<span class="token keyword">const</span> <span class="token function-variable function">reset</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token template-string"><span class="token string">`
+const reset = () =&gt; `
 html {
   box-sizing: border-box;
   margin: 0;
@@ -795,7 +795,7 @@ body {
 }
 
 ::selection {
-  background-color: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>theme<span class="token punctuation">.</span>colors<span class="token punctuation">.</span>contrastLightest<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+  background-color: ${theme.colors.contrastLightest};
   color: rgba(0, 0, 0, 0.70);
 }
 
@@ -812,10 +812,10 @@ figure {
     max-width: 100% !important;
   }
 }
-`</span></span>
+`
 
-<span class="token comment">// These style are based on https://edwardtufte.github.io/tufte-css/</span>
-<span class="token keyword">const</span> <span class="token function-variable function">styles</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token template-string"><span class="token string">`
+// These style are based on https://edwardtufte.github.io/tufte-css/
+const styles = () =&gt; `
 html {
   font-size: 15px;
 }
@@ -825,7 +825,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding-left: 12.5%;
-  font-family: Palatino, 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', Georgia, serif;
+  font-family: Palatino, &#39;Palatino Linotype&#39;, &#39;Palatino LT STD&#39;, &#39;Book Antiqua&#39;, Georgia, serif;
   background-color: white;
   color: #111;
   max-width: 1400px;
@@ -906,14 +906,14 @@ blockquote footer {
   text-align: right;
 }
 
-section > p,
-section > footer,
-section > table {
+section &gt; p,
+section &gt; footer,
+section &gt; table {
   width: 55%;
 }
 
-section > ol,
-section > ul {
+section &gt; ol,
+section &gt; ul {
   width: 50%;
   -webkit-padding-start: 5%;
 }
@@ -966,18 +966,18 @@ table.fullwidth {
 
 div.table-wrapper {
   overflow-x: auto;
-  font-family: 'Trebuchet MS', 'Gill Sans', 'Gill Sans MT', sans-serif;
+  font-family: &#39;Trebuchet MS&#39;, &#39;Gill Sans&#39;, &#39;Gill Sans MT&#39;, sans-serif;
 }
 
 code {
-  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-family: Consolas, &#39;Liberation Mono&#39;, Menlo, Courier, monospace;
   font-size: 1rem;
   line-height: 1.42;
 }
 
-h1 > code,
-h2 > code,
-h3 > code {
+h1 &gt; code,
+h2 &gt; code,
+h3 &gt; code {
   font-size: 0.8em;
 }
 
@@ -1020,9 +1020,9 @@ pre.code.fullwidth {
   }
 
   hr,
-  section > p,
-  section > footer,
-  section > table {
+  section &gt; p,
+  section &gt; footer,
+  section &gt; table {
     width: 100%;
   }
 
@@ -1030,11 +1030,11 @@ pre.code.fullwidth {
     width: 97%;
   }
 
-  section > ol {
+  section &gt; ol {
     width: 90%;
   }
 
-  section > ul {
+  section &gt; ul {
     width: 90%;
   }
 
@@ -1075,12 +1075,12 @@ pre.code.fullwidth {
     width: 100%;
   }
 }
-`</span></span>
+`
 
-<span class="token keyword">export</span> <span class="token keyword">const</span> GlobalStyle <span class="token operator">=</span> createGlobalStyle<span class="token template-string"><span class="token string">`
-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">styles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
-`</span></span></code></pre></div><p>The important pieces here are <code class="language-text">createGlobalStyle</code> and the generic reset. The styles that are in
+export const GlobalStyle = createGlobalStyle`
+${reset()}
+${styles()}
+`</code></pre></div><p>The important pieces here are <code class="language-text">createGlobalStyle</code> and the generic reset. The styles that are in
 the <code class="language-text">styles</code> function are based on <a href="https://edwardtufte.github.io/tufte-css/">Edward Tufte’s</a>
 styles. This provides a very minimalast theme to build on.</p></section>
 <section><h2 id="layout"><a href="#layout" aria-label="layout permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Layout</h2><p>Now that we have our basic styles we can move on to the layout. A website’s layout includes
@@ -2099,9 +2099,9 @@ extensive set of tutorials on how to prepare and deploy your site: <a href="http
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
   }
   if (typeof ga === "function") {
-    ga('create', 'undefined', 'auto', {});
+    ga('create', 'UA-61511214-2', 'auto', {});
       
       
       
       }
-      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.page={"componentChunkName":"component---src-templates-post-tsx","jsonName":"gatsby-with-typescript-30b","path":"/gatsby-with-typescript/"};window.dataPath="655/path---gatsby-with-typescript-30-b-a98-laTxbNk7zAZ7KMAJ6oLMvAltjM";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app.7a7fd10b08846091aeed.css","/app-fa65be0711757b4669dc.js"],"component---src-templates-post-tsx":["/component---src-templates-post-tsx-16c56e57fbece981780c.js"],"component---src-templates-tag-tsx":["/component---src-templates-tag-tsx-2e3dbdd036cb38b809e3.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-e989004502ee444efb58.js"],"component---src-pages-about-tsx":["/component---src-pages-about-tsx-5edc219c01ef7f3d6542.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-41e26e9d380b13327df6.js"],"component---src-pages-tags-tsx":["/component---src-pages-tags-tsx-0d741dd38fea389d468b.js"],"pages-manifest":["/pages-manifest-9074ad9c7d8b890321d6.js"]};/*]]>*/</script><script src="/webpack-runtime-68a5443f775e99487c28.js" async=""></script><script src="/app-fa65be0711757b4669dc.js" async=""></script><script src="/0-8e0bd90e1fdeda641002.js" async=""></script><script src="/component---src-templates-post-tsx-16c56e57fbece981780c.js" async=""></script></body></html>
+      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.page={"componentChunkName":"component---src-templates-post-tsx","jsonName":"gatsby-with-typescript-30b","path":"/gatsby-with-typescript/"};window.dataPath="897/path---gatsby-with-typescript-30-b-a98-H3EWlawxnzKam8ad8cM1ixZ0A";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app.7a7fd10b08846091aeed.css","/app-f1e12cae6fdcc8babd50.js"],"component---src-templates-post-tsx":["/component---src-templates-post-tsx-16c56e57fbece981780c.js"],"component---src-templates-tag-tsx":["/component---src-templates-tag-tsx-2e3dbdd036cb38b809e3.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-e989004502ee444efb58.js"],"component---src-pages-about-tsx":["/component---src-pages-about-tsx-5edc219c01ef7f3d6542.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-41e26e9d380b13327df6.js"],"component---src-pages-tags-tsx":["/component---src-pages-tags-tsx-0d741dd38fea389d468b.js"],"pages-manifest":["/pages-manifest-20f43b981237cfd6bb21.js"]};/*]]>*/</script><script src="/webpack-runtime-03806fe9becea97c3cb1.js" async=""></script><script src="/app-f1e12cae6fdcc8babd50.js" async=""></script><script src="/0-8e0bd90e1fdeda641002.js" async=""></script><script src="/component---src-templates-post-tsx-16c56e57fbece981780c.js" async=""></script></body></html>
