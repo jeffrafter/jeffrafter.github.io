@@ -249,7 +249,7 @@ on your website agree.
 
 ### `tslint`
 
-Because we'll be using typescript, we'll want to use TSlint[^tslint]. "Linting" is very similar to using
+Because we'll be using TypeScript, we'll want to use TSlint[^tslint]. "Linting" is very similar to using
 prettier and in fact the two toolkits work together.
 
 [^tslint]:
@@ -469,7 +469,7 @@ npm install \
   react-helmet
 ```
 
-And typescript support:
+And TypeScript support:
 
 ```bash
 npm install typescript
@@ -2738,39 +2738,8 @@ lots of options for deploying. I've used the following:
 - AWS S3
 - GitHub Pages
 
-Since we have been keeping track of our changes in `git`, using GitHub Pages is a natural fit.
+Since we have been keeping track of our changes in `git`, using GitHub Pages is a natural fit (and
+free forever). The [Gatsby docs](https://www.gatsbyjs.org/docs/deploying-and-hosting/) have an
+extensive set of tutorials on how to prepare and deploy your site: https://www.gatsbyjs.org/docs/deploying-and-hosting/
 
-## Create a repository on github
-
-If you don't already have an account on GitHub, create one. For me, my username is
-[jeffrafter](https://github.com/jeffrafter). You can sign up for a free account and still host your
-blog.
-
-> **Note**: by default, your username will be part of the URL for your blog. We can change
-> that later.
-
-Next, create a new repository and name the repository `<your_user_name>.github.io`. For me, I've
-named mine `jeffrafter.github.io`.[^org-pages]
-
-[^org-pages]:
-
-  You might already have a GitHub Pages site for your username. Did you know you can create a pages
-  site for an organization? Check out the [documentation](https://help.github.com/en/articles/user-organization-and-project-pages#user-and-organization-pages-sites). It works exactly the same
-  as a user-based GitHub Pages site. You can create a public organization for free and connect it
-  to your existing account; log in and press the `+` in the header and choose `New organization`.
-
-## Build and push
-
-Once you've created the repository you need to add it as an `origin` to your local copy:
-
-```bash
- git remote add origin git@github.com:your-user-name/your-user-name.github.io.git
- git push -u origin master
-```
-
-Again, using [GitHub Desktop](https://desktop.github.com/) can simplify pushing code as it manages
-your login.
-
-## Pull requests and branches
-
-## Custom domains
+For me I used the `gh-pages` plugin and followed this tutorial: https://www.gatsbyjs.org/docs/how-gatsby-works-with-github-pages/.
