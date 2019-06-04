@@ -27,6 +27,8 @@ post.
 
 In order to follow this, you'll need access to a terminal (or console) and you'll need Node, Node Version Manager, and git installed.
 
+> All of the code (and commits) are availble on GitHub: https://github.com/example-gatsby-typescript-blog/example-gatsby-typescript-blog.github.io
+
 # Getting started
 
 First you want to create a folder for your project:
@@ -2743,3 +2745,5 @@ free forever). The [Gatsby docs](https://www.gatsbyjs.org/docs/deploying-and-hos
 extensive set of tutorials on how to prepare and deploy your site: https://www.gatsbyjs.org/docs/deploying-and-hosting/
 
 For me I used the `gh-pages` plugin and followed this tutorial: https://www.gatsbyjs.org/docs/how-gatsby-works-with-github-pages/.
+
+> All of the code (and commits) are availble on GitHub: https://github.com/example-gatsby-typescript-blog/example-gatsby-typescript-blog.github.io
