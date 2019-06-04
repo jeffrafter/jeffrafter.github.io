@@ -8,6 +8,13 @@ tags: ['javascript', 'typescript', 'node', 'gatsby']
 category: Web
 ---
 
+<figure class="fullwidth">
+![Great Gatsby Book Covers through the years from https://getliterary.com/the-great-gatsby-throughout-the-years/](../../assets/Great-Gatsby-Covers.jpg)
+</figure>
+<figcaption class="fullwidth">
+Image credit: <a href="https://getliterary.com/the-great-gatsby-throughout-the-years/">The Great Gatsby Throughout the Years</a>
+</figcaption>
+
 Creating a static website involves an almost infinite set of choices. Amongst the plethora of
 choices you'll find Gatsby – a static site framework based on `React`, `JSX`, `CSS-in-JS` and
 many other modern approaches. Gatsby is, in many ways, the JavaScript successor to
@@ -191,7 +198,7 @@ trim_trailing_whitespace = true
 insert_final_newline = true
 ```
 
-Depending on the editor this may or may not be used. Not to worry, we'll add `prettier` later which will ensure that the code is consistent. One final note: you might be using [VSCode](https://code.visualstudio.com/). In that case you can add some additional configuration. To do that you can create a `.vscode` folder with the settings for your project.
+Depending on the editor this may or may not be used. Not to worry, we'll add `prettier` later which will ensure that the code is consistent. You might be using [VSCode](https://code.visualstudio.com/). In that case you can add some additional configuration. To do that you can create a `.vscode` folder with the settings for your project.
 
 Create the folder:
 

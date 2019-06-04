@@ -136,17 +136,17 @@ figure { padding: 0;
          -webkit-margin-end: 0;
          margin: 0 0 3em 0; }
 
-figcaption { float: right;
-             clear: right;
-             margin-top: 0;
+figcaption { margin-top: -2em;
+
              margin-bottom: 0;
              font-size: 1.1rem;
+             font-style: italic;
              line-height: 1.6;
              vertical-align: baseline;
              position: relative;
              max-width: 40%; }
 
-figure.fullwidth figcaption { margin-right: 24%; }
+figure.fullwidth figcaption { max-width: 80%; }
 
 /* Links: replicate underline that clears descenders */
 a:link, a:visited { color: inherit; }
