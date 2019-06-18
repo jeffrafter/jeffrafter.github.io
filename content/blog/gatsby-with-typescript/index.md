@@ -1420,7 +1420,7 @@ pre.code.fullwidth {
 }
 
 .fullwidth {
-  max-width: 90%;
+  max-width: 100%;
   clear: both;
 }
 
