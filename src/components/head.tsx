@@ -43,7 +43,7 @@ export default class Head extends React.Component<Props> {
           const description = this.props.description || data.site.siteMetadata.description || ''
           const lang = this.props.lang || 'en'
           const title = this.props.title
-          const image = this.props.image || ''
+          const image = this.props.image ? `https://jeffrafter.com/${this.props.image}` : ''
           const keywords = this.props.keywords || []
           return (
             <Helmet
