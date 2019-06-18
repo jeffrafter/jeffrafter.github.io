@@ -4,10 +4,15 @@ import {Link, graphql} from 'gatsby'
 import Layout from '../components/layout'
 import Head from '../components/head'
 import Bio from '../components/bio'
+import {styled} from '../styles/theme'
 
 interface Props {
   readonly data: PageQueryData
 }
+
+const Container = styled('div')`
+  margin-top: 100px;
+`
 
 export default class Index extends React.Component<Props> {
   render() {
@@ -19,7 +24,7 @@ export default class Index extends React.Component<Props> {
       <Layout title={siteTitle}>
         <Head title="All posts" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
         <Bio />
-        <article>
+        <Container>
           <div className={`page-content`}>
             {posts.map(({node}) => {
               const title = node.frontmatter.title || node.fields.slug
@@ -34,7 +39,7 @@ export default class Index extends React.Component<Props> {
               )
             })}
           </div>
-        </article>
+        </Container>
       </Layout>
     )
   }
@@ -75,7 +80,7 @@ export const pageQuery = graphql`
     ) {
       edges {
         node {
-          excerpt
+          excerpt(pruneLength: 2500)
           fields {
             slug
           }

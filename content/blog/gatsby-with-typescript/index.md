@@ -8,6 +8,13 @@ tags: ['javascript', 'typescript', 'node', 'gatsby']
 category: Web
 ---
 
+<p class="excerpt">
+Creating a static website involves an almost infinite set of choices. I've upgraded several sites to
+Gatsby (including this one) finding a way to integrate TypeScript as part of the journey. Gatsby
+leverages React, JSX, CSS-in-JS, GraphQL and many other modern approaches to building sites.
+</p>
+<!-- excerpt -->
+
 <figure class="fullwidth">
 ![Great Gatsby Book Covers through the years from https://getliterary.com/the-great-gatsby-throughout-the-years/](../../assets/Great-Gatsby-Covers.jpg)
 </figure>
@@ -185,7 +192,7 @@ $RECYCLE.BIN/
 
 > This section is completely optional. This is here mostly so I can copy and paste the configuration for myself. 🎡
 
-If there are several people working on your project, the chances are high that they use different editors for their code. At the very least their settings might not be consistent. You can provide hints to their editors. This can be done by includig a generic `.editorconfig` file (based on the format from https://editorconfig.org):
+If there are several people working on your project, the chances are high that they use different editors for their code. At the very least their settings might not be consistent. You can provide hints to their editors. This can be done by including a generic `.editorconfig` file (based on the format from https://editorconfig.org):
 
 ```bash
 root = true
@@ -2349,7 +2356,7 @@ export const pageQuery = graphql`
     }
     markdownRemark(fields: {slug: {eq: $slug}}) {
       id
-      excerpt(pruneLength: 160)
+      excerpt(pruneLength: 2500)
       html
       frontmatter {
         title
@@ -2488,7 +2495,7 @@ export const pageQuery = graphql`
       totalCount
       edges {
         node {
-          excerpt
+          excerpt(pruneLength: 2500)
           fields {
             slug
           }
