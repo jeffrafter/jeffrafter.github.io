@@ -10,8 +10,8 @@ export const theme = {
     contrast: '#111',
     contrastLightest: '#dad9d9',
     accent: 'red',
-    white: '#ffffff'
-  }
+    white: '#ffffff',
+  },
 }
 
 const reset = () => `
@@ -49,6 +49,9 @@ figure {
   }
 }
 
+article .excerpt {
+  display: none;
+}
 `
 
 export const GlobalStyle = createGlobalStyle`
