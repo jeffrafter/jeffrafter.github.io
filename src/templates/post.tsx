@@ -28,10 +28,11 @@ export default class PostTemplate extends React.Component<Props> {
     const siteTitle = this.props.data.site.siteMetadata.title
     const {previous, next} = this.props.pageContext
     const excerpt = post.frontmatter.excerpt || post.excerpt
+    const image = post.frontmatter.image && post.frontmatter.image.childImageSharp.resize.src
 
     return (
       <Layout title={siteTitle}>
-        <Head title={post.frontmatter.title} description={excerpt} />
+        <Head title={post.frontmatter.title} description={excerpt} image={image} />
         <article>
           <header>
             <h1>{post.frontmatter.title}</h1>
@@ -76,6 +77,13 @@ interface PageQueryData {
       title: string
       date: string
       excerpt: string
+      image: {
+        childImageSharp: {
+          resize: {
+            src: string
+          }
+        }
+      }
     }
   }
 }
@@ -94,6 +102,13 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        image {
+          childImageSharp {
+            resize(width: 1500, height: 1500) {
+              src
+            }
+          }
+        }
         excerpt
       }
     }

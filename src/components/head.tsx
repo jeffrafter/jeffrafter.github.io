@@ -16,6 +16,7 @@ type StaticQueryData = {
 
 interface Props {
   readonly title: string
+  readonly image: string
   readonly description?: string
   readonly lang?: string
   readonly keywords?: string[]
@@ -39,9 +40,10 @@ export default class Head extends React.Component<Props> {
           }
         `}
         render={(data: StaticQueryData) => {
-          const metaDescription = this.props.description || data.site.siteMetadata.description
+          const description = this.props.description || data.site.siteMetadata.description || ''
           const lang = this.props.lang || 'en'
           const title = this.props.title
+          const image = this.props.image || ''
           const keywords = this.props.keywords || []
           return (
             <Helmet
@@ -53,7 +55,7 @@ export default class Head extends React.Component<Props> {
               meta={[
                 {
                   name: `description`,
-                  content: metaDescription,
+                  content: description,
                 },
                 {
                   property: `og:title`,
@@ -61,11 +63,15 @@ export default class Head extends React.Component<Props> {
                 },
                 {
                   property: `og:description`,
-                  content: metaDescription,
+                  content: description,
                 },
                 {
                   property: `og:type`,
                   content: `website`,
+                },
+                {
+                  property: `og:image`,
+                  content: image,
                 },
                 {
                   name: `twitter:card`,
@@ -81,7 +87,7 @@ export default class Head extends React.Component<Props> {
                 },
                 {
                   name: `twitter:description`,
-                  content: metaDescription,
+                  content: description,
                 },
               ].concat(
                 keywords.length > 0
