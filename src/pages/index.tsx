@@ -27,6 +27,7 @@ export default class Index extends React.Component<Props> {
         <Container>
           <div className={`page-content`}>
             {posts.map(({node}) => {
+              const excerpt = node.frontmatter.excerpt || node.excerpt
               const title = node.frontmatter.title || node.fields.slug
               return (
                 <div key={node.fields.slug}>
@@ -34,7 +35,7 @@ export default class Index extends React.Component<Props> {
                     <Link to={node.fields.slug}>{title}</Link>
                   </h3>
                   <small>{node.frontmatter.date}</small>
-                  <p dangerouslySetInnerHTML={{__html: node.excerpt}} />
+                  <p>{excerpt}</p>
                 </div>
               )
             })}
@@ -61,6 +62,7 @@ interface PageQueryData {
         frontmatter: {
           date: string
           title: string
+          excerpt: string
         }
       }
     }[]
@@ -87,6 +89,7 @@ export const pageQuery = graphql`
           frontmatter {
             date(formatString: "MMMM DD, YYYY")
             title
+            excerpt
           }
         }
       }

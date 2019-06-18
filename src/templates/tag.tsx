@@ -20,7 +20,10 @@ export default class TagTemplate extends React.Component<Props> {
 
     return (
       <Layout title={siteTitle}>
-        <Head title={`Posts tagged "${tag}"`} keywords={[`blog`, `gatsby`, `javascript`, `react`, tag]} />
+        <Head
+          title={`Posts tagged "${tag}"`}
+          keywords={[`blog`, `gatsby`, `javascript`, `react`, tag]}
+        />
         <article>
           <header>
             <h1>Posts tagged {tag}</h1>
@@ -28,13 +31,14 @@ export default class TagTemplate extends React.Component<Props> {
           <div className={`page-content`}>
             {posts.map(({node}) => {
               const title = node.frontmatter.title || node.fields.slug
+              const excerpt = node.frontmatter.excerpt || node.excerpt
               return (
                 <div key={node.fields.slug}>
                   <h3>
                     <Link to={node.fields.slug}>{title}</Link>
                   </h3>
                   <small>{node.frontmatter.date}</small>
-                  <p dangerouslySetInnerHTML={{__html: node.excerpt}} />
+                  <p dangerouslySetInnerHTML={{__html: excerpt}} />
                 </div>
               )
             })}
@@ -62,6 +66,7 @@ interface PageQueryData {
         frontmatter: {
           date: string
           title: string
+          excerpt: string
         }
       }
     }[]
@@ -86,6 +91,7 @@ export const pageQuery = graphql`
           frontmatter {
             date
             title
+            excerpt
           }
         }
       }
