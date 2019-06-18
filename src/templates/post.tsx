@@ -27,10 +27,11 @@ export default class PostTemplate extends React.Component<Props> {
     const post = this.props.data.markdownRemark
     const siteTitle = this.props.data.site.siteMetadata.title
     const {previous, next} = this.props.pageContext
+    const excerpt = post.frontmatter.excerpt || post.excerpt
 
     return (
       <Layout title={siteTitle}>
-        <Head title={post.frontmatter.title} description={post.excerpt} />
+        <Head title={post.frontmatter.title} description={excerpt} />
         <article>
           <header>
             <h1>{post.frontmatter.title}</h1>
@@ -74,6 +75,7 @@ interface PageQueryData {
     frontmatter: {
       title: string
       date: string
+      excerpt: string
     }
   }
 }
@@ -92,6 +94,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        excerpt
       }
     }
   }

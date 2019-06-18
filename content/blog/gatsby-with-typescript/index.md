@@ -6,15 +6,8 @@ slug: gatsby-with-typescript
 layout: post
 tags: ['javascript', 'typescript', 'node', 'gatsby']
 category: Web
+excerpt: Creating a static website involves an almost infinite set of choices. I've upgraded several sites to Gatsby (including this one) finding a way to integrate TypeScript as part of the journey. Gatsby leverages React, JSX, CSS-in-JS, GraphQL and many other modern approaches to building sites.
 ---
-
-<p class="excerpt">
-Creating a static website involves an almost infinite set of choices. I've upgraded several sites to
-Gatsby (including this one) finding a way to integrate TypeScript as part of the journey. Gatsby
-leverages React, JSX, CSS-in-JS, GraphQL and many other modern approaches to building sites.
-</p>
-<!-- excerpt -->
-
 <figure class="fullwidth">
 ![Great Gatsby Book Covers through the years from https://getliterary.com/the-great-gatsby-throughout-the-years/](../../assets/Great-Gatsby-Covers.jpg)
 </figure>
