@@ -40,21 +40,38 @@
         }
       }
     })
-  </script><link rel="canonical" href="https://jeffrafter.com/gatsby-with-typescript/" data-baseprotocol="https:" data-basehost="jeffrafter.com"/><link rel="shortcut icon" href="/icons/icon-48x48.png"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#663399"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><title data-react-helmet="true">Building a Static Gatsby-based Website with TypeScript | Jeff Rafter</title><meta data-react-helmet="true" name="description" content="Creating a static website involves an almost infinite set of choices. Among these is
- Gatsby  – a static site framework based on  ,  ,   and
-many other modern…"/><meta data-react-helmet="true" property="og:title" content="Building a Static Gatsby-based Website with TypeScript"/><meta data-react-helmet="true" property="og:description" content="Creating a static website involves an almost infinite set of choices. Among these is
- Gatsby  – a static site framework based on  ,  ,   and
-many other modern…"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="Jeff Rafter"/><meta data-react-helmet="true" name="twitter:title" content="Building a Static Gatsby-based Website with TypeScript"/><meta data-react-helmet="true" name="twitter:description" content="Creating a static website involves an almost infinite set of choices. Among these is
- Gatsby  – a static site framework based on  ,  ,   and
-many other modern…"/><style data-styled="hbtdUA gHXHLD bsocPl" data-styled-version="4.1.3">
-/* sc-component-id: sc-global-1120187016 */
-@charset "UTF-8"; @font-face{font-family:"et-book";src:url("/et-book/et-book-roman-line-figures/et-book-roman-line-figures.eot");src:url("/et-book/et-book-roman-line-figures/et-book-roman-line-figures.eot?#iefix") format("embedded-opentype"),url("/et-book/et-book-roman-line-figures/et-book-roman-line-figures.woff") format("woff"),url("/et-book/et-book-roman-line-figures/et-book-roman-line-figures.ttf") format("truetype"),url("/et-book/et-book-roman-line-figures/et-book-roman-line-figures.svg#etbookromanosf") format("svg");font-weight:normal;font-style:normal;} @font-face{font-family:"et-book";src:url("/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.eot");src:url("/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.eot?#iefix") format("embedded-opentype"),url("/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.woff") format("woff"),url("/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.ttf") format("truetype"),url("/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.svg#etbookromanosf") format("svg");font-weight:normal;font-style:italic;} @font-face{font-family:"et-book";src:url("/et-book/et-book-bold-line-figures/et-book-bold-line-figures.eot");src:url("/et-book/et-book-bold-line-figures/et-book-bold-line-figures.eot?#iefix") format("embedded-opentype"),url("/et-book/et-book-bold-line-figures/et-book-bold-line-figures.woff") format("woff"),url("/et-book/et-book-bold-line-figures/et-book-bold-line-figures.ttf") format("truetype"),url("/et-book/et-book-bold-line-figures/et-book-bold-line-figures.svg#etbookromanosf") format("svg");font-weight:bold;font-style:normal;} @font-face{font-family:"et-book-roman-old-style";src:url("/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.eot");src:url("/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.eot?#iefix") format("embedded-opentype"),url("/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.woff") format("woff"),url("/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.ttf") format("truetype"),url("/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.svg#etbookromanosf") format("svg");font-weight:normal;font-style:normal;} html{box-sizing:border-box;margin:0;padding:0;} *,*::before,*::after{box-sizing:inherit;} body{margin:0 !important;padding:0;} ::selection{background-color:#dad9d9;color:rgba(0,0,0,0.70);} a.anchor,a.anchor:hover,a.anchor:link{background:none !important;} figure a.gatsby-resp-image-link{background:none;} figure span.gatsby-resp-image-wrapper{max-width:100% !important;} html{font-size:15px;} body{width:87.5%;margin-left:auto;margin-right:auto;padding-left:12.5%;font-family:et-book,Palatino,"Palatino Linotype","Palatino LT STD","Book Antiqua",Georgia,serif;background-color:#fffff8;color:#111;max-width:1400px;counter-reset:sidenote-counter;} h1{font-weight:400;margin-top:4rem;margin-bottom:1.5rem;font-size:3.2rem;line-height:1;} h2{font-style:italic;font-weight:400;margin-top:2.1rem;margin-bottom:1.4rem;font-size:2.2rem;line-height:1;} h3{font-style:italic;font-weight:400;font-size:1.7rem;margin-top:2rem;margin-bottom:1.4rem;line-height:1;} hr{display:block;height:1px;width:55%;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0;} p.subtitle{font-style:italic;margin-top:1rem;margin-bottom:1rem;font-size:1.8rem;display:block;line-height:1;} .numeral{font-family:et-book-roman-old-style;} .danger{color:red;} article{position:relative;padding:5rem 0rem;} section{padding-top:1rem;padding-bottom:1rem;} p,ol,ul{font-size:1.4rem;line-height:2rem;} p{margin-top:1.4rem;margin-bottom:1.4rem;padding-right:0;vertical-align:baseline;} div.epigraph{margin:5em 0;} div.epigraph > blockquote{margin-top:3em;margin-bottom:3em;} div.epigraph > blockquote,div.epigraph > blockquote > p{font-style:italic;} div.epigraph > blockquote > footer{font-style:normal;} div.epigraph > blockquote > footer > cite{font-style:italic;} blockquote{font-size:1.4rem;} blockquote p{width:55%;margin-right:40px;font-style:italic;color:#999;} blockquote footer{width:55%;font-size:1.1rem;text-align:right;} section > p,section > footer,section > table{width:55%;} section > ol,section > ul{width:50%;-webkit-padding-start:5%;} li:not(:first-child){margin-top:0.25rem;} figure{padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;max-width:55%;-webkit-margin-start:0;-webkit-margin-end:0;margin:0 0 3em 0;} figcaption{margin-top:-2em;margin-bottom:0;font-size:1.1rem;font-style:italic;line-height:1.6;vertical-align:baseline;position:relative;max-width:40%;} figure.fullwidth figcaption{max-width:80%;} a:link,a:visited{color:inherit;} a:link{-webkit-text-decoration:none;text-decoration:none;display:inline-block;background:-webkit-linear-gradient(#fffff8,#fffff8),-webkit-linear-gradient(#fffff8,#fffff8),-webkit-linear-gradient(#333,#333);background:linear-gradient(#fffff8,#fffff8),linear-gradient(#fffff8,#fffff8),linear-gradient(#333,#333);-webkit-background-size:0.05em 1px,0.05em 1px,1px 1px;-moz-background-size:0.05em 1px,0.05em 1px,1px 1px;background-size:0.05em 1px,0.05em 1px,1px 1px;background-repeat:no-repeat,no-repeat,repeat-x;background-position:0% 101%,101% 101%,0% 101%;} @media screen and (-webkit-min-device-pixel-ratio:0){a:link{background-position-y:101%,101%,101%;}} img{max-width:100%;} .sidenote,.marginnote{float:right;clear:right;margin-right:-60%;width:50%;margin-top:0;margin-bottom:0;margin-left:5%;font-size:1.1rem;line-height:1.3;vertical-align:baseline;position:relative;} .sidenote-number{counter-increment:sidenote-counter;} .sidenote-number:after,.sidenote:before{font-family:et-book-roman-old-style;position:relative;vertical-align:baseline;} .sidenote-number:after{content:counter(sidenote-counter);font-size:1rem;top:-0.5rem;left:0.1rem;} .sidenote:before{content:counter(sidenote-counter) " ";font-size:1rem;top:-0.5rem;} blockquote .sidenote,blockquote .marginnote{margin-right:-82%;min-width:59%;text-align:left;} div.fullwidth,table.fullwidth{width:100%;} div.table-wrapper{overflow-x:auto;font-family:"Trebuchet MS","Gill Sans","Gill Sans MT",sans-serif;} .sans{font-family:"Gill Sans","Gill Sans MT",Calibri,sans-serif;-webkit-letter-spacing:.03em;-moz-letter-spacing:.03em;-ms-letter-spacing:.03em;letter-spacing:.03em;} code{font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;font-size:1.0rem;line-height:1.42;} .sans > code{font-size:1.2rem;} h1 > code,h2 > code,h3 > code{font-size:0.80em;} .marginnote > code,.sidenote > code{font-size:1rem;} pre.code{font-size:0.9rem;width:52.5%;margin-left:2.5%;overflow-x:auto;} pre.code.fullwidth{width:90%;} .fullwidth{max-width:90%;clear:both;} span.newthought{font-variant:small-caps;font-size:1.2em;} input.margin-toggle{display:none;} label.sidenote-number{display:inline;} label.margin-toggle:not(.sidenote-number){display:none;} .iframe-wrapper{position:relative;padding-bottom:56.25%;padding-top:25px;height:0;} .iframe-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;} @media (max-width:760px){body{width:100%;padding-left:8%;padding-right:8%;}hr,section > p,section > footer,section > table{width:100%;}pre.code{width:97%;}section > ol{width:90%;}section > ul{width:90%;}figure{max-width:90%;}figcaption,figure.fullwidth figcaption{margin-right:0%;max-width:none;}blockquote{margin-left:1.5em;margin-right:0em;}blockquote p,blockquote footer{width:100%;}label.margin-toggle:not(.sidenote-number){display:inline;}.sidenote,.marginnote{display:none;}.margin-toggle:checked + .sidenote,.margin-toggle:checked + .marginnote{display:block;float:left;left:1rem;clear:both;width:95%;margin:1rem 2.5%;vertical-align:baseline;position:relative;}label{cursor:pointer;}div.table-wrapper,table{width:85%;}img{width:100%;}}
+  </script><link rel="canonical" href="https://jeffrafter.com/gatsby-with-typescript/" data-baseprotocol="https:" data-basehost="jeffrafter.com"/><link rel="shortcut icon" href="/icons/icon-48x48.png"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#663399"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><title data-react-helmet="true">Building a Static Gatsby-based Website with TypeScript | Jeff Rafter</title><meta data-react-helmet="true" name="description" content="
+&lt;p class=&quot;excerpt&quot;&gt;
+Creating a static website involves an almost infinite set of choices. I&#x27;ve upgraded several sites to
+Gatsby (including this one) finding a way to integrate TypeScript as part of the journey. Gatsby
+leverages React, JSX, CSS-in-JS, GraphQL and many other modern approaches to building sites.
+&lt;/p&gt;
+"/><meta data-react-helmet="true" property="og:title" content="Building a Static Gatsby-based Website with TypeScript"/><meta data-react-helmet="true" property="og:description" content="
+&lt;p class=&quot;excerpt&quot;&gt;
+Creating a static website involves an almost infinite set of choices. I&#x27;ve upgraded several sites to
+Gatsby (including this one) finding a way to integrate TypeScript as part of the journey. Gatsby
+leverages React, JSX, CSS-in-JS, GraphQL and many other modern approaches to building sites.
+&lt;/p&gt;
+"/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="Jeff Rafter"/><meta data-react-helmet="true" name="twitter:title" content="Building a Static Gatsby-based Website with TypeScript"/><meta data-react-helmet="true" name="twitter:description" content="
+&lt;p class=&quot;excerpt&quot;&gt;
+Creating a static website involves an almost infinite set of choices. I&#x27;ve upgraded several sites to
+Gatsby (including this one) finding a way to integrate TypeScript as part of the journey. Gatsby
+leverages React, JSX, CSS-in-JS, GraphQL and many other modern approaches to building sites.
+&lt;/p&gt;
+"/><style data-styled="hbtdUA gHXHLD bsocPl" data-styled-version="4.1.3">
+/* sc-component-id: sc-global-4122687395 */
+@charset "UTF-8"; @font-face{font-family:"et-book";src:url("/et-book/et-book-roman-line-figures/et-book-roman-line-figures.eot");src:url("/et-book/et-book-roman-line-figures/et-book-roman-line-figures.eot?#iefix") format("embedded-opentype"),url("/et-book/et-book-roman-line-figures/et-book-roman-line-figures.woff") format("woff"),url("/et-book/et-book-roman-line-figures/et-book-roman-line-figures.ttf") format("truetype"),url("/et-book/et-book-roman-line-figures/et-book-roman-line-figures.svg#etbookromanosf") format("svg");font-weight:normal;font-style:normal;} @font-face{font-family:"et-book";src:url("/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.eot");src:url("/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.eot?#iefix") format("embedded-opentype"),url("/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.woff") format("woff"),url("/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.ttf") format("truetype"),url("/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.svg#etbookromanosf") format("svg");font-weight:normal;font-style:italic;} @font-face{font-family:"et-book";src:url("/et-book/et-book-bold-line-figures/et-book-bold-line-figures.eot");src:url("/et-book/et-book-bold-line-figures/et-book-bold-line-figures.eot?#iefix") format("embedded-opentype"),url("/et-book/et-book-bold-line-figures/et-book-bold-line-figures.woff") format("woff"),url("/et-book/et-book-bold-line-figures/et-book-bold-line-figures.ttf") format("truetype"),url("/et-book/et-book-bold-line-figures/et-book-bold-line-figures.svg#etbookromanosf") format("svg");font-weight:bold;font-style:normal;} @font-face{font-family:"et-book-roman-old-style";src:url("/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.eot");src:url("/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.eot?#iefix") format("embedded-opentype"),url("/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.woff") format("woff"),url("/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.ttf") format("truetype"),url("/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.svg#etbookromanosf") format("svg");font-weight:normal;font-style:normal;} html{box-sizing:border-box;margin:0;padding:0;} *,*::before,*::after{box-sizing:inherit;} body{margin:0 !important;padding:0;} ::selection{background-color:#dad9d9;color:rgba(0,0,0,0.70);} a.anchor,a.anchor:hover,a.anchor:link{background:none !important;} figure a.gatsby-resp-image-link{background:none;} figure span.gatsby-resp-image-wrapper{max-width:100% !important;} article .excerpt{display:none;} html{font-size:15px;} body{width:87.5%;margin-left:auto;margin-right:auto;padding-left:12.5%;font-family:et-book,Palatino,"Palatino Linotype","Palatino LT STD","Book Antiqua",Georgia,serif;background-color:#fffff8;color:#111;max-width:1400px;counter-reset:sidenote-counter;} h1{font-weight:400;margin-top:4rem;margin-bottom:1.5rem;font-size:3.2rem;line-height:1;} h2{font-style:italic;font-weight:400;margin-top:2.1rem;margin-bottom:1.4rem;font-size:2.2rem;line-height:1;} h3{font-style:italic;font-weight:400;font-size:1.7rem;margin-top:2rem;margin-bottom:1.4rem;line-height:1;} hr{display:block;height:1px;width:55%;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0;} p.subtitle{font-style:italic;margin-top:1rem;margin-bottom:1rem;font-size:1.8rem;display:block;line-height:1;} .numeral{font-family:et-book-roman-old-style;} .danger{color:red;} article{position:relative;padding:5rem 0rem;} section{padding-top:1rem;padding-bottom:1rem;} p,ol,ul{font-size:1.4rem;line-height:2rem;} p{margin-top:1.4rem;margin-bottom:1.4rem;padding-right:0;vertical-align:baseline;} div.epigraph{margin:5em 0;} div.epigraph > blockquote{margin-top:3em;margin-bottom:3em;} div.epigraph > blockquote,div.epigraph > blockquote > p{font-style:italic;} div.epigraph > blockquote > footer{font-style:normal;} div.epigraph > blockquote > footer > cite{font-style:italic;} blockquote{font-size:1.4rem;} blockquote p{width:55%;margin-right:40px;font-style:italic;color:#999;} blockquote footer{width:55%;font-size:1.1rem;text-align:right;} section > p,section > footer,section > table{width:55%;} section > ol,section > ul{width:50%;-webkit-padding-start:5%;} li:not(:first-child){margin-top:0.25rem;} figure{padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;max-width:55%;-webkit-margin-start:0;-webkit-margin-end:0;margin:0 0 3em 0;} figcaption{margin-top:-2em;margin-bottom:0;font-size:1.1rem;font-style:italic;line-height:1.6;vertical-align:baseline;position:relative;max-width:40%;} figure.fullwidth figcaption{max-width:80%;} a:link,a:visited{color:inherit;} a:link{-webkit-text-decoration:none;text-decoration:none;display:inline-block;background:-webkit-linear-gradient(#fffff8,#fffff8),-webkit-linear-gradient(#fffff8,#fffff8),-webkit-linear-gradient(#333,#333);background:linear-gradient(#fffff8,#fffff8),linear-gradient(#fffff8,#fffff8),linear-gradient(#333,#333);-webkit-background-size:0.05em 1px,0.05em 1px,1px 1px;-moz-background-size:0.05em 1px,0.05em 1px,1px 1px;background-size:0.05em 1px,0.05em 1px,1px 1px;background-repeat:no-repeat,no-repeat,repeat-x;background-position:0% 101%,101% 101%,0% 101%;} @media screen and (-webkit-min-device-pixel-ratio:0){a:link{background-position-y:101%,101%,101%;}} img{max-width:100%;} .sidenote,.marginnote{float:right;clear:right;margin-right:-60%;width:50%;margin-top:0;margin-bottom:0;margin-left:5%;font-size:1.1rem;line-height:1.3;vertical-align:baseline;position:relative;} .sidenote-number{counter-increment:sidenote-counter;} .sidenote-number:after,.sidenote:before{font-family:et-book-roman-old-style;position:relative;vertical-align:baseline;} .sidenote-number:after{content:counter(sidenote-counter);font-size:1rem;top:-0.5rem;left:0.1rem;} .sidenote:before{content:counter(sidenote-counter) " ";font-size:1rem;top:-0.5rem;} blockquote .sidenote,blockquote .marginnote{margin-right:-82%;min-width:59%;text-align:left;} div.fullwidth,table.fullwidth{width:100%;} div.table-wrapper{overflow-x:auto;font-family:"Trebuchet MS","Gill Sans","Gill Sans MT",sans-serif;} .sans{font-family:"Gill Sans","Gill Sans MT",Calibri,sans-serif;-webkit-letter-spacing:.03em;-moz-letter-spacing:.03em;-ms-letter-spacing:.03em;letter-spacing:.03em;} code{font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;font-size:1.0rem;line-height:1.42;} .sans > code{font-size:1.2rem;} h1 > code,h2 > code,h3 > code{font-size:0.80em;} .marginnote > code,.sidenote > code{font-size:1rem;} pre.code{font-size:0.9rem;width:52.5%;margin-left:2.5%;overflow-x:auto;} pre.code.fullwidth{width:90%;} .fullwidth{max-width:90%;clear:both;} span.newthought{font-variant:small-caps;font-size:1.2em;} input.margin-toggle{display:none;} label.sidenote-number{display:inline;} label.margin-toggle:not(.sidenote-number){display:none;} .iframe-wrapper{position:relative;padding-bottom:56.25%;padding-top:25px;height:0;} .iframe-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;} @media (max-width:760px){body{width:100%;padding-left:8%;padding-right:8%;}hr,section > p,section > footer,section > table{width:100%;}pre.code{width:97%;}section > ol{width:90%;}section > ul{width:90%;}figure{max-width:90%;}figcaption,figure.fullwidth figcaption{margin-right:0%;max-width:none;}blockquote{margin-left:1.5em;margin-right:0em;}blockquote p,blockquote footer{width:100%;}label.margin-toggle:not(.sidenote-number){display:inline;}.sidenote,.marginnote{display:none;}.margin-toggle:checked + .sidenote,.margin-toggle:checked + .marginnote{display:block;float:left;left:1rem;clear:both;width:95%;margin:1rem 2.5%;vertical-align:baseline;position:relative;}label{cursor:pointer;}div.table-wrapper,table{width:85%;}img{width:100%;}}
 /* sc-component-id: layout__StyledNav-sc-4wr7ms-0 */
 .hbtdUA ul{list-style-type:none;margin:0;padding:0;} .hbtdUA li{display:inline-block;margin:16px;} .hbtdUA li a{background:none;}
 /* sc-component-id: layout__StyledFooter-sc-4wr7ms-1 */
 .bsocPl{padding-bottom:36px;}
 /* sc-component-id: post__StyledUl-sc-11azflk-0 */
-.gHXHLD{list-style-type:none;} .gHXHLD li::before{content:'' !important;padding-right:0 !important;}</style><link as="script" rel="preload" href="/component---src-templates-post-tsx-293c6106284b3841cc7d.js"/><link as="script" rel="preload" href="/0-8e0bd90e1fdeda641002.js"/><link as="script" rel="preload" href="/app-f1e12cae6fdcc8babd50.js"/><link as="script" rel="preload" href="/webpack-runtime-70c044f4b22bd55ace02.js"/><link as="fetch" rel="preload" href="/static/d/206/path---gatsby-with-typescript-30-b-a98-iTnAReB37po7sWrlVy9ay1EXOTg.json" crossOrigin="use-credentials"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" role="group"><nav class="navigation layout__StyledNav-sc-4wr7ms-0 hbtdUA"><ul><li><a href="/">&amp;</a></li><li><a href="/tags">Tags</a></li><li><a href="/about">About</a></li></ul></nav><main class="content" role="main"><article><header><h1>Building a Static Gatsby-based Website with TypeScript</h1><p>May 25, 2019</p></header><div class="page-content"><div><section><figure class="fullwidth">
+.gHXHLD{list-style-type:none;} .gHXHLD li::before{content:'' !important;padding-right:0 !important;}</style><link as="script" rel="preload" href="/component---src-templates-post-tsx-29e32f88ac48c6aafd69.js"/><link as="script" rel="preload" href="/0-8e0bd90e1fdeda641002.js"/><link as="script" rel="preload" href="/app-f1e12cae6fdcc8babd50.js"/><link as="script" rel="preload" href="/webpack-runtime-01811ee49864ffcded3a.js"/><link as="fetch" rel="preload" href="/static/d/889/path---gatsby-with-typescript-30-b-a98-628mYYEczqxmZSe7kMoo8S3pJuI.json" crossOrigin="use-credentials"/></head><body><div id="___gatsby"><div style="outline:none" tabindex="-1" role="group"><nav class="navigation layout__StyledNav-sc-4wr7ms-0 hbtdUA"><ul><li><a href="/">&amp;</a></li><li><a href="/tags">Tags</a></li><li><a href="/about">About</a></li></ul></nav><main class="content" role="main"><article><header><h1>Building a Static Gatsby-based Website with TypeScript</h1><p>May 25, 2019</p></header><div class="page-content"><div><section><p class="excerpt">
+Creating a static website involves an almost infinite set of choices. I've upgraded several sites to
+Gatsby (including this one) finding a way to integrate TypeScript as part of the journey. Gatsby
+leverages React, JSX, CSS-in-JS, GraphQL and many other modern approaches to building sites.
+</p>
+<!-- excerpt --><figure class="fullwidth">
   <span
     class="gatsby-resp-image-wrapper"
     style="position: relative; display: block; ; max-width: 1120px; margin-left: auto; margin-right: auto;"
@@ -209,7 +226,7 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk</code></pre></div><h3 id="configure-your-editor"><a href="#configure-your-editor" aria-label="configure your editor permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configure your editor</h3><blockquote>
 <p>This section is completely optional. This is here mostly so I can copy and paste the configuration for myself. 🎡</p>
-</blockquote><p>If there are several people working on your project, the chances are high that they use different editors for their code. At the very least their settings might not be consistent. You can provide hints to their editors. This can be done by includig a generic <code class="language-text">.editorconfig</code> file (based on the format from <a href="https://editorconfig.org">https://editorconfig.org</a>):</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">root <span class="token operator">=</span> <span class="token boolean">true</span>
+</blockquote><p>If there are several people working on your project, the chances are high that they use different editors for their code. At the very least their settings might not be consistent. You can provide hints to their editors. This can be done by including a generic <code class="language-text">.editorconfig</code> file (based on the format from <a href="https://editorconfig.org">https://editorconfig.org</a>):</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">root <span class="token operator">=</span> <span class="token boolean">true</span>
 
 <span class="token punctuation">[</span>*<span class="token punctuation">]</span>
 indent_style <span class="token operator">=</span> space
@@ -790,22 +807,22 @@ lots of <a href="https://www.gatsbyjs.org/starters/?v=2">starters</a> available 
 very common so everything worked out. As Gatsby's popularity increased, the need for theming
 increased and themes were added. You can check those out on the
 <a href="https://www.gatsbyjs.org/docs/themes/introduction/">Gatsby Site</a>.</span> For now we will start with something very basic: a simple CSS reset
-and an inline stylesheet.Create the file <code class="language-text">src/styles/theme.ts</code>:</p><div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> styled<span class="token punctuation">,</span> <span class="token punctuation">{</span>css<span class="token punctuation">,</span> createGlobalStyle<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'styled-components'</span>
+and an inline stylesheet.Create the file <code class="language-text">src/styles/theme.ts</code>:</p><div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts">import styled, {css, createGlobalStyle} from &#39;styled-components&#39;
 
-<span class="token keyword">export</span> <span class="token punctuation">{</span>css<span class="token punctuation">,</span> styled<span class="token punctuation">}</span>
+export {css, styled}
 
-<span class="token keyword">export</span> <span class="token keyword">const</span> theme <span class="token operator">=</span> <span class="token punctuation">{</span>
-  colors<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-    black<span class="token punctuation">:</span> <span class="token string">'#000000'</span><span class="token punctuation">,</span>
-    background<span class="token punctuation">:</span> <span class="token string">'#fffff8'</span><span class="token punctuation">,</span>
-    contrast<span class="token punctuation">:</span> <span class="token string">'#111'</span><span class="token punctuation">,</span>
-    contrastLightest<span class="token punctuation">:</span> <span class="token string">'#dad9d9'</span><span class="token punctuation">,</span>
-    accent<span class="token punctuation">:</span> <span class="token string">'red'</span><span class="token punctuation">,</span>
-    white<span class="token punctuation">:</span> <span class="token string">'#ffffff'</span><span class="token punctuation">,</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-<span class="token punctuation">}</span>
+export const theme = {
+  colors: {
+    black: &#39;#000000&#39;,
+    background: &#39;#fffff8&#39;,
+    contrast: &#39;#111&#39;,
+    contrastLightest: &#39;#dad9d9&#39;,
+    accent: &#39;red&#39;,
+    white: &#39;#ffffff&#39;,
+  },
+}
 
-<span class="token keyword">const</span> <span class="token function-variable function">reset</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token template-string"><span class="token string">`
+const reset = () =&gt; `
 html {
   box-sizing: border-box;
   margin: 0;
@@ -822,7 +839,7 @@ body {
 }
 
 ::selection {
-  background-color: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>theme<span class="token punctuation">.</span>colors<span class="token punctuation">.</span>contrastLightest<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">;
+  background-color: ${theme.colors.contrastLightest};
   color: rgba(0, 0, 0, 0.70);
 }
 
@@ -839,10 +856,10 @@ figure {
     max-width: 100% !important;
   }
 }
-`</span></span>
+`
 
-<span class="token comment">// These style are based on https://edwardtufte.github.io/tufte-css/</span>
-<span class="token keyword">const</span> <span class="token function-variable function">styles</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token template-string"><span class="token string">`
+// These style are based on https://edwardtufte.github.io/tufte-css/
+const styles = () =&gt; `
 html {
   font-size: 15px;
 }
@@ -852,7 +869,7 @@ body {
   margin-left: auto;
   margin-right: auto;
   padding-left: 12.5%;
-  font-family: Palatino, 'Palatino Linotype', 'Palatino LT STD', 'Book Antiqua', Georgia, serif;
+  font-family: Palatino, &#39;Palatino Linotype&#39;, &#39;Palatino LT STD&#39;, &#39;Book Antiqua&#39;, Georgia, serif;
   background-color: white;
   color: #111;
   max-width: 1400px;
@@ -933,14 +950,14 @@ blockquote footer {
   text-align: right;
 }
 
-section > p,
-section > footer,
-section > table {
+section &gt; p,
+section &gt; footer,
+section &gt; table {
   width: 55%;
 }
 
-section > ol,
-section > ul {
+section &gt; ol,
+section &gt; ul {
   width: 50%;
   -webkit-padding-start: 5%;
 }
@@ -993,18 +1010,18 @@ table.fullwidth {
 
 div.table-wrapper {
   overflow-x: auto;
-  font-family: 'Trebuchet MS', 'Gill Sans', 'Gill Sans MT', sans-serif;
+  font-family: &#39;Trebuchet MS&#39;, &#39;Gill Sans&#39;, &#39;Gill Sans MT&#39;, sans-serif;
 }
 
 code {
-  font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+  font-family: Consolas, &#39;Liberation Mono&#39;, Menlo, Courier, monospace;
   font-size: 1rem;
   line-height: 1.42;
 }
 
-h1 > code,
-h2 > code,
-h3 > code {
+h1 &gt; code,
+h2 &gt; code,
+h3 &gt; code {
   font-size: 0.8em;
 }
 
@@ -1047,9 +1064,9 @@ pre.code.fullwidth {
   }
 
   hr,
-  section > p,
-  section > footer,
-  section > table {
+  section &gt; p,
+  section &gt; footer,
+  section &gt; table {
     width: 100%;
   }
 
@@ -1057,11 +1074,11 @@ pre.code.fullwidth {
     width: 97%;
   }
 
-  section > ol {
+  section &gt; ol {
     width: 90%;
   }
 
-  section > ul {
+  section &gt; ul {
     width: 90%;
   }
 
@@ -1102,12 +1119,12 @@ pre.code.fullwidth {
     width: 100%;
   }
 }
-`</span></span>
+`
 
-<span class="token keyword">export</span> <span class="token keyword">const</span> GlobalStyle <span class="token operator">=</span> createGlobalStyle<span class="token template-string"><span class="token string">`
-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
-</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token function">styles</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">
-`</span></span></code></pre></div><p>The important pieces here are <code class="language-text">createGlobalStyle</code> and the generic reset. The styles that are in
+export const GlobalStyle = createGlobalStyle`
+${reset()}
+${styles()}
+`</code></pre></div><p>The important pieces here are <code class="language-text">createGlobalStyle</code> and the generic reset. The styles that are in
 the <code class="language-text">styles</code> function are based on <a href="https://edwardtufte.github.io/tufte-css/">Edward Tufte’s</a>
 styles. This provides a very minimalast theme to build on.</p></section>
 <section><h2 id="layout"><a href="#layout" aria-label="layout permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Layout</h2><p>Now that we have our basic styles we can move on to the layout. A website’s layout includes
@@ -1805,7 +1822,7 @@ export const pageQuery = graphql`
     }
     markdownRemark(fields: {slug: {eq: $slug}}) {
       id
-      excerpt(pruneLength: 160)
+      excerpt(pruneLength: 2500)
       html
       frontmatter {
         title
@@ -1916,7 +1933,7 @@ export const pageQuery = graphql`
       totalCount
       edges {
         node {
-          excerpt
+          excerpt(pruneLength: 2500)
           fields {
             slug
           }
@@ -2131,4 +2148,4 @@ extensive set of tutorials on how to prepare and deploy your site: <a href="http
       
       
       }
-      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.page={"componentChunkName":"component---src-templates-post-tsx","jsonName":"gatsby-with-typescript-30b","path":"/gatsby-with-typescript/"};window.dataPath="206/path---gatsby-with-typescript-30-b-a98-iTnAReB37po7sWrlVy9ay1EXOTg";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app.7a7fd10b08846091aeed.css","/app-f1e12cae6fdcc8babd50.js"],"component---src-templates-post-tsx":["/component---src-templates-post-tsx-293c6106284b3841cc7d.js"],"component---src-templates-tag-tsx":["/component---src-templates-tag-tsx-1a12da098863a0a9204b.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-cc332bd137d3dd2345ae.js"],"component---src-pages-about-tsx":["/component---src-pages-about-tsx-855b281108a04575d32b.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-20ebf8d3cfa9310d8c91.js"],"component---src-pages-tags-tsx":["/component---src-pages-tags-tsx-79084004e25418309eaa.js"],"pages-manifest":["/pages-manifest-ae600ef318dfb74423b4.js"]};/*]]>*/</script><script src="/webpack-runtime-70c044f4b22bd55ace02.js" async=""></script><script src="/app-f1e12cae6fdcc8babd50.js" async=""></script><script src="/0-8e0bd90e1fdeda641002.js" async=""></script><script src="/component---src-templates-post-tsx-293c6106284b3841cc7d.js" async=""></script></body></html>
+      </script><script id="gatsby-script-loader">/*<![CDATA[*/window.page={"componentChunkName":"component---src-templates-post-tsx","jsonName":"gatsby-with-typescript-30b","path":"/gatsby-with-typescript/"};window.dataPath="889/path---gatsby-with-typescript-30-b-a98-628mYYEczqxmZSe7kMoo8S3pJuI";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app.7a7fd10b08846091aeed.css","/app-f1e12cae6fdcc8babd50.js"],"component---src-templates-post-tsx":["/component---src-templates-post-tsx-29e32f88ac48c6aafd69.js"],"component---src-templates-tag-tsx":["/component---src-templates-tag-tsx-2bcd6db1bed96a9a91ed.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-6b56af5cd97c8842a990.js"],"component---src-pages-about-tsx":["/component---src-pages-about-tsx-7205750d7ce2d16f1407.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-89fa515cfd6e95683e26.js"],"component---src-pages-tags-tsx":["/component---src-pages-tags-tsx-05a825ba1221c36fbc71.js"],"pages-manifest":["/pages-manifest-355b32fda8e5ad10c91c.js"]};/*]]>*/</script><script src="/webpack-runtime-01811ee49864ffcded3a.js" async=""></script><script src="/app-f1e12cae6fdcc8babd50.js" async=""></script><script src="/0-8e0bd90e1fdeda641002.js" async=""></script><script src="/component---src-templates-post-tsx-29e32f88ac48c6aafd69.js" async=""></script></body></html>
