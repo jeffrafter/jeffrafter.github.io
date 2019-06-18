@@ -222,7 +222,7 @@ pre.code { font-size: 0.9rem;
 
 pre.code.fullwidth { width: 90%; }
 
-.fullwidth { max-width: 90%;
+.fullwidth { max-width: 100%;
              clear:both; }
 
 span.newthought { font-variant: small-caps;
