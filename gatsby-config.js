@@ -12,6 +12,7 @@ module.exports = {
     },
     social: {
       twitter: 'https://twitter.com/jeffrafter',
+      instagram: 'https://instagram.com/jeffrafter',
       github: 'https://github.com/jeffrafter',
     },
   },
