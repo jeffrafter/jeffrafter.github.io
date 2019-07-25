@@ -1,6 +1,6 @@
 ---
 title: Developing for the Oculus Quest
-date: '2019-06-28T00:01:00'
+date: '2019-07-25T00:01:00'
 published: true
 slug: oculus-quest
 image: ../../assets/180924_Quest_FF_light_transparent_shadow.png
@@ -9,6 +9,13 @@ tags: ['oculus', 'quest', 'unity', 'development']
 category: development
 excerpt: Everyone wants to talk about consumer VR. I just want to make some games.
 ---
+
+<figure class="fullwidth">
+![Oculus Quest with Controllers](../../assets/180924_Quest_FF_light_transparent_shadow.png)
+</figure>
+<figcaption class="fullwidth">
+Image credit: <a href="https://amzn.to/2SEOSJG">Oculus Quest on Amazon</a>
+</figcaption>
 
 For Father's Day I got an Oculus Quest. It is entirely immersive and blast to play with my kids. Of course, I immediately wanted to make my own games and got started with Unity[^unity]. There are a few blog posts and videos that helped me on my way.
 
@@ -39,7 +46,7 @@ If you prefer videos:
 
 ## Learn
 
-Once I had the basics working and could load games I built in Unity on my Quest I wanted to do more. I found a set of really great tutorial videos by [Valem](https://www.youtube.com/channel/UCPJlesN59MzHPPCp0Lg8sLw), [Quentin Valembois](https://twitter.com/ValemVR) and was hooked. As I went through the videos I took notes and (with permission) am posting those here.
+Once I had the basics working, and could load games I built in Unity on my Quest, I wanted to do more. I found a set of fantastic tutorial videos by [Valem](https://www.youtube.com/channel/UCPJlesN59MzHPPCp0Lg8sLw), [Quentin Valembois](https://twitter.com/ValemVR) and was hooked. As I went through the videos I took notes and (with permission) am posting those here.
 
 While watching these videos, you might notice Valem is using the ▶ button to debug. This works because he is actually developing for the Rift in the videos (notice that the controllers are upside-down). In a later [video on recreating Slenderman](https://www.youtube.com/watch?v=LihEW5a1Tjw) (at 1:47) he explains how to use the ▶ button while building for the Oculus Quest. Unfortunately that won't work on MacOS because the Oculus plugin is not supported. There are notes on how to get this working at the end of this post.
 
@@ -56,7 +63,7 @@ While watching these videos, you might notice Valem is using the ▶ button to d
 - Change the Texture Compression to ASTC (not required[^astc], very slow)
 - Open Player Settings:
   - Set the Company and Product Name
-  - Remove Vulkan from the Graphics APIs list (Other Settings)
+  - Remove `Vulkan` from the Graphics APIs list (Other Settings)
   - Set the Package Name (Other Settings)
   - Set the Minimum API Level to Android 4.4 'KitKat' (Other Settings)
   - Check VR Intergation (XR Settings)
@@ -75,29 +82,29 @@ While watching these videos, you might notice Valem is using the ▶ button to d
 - Create a red material and apply it to cube
 - Create a black material and apply it to plane
 - Delete the main camera
-- Add OVRPlayerController to the scene and move it back away from the cube
-- Set Tracking Origin Type to Floor on the OVRCameraRig child
-- Add the Character Camera Constraint component to the OVRPlayerController
-- Drag the OVRCameraRig to the Character Camera Constraint Camera Rig field
-- Check the Dynamic Height
+- Add `OVRPlayerController` to the scene and move it back away from the cube
+- Set Tracking Origin Type to `Floor` on the `OVRCameraRig` child (note: if you are using the ▶ button, this should be `Stage`)
+- Add the `Character Camera Constraint` component to the `OVRPlayerController`
+- Drag the `OVRCameraRig` to the `Character Camera Constraint` Camera Rig field
+- Check the Dynamic Height box
 
 ### Simple grabbing
 
-- Add LocalAvatar prefab to the TrackingSpace of the OVRPlayerController
-- Add AvatarGrabberLeft and AvatarGrabberRight prefab to the LocalAvatar
+- Add `LocalAvatar` prefab to the `TrackingSpace` of the `OVRPlayerController`
+- Add `AvatarGrabberLeft` and `AvatarGrabberRight` prefab to the `LocalAvatar`
 - Make the red cube wider (more like a table)
 - Add an empty object called Cubes and add some cubes (6 of them)
-- Select all of the cubes and add the OVRGrabbable script
-- Add the RigidBody component
+- Select all of the cubes and add the `OVRGrabbable` script
+- Add the `RigidBody` component
 
 ### Build and run
 
-- In Build Settings, Add Open Scenes
+- In Build Settings click Add Open Scenes
 - Plug in your Oculus (you may need to "Trust this computer")
 - On Windows you should be able to click play
 - On Mac click Build and Run (slow first build)
 
-> From the comments: Colliding with the cubes and flying into the air? "Some of you have experienced a bug where the player fly when you put your hands under you. A really simple fix is to set the body and the hand to a different layer then in Physics settings uncheck the collision between the two layer in the collision layer matrix! :) Hope this will help some of you!" https://www.youtube.com/watch?v=sKQOlqNe_WY&lc=Ugy0IV2wmiRMywTkPk94AaABAg
+> From the comments: Colliding with the cubes and flying into the air? "Some of you have experienced a bug where the player fly when you put your hands under you. A really simple fix is to set the body and the hand to a different layer then in Physics settings uncheck the collision between the two layer in the collision layer matrix! :) Hope this will help some of you!" https://www.youtube.com/watch?v=sKQOlqNe_WY&lc=Ugy0IV2wmiRMywTkPk94AaABAg Note: setting up layer interactions happens more in the next section.
 
 ## How to make a VR game in Unity - Part 2 - Custom Hand, Distance grab
 
@@ -124,10 +131,10 @@ While watching these videos, you might notice Valem is using the ▶ button to d
 - Set the `TrackingSpace` to the Parent Transform
 - Set the Grab Object in Layer field to the number corresponding to your Cubes Layer (9)
 - Set Obstruction Layer to -1 (none)
-- Create an Empty Game Object and call it Grab Manager and add it to the OVRPlayerController (this is different from the video, but solves the multi-grab problem)
+- Create an Empty Game Object and call it Grab Manager and add it to the `OVRPlayerController` (this is different from the video, but solves the problem where only one box can be grabbed, also this is fixed in the following videos)
 - Add the Sphere Collider component to the Grab Manager
 - Set Is Trigger to true
-- Set the Radius to something larger (3.5)
+- Set the Radius to something larger (3.5 is good)
 
 ### Adding the crosshairs
 
@@ -136,10 +143,10 @@ While watching these videos, you might notice Valem is using the ▶ button to d
 - Add the Grabbable Crosshair Script to the object
 - Create a child Quad object called "On"
   - Remove the mesh collider of the quad
-  - Add the TriangleCursorTargeted Material
+  - Add the `TriangleCursorTargeted` Material
   - Move it slightly behind the cube
 - Duplicate the child Quad and call it "Off"
-  - Change the material to TriangleCursorUntargeted
+  - Change the material to `TriangleCursorUntargeted`
   - Make it smaller by lowering the scale
   - Change the material color to gray
 - Drag `On` to the Targeted Crosshair field of the Crosshair script
@@ -149,7 +156,7 @@ While watching these videos, you might notice Valem is using the ▶ button to d
 
 [^jittery]:
 
-  Still jittery? Move the hands under the OVRPlayerController LeftHandAnchor and RightHandAnchor and remove the Parent Tansform [comment](https://www.youtube.com/watch?v=rnOR1OANIAU&lc=UgxZk-kL_RAwHIIMnTl4AaABAg.8rOyDN6n0A68s4HvbTUUai)(see also: [unity distance grab](https://developer.oculus.com/documentation/unity/latest/concepts/unity-sf-distancegrab/) and [kinematic rigid bodies](https://forum.unity.com/threads/kinematic-rigid-bodies-does-not-move-smoothly-with-moveposition.142516/)), note: I couldn't get this to align correctly in the latest version for the DistanceGrabHandLeft and DistanceGrabHandRight
+  Still jittery? Move the hands under the OVRPlayerController LeftHandAnchor and RightHandAnchor and remove the Parent Tansform [comment](https://www.youtube.com/watch?v=rnOR1OANIAU&lc=UgxZk-kL_RAwHIIMnTl4AaABAg.8rOyDN6n0A68s4HvbTUUai)(see also: [unity distance grab](https://developer.oculus.com/documentation/unity/latest/concepts/unity-sf-distancegrab/) and [kinematic rigid bodies](https://forum.unity.com/threads/kinematic-rigid-bodies-does-not-move-smoothly-with-moveposition.142516/)), note: I couldn't get this to align correctly in the latest version for the `DistanceGrabHandLeft` and `DistanceGrabHandRight`
 
 ## How to make a VR game in Unity - Part 3 - VR Shooter
 
@@ -162,12 +169,12 @@ While watching these videos, you might notice Valem is using the ▶ button to d
 - Open the folder in Assets, Nokobot, ModernGuns_Handgun, Prefabs, Active guns
 - Drag `Handgun_M1911A_Black (WithScript)` prefab into the scene
 - Scale it down (0.3) and move it to the left of the boxes
-- Add a Rigidbody component
-- Add the Distance Grabbable script
+- Add a `Rigidbody` component
+- Add the `Distance Grabbable` script
 - Set the layer to the Grabbable layer (same as Cubes)
-  - Add a new Empty 3D object to the gun called COLLIDERS
-  - Add a new Cube to COLLIDERS that aligns to the barrel [^barrel]
-  - Duplicate that cube to COLLIDERS and align the duplicate to the grip [^grip]
+  - Add a new Empty 3D object to the gun called `COLLIDERS`
+  - Add a new Cube to `COLLIDERS` that aligns to the barrel [^barrel]
+  - Duplicate that cube to `COLLIDERS` and align the duplicate to the grip [^grip]
   - Remove the Mesh Renderer of both cubes
   - Remove the Cube (Mesh Filter) of both cubes
   - Drag each cube to the Grab Points field of the Distance Grabbable object in the gun
@@ -288,7 +295,7 @@ namespace OculusSampleFramework
 
 ### Modify the Grab Manager script
 
-- Click on the Grab Manager in the OVRPlayerController
+- Click on the Grab Manager in the `OVRPlayerController`
 - Click the gear icon on the Grab Manager Script and choose Edit Script
 - Change `GetComponentInChildren` to `GetComponentInParent`:
 
@@ -386,7 +393,7 @@ namespace OculusSampleFramework
 
 ### Fix the DistanceGrabber script for the left hand
 
-- Click on the DistanceGrabHandLeft
+- Click on the `DistanceGrabHandLeft`
 - Click on the gear icon in the Distance Grabber component and choose Edit Script
 - Copy the else statement of `GrabBegin` into `MoveGrabbedObject`
 
@@ -830,7 +837,7 @@ public class ShootIfGrabbed : MonoBehaviour
 ### Modify some variables
 
 - Click on the gun, change the Shot Power field to 1500
-- Double-click the Handgun_M1911 value in the Controller field of the Animator component
+- Double-click the `Handgun_M1911` value in the Controller field of the Animator component
 - Click on the Shooting node and set the speed to 10
 
 ## How to make a VR game in Unity - Part 4 - User Interface
@@ -859,7 +866,7 @@ public class ShootIfGrabbed : MonoBehaviour
 - Move the Canvas component to a child of the gun
 - Reset the position to 0, 0, 0 and then move and scale the canvas
 - Change the text to 0
-- Modify the SimpleShoot script to track the number of bullets:
+- Modify the `SimpleShoot` script to track the number of bullets:
 
 ```csharp
 using System.Collections;
@@ -910,11 +917,11 @@ public class ShootIfGrabbed : MonoBehaviour
 - Select the Text node child of the Button
 - Change the text to "More cubes!"
 - Remove the Canvas Raycaster component from the Canvas
-- Add the OVR Raycaster script to the Canvas
-- Delete the EventSystem from the scene
-- Search your project for UIHelpers and drag the prefab into the scene
-- Drag the LaserPointer game object (in UIHelpers) to Pointer field of the OVR Raycaster component of the Canvas
-- Set the Event Camera of the Canvas to the CenterEyeAnchor of the TrackingSpace in the OVRPlayerController
+- Add the `OVR Raycaster` script to the Canvas
+- Delete the `EventSystem` from the scene
+- Search your project for `UIHelpers` and drag the prefab into the scene
+- Drag the `LaserPointer` game object (in UIHelpers) to Pointer field of the `OVR Raycaster` component of the Canvas
+- Set the Event Camera of the Canvas to the `CenterEyeAnchor` of the `TrackingSpace` in the `OVRPlayerController`
 
 ### Make the button do something
 
@@ -939,17 +946,17 @@ public class MoreCubes : MonoBehaviour
 ```
 
 - Drag the Cubes game object from the scene to the Assets in your project to create a prefab
-- Drag the Cubes prefab to the `Cube Prefab` field of the MoreCubes script on the Button
+- Drag the Cubes prefab to the `Cube Prefab` field of the `MoreCubes` script on the Button
 - In the Button object's Button Script click the `+` in the On Click() section
-- Drag the MoreCubes script into the slot marked None
+- Drag the `MoreCubes` script into the slot marked None
 - Choose the `MoreCubes.Cube()` function
 
 ### Add Raycasting
 
-- Select the Sphere under the UIHelpers Object and increase the scale
-- Select the LaserPointer check the box for the Line Renderer
+- Select the Sphere under the `UIHelpers`object and increase the scale
+- Select the `LaserPointer` check the box for the Line Renderer
 - Change the width in Postions to 50% (0.005)
-- In the Laser Pointer, click on the gear icon of the Laser Pointer (Script) and choose Edit Script
+- In the `LaserPointer`, click on the gear icon of the Laser Pointer (Script) and choose Edit Script
 - Add `[SerializeField]` to the `_laserBeamBehavior` private field:
 
 ```csharp
@@ -965,7 +972,7 @@ public class MoreCubes : MonoBehaviour
 
 ### Add a gunfire sound
 
-Unless you already have a Desert Eagle sound effect here are some good choices:
+Unless you already have a Desert Eagle sound effect here are some good choices (search for them in the Asset Store):
 
 - Post Apocalypse Guns Demo by SOUND EARTH GAME AUDIO (AutoGun_1p_01.wav)
 - Futuristic Gun SoundFX by MGWSOUNDDESIGN (GunShot9.wav)
@@ -976,7 +983,7 @@ Unless you already have a Desert Eagle sound effect here are some good choices:
 - Select the gun game object and add an Audio Source component
   - Uncheck Play on Awake
   - Set the Spatial Blend to 3D
-- Modify the ShootIfGrabbed script to add `shootingAudio`:
+- Modify the `ShootIfGrabbed` script to add `shootingAudio`:
 
 ```csharp
 using System.Collections;
@@ -1020,8 +1027,8 @@ public class ShootIfGrabbed : MonoBehaviour
 ### Haptic feedback
 
 - Create an empty game object called Vibration Manager and reset the position
-- Add a component to the object called VibrationManager (new script)
-- Edit the VibrationManager script:
+- Add a component to the object called `VibrationManager` (new script)
+- Edit the `VibrationManager` script:
 
 ```csharp
 using System.Collections;
@@ -1060,7 +1067,7 @@ public class VibrationManager : MonoBehaviour
 }
 ```
 
-- Edit the ShootIfGrabbed script and add the following line (just after the call to `PlayOneShot` in `Update`):
+- Edit the `ShootIfGrabbed` script and add the following line (just after the call to `PlayOneShot` in `Update`):
 
 ```csharp
 VibrationManager.singleton.TriggerVibration(shootingAudio, ovrGrabbable.grabbedBy.GetController());
@@ -1068,7 +1075,7 @@ VibrationManager.singleton.TriggerVibration(shootingAudio, ovrGrabbable.grabbedB
 
 ### Custom haptic clips
 
-- Edit the VibrationManager script and add another version of the `TriggerVibration` method:
+- Edit the `VibrationManager` script and add another version of the `TriggerVibration` method:
 
 ```csharp
     public void TriggerVibration(int iteration, int frequency, int strength, OVRInput.Controller controller)
@@ -1091,7 +1098,7 @@ VibrationManager.singleton.TriggerVibration(shootingAudio, ovrGrabbable.grabbedB
     }
 ```
 
-- Within the ShootIfGrabbed script, replace the call to `TriggerVibration` with:
+- Within the `ShootIfGrabbed` script, replace the call to `TriggerVibration` with:
 
 ```csharp
 VibrationManager.singleton.TriggerVibration(40, 2, 255, ovrGrabbable.grabbedBy.GetController());
@@ -1143,7 +1150,7 @@ Changing this eliminates the error, but the OVR Headset Emulator script will not
 	}
 ```
 
-The Unity Editor on Mac does not support the OVRPlugin (it is an unsupported platform). That's fine, but let's pretend it was initilialized, even though it is unsupported (changing `return false` to `return true`):
+The Unity Editor on Mac does not support the `OVRPlugin` (it is an unsupported platform). That's fine, but let's pretend it was initialized, even though it is unsupported (changing `return false` to `return true`):
 
 ```csharp
 	public static bool initialized
