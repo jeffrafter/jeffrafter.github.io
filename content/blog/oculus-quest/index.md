@@ -17,11 +17,9 @@ excerpt: Everyone wants to talk about consumer VR. I just want to make some game
 Image credit: <a href="https://amzn.to/2SEOSJG">Oculus Quest on Amazon</a>
 </figcaption>
 
-For Father's Day I got an Oculus Quest. It is entirely immersive and blast to play with my kids. Of course, I immediately wanted to make my own games and got started with Unity[^unity]. There are a few blog posts and videos that helped me on my way.
+For Father's Day I got an Oculus Quest. It is entirely immersive and a blast to play with my kids. Of course, I immediately wanted to make my own games and got started with Unity[^unity]. There are a few blog posts and videos that helped me on my way.
 
-[^unity]:
-
-  There are [lots](https://gametorrahod.com/objectively-comparing-unity-and-unreal-engine/) of [articles](https://developer.oculus.com/documentation/quest/latest/concepts/book-intro/?locale=en_US) on Unity versus Unreal versus building your own engine entirely from scratch using Oculus Native support. For me, my goal was to get something running as quickly as possible. Harder decisions later.
+[^unity]: There are [lots](https://gametorrahod.com/objectively-comparing-unity-and-unreal-engine/) of [articles](https://developer.oculus.com/documentation/quest/latest/concepts/book-intro/?locale=en_US) on Unity versus Unreal versus building your own engine entirely from scratch using Oculus Native support. For me, my goal was to get something running as quickly as possible. Harder decisions later.
 
 ## Getting started
 
@@ -52,7 +50,7 @@ While watching these videos, you might notice Valem is using the ▶ button to d
 
 ## How to make a VR game in Unity - Part 1 - Setup, Hand presence, Grabbing object
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/rnOR1OANIAU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/sKQOlqNe_WY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 ### Setup the project
 
@@ -71,9 +69,7 @@ While watching these videos, you might notice Valem is using the ▶ button to d
 - Download Oculus Integration from the Asset Store (slow)
 - Import All from the Oculus Integration (very slow)
 
-[^astc]:
-
-  DXT, PVRTC, ATC, and ASTC are all support textures with an alpha channel. These formats also support higher compression rates and/or better image quality, but they are only supported on a subset of Android devices. https://docs.unity3d.com/Manual/android-GettingStarted.html. ASTC is considered the best choice for Oculus Quest.
+[^astc]: DXT, PVRTC, ATC, and ASTC are all support textures with an alpha channel. These formats also support higher compression rates and/or better image quality, but they are only supported on a subset of Android devices. https://docs.unity3d.com/Manual/android-GettingStarted.html. ASTC is considered the best choice for Oculus Quest.
 
 ### Make the scene
 
@@ -154,9 +150,7 @@ While watching these videos, you might notice Valem is using the ▶ button to d
 - Make a prefab from the crosshair (drag from the scene to Assets)
 - Drag the prefab into the remaining cubes
 
-[^jittery]:
-
-  Still jittery? Move the hands under the OVRPlayerController LeftHandAnchor and RightHandAnchor and remove the Parent Tansform [comment](https://www.youtube.com/watch?v=rnOR1OANIAU&lc=UgxZk-kL_RAwHIIMnTl4AaABAg.8rOyDN6n0A68s4HvbTUUai)(see also: [unity distance grab](https://developer.oculus.com/documentation/unity/latest/concepts/unity-sf-distancegrab/) and [kinematic rigid bodies](https://forum.unity.com/threads/kinematic-rigid-bodies-does-not-move-smoothly-with-moveposition.142516/)), note: I couldn't get this to align correctly in the latest version for the `DistanceGrabHandLeft` and `DistanceGrabHandRight`
+[^jittery]: Still jittery? Move the hands under the OVRPlayerController LeftHandAnchor and RightHandAnchor and remove the Parent Tansform [comment](https://www.youtube.com/watch?v=rnOR1OANIAU&lc=UgxZk-kL_RAwHIIMnTl4AaABAg.8rOyDN6n0A68s4HvbTUUai)(see also: [unity distance grab](https://developer.oculus.com/documentation/unity/latest/concepts/unity-sf-distancegrab/) and [kinematic rigid bodies](https://forum.unity.com/threads/kinematic-rigid-bodies-does-not-move-smoothly-with-moveposition.142516/)), note: I couldn't get this to align correctly in the latest version for the `DistanceGrabHandLeft` and `DistanceGrabHandRight`
 
 ## How to make a VR game in Unity - Part 3 - VR Shooter
 
@@ -181,9 +175,7 @@ While watching these videos, you might notice Valem is using the ▶ button to d
 - Add the crosshair prefab to the gun
 - Scale the crosshair down a little bit
 
-[^barrel]:
-
-  Barrel: ![](https://rpl.cat/uploads/34dIbk_lMn9KprF5AOwkoYRKLXPmb_zSqVb2Yu5DDaE/public.png)
+[^barrel]: Barrel: ![](https://rpl.cat/uploads/34dIbk_lMn9KprF5AOwkoYRKLXPmb_zSqVb2Yu5DDaE/public.png)
 
 >
 
