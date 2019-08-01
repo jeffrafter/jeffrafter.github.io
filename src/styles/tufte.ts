@@ -152,7 +152,6 @@ figure.fullwidth figcaption { max-width: 80%; }
 a:link, a:visited { color: inherit; }
 
 a:link { text-decoration: none;
-         display: inline-block;
          background: -webkit-linear-gradient(#fffff8, #fffff8), -webkit-linear-gradient(#fffff8, #fffff8), -webkit-linear-gradient(#333, #333);
          background: linear-gradient(#fffff8, #fffff8), linear-gradient(#fffff8, #fffff8), linear-gradient(#333, #333);
          -webkit-background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
