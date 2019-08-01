@@ -1161,6 +1161,8 @@ With this, the ▶ button should work for some quicker debugging. Note: nothing 
 
 If you are using Oculus Avatar features (i.e., you've added a `LocalAvatar`) those are not currently emulated properly. When hitting the play button you can simply uncheck the LocalAvatar or you can implement checks for platform support before attempting to use the functionality.
 
+Here is a version of `LocalAvatar.cs` with the checks added:
+
 ```csharp
 #if !(UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || (UNITY_ANDROID && !UNITY_EDITOR))
 #define OVRPLUGIN_UNSUPPORTED_PLATFORM
@@ -1435,3 +1437,38 @@ public class OvrAvatarSDKManager : MonoBehaviour
     }
 }
 ```
+
+## Seeing what is happening on the Oculus Quest
+
+Building programs for the Rift was easier because you could debug everything that was happening in realtime. On the Quest you can't but you can see what is happening on the device and view logs using `adb`, the Android Debug Bridge.
+
+On a Mac, in a Terminal, run:
+
+```bash
+brew cask install android-platform-tools
+brew install scrcpy
+```
+
+Once that is installed, attach your Oculus via USB-C and run:
+
+```bash
+scrcpy -c 1440:1550:0:0
+```
+
+This should attach a view for a single eye. If you want to see both eyes you can just use `scrcpy` [^scrcpy]. If you get an error about the connection you can usually run:
+
+```bash
+adb disconnect
+```
+
+And then run `scrcpy` again.
+
+[^scrcpy]: `scrcpy` or Screen-Copy is part of Genymobile and can be found https://github.com/Genymobile/scrcpy#mac-os. There are options for other platforms as well. See also: https://note.mu/masaki_ponpoko/n/nc759f6499c79
+
+## More learning
+
+I've used quite a few other resources when learning. I'll list some of them here:
+
+- [The Ultimate Guide to Game Development with Unity 2019](https://www.udemy.com/share/1000lMBkQac1dQRng=/). This course costs between \$10-12 if you catch it on sale. I highly recommend it if you are just getting started. It clearly explains how to move around the Unity interface, how to move quickly, and basic concepts of scripting.
+- Using the new Terrain Tools: [Speed up your work with the new Terrain Tools Package](https://blogs.unity3d.com/2019/05/28/speed-up-your-work-with-the-new-terrain-tools-package/).
+- [Using GitHub Desktop to Manage your Project](https://wiki.unrealengine.com/GitHub_Desktop_to_manage_your_project) and [How to use GitHub with Unity](https://www.youtube.com/watch?v=qpXxcvS-g3g) (youtube).
