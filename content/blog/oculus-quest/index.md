@@ -1461,9 +1461,27 @@ This should attach a view for a single eye. If you want to see both eyes you can
 adb disconnect
 ```
 
+If that doesn't work you can do the more extreme:
+
+```bash
+adb kill-server
+```
+
 And then run `scrcpy` again.
 
 [^scrcpy]: `scrcpy` or Screen-Copy is part of Genymobile and can be found https://github.com/Genymobile/scrcpy#mac-os. There are options for other platforms as well. See also: https://note.mu/masaki_ponpoko/n/nc759f6499c79
+
+You can also connect to the Quest and see the logs.
+
+For more information on using `adb` with the Oculus Quest you can follow the tutorial.
+
+```
+adb devices
+adb shell ip route
+adb tcpip 5555
+adb connect <ipaddress>:5555
+adb -s 192.168.1.211:5555 logcat -c
+```
 
 ## More learning
 
