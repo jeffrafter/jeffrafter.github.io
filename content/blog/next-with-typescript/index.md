@@ -1,5 +1,5 @@
 ---
-title: Next
+title: Next.js with TypeScript
 date: '2019-04-23T00:01:00'
 published: false
 slug: next
@@ -8,27 +8,22 @@ tags: ['javascript', 'typescript', 'node']
 category: Web
 ---
 
-"Look at all the things I'm not doing" [^dhh]
+Our plan is to build a website using [Next.js](https://nextjs.org/learn/basics/getting-started).
+Next.js is built on top of Express. Out of the box, it supports server side rendering, hot module
+reloading, React and more. We'll add TypeScript, Styled Components, Sessions, Authentication,
+some basic security and more.
 
-[^dhh]:
-
-  David Heinemeier Hansson said this in his famous Rails demo in 2005. Rails is easy.
-  It's one of those things that is easy if you write thousands of lines of code; remember dozens
-  of incantations and work from a series of templates andf generators that do all of the work for
-  you-- then have someone else deploy and maintain it. Just like Next.js
-
-Our plan is to build a website using [Next.js](https://nextjs.org/learn/basics/getting-started). Out
-of the box, Next.js is built on top of Express. It supports server side rendering, hot module
-reloading, React and more.
-
-We'll add TypeScript, Styled Components, Sessions, Authentication with GitHub, some basic security
-and a whole lot more.
+[Gatsby](/gatsby-with-typescript) is client side framework for building static sites. Static sites
+are great for brochure websites, portfolios and blogs. If you are building a site which needs
+server-side processing (e.g., sites that require authentication or server-to-server interaction such
+as payment processing) then [Next.js](https://nextjs.org/learn/basics/getting-started) handles both
+the client and server side.
 
 # Getting started
 
 ```bash
-mkdir template
-cd template
+mkdir example
+cd example
 npm init -y
 ```
 
@@ -45,13 +40,14 @@ Now you have a `package.json`. Let's simplify it a bit:
 }
 ```
 
-Now let's add the basic packages:
+Now let's add the minimum required packages:
 
 ```bash
-npm install --save next react react-dom
+npm install next react react-dom
 ```
 
-This is the basic setup for our application, but we want to actually setup folders and defaults for Typescript.
+This is the basic setup for our application, but we want to actually setup folders and defaults for
+Typescript.
 
 ```bash
 mkdir client
@@ -65,7 +61,7 @@ mkdir test
 If you have multiple local projects you might run into a conflict about which Node version should be used. Node Version Manager solves this problem. To control which version of Node should be used in your project, add an `.nvmrc`:
 
 ```json
-10.13.0
+10.16.0
 ```
 
 ## `.gitignore`
@@ -84,9 +80,6 @@ log
 
 # Build directory
 public/
-
-# Gatsby cache
-.cache/
 
 # Logs
 logs
