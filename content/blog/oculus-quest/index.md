@@ -17,7 +17,7 @@ excerpt: Everyone wants to talk about consumer VR. I just want to make some game
 Image credit: <a href="https://amzn.to/2SEOSJG">Oculus Quest on Amazon</a>
 </figcaption>
 
-For Father's Day I got an Oculus Quest. It is entirely immersive and a blast to play with my kids. Of course, I immediately wanted to make my own games and got started with Unity[^unity]. There are a few blog posts and videos that helped me on my way.
+The Oculus Quest is entirely immersive and a blast to play with. Of course, the moment I put it on, I immediately wanted to make my own games and got started with Unity[^unity]. There are a few blog posts and videos that helped me on my way.
 
 [^unity]: There are [lots](https://gametorrahod.com/objectively-comparing-unity-and-unreal-engine/) of [articles](https://developer.oculus.com/documentation/quest/latest/concepts/book-intro/?locale=en_US) on Unity versus Unreal versus building your own engine entirely from scratch using Oculus Native support. For me, my goal was to get something running as quickly as possible. Harder decisions later.
 
@@ -48,6 +48,55 @@ Once I had the basics working, and could load games I built in Unity on my Quest
 
 While watching these videos, you might notice Valem is using the ▶ button to debug. This works because he is actually developing for the Rift in the videos (notice that the controllers are upside-down). In a later [video on recreating Slenderman](https://www.youtube.com/watch?v=LihEW5a1Tjw) (at 1:47) he explains how to use the ▶ button while building for the Oculus Quest. Unfortunately that won't work on MacOS because the Oculus plugin is not supported. There are notes on how to get this working at the end of this post.
 
+## A note on the Oculus Integration asset
+
+The Oculus Integration in the Unity Asset Store solves an amazing amount of problems for you. Unfortunately,
+the updates are not necessarily backward compatible and it makes following tutorials difficult. Most
+of the tutorials listed here were for the 1.38 version. The current 1.39 version requires a few more steps.
+
+After you download and import the kit you'll restart Unity. You should see a new menu for Oculus:
+
+<figure class="fullwidth">
+![Oculus menu in Unity](../../assets/unity-oculus-file-menu.png)
+</figure>
+
+1. Choose `Tools` | `Remove AndroidManifest.xml`.
+2. Choose `Tools` | `Create store-compatible AndroidManifest.xml`
+
+From your project search, find the newly created `AndroidManifest.xml` and open it in your editor.
+You'll want to change `android.intent.category.INFO` to `android.intent.category.LAUNCHER` so that
+when you choose `Build and Run` it will actually run the generated APK on your Oculus Quest.
+
+Also, you need to indicate you are using `headtracking` with a `uses-feature` element.
+
+Here is the full file:
+
+```xml
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    android:installLocation="auto">
+    <!-- Request the headset DoF mode -->
+    <application
+        android:allowBackup="false">
+        <activity
+            android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
+            android:configChanges="locale|fontScale|keyboard|keyboardHidden|mcc|mnc|navigation|orientation|screenLayout|screenSize|smallestScreenSize|touchscreen|uiMode"
+            android:launchMode="singleTask"
+            android:name="com.unity3d.player.UnityPlayerActivity"
+            android:excludeFromRecents="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <meta-data android:name="unityplayer.SkipPermissionsDialog" android:value="false" />
+    </application>
+    <uses-feature android:name="android.hardware.vr.headtracking" android:version="1" android:required="true" />
+</manifest>
+```
+
+If you're using a `LocalAvatar` you'll notice you don't have hands. You'll need to add an application id in `Oculus` | `Avatars` | `Edit Settings`. You can get an Application Id by creating an application for your organization on the Oculus Developer website at https://dashboard.oculus.com | `Manage`. There's a good shortcut for testing though: just enter `-` for the `Oculus Go/Quest or Gear VR` field.
+
 ## How to make a VR game in Unity - Part 1 - Setup, Hand presence, Grabbing object
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/sKQOlqNe_WY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -62,7 +111,7 @@ While watching these videos, you might notice Valem is using the ▶ button to d
 - Open Player Settings:
   - Set the Company and Product Name
   - Remove `Vulkan` from the Graphics APIs list (Other Settings)
-  - Set the Package Name (Other Settings)
+  - Set the Package Name (Other Settings)[^package]
   - Set the Minimum API Level to Android 4.4 'KitKat' (Other Settings)
   - Check VR Intergation (XR Settings)
   - Add the Oculus Virtual Reality SDK (XR Settings)
@@ -70,6 +119,7 @@ While watching these videos, you might notice Valem is using the ▶ button to d
 - Import All from the Oculus Integration (very slow)
 
 [^astc]: DXT, PVRTC, ATC, and ASTC are all support textures with an alpha channel. These formats also support higher compression rates and/or better image quality, but they are only supported on a subset of Android devices. https://docs.unity3d.com/Manual/android-GettingStarted.html. ASTC is considered the best choice for Oculus Quest.
+[^package]: If you leave this at the default of `com.oculus.*`, nothing will happen when it attempts to deploy the player. Unity will appear to complete but your Quest will do nothing (not even install the application to Unknown Sources). Change the package name to `com.DefaultCompany.OculusQuestTest1` or a name matching what you have named your Company and Product Name.
 
 ### Make the scene
 
@@ -83,6 +133,8 @@ While watching these videos, you might notice Valem is using the ▶ button to d
 - Add the `Character Camera Constraint` component to the `OVRPlayerController`
 - Drag the `OVRCameraRig` to the `Character Camera Constraint` Camera Rig field
 - Check the Dynamic Height box
+
+> Note: As of 1.39 you also need to set the Target Devices of the OVR Manager (Script) to Quest ![](https://rpl.cat/uploads/fBoe-Hyg2i-xbSswq6SzMIrm9EpgR102T1H0RiWUuEE/public.png)
 
 ### Simple grabbing
 
@@ -370,7 +422,7 @@ namespace OculusSampleFramework
 
 ### Fix the gun position and make it snap
 
-- Note the position of the gun;l remember where it is (-1, 1.15, -0.23)
+- Note the position of the gun; remember where it is (-1, 1.15, -0.23)
 - Move the gun position to 0, 0, 0 (temporarily)
 - Create an Empty Game Object called Hand Gun Offset
 - Move the object to 0, 0, 0 then align it where the gun should be held [^handgun]
@@ -1098,7 +1150,7 @@ VibrationManager.singleton.TriggerVibration(40, 2, 255, ovrGrabbable.grabbedBy.G
 
 ## Debugging on MacOS and the ▶ button in Unity
 
-> Note: the following is for 1.38
+> Note: the following is for Oculus Integration 1.39
 
 To get setup:
 
@@ -1115,7 +1167,7 @@ OculusSampleFrameworkUtil.HandlePlayModeState (UnityEditor.PlayModeStateChange s
 UnityEditor.EditorApplication.Internal_PlayModeStateChanged (UnityEditor.PlayModeStateChange state) (at /Users/builduser/buildslave/unity/build/Editor/Mono/EditorApplication.cs:302)
 ```
 
-This error is occuring because the `wrapperVersion` static variable is `null`. You could remove this line, but it will only lead to another problem down the line. Instead fix the `wrapperVersion` by changing this line (for me it is line 41) of `OVRPlugin.cs`:
+This error is occuring because the `wrapperVersion` static variable is `null`. You could remove this line, but it will only lead to another problem down the line. Instead fix the `wrapperVersion` by changing this line (for me it is line 40) of `OVRPlugin.cs`:
 
 ```csharp
 	public static readonly System.Version wrapperVersion = _versionZero;
@@ -1127,7 +1179,7 @@ to:
 	public static readonly System.Version wrapperVersion = new System.Version(0, 0, 0);
 ```
 
-Changing this eliminates the error, but the OVR Headset Emulator script will not work. The problem is that the `OVRPlugin` is never initialized and therefore the `OVRManager` is never initialized. The `initialized` method (at line 890 for me) looks like:
+Changing this eliminates the error, but the OVR Headset Emulator script will not work. The problem is that the `OVRPlugin` is never initialized and therefore the `OVRManager` is never initialized. The `initialized` method (at line 893 for me) looks like:
 
 ```csharp
 	public static bool initialized
@@ -1159,283 +1211,29 @@ The Unity Editor on Mac does not support the `OVRPlugin` (it is an unsupported p
 
 With this, the ▶ button should work for some quicker debugging. Note: nothing is running on the Oculus when you use that button, it is all faked.
 
-If you are using Oculus Avatar features (i.e., you've added a `LocalAvatar`) those are not currently emulated properly. When hitting the play button you can simply uncheck the LocalAvatar or you can implement checks for platform support before attempting to use the functionality.
-
-Here is a version of `LocalAvatar.cs` with the checks added:
+As of 1.39, when you are finished playing your scene the `OnDestroy` block will be called for `OvrAvatarSDKManager` (if you have a `LocalAvatar`).
+You'll see an error in the console (though it really doesn't cause a problem). To fix it change:
 
 ```csharp
-#if !(UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || (UNITY_ANDROID && !UNITY_EDITOR))
-#define OVRPLUGIN_UNSUPPORTED_PLATFORM
-#endif
-
-using UnityEngine;
-using System.Collections;
-using Oculus.Avatar;
-using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-
-public delegate void specificationCallback(IntPtr specification);
-public delegate void assetLoadedCallback(OvrAvatarAsset asset);
-public delegate void combinedMeshLoadedCallback(IntPtr asset);
-
-public class OvrAvatarSDKManager : MonoBehaviour
-{
-    private static OvrAvatarSDKManager _instance;
-    private Dictionary<UInt64, HashSet<specificationCallback>> specificationCallbacks;
-    private Dictionary<UInt64, HashSet<assetLoadedCallback>> assetLoadedCallbacks;
-    private Dictionary<IntPtr, combinedMeshLoadedCallback> combinedMeshLoadedCallbacks;
-    private Dictionary<UInt64, OvrAvatarAsset> assetCache;
-
-    public static OvrAvatarSDKManager Instance
-    {
-        get
-        {
-            if (_instance == null)
-            {
-                _instance = GameObject.FindObjectOfType<OvrAvatarSDKManager>();
-                if (_instance == null)
-                {
-                    GameObject manager = new GameObject("OvrAvatarSDKManager");
-                    _instance = manager.AddComponent<OvrAvatarSDKManager>();
-                    _instance.Initialize();
-                }
-            }
-            return _instance;
-        }
-    }
-
-    private void Initialize()
-    {
-        string appId = GetAppId();
-
-        if (appId == "")
-        {
-          AvatarLogger.Log("No Oculus App ID has been provided for target platform. " +
-            "Go to Oculus Avatar > Edit Configuration to supply one", OvrAvatarSettings.Instance);
-          appId = "0";
-        }
-
-#if OVRPLUGIN_UNSUPPORTED_PLATFORM
-        return;
-#endif
-
-#if UNITY_ANDROID && !UNITY_EDITOR
-        CAPI.ovrAvatar_InitializeAndroidUnity(appId);
-#else
-        CAPI.ovrAvatar_Initialize(appId);
-        CAPI.SendEvent("initialize", appId);
-#endif
-        specificationCallbacks = new Dictionary<UInt64, HashSet<specificationCallback>>();
-        assetLoadedCallbacks = new Dictionary<UInt64, HashSet<assetLoadedCallback>>();
-        combinedMeshLoadedCallbacks = new Dictionary<IntPtr, combinedMeshLoadedCallback>();
-        assetCache = new Dictionary<ulong, OvrAvatarAsset>();
-    }
-
     void OnDestroy()
     {
-#if OVRPLUGIN_UNSUPPORTED_PLATFORM
-        return;
-#endif
+        CAPI.Shutdown();
+        CAPI.ovrAvatar_RegisterLoggingCallback(null);
         CAPI.ovrAvatar_Shutdown();
     }
+```
 
-	// Update is called once per frame
-	void Update () {
-#if OVRPLUGIN_UNSUPPORTED_PLATFORM
-        return;
+to:
+
+```csharp
+    void OnDestroy()
+    {
+        CAPI.Shutdown();
+#if (UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || (UNITY_ANDROID && !UNITY_EDITOR))
+        CAPI.ovrAvatar_RegisterLoggingCallback(null);
+        CAPI.ovrAvatar_Shutdown();
 #endif
-        IntPtr message = CAPI.ovrAvatarMessage_Pop();
-        if (message == IntPtr.Zero)
-        {
-            return;
-        }
-
-        ovrAvatarMessageType messageType = CAPI.ovrAvatarMessage_GetType(message);
-        switch (messageType)
-        {
-            case ovrAvatarMessageType.AssetLoaded:
-                {
-                    ovrAvatarMessage_AssetLoaded assetMessage = CAPI.ovrAvatarMessage_GetAssetLoaded(message);
-                    IntPtr asset = assetMessage.asset;
-                    UInt64 assetID = assetMessage.assetID;
-                    ovrAvatarAssetType assetType = CAPI.ovrAvatarAsset_GetType(asset);
-                    OvrAvatarAsset assetData;
-                    IntPtr avatarOwner = IntPtr.Zero;
-
-                    switch (assetType)
-                    {
-                        case ovrAvatarAssetType.Mesh:
-                            assetData = new OvrAvatarAssetMesh(assetID, asset, ovrAvatarAssetType.Mesh);
-                            break;
-                        case ovrAvatarAssetType.Texture:
-                            assetData = new OvrAvatarAssetTexture(assetID, asset);
-                            break;
-                        case ovrAvatarAssetType.Material:
-                            assetData = new OvrAvatarAssetMaterial(assetID, asset);
-                            break;
-                        case ovrAvatarAssetType.CombinedMesh:
-                            avatarOwner = CAPI.ovrAvatarAsset_GetAvatar(asset);
-                            assetData = new OvrAvatarAssetMesh(assetID, asset, ovrAvatarAssetType.CombinedMesh);
-                            break;
-                        default:
-                            throw new NotImplementedException(string.Format("Unsupported asset type format {0}", assetType.ToString()));
-                    }
-
-                    HashSet<assetLoadedCallback> callbackSet;
-                    if (assetType == ovrAvatarAssetType.CombinedMesh)
-                    {
-                        if (!assetCache.ContainsKey(assetID))
-                        {
-                            assetCache.Add(assetID, assetData);
-                        }
-
-                        combinedMeshLoadedCallback callback;
-                        if (combinedMeshLoadedCallbacks.TryGetValue(avatarOwner, out callback))
-                        {
-                            callback(asset);
-                            combinedMeshLoadedCallbacks.Remove(avatarOwner);
-                        }
-                        else
-                        {
-                            AvatarLogger.LogWarning("Loaded a combined mesh with no owner: " + assetMessage.assetID);
-                        }
-                    }
-                    else
-                    {
-                        if (assetLoadedCallbacks.TryGetValue(assetMessage.assetID, out callbackSet))
-                        {
-                            assetCache.Add(assetID, assetData);
-
-                            foreach (var callback in callbackSet)
-                            {
-                                callback(assetData);
-                            }
-
-                            assetLoadedCallbacks.Remove(assetMessage.assetID);
-                        }
-                    }
-
-                    break;
-                }
-            case ovrAvatarMessageType.AvatarSpecification:
-                {
-                    ovrAvatarMessage_AvatarSpecification spec = CAPI.ovrAvatarMessage_GetAvatarSpecification(message);
-                    HashSet<specificationCallback> callbackSet;
-                    if (specificationCallbacks.TryGetValue(spec.oculusUserID, out callbackSet))
-                    {
-                        foreach (var callback in callbackSet)
-                        {
-                            callback(spec.avatarSpec);
-                        }
-
-                        specificationCallbacks.Remove(spec.oculusUserID);
-                    }
-                    else
-                    {
-                        AvatarLogger.LogWarning("Error, got an avatar specification callback from a user id we don't have a record for: " + spec.oculusUserID);
-                    }
-                    break;
-                }
-            default:
-                throw new NotImplementedException("Unhandled ovrAvatarMessageType: " + messageType);
-        }
-        CAPI.ovrAvatarMessage_Free(message);
     }
-
-    public void RequestAvatarSpecification(
-        UInt64 userId,
-        specificationCallback callback,
-        bool useCombinedMesh,
-        ovrAvatarAssetLevelOfDetail lod,
-        bool forceMobileTextureFormat,
-        ovrAvatarLookAndFeelVersion lookVersion,
-        ovrAvatarLookAndFeelVersion fallbackVersion,
-        bool enableExpressive)
-    {
-#if OVRPLUGIN_UNSUPPORTED_PLATFORM
-        return;
-#endif
-        CAPI.ovrAvatar_SetForceASTCTextures(forceMobileTextureFormat);
-
-        HashSet<specificationCallback> callbackSet;
-        if (!specificationCallbacks.TryGetValue(userId, out callbackSet))
-        {
-            callbackSet = new HashSet<specificationCallback>();
-            specificationCallbacks.Add(userId, callbackSet);
-
-            IntPtr specRequest = CAPI.ovrAvatarSpecificationRequest_Create(userId);
-            CAPI.ovrAvatarSpecificationRequest_SetLookAndFeelVersion(specRequest, lookVersion);
-            CAPI.ovrAvatarSpecificationRequest_SetFallbackLookAndFeelVersion(specRequest, fallbackVersion);
-            CAPI.ovrAvatarSpecificationRequest_SetLevelOfDetail(specRequest, lod);
-            CAPI.ovrAvatarSpecificationRequest_SetCombineMeshes(specRequest, useCombinedMesh);
-            CAPI.ovrAvatarSpecificationRequest_SetExpressiveFlag(specRequest, enableExpressive);
-            CAPI.ovrAvatar_RequestAvatarSpecificationFromSpecRequest(specRequest);
-            CAPI.ovrAvatarSpecificationRequest_Destroy(specRequest);
-        }
-
-        callbackSet.Add(callback);
-    }
-
-    public void BeginLoadingAsset(
-        UInt64 assetId,
-        ovrAvatarAssetLevelOfDetail lod,
-        assetLoadedCallback callback)
-    {
-#if OVRPLUGIN_UNSUPPORTED_PLATFORM
-        return;
-#endif
-        HashSet<assetLoadedCallback> callbackSet;
-        if (!assetLoadedCallbacks.TryGetValue(assetId, out callbackSet))
-        {
-            callbackSet = new HashSet<assetLoadedCallback>();
-            assetLoadedCallbacks.Add(assetId, callbackSet);
-        }
-
-        AvatarLogger.Log("Loading Asset ID: " + assetId);
-
-        CAPI.ovrAvatarAsset_BeginLoadingLOD(assetId, lod);
-        callbackSet.Add(callback);
-    }
-
-    public void RegisterCombinedMeshCallback(
-        IntPtr sdkAvatar,
-        combinedMeshLoadedCallback callback)
-    {
-#if OVRPLUGIN_UNSUPPORTED_PLATFORM
-        return;
-#endif
-        combinedMeshLoadedCallback currentCallback;
-        if (!combinedMeshLoadedCallbacks.TryGetValue(sdkAvatar, out currentCallback))
-        {
-            combinedMeshLoadedCallbacks.Add(sdkAvatar, callback);
-        }
-        else
-        {
-            throw new Exception("Adding second combind mesh callback for same avatar");
-        }
-    }
-
-
-    public OvrAvatarAsset GetAsset(UInt64 assetId)
-    {
-        OvrAvatarAsset asset;
-        if (assetCache.TryGetValue(assetId, out asset))
-        {
-            return asset;
-        }
-        else
-        {
-            return null;
-        }
-    }
-
-    public string GetAppId()
-    {
-        return UnityEngine.Application.platform == RuntimePlatform.Android ?
-                OvrAvatarSettings.MobileAppID : OvrAvatarSettings.AppID;
-    }
-}
 ```
 
 ## Seeing what is happening on the Oculus Quest
@@ -1475,17 +1273,73 @@ You can also connect to the Quest and see the logs.
 
 For more information on using `adb` with the Oculus Quest you can follow the tutorial.
 
+### Checking the logs
+
+All of your `apk` files are running on the quest and you can't really investigate what is happening
+through Unity. However, you check the logs from the Quest. The logs are verbose so it is sometimes
+helpful to start by clearing them:
+
 ```
+adb logcat -c
+```
+
+Then check them:
+
+```
+adb logcat -d
+```
+
+You can append to the log using `System.Debug` statements in your application.
+
+### Connecting via Wi-fi
+
+First you'll want to make sure that the device is connected via USB:
+
+```bash
 adb devices
+```
+
+Once you've got the device connected you can check it's local IP address:
+
+```bash
 adb shell ip route
+```
+
+Now setup `tcpip` for the connected device and tell it to listen on port `5555`:
+
+```bash
 adb tcpip 5555
+```
+
+Once you've done this the device is still connected to USB and your computer is communicating via
+USB but it is also listening for `tcpip` connections via Wi-Fi. Connect to it via Wi-Fi:
+
+```bash
 adb connect <ipaddress>:5555
-adb -s 192.168.1.211:5555 logcat -c
+```
+
+At this point you can unplug the USB cable and you should still be able to work with the Quest via
+`adb` over Wi-Fi. For example:
+
+```bash
+adb logcat -d
+```
+
+If you want to explicitly connect to a particular Quest you can specify the server with `-s`:
+
+```bash
+adb -s <ipaddress>:5555 logcat -d
+```
+
+To go back to using USB, plug in the cable again and connect:
+
+```bash
+adb connect usb
 ```
 
 ## More learning
 
-I've used quite a few other resources when learning. I'll list some of them here:
+I've used other resources when learning. I'll list some of them here:
 
 - [The Ultimate Guide to Game Development with Unity 2019](https://www.udemy.com/share/1000lMBkQac1dQRng=/). This course costs between \$10-12 if you catch it on sale. I highly recommend it if you are just getting started. It clearly explains how to move around the Unity interface, how to move quickly, and basic concepts of scripting.
 - Using the new Terrain Tools: [Speed up your work with the new Terrain Tools Package](https://blogs.unity3d.com/2019/05/28/speed-up-your-work-with-the-new-terrain-tools-package/).
