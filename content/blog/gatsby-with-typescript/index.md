@@ -1507,7 +1507,7 @@ ${styles()}
 
 The important pieces here are `createGlobalStyle` and the generic reset. The styles that are in
 the `styles` function are based on [Edward Tufte's](https://edwardtufte.github.io/tufte-css/)
-styles. This provides a very minimalast theme to build on.
+styles. This provides a very minimalist theme to build on.
 
 ## Layout
 
