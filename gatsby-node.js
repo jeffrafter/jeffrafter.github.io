@@ -1,30 +1,31 @@
 const path = require(`path`)
 const {createFilePath} = require(`gatsby-source-filesystem`)
 
+const isDevelopment = process.env.NODE_ENV === 'development'
+const filter = isDevelopment ? '' : 'frontmatter: {published: {ne: false}}'
+
 exports.createPages = ({graphql, actions}) => {
-  return graphql(
-    `
-      {
-        allMarkdownRemark(
-          filter: {frontmatter: {published: {ne: false}}}
-          sort: {fields: [frontmatter___date], order: DESC}
-          limit: 1000
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                tags
-                title
-              }
+  return graphql(`
+    {
+      allMarkdownRemark(
+        filter: {${filter}}
+        sort: {fields: [frontmatter___date], order: DESC}
+        limit: 1000
+      ) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            frontmatter {
+              tags
+              title
             }
           }
         }
       }
-    `,
-  ).then(result => {
+    }
+  `).then(result => {
     if (result.errors) {
       throw result.errors
     }
