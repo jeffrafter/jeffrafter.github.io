@@ -55,9 +55,7 @@ We'll be using Gatsby which is a toolkit that is written in TypeScript and requi
 
 The file is pretty simple; just the version. At the time you read this there may be a newer version of Node. You can check https://nodejs.org.
 
-[^dotfiles]:
-
-  Notice that the `.nvmrc` file starts with a "`.`" (period). By default on most systems this creates a hidden file. Oftentimes general project config is hidden away. On MacOS you can show hidden files in Finder by running `defaults write com.apple.finder AppleShowAllFiles -bool true` and restarting Finder. If you want to list hidden files in your console use the `-a` parameter: `ls -a`.
+[^dotfiles]: Notice that the `.nvmrc` file starts with a "`.`" (period). By default on most systems this creates a hidden file. Oftentimes general project config is hidden away. On MacOS you can show hidden files in Finder by running `defaults write com.apple.finder AppleShowAllFiles -bool true` and restarting Finder. If you want to list hidden files in your console use the `-a` parameter: `ls -a`.
 
 ## Ignore some things
 
@@ -313,9 +311,7 @@ git init
 
 By default this creates an empty git repository (none of our files have been added to it). Generally, I use [GitHub Desktop](https://desktop.github.com/)[^microcommits]; however, I'll use the command line here.
 
-[^microcommits]:
-
-  It might surprise you but some of the top coders at GitHub including [cheshire137](https://github.com/cheshire137) use GitHub Desktop and micro-commit; that is, they make lots of very small commits for every change they make.
+[^microcommits]: It might surprise you but some of the top coders at GitHub including [cheshire137](https://github.com/cheshire137) use GitHub Desktop and micro-commit; that is, they make lots of very small commits for every change they make.
 
 You can check the status of your changes and repository:
 
@@ -387,9 +383,7 @@ This creates a commit with the message we specified. The commit acts like a save
 
 For almost any Node project you'll find that you use a lot of packages – you'll have far more code in packages in your `node_modules` folder (where package code is stored) than your main project.[^node-modules]
 
-[^node-modules]:
-
-  In fact the size of the `node_modules` folder has become a meme: ![](https://rpl.cat/uploads/CGDjNUft9F5pY9XrMjvQBjOW9zPb7zBhyg6I2P9zd40/public.png)
+[^node-modules]: In fact the size of the `node_modules` folder has become a meme: ![](https://rpl.cat/uploads/CGDjNUft9F5pY9XrMjvQBjOW9zPb7zBhyg6I2P9zd40/public.png)
 
 Initialize your packages:
 

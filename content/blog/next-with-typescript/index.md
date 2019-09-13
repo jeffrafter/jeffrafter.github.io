@@ -19,52 +19,35 @@ server-side processing (e.g., sites that require authentication or server-to-ser
 as payment processing) then [Next.js](https://nextjs.org/learn/basics/getting-started) handles both
 the client and server side.
 
+It's important to remember that there are countless ways to accomplish a task within the Node
+ecosystem. This has a positive side and a negative side. This post represents one set of choices
+I made when I wrote this. Given how quickly things move, if I started over I might not make the
+same choices and that is okay.
+
+In order to follow this, you'll need access to a terminal (or console) and you'll need Node, Node Version Manager, and git installed.
+
 # Getting started
+
+First you want to create a folder for your project:
 
 ```bash
 mkdir example
 cd example
-npm init -y
 ```
 
-Now you have a `package.json`. Let's simplify it a bit:
-
-```json
-{
-  "private": true,
-  "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
-  }
-}
-```
-
-Now let's add the minimum required packages:
-
-```bash
-npm install next react react-dom
-```
-
-This is the basic setup for our application, but we want to actually setup folders and defaults for
-Typescript.
-
-```bash
-mkdir client
-mkdir server
-mkdir server/pages
-mkdir test
-```
-
-## `.nvmrc`
-
-If you have multiple local projects you might run into a conflict about which Node version should be used. Node Version Manager solves this problem. To control which version of Node should be used in your project, add an `.nvmrc`:
+We'll be using Next.js which is a toolkit that is written in TypeScript (a typed variant of JavaScript) and requires Node. If you have multiple local projects you might run into a conflict about which Node version should be used. Node Version Manager solves this problem. To control which version of Node should be used in your project, add an `.nvmrc`[^dotfiles] file:
 
 ```json
 10.16.0
 ```
 
-## `.gitignore`
+The file is pretty simple; just the version. At the time you read this there may be a newer version of Node. You can check https://nodejs.org.
+
+[^dotfiles]: Notice that the `.nvmrc` file starts with a "`.`" (period). By default on most systems this creates a hidden file. Oftentimes general project config is hidden away. On MacOS you can show hidden files in Finder by running `defaults write com.apple.finder AppleShowAllFiles -bool true` and restarting Finder. If you want to list hidden files in your console use the `-a` parameter: `ls -a`.
+
+## Ignore some things
+
+We plan to use `git` to keep track of our changes. As we work on our project locally, there will be a lot of files we won't want to keep track of; we'll want to ignore them. To do this we'll create a new file called `.gitignore` [^gitignore]. These files can be very short and specific, or they can be very long and general. We'll use a more generic one that will work on different kinds of computers. If you are looking for an example `.gitignore` you can check out https://github.com/github/gitignore. For now, just copy the following:
 
 ```
 # =========================
@@ -187,6 +170,8 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 ```
+
+[^gitignore]: `.gitignore` also starts with a "`.`" and you can start to see a pattern emerge.
 
 ## nodemon.json
 
