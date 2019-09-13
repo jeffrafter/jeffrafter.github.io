@@ -1,6 +1,6 @@
 ---
 title: Working with GitHub Actions
-date: '2019-05-25T00:01:00'
+date: '2019-09-13T00:01:00'
 published: true
 slug: working-with-github-actions
 image: ../../assets/hubot.png
@@ -1024,7 +1024,7 @@ What if you have a lot of inputs? It would be nice to automatically import all o
 npm install --save-dev @types/js-yaml
 ```
 
-And then lets expand our `beforeAction` and `afterAction` callbacks:
+And then lets expand our `beforeEach` and `afterEach` callbacks:
 
 ```ts
 import * as core from '@actions/core'
@@ -1359,11 +1359,11 @@ export default run
 
 Notice we added an import for the `@actions/github` toolkit:
 
-```
+```ts
 import * as github from '@actions/github'
 ```
 
-Then logged the `github.context.payload`.
+Then we logged the `github.context.payload`. If you push this to GitHub to run you might see:
 
 ```json
 {
@@ -1391,8 +1391,87 @@ Then logged the `github.context.payload`.
     },
     pusher: { email: 'jeffrafter@github.com', name: 'jeffrafter' },
     ref: 'refs/heads/master'
-    // ...
+    // ... more output
   }
 ```
 
-## Calling the API
+There is [documentation](https://developer.github.com/v3/activity/events/types/#pushevent) for each event that can be really helpful. With this information we can make our message more personal. We'll include the name of the person pushing the code. Change `debug.ts`:
+
+```ts
+import * as core from '@actions/core'
+import * as github from '@actions/github'
+
+const run = async (): Promise<void> => {
+  try {
+    const creature = core.getInput('amazing-creature')
+    if (creature === 'mosquito') {
+      core.setFailed('Sorry, mosquitos are not amazing 🚫🦟')
+      return
+    }
+    const pusherName = github.context.payload.pusher.name
+    const message = `👋 Hello ${pusherName}! You are an amazing ${creature}! 🙌`
+    core.debug(message)
+    core.setOutput('amazing-message', message)
+  } catch (error) {
+    core.setFailed(`Debug-action failure: ${error}`)
+  }
+}
+
+run()
+
+export default run
+```
+
+We'll need to change our tests as well. We'll directly set the payload in the `beforeEach`:
+
+```ts
+beforeEach(() => {
+  jest.resetModules()
+  const doc = yaml.safeLoad(fs.readFileSync(__dirname + '/../action.yml', 'utf8'))
+  Object.keys(doc.inputs).forEach(name => {
+    const envVar = `INPUT_${name.replace(/ /g, '_').toUpperCase()}`
+    process.env[envVar] = doc.inputs[name]['default']
+  })
+  github.context.payload = {
+    pusher: {
+      name: 'mona',
+    },
+  } as WebhookPayload
+})
+```
+
+We could [store payloads as files and use those](https://github.com/actions/toolkit/blob/master/docs/github-package.md#mocking-the-github-context) as well, but this approach is more readable.
+
+Run `git status`:
+
+```bash
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   .github/actions/debug-action/__tests__/debug.test.ts
+	modified:   .github/actions/debug-action/debug.ts
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+And commit:
+
+```bash
+git commit -am "Use the action payload"
+```
+
+And push to GitHub:
+
+```bash
+git push origin master
+```
+
+It is so encouraging!
+
+```
+There was an amazing message - 👋 Hello jeffrafter! You are an amazing Octocat! 🙌
+```
