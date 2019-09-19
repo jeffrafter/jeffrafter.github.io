@@ -335,15 +335,15 @@ Changes to be committed:
   debug action debug messages
     ✓ outputs a debug message (5ms)
 
-##[debug]👋 Hello! You are an amazing person! 🙌
-##[debug]👋 Hello! You are an amazing person! 🙌
+::debug::👋 Hello! You are an amazing person! 🙌
+::debug::👋 Hello! You are an amazing person! 🙌
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total
 Time:        1.423s
 Ran all test suites.</code></pre></div><p>It should pass.<label for="sd-the-debug-output" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sd-the-debug-output" class="margin-toggle" /><span class="sidenote">The debug output here is a little verbose. There's an <a href="https://github.com/actions/toolkit/issues/118">open issue</a> to be able to silence this while running tests.</span> But let’s remove the debug information from the test output. Change <code class="language-text">jest.config.js</code> so that it doesn’t output the debug lines:</p><div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token keyword">const</span> processStdoutWrite <span class="token operator">=</span> process<span class="token punctuation">.</span>stdout<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>stdout<span class="token punctuation">)</span>
 process<span class="token punctuation">.</span>stdout<span class="token punctuation">.</span><span class="token function-variable function">write</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">str<span class="token punctuation">,</span> encoding<span class="token punctuation">,</span> cb</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>str<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/^##/</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>str<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/^::debug::/</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token function">processStdoutWrite</span><span class="token punctuation">(</span>str<span class="token punctuation">,</span> encoding<span class="token punctuation">,</span> cb<span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
   <span class="token keyword">return</span> <span class="token boolean">false</span>
