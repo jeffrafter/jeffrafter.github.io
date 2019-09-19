@@ -6,6 +6,7 @@ slug: example-markdown
 layout: post
 tags: ['markdown']
 category: example
+excerpt: Tufte CSS provides tools to style web articles using the ideas demonstrated by Edward Tufte's books and handouts. Tufte's style is known for its simplicity, extensive use of sidenotes, tight integration of graphics with text, and carefully chosen typography.
 ---
 
 Tufte CSS provides tools to style web articles using the ideas demonstrated by
@@ -136,9 +137,7 @@ descenders and is so thick and distracting, the underline effect is instead
 achieved using CSS trickery involving background gradients instead of standard
 `text-decoration`. Credit goes to Adam Schwartz for that technique.
 
-[^blue]:
-
-  {-} Blue text, while also a widely recognizable clickable-text indicator, is crass and distracting. Luckily, it is also rendered unnecessary by the use of underlining.
+[^blue]: {-} Blue text, while also a widely recognizable clickable-text indicator, is crass and distracting. Luckily, it is also rendered unnecessary by the use of underlining.
 
 As always, these design choices are merely one approach that Tufte CSS provides
 by default. Other approaches, such as changing color on click or mouseover, or
@@ -284,9 +283,7 @@ those cases, a margin figure may be most appropriate. To place figures in the
 margin, just wrap an image (or whatever) in a margin note inside a
 <code>p</code> tag, as seen to the right of this paragraph.
 
-[^rhino]:
-
-  {-} ![Image of a Rhinoceros](./rhino.png) F.J. Cole, "The History of Albrecht Dürer's Rhinoceros in Zooological Literature," _Science, Medicine, and History: Essays on the Evolution of Scientific Thought and Medical Practice_ (London, 1953), ed. E. Ashworth Underwood, 337-356. From page 71 of Edward Tufte's _Visual Explanations_.
+[^rhino]: {-} ![Image of a Rhinoceros](./rhino.png) F.J. Cole, "The History of Albrecht Dürer's Rhinoceros in Zooological Literature," _Science, Medicine, and History: Essays on the Evolution of Scientific Thought and Medical Practice_ (London, 1953), ed. E. Ashworth Underwood, 337-356. From page 71 of Edward Tufte's _Visual Explanations_.
 
 If you need a full-width figure, give it the `fullwidth` class. Make sure that's
 inside an `article`, and it will take up (almost) the full width of the screen.

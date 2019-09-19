@@ -53,10 +53,10 @@ We'll be using TypeScript to build our action, which requires Node. Out of the b
 Let's setup our example to use Node. If you have multiple local projects you might run into a conflict about which Node version should be used. Node Version Manager solves this problem. To control which version of Node should be used in your project, add an `.nvmrc`[^dotfiles] file:
 
 ```json
-10.16.3
+12.7.0
 ```
 
-The file is pretty simple; just the version. I chose 10.16.3 because it matches the version that is installed in the default [GitHub Action software environment](https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions). At the time you read this there may be a newer version of Node or you may chose to use an older version because your code requirements. You can check https://nodejs.org.
+The file is pretty simple; just the version. I chose 12.7.0 because it matches the version that is used to run our action (`node12`). Node 10.16.3 is installed in the default [GitHub Action software environment](https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions) and can be used as well but the will not match the running action environment. At the time you read this there may be a newer version of Node or you may chose to use an older version because your code requirements. You can check https://nodejs.org.
 
 [^dotfiles]: Notice that the `.nvmrc` file starts with a "`.`" (period). By default on most systems this creates a hidden file. Oftentimes general project config is hidden away. On MacOS you can show hidden files in Finder by running `defaults write com.apple.finder AppleShowAllFiles -bool true` and restarting Finder. If you want to list hidden files in your console use the `-a` parameter: `ls -a`.
 
