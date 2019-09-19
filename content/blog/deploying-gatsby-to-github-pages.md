@@ -5,6 +5,7 @@ published: false
 layout: post
 tags: ['javascript', 'typescript', 'node', 'gatsby', 'github', 'pages']
 category: Web
+excerpt: ''
 ---
 
 ## Create a repository on github

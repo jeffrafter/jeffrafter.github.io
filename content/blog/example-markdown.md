@@ -6,6 +6,7 @@ slug: example-markdown
 layout: post
 tags: ['markdown']
 category: example
+excerpt: ''
 ---
 
 ## Markdown: Syntax

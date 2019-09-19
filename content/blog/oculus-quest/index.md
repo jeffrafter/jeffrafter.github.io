@@ -3,7 +3,7 @@ title: Developing for the Oculus Quest
 date: '2019-07-25T00:01:00'
 published: true
 slug: oculus-quest
-image: ../../assets/180924_Quest_FF_light_transparent_shadow.png
+image: ../../assets/oculus-quest.jpg
 layout: post
 tags: ['oculus', 'quest', 'unity', 'development']
 category: development
@@ -11,7 +11,7 @@ excerpt: Everyone wants to talk about consumer VR. I just want to make some game
 ---
 
 <figure class="fullwidth">
-![Oculus Quest with Controllers](../../assets/180924_Quest_FF_light_transparent_shadow.png)
+![Oculus Quest with Controllers](../../assets/oculus-quest.jpg)
 </figure>
 <figcaption class="fullwidth">
 Image credit: <a href="https://amzn.to/2SEOSJG">Oculus Quest on Amazon</a>

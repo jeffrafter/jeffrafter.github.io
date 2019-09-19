@@ -6,6 +6,7 @@ slug: next
 layout: post
 tags: ['javascript', 'typescript', 'node']
 category: Web
+excerpt: Next.js is built on top of Express. Out of the box, it supports server side rendering, hot module reloading, React and more. We'll add TypeScript, Styled Components, Sessions, Authentication, some basic security and more.
 ---
 
 Our plan is to build a website using [Next.js](https://nextjs.org/learn/basics/getting-started).

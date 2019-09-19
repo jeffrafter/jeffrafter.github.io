@@ -5,6 +5,7 @@ published: false
 layout: post
 tags: ['markdown']
 category: example
+excerpt: ''
 ---
 
 ## Markdown: Syntax

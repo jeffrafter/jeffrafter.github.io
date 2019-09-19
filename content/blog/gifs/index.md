@@ -6,6 +6,7 @@ slug: gifs
 layout: post
 tags: ['markdown']
 category: hacks
+excerpt: It's really hard to make Gifs.
 ---
 
 "It's really hard to make Gifs." [^dws]
