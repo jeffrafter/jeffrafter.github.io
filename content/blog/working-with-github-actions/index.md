@@ -1,6 +1,6 @@
 ---
 title: Working with GitHub Actions
-date: '2019-09-13T00:01:00'
+date: '2019-09-19T00:01:00'
 published: true
 slug: working-with-github-actions
 image: ../../assets/hubot.png
@@ -581,8 +581,8 @@ You should see:
   debug action debug messages
     ✓ outputs a debug message (5ms)
 
-##[debug]👋 Hello! You are an amazing person! 🙌
-##[debug]👋 Hello! You are an amazing person! 🙌
+::debug::👋 Hello! You are an amazing person! 🙌
+::debug::👋 Hello! You are an amazing person! 🙌
 Test Suites: 1 passed, 1 total
 Tests:       1 passed, 1 total
 Snapshots:   0 total
@@ -595,7 +595,7 @@ It should pass.[^verbose] But let's remove the debug information from the test o
 ```js
 const processStdoutWrite = process.stdout.write.bind(process.stdout)
 process.stdout.write = (str, encoding, cb) => {
-  if (!str.match(/^##/)) {
+  if (!str.match(/^::debug::/)) {
     return processStdoutWrite(str, encoding, cb)
   }
   return false
@@ -1874,4 +1874,4 @@ Open a new example issue and you should see your user account reply:
 
 # Thanks
 
-Lots of folks @GitHub helped review and solve some of the issues I came across while writing this post. Special shout-outs go to [@jasonetco](https://github.com/jasonetco), [@mscoutermarsh](https://github.com/mscoutermarsh), and [mikekavouras](https://github.com/mikekavouras). Also, special thanks to the docs team and the octokit/rest.js team who make great things.
+Lots of folks @GitHub helped review and solve some of the issues I came across while writing this post. Special shout-outs go to [@jasonetco](https://github.com/jasonetco), [@mscoutermarsh](https://github.com/mscoutermarsh), and [@mikekavouras](https://github.com/mikekavouras). Also, special thanks to the docs team and the octokit/rest.js team who make great things.
