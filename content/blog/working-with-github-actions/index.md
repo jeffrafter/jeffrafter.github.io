@@ -19,7 +19,7 @@ Image credit: GitHub's Hubot <a href="https://octodex.github.com/hubot/">from th
 
 GitHub Actions are still in beta and are changing quickly. But if you are looking to get started the possibilities are endless. This guide is mostly about pointing to documentation and exploring some fun ways to use GitHub Actions.
 
-In this post we'll create a single repository which contains a GitHub Action - built in TypeScript - and an associated workflow. In the action we'll respond to push events and output some logging information. Technically, you don't need a custom script to accomplish this; you could instead build a very simple workflow which runs `echo` commands. Using a full script will allow us to explore more capabilities of GitHub Actions.
+In this post we'll create a repository which contains a GitHub Action - built in TypeScript - and an associated workflow. In the action we'll respond to push events and output some logging information. Technically, you don't need a custom script to accomplish this; you could instead build a very simple workflow which runs `echo` commands. Using a full script will allow us to explore more capabilities of GitHub Actions. We'll also create an action that automatically responds to, and reacts to, issue comments.
 
 Before you read this it is important to note: starting with a [template](https://github.com/actions/javascript-template) will save you a lot of time and setup. In this post, however, I am going to work through and explain all of the steps. Included in this post are some of the reasons I've chosen one particular setup and skipped another. When getting started with GitHub Actions it is difficult to understand how all of the pieces fit together, or why you might want to create and action for a particular task. Hopefully this post provides some helpful examples. That said, there are probably steps here that you've seen before, don't care about, or just want to skip and that's okay.
 
@@ -62,33 +62,20 @@ The file is pretty simple; just the version. I chose 10.16.3 because it matches 
 
 ## Ignore some things
 
-We plan to use `git` to keep track of our changes. As we work on our project locally, there will be a lot of files we won't want to keep track of; we'll want to ignore them. To do this we'll create a new file called `.gitignore` [^gitignore]. These files can be very short and specific, or they can be very long and general. We'll use a more generic one that will work on different kinds of computers. If you are looking for an example `.gitignore` you can check out https://github.com/github/gitignore. For now, just copy the following:
+We plan to use `git` to keep track of our changes. As we work on our project locally, there will be a lot of files we won't want to keep track of; we'll want to ignore them. To do this we'll create a new file called `.gitignore` [^gitignore]. These files can be very short and specific, or they can be very long and general. We'll use a more generic one that will work on different kinds of computers. If you are looking for an example `.gitignore` you can check out https://github.com/github/gitignore. For now, just copy the following (this `.gitignore` includes only what is important for this post. For a more complete version see [here](https://github.com/jeffrafter/example-github-action-typescript/blob/master/.gitignore)):
 
 ```.gitignore
 
 # Ignore any generated TypeScript -> JavaScript files
 .github/actions/**/*.js
 
-# Ignore test runner output
-__tests__/runner/*
-
-# =========================
-# Node.js-Specific Ignores
-# =========================
-
 # Logs
 logs
 *.log
 npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# node-waf configuration
-.lock-wscript
 
 # Dependency directories
 node_modules/
-jspm_packages/
 
 # Typescript v1 declaration files
 typings/
@@ -98,65 +85,6 @@ typings/
 
 # Optional eslint cache
 .eslintcache
-
-# Optional REPL history
-.node_repl_history
-
-# Output of 'npm pack'
-*.tgz
-
-# Yarn Integrity file
-.yarn-integrity
-
-# dotenv environment variables file
-.env
-
-# =========================
-# Operating System Files
-# =========================
-
-# OSX
-# =========================
-
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-# Windows
-# =========================
-
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk
 ```
 
 With this setup we'll ignore `node_modules` and JavaScript files in our action folders (if there was any generated locally). This is a non-standard choice but makes developing our action a little easier. By default, GitHub recommends you include the `node_modules` folder as installing them per-action execution is slow (25-35 seconds). Including all of the `node_modules` in your repository can lead to a lot of files and large commits which can be confusing. Additionally, if your `node_modules` include platform specific dependencies which must be compiled (such as `hunspell`) you will need to recompile them for the target action container anyway.
@@ -390,7 +318,9 @@ And commit:
 git commit -m "TypeScript configuration"
 ```
 
-# Keep it clean
+# Keep it clean (optional)
+
+> Note: this section is not required to complete this tutorial; if you want to skip it feel free.
 
 Everyone has different preferences when they edit code. Some prefer tabs over spaces. Some want two spaces instead of four. Some prefer semicolons and some don't. It shouldn't matter right? But it does. If editors are autoformatting code based on user preferences it is important to make sure everyone has chosen the same set of defaults for that autoformatting. This makes it easy to tell what changed between versions – even when different developers (with different preferences) have made changes.
 
@@ -484,9 +414,9 @@ Wait, there's an error:
 ```
 Oops! Something went wrong! :(
 
-ESLint: 6.3.0.
+ESLint: 6.4.0.
 
-No files matching the pattern ".github/" were found.
+No files matching the pattern "." were found.
 Please check for typing mistakes in the pattern.
 ```
 
@@ -567,7 +497,7 @@ mkdir -p .github/workflows
 
 ## Building the debug action
 
-Enough setup; let's get building. Create a new file called ``:
+Enough setup; let's get building. Create a new file called `.github/actions/debug-action/debug.ts`:
 
 ```ts
 import * as core from '@actions/core'
