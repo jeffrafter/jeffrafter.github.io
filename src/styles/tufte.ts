@@ -165,6 +165,10 @@ a:link { text-decoration: none;
 /* Sidenotes, margin notes, figures, captions */
 img { max-width: 100%; }
 
+.sidenote {
+  margin-bottom: 2em !important;
+}
+
 .sidenote, .marginnote { float: right;
                          clear: right;
                          margin-right: -60%;
@@ -271,4 +275,8 @@ label.margin-toggle:not(.sidenote-number) { display: none; }
                             label { cursor: pointer; }
                             div.table-wrapper, table { width: 85%; }
                             img { width: 100%; } }
+
+:not(pre) > code[class*="language-"] {
+  font-size: 0.9em !important;
+}
 `

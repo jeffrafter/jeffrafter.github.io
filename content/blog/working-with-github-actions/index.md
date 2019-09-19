@@ -46,7 +46,7 @@ mkdir example-github-action-typescript
 cd example-github-action-typescript
 ```
 
-We'll be using TypeScript to build our action, which requires Node. Out of the box GitHub supports a few environments for your actions to run [^environments]. There is built-in support for running actions built in JavaScript (using Node). So why did I choose to use TypeScript? It makes development a lot easier by providing compile-time checks and hints in my editor about methods and parameters (espeically if you are using an editor like VSCode that has support for it). As part of our action we'll export the TypeScript to JavaScript.
+We'll be using TypeScript to build our action, which requires Node. Out of the box GitHub supports a few environments for your actions to run [^environments]. There is built-in support for running actions built in JavaScript (using Node). So why did I choose to use TypeScript? It makes development a lot easier by providing compile-time checks and hints in my editor about methods and parameters (especially if you are using an editor like VSCode that has support for it). As part of our action we'll export the TypeScript to JavaScript.
 
 [^environments]: There are several different [virtual operating systems](https://help.github.com/en/articles/virtual-environments-for-github-actions#supported-virtual-environments-and-hardware-resources) you can use for your actions which come preloaded with [useful software](https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions). Additionally, you can utilize Docker containers running in one of these virtual environments to pre-configure your hosts.
 
@@ -814,7 +814,7 @@ The first step checks out our code using the `actions/checkout@v1` action:
 
 The `actions/checkout` action[^checkout] checks out a copy of your code on the server where the workflow is running. We've set the fetch-depth to `1` indicating we only want a shallow-clone.[^shallow-clone] When your action code is included in your `.github` folder (as our `debug-action` is), you must use the `actions/checkout` action to checkout a copy of the code so that it can run.
 
-[^checkout]: The code for `actions/checkout` lives [on github](https://github.com/actions/checkout).
+[^checkout]: The code for `actions/checkout` lives [on github](https://github.com/actions/checkout). Where is the copy of your code located on the server? This path is exported to the `GITHUB_WORKSPACE` [default environment variable](https://help.github.com/en/articles/virtual-environments-for-github-actions#default-environment-variables).
 [^shallow-clone]: A shallow clone of the code ignores all of the history. Since our action doesn't use any of the history this is a good speedup.
 
 The next two steps install our action dependencies and build it:
@@ -908,7 +908,21 @@ The action ran and the build was marked as complete. But we can't see the debug 
 
 ## Using action input
 
-There are many instances where you want to change how an action runs based on configuration in each workflow that uses that action. Let's add an input to our debug action that changes what the debug message says.
+By default GitHub injects [default environment variables](https://help.github.com/en/articles/virtual-environments-for-github-actions#default-environment-variables) that can be used by your action including:
+
+- `HOME`
+- `GITHUB_WORKFLOW`
+- `GITHUB_ACTION`
+- `GITHUB_REPOSITORY`
+- `GITHUB_EVENT_NAME`
+- `GITHUB_EVENT_PATH`
+- `GITHUB_WORKSPACE`
+- `GITHUB_SHA`
+- `GITHUB_REF`
+- `GITHUB_HEAD_REF` (only in forks)
+- `GITHUB_BASE_REF` (only in forks)
+
+These are commonly used, but there are many instances where you want to change how an action runs based on configuration in each workflow that uses that action. Let's add an input to our debug action that changes what the debug message says.
 
 First, define the input and default in `.github/debug-action/action.yml`:
 
@@ -925,7 +939,7 @@ runs:
   main: './debug.js'
 ```
 
-We've defined a new input called `amazing-creature`. When the action is executed the name will be will be converted to`INPUT_AMAZING-CREATURE` and the value will be passed in via the process environment.[^env] Let's use it. Change `.github/actions/debug-action/debug.ts`:
+We've defined a new input called `amazing-creature`. When the action is executed the name will be will be converted to`INPUT_AMAZING-CREATURE` and the value will be passed in via the process environment. Environment variable names normally wouldn't have `-` in them as we see in `INPUT_AMAZING-CREATURE`. Because of the `-` we need to access the values as strings. The key names in [YAML syntax](https://yaml.org/spec/1.2/spec.html#id2764044) can vary wildly but only spaces are replaced with underscores. You could access the values directly `process.env['INPUT_AMAZING-CREATURE']` but using `getInput` as we have done is more future-proof. Let's use it. Change `.github/actions/debug-action/debug.ts`:
 
 ```ts
 import * as core from '@actions/core'
@@ -939,8 +953,6 @@ run()
 
 export default run
 ```
-
-[^env]: Environment variables normally wouldn't have `-` in them as we see in `INPUT_AMAZING-CREATURE`. Because of the `-` we need to access the values as strings. The key names in [YAML syntax](https://yaml.org/spec/1.2/spec.html#id2764044) can vary wildly but only spaces are replaced with underscores. You could access the values directly `process.env['INPUT_AMAZING-CREATURE']` but using `getInput` as we have done is more future-proof.
 
 If we save that file and re-run our tests we'll see a new failure:
 
@@ -1260,7 +1272,9 @@ If the exception is handled and the program can continue we can make use of the 
 
 - `core.error`
 - `core.warning`
-- `core.info`
+- `core.info`[^info]
+
+[^info]: Actually, `core.info` is not exposed by default. Instead, you can just use `console.log` which outputs directly to the log as well. In many ways using `console.log` is easier; but there is less built in formatting.
 
 Catching exceptions is great, but failures can happen for other reasons. For example, suppose someone chose `mosquito` as the `amazing-creature`. That's not okay:
 
@@ -1395,7 +1409,7 @@ Then we logged the `github.context.payload`. If you push this to GitHub to run y
   }
 ```
 
-There is [documentation](https://developer.github.com/v3/activity/events/types/#pushevent) for each event that can be really helpful. With this information we can make our message more personal. We'll include the name of the person pushing the code. Change `debug.ts`:
+The [push event documentation](https://developer.github.com/v3/activity/events/types/#pushevent) can be really helpful. With this information we can make our message more personal. We'll include the name of the person pushing the code. Utilizing the information in the `pusher` node is useful but that's only available for `push` actions. If you want to know who triggered the workflow for other kinds of actions you can use the `GITHUB_ACTOR` [default environment variable](https://help.github.com/en/articles/virtual-environments-for-github-actions#default-environment-variables). In this case we'll use the value from the payload. Change `debug.ts`:
 
 ```ts
 import * as core from '@actions/core'
@@ -1475,3 +1489,459 @@ It is so encouraging!
 ```
 There was an amazing message - 👋 Hello jeffrafter! You are an amazing Octocat! 🙌
 ```
+
+# Give some love to anyone that opens an issue
+
+Writing output to the logs is fine. Setting the completion and failed status of the action is also cool. Automating your workflow using the API is the best. Actions can automatically create issues, pull request reviews, commits and more. To demonstrate, let's create a new action. When a friendly contributor opens an issue in our repository our GitHub Action will thank them and add a reaction to their issue.
+
+We'll add the following:
+
+```
+.github/
+  actions/
+    thanks-action/
+      __tests__/
+        thanks.test.ts
+      action.yml
+      thanks.js
+      thanks.ts
+  workflows/
+    thanks-workflow.yml
+```
+
+## Using the API
+
+Every action that runs has access to a `GITHUB_TOKEN` [environment variable](https://help.github.com/en/articles/virtual-environments-for-github-actions#default-environment-variables) that can be used to interact with the API. The token has read and write (but not admin) [repository app permissions](https://help.github.com/en/articles/virtual-environments-for-github-actions#token-permissions) by default.[^forks]
+
+- [Virtual Environments documentation](https://help.github.com/en/articles/virtual-environments-for-github-actions#github_token-secret)
+
+[^forks]: Note, forks do not normally have access to secrets in the actions environment. Forks do have access to a `GITHUB_TOKEN` but again, the permissions are limitted.
+
+To use the `GITHUB_TOKEN` you must configure the environment of your action when it is referenced in the workflow. Remember actions can be used by many workflows in many repositories and granting access should be protected.
+The workflow for our thanks action will be triggered when an issue is opened. Create `.github/workflows/thanks-workflow.yml`:
+
+```yml
+name: Thanks workflow
+on: [issues]
+
+jobs:
+  build:
+    name: Thanks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+        with:
+          fetch-depth: 1
+      - run: npm install
+      - run: npm run build
+      - uses: ./.github/actions/thanks-action
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        id: thanks
+```
+
+Each step that makes use of the `GITHUB_TOKEN` must include:
+
+```yml
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+We'll also need a new `action.yml` for our thanks action. Create `.github/actions/thanks-action/action.yml`:
+
+```yml
+name: 'thanks-action'
+description: 'Says thanks when a contributor opens an issue'
+author: 'jeffrafter'
+runs:
+  using: 'node12'
+  main: './thanks.js'
+inputs:
+  thanks-message:
+    description: Say thanks
+    default: Thanks for opening an issue ❤!
+```
+
+Notice that we've specified an input with a default message. If we wanted we could specify different messages in our workflows that use this action.
+
+With the environment set we're ready to create `.github/actions/thanks-action/thanks.ts`:
+
+```ts
+import * as core from '@actions/core'
+import * as github from '@actions/github'
+
+const run = async (): Promise<void> => {
+  try {
+    // Limit only to when issues are opened (not edited, closed, etc.)
+    if (github.context.payload.action !== 'opened') return
+
+    // Check the payload
+    const issue = github.context.payload.issue
+    if (!issue) return
+
+    const token = process.env['GITHUB_TOKEN']
+    if (!token) return
+
+    // Create the octokit client
+    const octokit: github.GitHub = new github.GitHub(token)
+    const nwo = process.env['GITHUB_REPOSITORY'] || '/'
+    const [owner, repo] = nwo.split('/')
+
+    // Reply with the thanks message
+    // https://octokit.github.io/rest.js/#octokit-routes-issues-create-comment
+    const thanksMessage = core.getInput('thanks-message')
+    const issueCommentResponse = await octokit.issues.createComment({
+      owner,
+      repo,
+      issue_number: issue.number,
+      body: thanksMessage,
+    })
+    console.log(`Replied with thanks message: ${issueCommentResponse.data.url}`)
+
+    // Add a reaction
+    // https://octokit.github.io/rest.js/#octokit-routes-reactions-create-for-issue
+    const issueReactionResponse = await octokit.reactions.createForIssue({
+      owner,
+      repo,
+      issue_number: issue.number,
+      content: 'heart',
+    })
+    console.log(`Reacted: ${issueReactionResponse.data.content}`)
+  } catch (error) {
+    console.error(error.message)
+    core.setFailed(`Thanks-action failure: ${error}`)
+  }
+}
+
+run()
+
+export default run
+```
+
+Let's break this down.
+
+Using `issues` events to trigger our workflow allows us to respond to newly opened issues. However, every change to an issue will trigger our workflow: when an issue is opened, closed, edited, assigned, etc. Because of this we want to make sure our action is only making changes when the issue is opened:
+
+```ts
+// Limit only to when issues are opened (not edited, closed, etc.)
+if (github.context.payload.action !== 'opened') return
+```
+
+We'll need to access the `issue` in the payload:
+
+```ts
+// Check the payload
+const issue = github.context.payload.issue
+if (!issue) return
+```
+
+At this point we grab the token that was injected into the environement from our workflow:
+
+```ts
+const token = process.env['GITHUB_TOKEN']
+if (!token) return
+```
+
+We use the token to create a new GitHub client:
+
+```ts
+// Create the octokit client
+const octokit: github.GitHub = new github.GitHub(token)
+```
+
+The client that is created is actually an [octokit/rest.js](https://octokit.github.io/rest.js/) API client. The `octokit` client has full access to the [Rest API V3](https://developer.github.com/v3/).[^graphql] There is great documentation available:
+
+- [octokit/rest.js](https://octokit.github.io/rest.js/)
+- [@actions/github](https://github.com/actions/toolkit/tree/master/packages/github)
+- [Rest API V3](https://developer.github.com/v3/)
+
+[^graphql]: It is possible to create an [octokit/graphql.js](https://github.com/octokit/graphql.js) instance to access the V4 GraphQL API as well. See the documentation for working with custom requests.
+
+Once you have a `octokit` client you'll usually want to work with the current repository. There are a set of automatically included environment variables to make this easier. For example, the `GITHUB_REPOSITORY` environment variable contains the repository name with owner (`nwo`) like `jeffrafter/example-github-action-typescript`:
+
+```ts
+const nwo = process.env['GITHUB_REPOSITORY'] || '/'
+const [owner, repo] = nwo.split('/')
+```
+
+At this point we're ready to create a comment replying to the opened issue. We grab the `thanks-message` from the action input. Then we create the comment via the `octokit/rest.js` client:
+
+```ts
+// Reply with the thanks message
+// https://octokit.github.io/rest.js/#octokit-routes-issues-create-comment
+const thanksMessage = core.getInput('thanks-message')
+const issueCommentResponse = await octokit.issues.createComment({
+  owner,
+  repo,
+  issue_number: issue.number,
+  body: thanksMessage,
+})
+console.log(`Replied with thanks message: ${issueCommentResponse.data.url}`)
+```
+
+Calling the API requires HTTP interactions which are not instant. Because working with the API involves asynchronous callbacks, most API calls will return a `Promise` containing a response object (with `data`, `status`, and `headers`). if If you don't care about the result, you can ignore the response and continue on. If you need to use the response, however, you'll need to use `await` to let the `async` request complete. Here we are logging out the comment URL from the response so we need to use `await` to make sure the response is complete.
+
+We also want to add a reaction to the issue:
+
+```ts
+// Add a reaction
+// https://octokit.github.io/rest.js/#octokit-routes-reactions-create-for-issue
+const issueReactionResponse = await octokit.reactions.createForIssue({
+  owner,
+  repo,
+  issue_number: issue.number,
+  content: 'heart',
+})
+console.log(`Reacted: ${issueReactionResponse.data.content}`)
+```
+
+Again we use `await` to wait for the response from the API call.
+
+### Testing API interactions
+
+Whem working with the API it is important to configure your tests so they don't actually interact with GitHub's API. In general, you don't want your tests to call the API directly; they might start creating real issues in your repositories or use up your rate limits. Instead you should be mocking all of the external calls from your test suite. This will also make your tests run faster.
+
+It is common to use `nock` to mock external requests and responses. Install it along with the supporting types:
+
+```bash
+npm install --save-dev nock @types/nock
+```
+
+> There are great examples available in the `@actions/toolkit` repository on [mocking the octokit client](https://github.com/actions/toolkit/blob/master/docs/github-package.md#mocking-the-octokit-client) and in the `nock` [README](https://github.com/nock/nock).
+
+By default, we want to disable all external calls from our test suite. To do this add the following to the top of `jest.config.js`:
+
+```ts
+const nock = require('nock')
+nock.disableNetConnect()
+```
+
+Now if one of our tests attempts use the API nock will prevent it and fail the test with an error like:
+
+```bash
+request to https://api.github.com/repos/sample/repository/issues/1/reactions failed, reason: Nock: No match for request
+```
+
+Let's create a new test. Create `.github/actions/thanks-action/__tests__/thanks.test.ts`:
+
+```ts
+import * as github from '@actions/github'
+import {WebhookPayload} from '@actions/github/lib/interfaces'
+import nock from 'nock'
+import run from '../thanks'
+
+beforeEach(() => {
+  jest.resetModules()
+
+  github.context.payload = {
+    action: 'opened',
+    issue: {
+      number: 1,
+    },
+  } as WebhookPayload
+})
+
+describe('thanks action', () => {
+  it('adds a thanks comment and heart reaction', async () => {
+    process.env['INPUT_THANKS-MESSAGE'] = 'Thanks for opening an issue ❤!'
+    process.env['GITHUB_REPOSITORY'] = 'example/repository'
+    process.env['GITHUB_TOKEN'] = '12345'
+
+    nock('https://api.github.com')
+      .post(
+        '/repos/example/repository/issues/1/comments',
+        body => body.body === 'Thanks for opening an issue ❤!',
+      )
+      .reply(200, {url: 'https://github.com/example/repository/issues/1#comment'})
+
+    nock('https://api.github.com')
+      .post('/repos/example/repository/issues/1/reactions', body => body.content === 'heart')
+      .reply(200, {content: 'heart'})
+
+    await run()
+  })
+})
+```
+
+We start off by setting up a fake payload. The real payload (when GitHub runs our action) will be much bigger and contain more information[^payload]; however we've made our example payload in the test as small as possible to keep things focused.
+
+[^payload]: When you are first working with a GitHub Action it is sometimes helpful to start with a `console.log` for the whole payload. You can copy the output from the logs and use it as your default payload while testing. Additionally, the [Event Types & Payloads](https://developer.github.com/v3/activity/events/types/) documentation contains sample payloads if you can't use the `console.log` trick.
+
+The test that we've created does nothing more than attempt to run our action. We're not verifying any output or debug information (though we could). Instead we are validating that the API endpoints are hit with specific parameters. If these mocked API requests don't occur (as we have specified them), the test will fail:
+
+```ts
+it('adds a thanks comment and heart reaction', async () => {
+  process.env['INPUT_THANKS-MESSAGE'] = 'Thanks for opening an issue ❤!'
+  process.env['GITHUB_REPOSITORY'] = 'example/repository'
+  process.env['GITHUB_TOKEN'] = '12345'
+
+  nock('https://api.github.com')
+    .post(
+      '/repos/example/repository/issues/1/comments',
+      body => body.body === 'Thanks for opening an issue ❤!',
+    )
+    .reply(200, {url: 'https://github.com/example/repository/issues/1#comment'})
+
+  nock('https://api.github.com')
+    .post('/repos/example/repository/issues/1/reactions', body => body.content === 'heart')
+    .reply(200, {content: 'heart'})
+
+  await run()
+})
+```
+
+Notice that we are also specifying the response body. This allows our action code to utilize the response exactly as it would from a real API interaction. Again, when developing your action you might use `console.log` to see what the actual output looks like before setting up your tests.
+
+Some might argue that this level of mocking for your tests is too much. We're faking the input, faking the API endpint and faking the responses. So what is this test even doing? The approach here is one of efficiency. I'm trusting that the GitHub API works and that the way I've set it up won't change. With those assumptions set in my tests, I'm free to change the code that leads up to those interactions in any way I see fit. I've mocked the edges, but my actions code still must do the right thing. It's a trade-off but once you've established how the edges of your code work it allows much faster iteration.
+
+If we run the tests with `npm test` we see:
+
+```bash
+ PASS  .github/actions/debug-action/__tests__/debug.test.ts
+  debug action debug messages
+    ✓ outputs a debug message (11ms)
+    ✓ does not output debug messages for non-amazing creatures (2ms)
+  debug action output
+    ✓ sets the action output (1ms)
+
+ PASS  .github/actions/thanks-action/__tests__/thanks.test.ts
+  thanks action
+    ✓ adds a thanks comment and heart reaction (30ms)
+
+Test Suites: 2 passed, 2 total
+Tests:       4 passed, 4 total
+Snapshots:   0 total
+Time:        2.194s
+Ran all test suites.
+  console.log .github/actions/thanks-action/thanks.ts:30
+    Replied with thanks message: https://github.com/example/repository/issues/1#comment
+
+  console.log .github/actions/thanks-action/thanks.ts:40
+    Reacted: heart
+```
+
+At this point the action works. Let's check `git status`:
+
+```bash
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   jest.config.js
+	modified:   package-lock.json
+	modified:   package.json
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	.github/actions/thanks-action/
+	.github/workflows/thanks-workflow.yml
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+Let's add all of those:
+
+```bash
+git add .
+```
+
+And commit:
+
+```bash
+git commit -m "Thanks action"
+```
+
+And push to GitHub:
+
+```bash
+git push origin master
+```
+
+When we pushed, our `debug-action` still executed, but not our new `thanks-action`. In order to trigger that we have to open a new issue. Open a new issue with any message and then watch the action execute. You should see something like:
+
+![A bot replying with a thanks message](../../assets/action-bot-response.png)
+
+It works! But... it doesn't feel very personal to have a bot replying to collaborators. It would feel much better if a human were replying. Unfortunately all of the interactions with the repository are on behalf of the GitHub Actions bot because we are using the `GITHUB_TOKEN`. In order to act on behalf of another user we'll need to use a different token. o do this, we'll generate a [personal access token](https://help.github.com/en/articles/creating-a-personal-access-token-for-the-command-line).[^pat]
+
+[^pat]: Note: personal access tokens are powerful things and should be kept secret. They allow applications (and GitHub actions) to impersonate you and act on your behalf. You should never check a personal access token into version control or share it on the Internet. If you've accidently done that, go to your settings and delete the token to revoke access.
+
+To create a token, go to your [token settings](https://github.com/settings/tokens) in GitHub (click on `Settings` in the user drop-down menu, then `Developer settings` in the sidebar, then click on `Personal access tokens`). Then click the `Generate new token` button.
+
+![Creating a thanks-action personal access token](../../assets/action-create-token.png)
+
+Make sure you've checked the `repo` box to grant repository access permissions to the token. Copy the token (note, this is just an example and this token has been revoked so you can't use it):
+
+![Copy the personal access token](../../assets/action-create-token.png)
+
+Next, we'll need to add a new secret to our repository. Open the setings for your repository and click `Secrets` in the sidebar. Click `Add a new secret` and set the name to `THANKS_USER_TOKEN` and paste the copied personal access token into the `Value`. Click `Add secret`.[^secrets]
+
+![Action secrets](../../assets/action-secrets.png)
+
+[^secrets]: Repository secrets are extremely powerful. We can use them to configure keys to external services, setup CI and control our environment. For more information see [Creating and using secrets](https://help.github.com/en/articles/virtual-environments-for-github-actions#creating-and-using-secrets-encrypted-variables).
+
+Now that we've created a new secret containing our token we need to use it. To use it, we'll need to modify our workflow. Right now the `env` node in our workflow specifies the `GITHUB_TOKEN`.
+
+```yml
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+```
+
+Let's add an entry for the `THANKS_USER_TOKEN`:
+
+```yml
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  THANKS_USER_TOKEN: ${{ secrets.THANKS_USER_TOKEN }}
+```
+
+This will inject the secret into our environment. We'll need to modify `thanks.ts` to use it. Currently we have:
+
+```ts
+const token = process.env['GITHUB_TOKEN']
+```
+
+Let's change that to:
+
+```ts
+const token = process.env['THANKS_USER_TOKEN'] || process.env['GITHUB_TOKEN']
+```
+
+That's it. At this point `npm test` should still pass and `npm run lint` should have no warnings or errors. Let's check the `git status`:
+
+```bash
+On branch master
+Your branch is up to date with 'origin/master'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git checkout -- <file>..." to discard changes in working directory)
+
+	modified:   .github/actions/thanks-action/thanks.ts
+	modified:   .github/workflows/thanks-workflow.yml
+
+no changes added to commit (use "git add" and/or "git commit -a")
+```
+
+And commit:
+
+```bash
+git commit -am "Make it more personal"
+```
+
+Push it to GitHub:
+
+```bash
+git push origin master
+```
+
+Open a new example issue and you should see your user account reply:
+
+![A more personal response from a GitHub Action](../../assets/action-personal-response.png)
+
+# Thanks
+
+Lots of folks @GitHub helped review and solve some of the issues I came across while writing this post. Special shout-outs go to [@jasonetco](https://github.com/jasonetco), [@mscoutermarsh](https://github.com/mscoutermarsh), and [mikekavouras](https://github.com/mikekavouras). Also, special thanks to the docs team and the octokit/rest.js team who make great things.
