@@ -464,7 +464,7 @@ Changes to be committed:
 Let's commit:
 
 ```bash
-git commmit -m "Linting configuration"
+git commit -m "Linting configuration"
 ```
 
 ## Project Layout
