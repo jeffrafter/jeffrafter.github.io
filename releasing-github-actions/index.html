@@ -1,0 +1,613 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="ie=edge"/><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/><style data-href="/styles.2f2933dc343b474e635f.css">code[class*=language-],pre[class*=language-]{color:#000;background:none;text-shadow:0 1px #fff;font-family:Consolas,Monaco,Andale Mono,Ubuntu Mono,monospace;font-size:1em;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.5;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-hyphens:none;-ms-hyphens:none;hyphens:none}code[class*=language-]::-moz-selection,code[class*=language-] ::-moz-selection,pre[class*=language-]::-moz-selection,pre[class*=language-] ::-moz-selection{text-shadow:none;background:#b3d4fc}code[class*=language-]::selection,code[class*=language-] ::selection,pre[class*=language-]::selection,pre[class*=language-] ::selection{text-shadow:none;background:#b3d4fc}@media print{code[class*=language-],pre[class*=language-]{text-shadow:none}}pre[class*=language-]{padding:1em;margin:.5em 0;overflow:auto}:not(pre)>code[class*=language-],pre[class*=language-]{background:#f5f2f0}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal}.token.cdata,.token.comment,.token.doctype,.token.prolog{color:#708090}.token.punctuation{color:#999}.namespace{opacity:.7}.token.boolean,.token.constant,.token.deleted,.token.number,.token.property,.token.symbol,.token.tag{color:#905}.token.attr-name,.token.builtin,.token.char,.token.inserted,.token.selector,.token.string{color:#690}.language-css .token.string,.style .token.string,.token.entity,.token.operator,.token.url{color:#9a6e3a;background:hsla(0,0%,100%,.5)}.token.atrule,.token.attr-value,.token.keyword{color:#07a}.token.class-name,.token.function{color:#dd4a68}.token.important,.token.regex,.token.variable{color:#e90}.token.bold,.token.important{font-weight:700}.token.italic{font-style:italic}.token.entity{cursor:help}</style><meta name="generator" content="Gatsby 2.15.18"/><style type="text/css">
+    .anchor {
+      float: left;
+      padding-right: 4px;
+      margin-left: -20px;
+    }
+    h1 .anchor svg,
+    h2 .anchor svg,
+    h3 .anchor svg,
+    h4 .anchor svg,
+    h5 .anchor svg,
+    h6 .anchor svg {
+      visibility: hidden;
+    }
+    h1:hover .anchor svg,
+    h2:hover .anchor svg,
+    h3:hover .anchor svg,
+    h4:hover .anchor svg,
+    h5:hover .anchor svg,
+    h6:hover .anchor svg,
+    h1 .anchor:focus svg,
+    h2 .anchor:focus svg,
+    h3 .anchor:focus svg,
+    h4 .anchor:focus svg,
+    h5 .anchor:focus svg,
+    h6 .anchor:focus svg {
+      visibility: visible;
+    }
+  </style><script>
+    document.addEventListener("DOMContentLoaded", function(event) {
+      var hash = window.decodeURI(location.hash.replace('#', ''))
+      if (hash !== '') {
+        var element = document.getElementById(hash)
+        if (element) {
+          var offset = element.offsetTop
+          // Wait for the browser to finish rendering before scrolling.
+          setTimeout((function() {
+            window.scrollTo(0, offset - 0)
+          }), 0)
+        }
+      }
+    })
+  </script><link rel="canonical" href="https://jeffrafter.com/releasing-github-actions/" data-baseprotocol="https:" data-basehost="jeffrafter.com"/><link rel="shortcut icon" href="/icons/icon-48x48.png?v=571e7228c91e8f483653fe86be736e9f"/><link rel="manifest" href="/manifest.webmanifest"/><meta name="theme-color" content="#663399"/><link rel="apple-touch-icon" sizes="48x48" href="/icons/icon-48x48.png?v=571e7228c91e8f483653fe86be736e9f"/><link rel="apple-touch-icon" sizes="72x72" href="/icons/icon-72x72.png?v=571e7228c91e8f483653fe86be736e9f"/><link rel="apple-touch-icon" sizes="96x96" href="/icons/icon-96x96.png?v=571e7228c91e8f483653fe86be736e9f"/><link rel="apple-touch-icon" sizes="144x144" href="/icons/icon-144x144.png?v=571e7228c91e8f483653fe86be736e9f"/><link rel="apple-touch-icon" sizes="192x192" href="/icons/icon-192x192.png?v=571e7228c91e8f483653fe86be736e9f"/><link rel="apple-touch-icon" sizes="256x256" href="/icons/icon-256x256.png?v=571e7228c91e8f483653fe86be736e9f"/><link rel="apple-touch-icon" sizes="384x384" href="/icons/icon-384x384.png?v=571e7228c91e8f483653fe86be736e9f"/><link rel="apple-touch-icon" sizes="512x512" href="/icons/icon-512x512.png?v=571e7228c91e8f483653fe86be736e9f"/><link rel="preconnect dns-prefetch" href="https://www.google-analytics.com"/><link rel="alternate" type="application/rss+xml" href="/rss.xml"/><title data-react-helmet="true">Releasing GitHub Actions | Jeff Rafter</title><meta data-react-helmet="true" name="description" content="Once you&#x27;ve made some amazing GitHub Actions and you want to re-use them and share them with your friends. To do that you&#x27;ll want to organize your project a little differently, publish and release them."/><meta data-react-helmet="true" property="og:title" content="Releasing GitHub Actions"/><meta data-react-helmet="true" property="og:description" content="Once you&#x27;ve made some amazing GitHub Actions and you want to re-use them and share them with your friends. To do that you&#x27;ll want to organize your project a little differently, publish and release them."/><meta data-react-helmet="true" property="og:type" content="website"/><meta data-react-helmet="true" property="og:image" content="https://jeffrafter.com//static/d0a43dcf6d9204bf622e7ba48c8ea463/85cf5/actions.png"/><meta data-react-helmet="true" name="twitter:card" content="summary"/><meta data-react-helmet="true" name="twitter:creator" content="Jeff Rafter"/><meta data-react-helmet="true" name="twitter:title" content="Releasing GitHub Actions"/><meta data-react-helmet="true" name="twitter:description" content="Once you&#x27;ve made some amazing GitHub Actions and you want to re-use them and share them with your friends. To do that you&#x27;ll want to organize your project a little differently, publish and release them."/><style data-styled="dMZdaw dGwHBP aCPwf" data-styled-version="4.3.2">
+/* sc-component-id: sc-global-3634570866 */
+@charset "UTF-8"; @font-face{font-family:"et-book";src:url("/et-book/et-book-roman-line-figures/et-book-roman-line-figures.eot");src:url("/et-book/et-book-roman-line-figures/et-book-roman-line-figures.eot?#iefix") format("embedded-opentype"),url("/et-book/et-book-roman-line-figures/et-book-roman-line-figures.woff") format("woff"),url("/et-book/et-book-roman-line-figures/et-book-roman-line-figures.ttf") format("truetype"),url("/et-book/et-book-roman-line-figures/et-book-roman-line-figures.svg#etbookromanosf") format("svg");font-weight:normal;font-style:normal;} @font-face{font-family:"et-book";src:url("/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.eot");src:url("/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.eot?#iefix") format("embedded-opentype"),url("/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.woff") format("woff"),url("/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.ttf") format("truetype"),url("/et-book/et-book-display-italic-old-style-figures/et-book-display-italic-old-style-figures.svg#etbookromanosf") format("svg");font-weight:normal;font-style:italic;} @font-face{font-family:"et-book";src:url("/et-book/et-book-bold-line-figures/et-book-bold-line-figures.eot");src:url("/et-book/et-book-bold-line-figures/et-book-bold-line-figures.eot?#iefix") format("embedded-opentype"),url("/et-book/et-book-bold-line-figures/et-book-bold-line-figures.woff") format("woff"),url("/et-book/et-book-bold-line-figures/et-book-bold-line-figures.ttf") format("truetype"),url("/et-book/et-book-bold-line-figures/et-book-bold-line-figures.svg#etbookromanosf") format("svg");font-weight:bold;font-style:normal;} @font-face{font-family:"et-book-roman-old-style";src:url("/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.eot");src:url("/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.eot?#iefix") format("embedded-opentype"),url("/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.woff") format("woff"),url("/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.ttf") format("truetype"),url("/et-book/et-book-roman-old-style-figures/et-book-roman-old-style-figures.svg#etbookromanosf") format("svg");font-weight:normal;font-style:normal;} html{box-sizing:border-box;margin:0;padding:0;} *,*::before,*::after{box-sizing:inherit;} body{margin:0 !important;padding:0;} ::selection{background-color:#dad9d9;color:rgba(0,0,0,0.70);} a.anchor,a.anchor:hover,a.anchor:link{background:none !important;} figure a.gatsby-resp-image-link{background:none;} figure span.gatsby-resp-image-wrapper{max-width:100% !important;} article .excerpt{display:none;} html{font-size:15px;} body{width:87.5%;margin-left:auto;margin-right:auto;padding-left:12.5%;font-family:et-book,Palatino,"Palatino Linotype","Palatino LT STD","Book Antiqua",Georgia,serif;background-color:#fffff8;color:#111;max-width:1400px;counter-reset:sidenote-counter;} h1{font-weight:400;margin-top:4rem;margin-bottom:1.5rem;font-size:3.2rem;line-height:1;} h2{font-style:italic;font-weight:400;margin-top:2.1rem;margin-bottom:1.4rem;font-size:2.2rem;line-height:1;} h3{font-style:italic;font-weight:400;font-size:1.7rem;margin-top:2rem;margin-bottom:1.4rem;line-height:1;} hr{display:block;height:1px;width:55%;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0;} p.subtitle{font-style:italic;margin-top:1rem;margin-bottom:1rem;font-size:1.8rem;display:block;line-height:1;} .numeral{font-family:et-book-roman-old-style;} .danger{color:red;} article{position:relative;padding:5rem 0rem;} section{padding-top:1rem;padding-bottom:1rem;} p,ol,ul{font-size:1.4rem;line-height:2rem;} p{margin-top:1.4rem;margin-bottom:1.4rem;padding-right:0;vertical-align:baseline;} div.epigraph{margin:5em 0;} div.epigraph > blockquote{margin-top:3em;margin-bottom:3em;} div.epigraph > blockquote,div.epigraph > blockquote > p{font-style:italic;} div.epigraph > blockquote > footer{font-style:normal;} div.epigraph > blockquote > footer > cite{font-style:italic;} blockquote{font-size:1.4rem;} blockquote p{width:55%;margin-right:40px;font-style:italic;color:#999;} blockquote footer{width:55%;font-size:1.1rem;text-align:right;} section > p,section > footer,section > table{width:55%;} section > ol,section > ul{width:50%;-webkit-padding-start:5%;} li:not(:first-child){margin-top:0.25rem;} figure{padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;max-width:55%;-webkit-margin-start:0;-webkit-margin-end:0;margin:0 0 3em 0;} figcaption{margin-top:-2em;margin-bottom:0;font-size:1.1rem;font-style:italic;line-height:1.6;vertical-align:baseline;position:relative;max-width:40%;} figure.fullwidth figcaption{max-width:80%;} a:link,a:visited{color:inherit;} a:link{-webkit-text-decoration:none;text-decoration:none;background:-webkit-linear-gradient(#fffff8,#fffff8),-webkit-linear-gradient(#fffff8,#fffff8),-webkit-linear-gradient(#333,#333);background:linear-gradient(#fffff8,#fffff8),linear-gradient(#fffff8,#fffff8),linear-gradient(#333,#333);-webkit-background-size:0.05em 1px,0.05em 1px,1px 1px;-moz-background-size:0.05em 1px,0.05em 1px,1px 1px;background-size:0.05em 1px,0.05em 1px,1px 1px;background-repeat:no-repeat,no-repeat,repeat-x;background-position:0% 101%,101% 101%,0% 101%;} @media screen and (-webkit-min-device-pixel-ratio:0){a:link{background-position-y:101%,101%,101%;}} img{max-width:100%;} .sidenote{margin-bottom:2em !important;} .sidenote,.marginnote{float:right;clear:right;margin-right:-60%;width:50%;margin-top:0;margin-bottom:0;margin-left:5%;font-size:1.1rem;line-height:1.3;vertical-align:baseline;position:relative;} .sidenote-number{counter-increment:sidenote-counter;} .sidenote-number:after,.sidenote:before{font-family:et-book-roman-old-style;position:relative;vertical-align:baseline;} .sidenote-number:after{content:counter(sidenote-counter);font-size:1rem;top:-0.5rem;left:0.1rem;} .sidenote:before{content:counter(sidenote-counter) " ";font-size:1rem;top:-0.5rem;} blockquote .sidenote,blockquote .marginnote{margin-right:-82%;min-width:59%;text-align:left;} div.fullwidth,table.fullwidth{width:100%;} div.table-wrapper{overflow-x:auto;font-family:"Trebuchet MS","Gill Sans","Gill Sans MT",sans-serif;} .sans{font-family:"Gill Sans","Gill Sans MT",Calibri,sans-serif;-webkit-letter-spacing:.03em;-moz-letter-spacing:.03em;-ms-letter-spacing:.03em;letter-spacing:.03em;} code{font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;font-size:1.0rem;line-height:1.42;} .sans > code{font-size:1.2rem;} h1 > code,h2 > code,h3 > code{font-size:0.80em;} .marginnote > code,.sidenote > code{font-size:1rem;} pre.code{font-size:0.9rem;width:52.5%;margin-left:2.5%;overflow-x:auto;} pre.code.fullwidth{width:90%;} .fullwidth{max-width:100%;clear:both;} span.newthought{font-variant:small-caps;font-size:1.2em;} input.margin-toggle{display:none;} label.sidenote-number{display:inline;} label.margin-toggle:not(.sidenote-number){display:none;} .iframe-wrapper{position:relative;padding-bottom:56.25%;padding-top:25px;height:0;} .iframe-wrapper iframe{position:absolute;top:0;left:0;width:100%;height:100%;} @media (max-width:760px){body{width:100%;padding-left:8%;padding-right:8%;}hr,section > p,section > footer,section > table{width:100%;}pre.code{width:97%;}section > ol{width:90%;}section > ul{width:90%;}figure{max-width:90%;}figcaption,figure.fullwidth figcaption{margin-right:0%;max-width:none;}blockquote{margin-left:1.5em;margin-right:0em;}blockquote p,blockquote footer{width:100%;}label.margin-toggle:not(.sidenote-number){display:inline;}.sidenote,.marginnote{display:none;}.margin-toggle:checked + .sidenote,.margin-toggle:checked + .marginnote{display:block;float:left;left:1rem;clear:both;width:95%;margin:1rem 2.5%;vertical-align:baseline;position:relative;}label{cursor:pointer;}div.table-wrapper,table{width:85%;}img{width:100%;}} :not(pre) > code[class*="language-"]{font-size:0.9em !important;}
+/* sc-component-id: sc-bdVaJa */
+.dMZdaw ul{list-style-type:none;margin:0;padding:0;} .dMZdaw li{display:inline-block;margin:16px;} .dMZdaw li a{background:none;}
+/* sc-component-id: sc-bwzfXH */
+.aCPwf{padding-bottom:36px;}
+/* sc-component-id: sc-htpNat */
+.dGwHBP{list-style-type:none;} .dGwHBP li::before{content:'' !important;padding-right:0 !important;}</style><link as="script" rel="preload" href="/styles-6b7db68d4fb816f0b847.js"/><link as="script" rel="preload" href="/component---src-templates-post-tsx-b66619650c89546d34f7.js"/><link as="script" rel="preload" href="/app-e9d133dc920b9bbecfad.js"/><link as="script" rel="preload" href="/commons-fec927d88082be228f07.js"/><link as="script" rel="preload" href="/webpack-runtime-c0ce8ab1a4d661fcbec1.js"/><link as="fetch" rel="preload" href="/page-data/releasing-github-actions/page-data.json" crossorigin="anonymous"/></head><body><noscript id="gatsby-noscript">This app works best with JavaScript enabled.</noscript><div id="___gatsby"><div style="outline:none" tabindex="-1" role="group" id="gatsby-focus-wrapper"><nav class="navigation sc-bdVaJa dMZdaw"><ul><li><a href="/">&amp;</a></li><li><a href="/tags">Tags</a></li><li><a href="/about">About</a></li></ul></nav><main class="content" role="main"><article><header><h1>Releasing GitHub Actions</h1><p>November 05, 2019</p></header><div class="page-content"><div><section><figure class="fullwidth">
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block;  max-width: 1280px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 49.92857142857143%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAKCAIAAAA7N+mxAAAACXBIWXMAAAsSAAALEgHS3X78AAAB+klEQVQoz0WRyW7bMBCG/bS99wkKpO9Q9NDlVKBBekwOaWvHdtw68VZJsaldpEhKpKjNi6zItORUQFPkB/6Zy3zzYzCdpq6XujOcmQBY9opqGpwqwCdCsLRpmv2+tG0HAP3xsZLy+FhVh+pQ/1dHHqrR9GGkoOls7hrB/IbMVeMhkCbONpuNpmrnX8/fnp1dXHwrysO+rNolp9PTP3VauxAD08OUuTBAJI7jdKw4uhcbwCKYUsLuxpPFfEFpmKT5riib5vQCizhVtBUkfJPzfWJkWTYcDrXFKk12ZSVjTgTzt5uChyElYZzk7S0v8EHWaZZvdwdJv5xWr4Tb5VGOfQQRPJ6eZHQV2ZdLHSfJhhMnYTgIRDv/DEciWW+LNgWFOGQ6gstPHz9P7qfr9VZKyUWkkmKiWIPuZa2/fnLedK8v7+7nz/Bi9mc8nQxcy+KligsPsXfvP8zmSl03UtaqjhSYeDT53u/75m3MwQpoHlvzrOjI47HXvfnx88ZykBfmA9WfKYD4BCIa8rh9TJLvVkj8nqjXv5ZXI7unpUZYagbsDu47sVgrygNGjuCRH/CljQBwGWYU0wAFgmdRlDIWexDbAAS2AZxAM/Hwdnx13e+ElPs+8yCBNvRcH0LKKAtDwQIWQGQaDjTNtrUVWo5lOq6HFWXZ6496g/FfhZYOguROJa4AAAAASUVORK5CYII='); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;"
+        alt="Octocats launhing a spaceship"
+        title=""
+        src="/static/d0a43dcf6d9204bf622e7ba48c8ea463/0309e/actions.png"
+        srcset="/static/d0a43dcf6d9204bf622e7ba48c8ea463/01387/actions.png 320w,
+/static/d0a43dcf6d9204bf622e7ba48c8ea463/e49a9/actions.png 640w,
+/static/d0a43dcf6d9204bf622e7ba48c8ea463/0309e/actions.png 1280w,
+/static/d0a43dcf6d9204bf622e7ba48c8ea463/fa92b/actions.png 1400w"
+        sizes="(max-width: 1280px) 100vw, 1280px"
+      />
+    </span>
+  </span>
+  </figure><figcaption class="fullwidth">
+Image credit: GitHub's <a href="https://www.youtube.com/watch?v=STWzZsg973o" rel="noopener noreferrer">Bring innovation to work with GitHub Enterprise</a>
+</figcaption><p>Previously, I posted about <a href="./working-with-github-actions">working with GitHub Actions</a>. It covered how the basics of setting up a repository, configuring embedded actions and the associated workflows. If you haven’t worked with GitHub Actions before, you might want to read that first.</p><p>Once you’ve created your amazing GitHub Actions, you’ll want to re-use them and share them with your friends. To do that you’ll want to organize your project a little differently. Also, you’ll want to release your actions with all of the dependencies included so that they run efficiently. In this post we’ll create a repository which contains a GitHub Action - built in TypeScript - and a second repository which will use the action.</p><p>Before you read this it is important to note: starting with a <a href="https://github.com/jeffrafter/typescript-action-template">template</a> will save you a lot of time and setup. Creating actions can be very simple. In this post, however, I am going to work through and explain all of the steps. Included in this post are some of the reasons I’ve chosen one particular setup and skipped another. When getting started with GitHub Actions it is difficult to understand how all of the pieces fit together, or why you might want to create an action for a particular task. Hopefully this post provides some helpful examples. That said, there are probably steps here that you’ve seen before, don’t care about, or just want to skip and that’s okay.</p><p>In order to follow this, you’ll need a GitHub account. Additionally, you’ll need to <a href="https://github.com/features/actions">sign up for the GitHub Actions beta</a>. The examples will be in TypeScript.</p><h1 id="honk"><a href="#honk" aria-label="honk permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Honk</h1><p>For our example we’ll create a GitHub Action which listens for new issue comments - if the comment doesn’t contain the word “honk” our action will delete the comment and add a new comment with a picture of the goose from <a href="https://goose.game/">Untitled Goose Game</a>.<sup id="fnref-goose"><a href="#fn-goose" class="footnote-ref">goose</a></sup> This isn’t very practical, but it should serve as a good foundation for building actions that respond to comments.</p><p>Here is the layout for our action:</p><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">__tests__
+  honk.test.ts
+.eslintignore
+.eslintrc.json
+.gitignore
+.nvmrc
+action.yml
+honk.ts
+jest.config.js
+package-lock.json
+package.json
+README.md
+tsconfig.json</code></pre></div><p>Notice that <code class="language-text">honk.ts</code> and <code class="language-text">__tests__</code> are both in the root of our respository. In this case our action is not very complex, using only a single file. If you have a complex action which contains many modules it might make sense to to put these into a <code class="language-text">src</code> or <code class="language-text">lib</code> folder.</p><p>We’ll dig into each of these files.</p><h1 id="setup"><a href="#setup" aria-label="setup permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Setup</h1><p>First you want to create a folder for your project:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">mkdir</span> honk-action
+<span class="token builtin class-name">cd</span> honk-action</code></pre></div></section>
+<section><h2 id="environment"><a href="#environment" aria-label="environment permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Environment</h2><p>As we did in the previous post we’ll be using TypeScript to build our action, which requires Node. Out of the box GitHub supports a few environments for your actions to run <sup id="fnref-environments"><a href="#fn-environments" class="footnote-ref">environments</a></sup>. There is built-in support for running actions built in JavaScript (using Node). When we release our action we’ll package up the compiled JavaScript so that users of the action don’t need to install the TypeScript dependencies. Taking a few extra seconds to build your action on execution may not seem like a big deal; but GitHub Actions have a limited about of <a href="https://github.com/features/actions">free</a> compute time. While developing an action this might not matter; but long-term those seconds can add up. Leveraging the default environments means your action will run more quickly and reduce the amount of billable hours used.</p><p>Let’s setup our example to use Node. If you have multiple local projects you might run into a conflict about which Node version should be used. <a href="https://npm.github.io/installation-setup-docs/installing/using-a-node-version-manager.html">Node Version Manager</a> solves this problem. To control which version of Node should be used in your project, add an <code class="language-text">.nvmrc</code><sup id="fnref-dotfiles"><a href="#fn-dotfiles" class="footnote-ref">dotfiles</a></sup> file:</p><div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token number">12.7</span>.<span class="token number">0</span></code></pre></div><p>The file is pretty simple; just the version. I chose 12.7.0 because it matches the version that is used to run our action (<code class="language-text">node12</code>). Node 10.16.3 is installed in the default <a href="https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions">GitHub Action software environment</a> and can be used as well but will not match the running action environment. At the time you read this there may be a newer version of Node or you may chose to use an older version because your code requires it. You can check <a href="https://nodejs.org">https://nodejs.org</a>.</p></section>
+<section><h2 id="ignore-some-things"><a href="#ignore-some-things" aria-label="ignore some things permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ignore some things</h2><p>We plan to use <code class="language-text">git</code> to keep track of our changes. As we work on our project locally, there will be a lot of files we won’t want to keep track of; we’ll want to ignore them. To do this we’ll create a <code class="language-text">.gitignore</code> file. If you are looking for an complete example <code class="language-text">.gitignore</code> you can check out <a href="https://github.com/github/gitignore">https://github.com/github/gitignore</a>. For now, just copy the following (this <code class="language-text">.gitignore</code> includes only what is important for this post. For a more complete version see <a href="https://github.com/jeffrafter/honk-action/blob/master/.gitignore">here</a>):</p><div class="gatsby-highlight" data-language=".gitignore"><pre class="language-.gitignore"><code class="language-.gitignore"># Dependency directories
+node_modules/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Typescript v1 declaration files
+typings/
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache</code></pre></div><p>With this setup we’ll ignore <code class="language-text">node_modules</code>. Again, when we release our action we’ll want to include these files. If we don’t we’ll need users of our action to install them which will not only take 25 to 30 seconds but will require extra steps in the calling workflow.</p></section>
+<section><h2 id="packages--dependencies"><a href="#packages--dependencies" aria-label="packages  dependencies permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Packages &#x26; Dependencies</h2><p>For almost any Node project you’ll find that you use a lot of packages – you’ll have far more code in packages in your <code class="language-text">node_modules</code> folder (where package code is stored) than your main project.</p><p>Initialize your packages:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> init -y</code></pre></div><p>Now you have a <code class="language-text">package.json</code>:</p><div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"honk-action"</span><span class="token punctuation">,</span>
+  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span>
+  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+  <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"keywords"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"ISC"</span>
+<span class="token punctuation">}</span></code></pre></div><p>Let’s simplify it a bit (you can fill out or keep fields you like here, but this is the minimum):</p><div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"private"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"tsc"</span><span class="token punctuation">,</span>
+    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"tsc --noEmit &amp;&amp; jest"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"ISC"</span>
+<span class="token punctuation">}</span></code></pre></div><p>The only scripts we need at the moment are <code class="language-text">build</code> which will convert our TypeScript to JavaScript and <code class="language-text">test</code> which will run our tests. While we’re developing our action we’ll need access to all of our project’s dependencies; but when we release our action we don’t want to include the testing, linting and TypeScript dependencies. Because of this, the difference between <code class="language-text">dependencies</code> and <code class="language-text">devDependencies</code> is important (as well as <code class="language-text">--save</code> versus <code class="language-text">--save-dev</code>).</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save <span class="token punctuation">\</span>
+  @actions/core <span class="token punctuation">\</span>
+  @actions/github</code></pre></div><p>The <code class="language-text">@actions/core</code> and <code class="language-text">@actions/github</code> are the baseline for interacting with GitHub and the incoming events. Our published action will need these dependencies when it runs.</p><p>When developing we’ll want to add testing support to test our action:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev <span class="token punctuation">\</span>
+  jest <span class="token punctuation">\</span>
+  nock</code></pre></div></section>
+<section><h2 id="typescript"><a href="#typescript" aria-label="typescript permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TypeScript</h2><p>Let’s add TypeScript support to our development dependencies:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev <span class="token punctuation">\</span>
+  typescript <span class="token punctuation">\</span>
+  ts-jest</code></pre></div><p>Finally, because we’re using TypeScript, we’ll want to add type support for development:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev <span class="token punctuation">\</span>
+  @types/jest <span class="token punctuation">\</span>
+  @types/node</code></pre></div><p>We’ll need to configure TypeScript before we can build our action. Create <code class="language-text">tsconfig.json</code>:</p><div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"compilerOptions"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"module"</span><span class="token operator">:</span> <span class="token string">"commonjs"</span><span class="token punctuation">,</span>
+    <span class="token property">"target"</span><span class="token operator">:</span> <span class="token string">"esnext"</span><span class="token punctuation">,</span>
+    <span class="token property">"lib"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"es2015"</span><span class="token punctuation">,</span> <span class="token string">"es2017"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"strict"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"esModuleInterop"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"skipLibCheck"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"noUnusedLocals"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"noUnusedParameters"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"noImplicitAny"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"removeComments"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+    <span class="token property">"preserveConstEnums"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"include"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"**/*.ts"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"exclude"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"node_modules"</span><span class="token punctuation">]</span>
+<span class="token punctuation">}</span></code></pre></div><p>By default this allows us to build all of the actions contained in our repository, adds some strict compile-time checks, and skips type checking for our dependencies.</p></section>
+<section><h2 id="keep-it-clean-optional"><a href="#keep-it-clean-optional" aria-label="keep it clean optional permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Keep it clean (optional)</h2><blockquote>
+<p>Note: this section is not required to complete this tutorial; if you want to skip it feel free.</p>
+</blockquote><p>Everyone has different preferences when they edit code. Some prefer tabs over spaces. Some want two spaces instead of four. Some prefer semicolons and some don’t. It shouldn’t matter right? But it does. If editors are autoformatting code based on user preferences it is important to make sure everyone has chosen the same set of defaults for that autoformatting. This makes it easy to tell what changed between versions – even when different developers (with different preferences) have made changes.</p><p>For this reason we’ll setup a linter and code formatter for our code. Install <a href="https://eslint.org/">eslint</a> and <a href="https://prettier.io/">prettier</a>:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev <span class="token punctuation">\</span>
+  eslint <span class="token punctuation">\</span>
+  @typescript-eslint/eslint-plugin <span class="token punctuation">\</span>
+  @typescript-eslint/parser <span class="token punctuation">\</span>
+  eslint-config-prettier <span class="token punctuation">\</span>
+  eslint-plugin-prettier <span class="token punctuation">\</span>
+  prettier</code></pre></div><p>Now that we have the packages we’ll need to configure them in <code class="language-text">.eslintrc.json</code>:</p><div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"parser"</span><span class="token operator">:</span> <span class="token string">"@typescript-eslint/parser"</span><span class="token punctuation">,</span>
+  <span class="token property">"plugins"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"@typescript-eslint"</span><span class="token punctuation">,</span> <span class="token string">"prettier"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"extends"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"eslint:recommended"</span><span class="token punctuation">,</span>
+    <span class="token string">"plugin:@typescript-eslint/recommended"</span><span class="token punctuation">,</span>
+    <span class="token string">"prettier/@typescript-eslint"</span><span class="token punctuation">,</span>
+    <span class="token string">"plugin:prettier/recommended"</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"prettier/prettier"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">"error"</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token property">"singleQuote"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token property">"trailingComma"</span><span class="token operator">:</span> <span class="token string">"all"</span><span class="token punctuation">,</span>
+        <span class="token property">"bracketSpacing"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token property">"printWidth"</span><span class="token operator">:</span> <span class="token number">120</span><span class="token punctuation">,</span>
+        <span class="token property">"tabWidth"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+        <span class="token property">"semi"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token comment">// octokit/rest requires parameters that are not in camelcase</span>
+    <span class="token property">"camelcase"</span><span class="token operator">:</span> <span class="token string">"off"</span><span class="token punctuation">,</span>
+    <span class="token property">"@typescript-eslint/camelcase"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"error"</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token property">"properties"</span><span class="token operator">:</span> <span class="token string">"never"</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"env"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"node"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"jest"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"parserOptions"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"ecmaVersion"</span><span class="token operator">:</span> <span class="token number">2018</span><span class="token punctuation">,</span>
+    <span class="token property">"sourceType"</span><span class="token operator">:</span> <span class="token string">"module"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span></code></pre></div><p>I won’t go into too much detail here; there are <a href="https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project">better explanations</a> to be found. This configuration does a few things:</p><ul>
+<li>Relies on the typescript eslint parser with the prettier plugin - I’ve found this works very well in @Code. If you were previously using <code class="language-text">ts-lint</code> with prettier this setup should replace your old configuration.</li>
+<li>This eslint config doesn’t work perfectly for projects that contain both JavaScript and TypeScript - because of that we won’t attempt to lint JavaScript files in our project</li>
+<li>I’ve turned off the camelcase rules for properties - when writing GitHub Actions you will likely use properties from <code class="language-text">@actions/github</code> and from the API and these will not be camelcase.<sup id="fnref-camelcase"><a href="#fn-camelcase" class="footnote-ref">camelcase</a></sup></li>
+<li>The expected environment should include <code class="language-text">node</code> and <code class="language-text">jest</code> - this will help <code class="language-text">eslint</code> ignore missing declarations for things like <code class="language-text">describe</code>, <code class="language-text">process</code>, <code class="language-text">module</code>, etc.</li>
+</ul><p>If you need to ignore specific files when linting you can add them to <code class="language-text">.eslintignore</code>. Because our setup doesn’t work well for JavaScript we’ll ignore all JavaScript files in <code class="language-text">.eslintignore</code>:</p><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">*.js</code></pre></div><p>Add a <code class="language-text">lint</code> item to the <code class="language-text">scripts</code> node in <code class="language-text">package.json</code>:</p><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">  &quot;scripts&quot;: {
+    &quot;build&quot;: &quot;tsc&quot;,
+    &quot;test&quot;: &quot;tsc --noEmit &amp;&amp; jest&quot;,
+    &quot;lint&quot;: &quot;eslint . --ext .ts&quot;
+  },</code></pre></div><p>With this in place we can run:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> run lint</code></pre></div><p>Wait, there’s an error:</p><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Oops! Something went wrong! :(
+
+ESLint: 6.6.0.
+
+No files matching the pattern &quot;.&quot; were found.
+Please check for typing mistakes in the pattern.</code></pre></div><p>We haven’t written any TypeScript to lint yet. Time to stop configuring and start writing code.</p><h1 id="building-the-action"><a href="#building-the-action" aria-label="building the action permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Building the action</h1><p>Create a new file called <code class="language-text">honk.ts</code>:</p><div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> core <span class="token keyword">from</span> <span class="token string">'@actions/core'</span>
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> github <span class="token keyword">from</span> <span class="token string">'@actions/github'</span>
+
+<span class="token keyword">const</span> run <span class="token operator">=</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token builtin">Promise</span><span class="token operator">&lt;</span><span class="token keyword">void</span><span class="token operator">></span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token keyword">try</span> <span class="token punctuation">{</span>
+    <span class="token comment">// Our action will need to API access the repository so we require a token</span>
+    <span class="token comment">// This will need to be set in the calling workflow, otherwise we'll exit</span>
+    <span class="token keyword">const</span> token <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">[</span><span class="token string">'GITHUB_TOKEN'</span><span class="token punctuation">]</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>token<span class="token punctuation">)</span> <span class="token keyword">return</span>
+
+    <span class="token comment">// Create the octokit client</span>
+    <span class="token keyword">const</span> octokit<span class="token punctuation">:</span> github<span class="token punctuation">.</span>GitHub <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">github<span class="token punctuation">.</span>GitHub</span><span class="token punctuation">(</span>token<span class="token punctuation">)</span>
+
+    <span class="token comment">// The environment contains a variable for current repository. The repository</span>
+    <span class="token comment">// will be formatted as a name with owner (`nwo`); e.g., jeffrafter/example</span>
+    <span class="token comment">// We'll spliit this into two separate variables for later use</span>
+    <span class="token keyword">const</span> nwo <span class="token operator">=</span> process<span class="token punctuation">.</span>env<span class="token punctuation">[</span><span class="token string">'GITHUB_REPOSITORY'</span><span class="token punctuation">]</span> <span class="token operator">||</span> <span class="token string">'/'</span>
+    <span class="token keyword">const</span> <span class="token punctuation">[</span>owner<span class="token punctuation">,</span> repo<span class="token punctuation">]</span> <span class="token operator">=</span> nwo<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// This action works on issue comments. Because of this we expect the context</span>
+    <span class="token comment">// payload to contain the issue and the comment</span>
+    <span class="token keyword">const</span> issue <span class="token operator">=</span> github<span class="token punctuation">.</span>context<span class="token punctuation">.</span>payload<span class="token punctuation">[</span><span class="token string">'issue'</span><span class="token punctuation">]</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>issue<span class="token punctuation">)</span> <span class="token keyword">return</span>
+    <span class="token keyword">const</span> comment <span class="token operator">=</span> github<span class="token punctuation">.</span>context<span class="token punctuation">.</span>payload<span class="token punctuation">.</span>comment
+    <span class="token keyword">const</span> commentBody <span class="token operator">=</span> comment<span class="token punctuation">.</span>body
+
+    <span class="token comment">// If the comment contains "honk" anywhere in the body, there is nothing for our action to do</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>commentBody<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/honk/i</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span>
+
+    <span class="token comment">// The comment didn't contain "honk", delete it</span>
+    <span class="token comment">// https://octokit.github.io/rest.js/#octokit-routes-issues-delete-comment</span>
+    <span class="token keyword">const</span> deleteCommentResponse <span class="token operator">=</span> <span class="token keyword">await</span> octokit<span class="token punctuation">.</span>issues<span class="token punctuation">.</span><span class="token function">deleteComment</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      owner<span class="token punctuation">,</span>
+      repo<span class="token punctuation">,</span>
+      comment_id<span class="token punctuation">:</span> comment<span class="token punctuation">.</span>id<span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Deleted comment! </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span><span class="token constant">JSON</span><span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>deleteCommentResponse<span class="token punctuation">.</span>status<span class="token punctuation">)</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+
+    <span class="token comment">// Add a new comment that says honk</span>
+    <span class="token comment">// https://octokit.github.io/rest.js/#octokit-routes-issues-create-comment</span>
+    <span class="token keyword">const</span> issueCommentResponse <span class="token operator">=</span> <span class="token keyword">await</span> octokit<span class="token punctuation">.</span>issues<span class="token punctuation">.</span><span class="token function">createComment</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      owner<span class="token punctuation">,</span>
+      repo<span class="token punctuation">,</span>
+      issue_number<span class="token punctuation">:</span> issue<span class="token punctuation">.</span><span class="token builtin">number</span><span class="token punctuation">,</span>
+      body<span class="token punctuation">:</span>
+        <span class="token string">'![honk](https://user-images.githubusercontent.com/4064/65900857-cf462f80-e36b-11e9-9a9c-76170c99618b.png)'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Honk! </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>issueCommentResponse<span class="token punctuation">.</span>data<span class="token punctuation">.</span>url<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment">// If there is any error we'll fail the action with the error message</span>
+    <span class="token builtin">console</span><span class="token punctuation">.</span><span class="token function">error</span><span class="token punctuation">(</span>error<span class="token punctuation">.</span>message<span class="token punctuation">)</span>
+    core<span class="token punctuation">.</span><span class="token function">setFailed</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Honk-action failure: </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>error<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> run</code></pre></div><p>The code inside your action should be auto-executing. In this case we define a <code class="language-text">run</code><sup id="fnref-run"><a href="#fn-run" class="footnote-ref">run</a></sup> method and then immediately call it right after it has been defined. In fact, you don’t even need to define a method, you could include the code for your action directly. In some cases that might be okay, but as the complexity of the action increases it would become confusing. We’ve also made our function the default export. This isn’t required but will make things easier as we move forward and test our code.</p><p>The image this includes is:</p><p><img src="https://user-images.githubusercontent.com/4064/65900857-cf462f80-e36b-11e9-9a9c-76170c99618b.png" alt="honk"></p></section>
+<section><h2 id="testing-the-action"><a href="#testing-the-action" aria-label="testing the action permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Testing the action</h2><p>Create a new file called <code class="language-text">__tests__/honk.test.ts</code>:</p><div class="gatsby-highlight" data-language="ts"><pre class="language-ts"><code class="language-ts"><span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> github <span class="token keyword">from</span> <span class="token string">'@actions/github'</span>
+<span class="token keyword">import</span> <span class="token punctuation">{</span>WebhookPayload<span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@actions/github/lib/interfaces'</span>
+<span class="token keyword">import</span> nock <span class="token keyword">from</span> <span class="token string">'nock'</span>
+<span class="token keyword">import</span> run <span class="token keyword">from</span> <span class="token string">'../honk'</span>
+
+<span class="token function">beforeEach</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// resetModules allows you to safely change the environment and mock imports</span>
+  <span class="token comment">// separately in each of your tests</span>
+  jest<span class="token punctuation">.</span><span class="token function">resetModules</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+  process<span class="token punctuation">.</span>env<span class="token punctuation">[</span><span class="token string">'GITHUB_REPOSITORY'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'example/repository'</span>
+  process<span class="token punctuation">.</span>env<span class="token punctuation">[</span><span class="token string">'GITHUB_TOKEN'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token string">'12345'</span>
+
+  <span class="token comment">// Create a mock payload for our tests to use</span>
+  <span class="token comment">// https://developer.github.com/v3/activity/events/types/#issuecommentevent</span>
+  github<span class="token punctuation">.</span>context<span class="token punctuation">.</span>payload <span class="token operator">=</span> <span class="token punctuation">{</span>
+    action<span class="token punctuation">:</span> <span class="token string">'created'</span><span class="token punctuation">,</span>
+    issue<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      <span class="token builtin">number</span><span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    comment<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+      id<span class="token punctuation">:</span> <span class="token number">1</span><span class="token punctuation">,</span>
+      user<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+        login<span class="token punctuation">:</span> <span class="token string">'monalisa'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">,</span>
+      body<span class="token punctuation">:</span> <span class="token string">'Honk'</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span> <span class="token keyword">as</span> WebhookPayload
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+<span class="token function">describe</span><span class="token punctuation">(</span><span class="token string">'honk action'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// The most basic test is just checking that the run method doesn't throw an error.</span>
+  <span class="token comment">// This test relies on our default payload which contains "honk" in the comment body.</span>
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'runs'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token function">expect</span><span class="token punctuation">(</span><span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+      <span class="token keyword">await</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span>not<span class="token punctuation">.</span><span class="token function">toThrow</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+  <span class="token function">it</span><span class="token punctuation">(</span><span class="token string">'deletes the comment and adds a comment'</span><span class="token punctuation">,</span> <span class="token keyword">async</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">// Override the default payload so that it doesn't include "honk". This should make the</span>
+    <span class="token comment">// action run through more of the code</span>
+    github<span class="token punctuation">.</span>context<span class="token punctuation">.</span>payload<span class="token punctuation">.</span>comment<span class="token punctuation">.</span>body <span class="token operator">=</span> <span class="token string">'No geese allowed'</span>
+
+    <span class="token comment">// Use nock to mock out the external call to delete the comment</span>
+    <span class="token comment">// Setting this up creates an expectation that must be called and returns a 200 response</span>
+    <span class="token function">nock</span><span class="token punctuation">(</span><span class="token string">'https://api.github.com'</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token keyword">delete</span><span class="token punctuation">(</span><span class="token string">'/repos/example/repository/issues/comments/1'</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">reply</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token comment">// Use nock to mock out the external call to create the honk comment</span>
+    <span class="token comment">// Setting this up creates an expectation that must be called and returns a 200 response</span>
+    <span class="token function">nock</span><span class="token punctuation">(</span><span class="token string">'https://api.github.com'</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">post</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">/repos/example/repository/issues/1/comments</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">,</span> <span class="token parameter">body</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token punctuation">(</span>
+          body<span class="token punctuation">.</span>body <span class="token operator">===</span>
+          <span class="token string">'![honk](https://user-images.githubusercontent.com/4064/65900857-cf462f80-e36b-11e9-9a9c-76170c99618b.png)'</span>
+        <span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+      <span class="token punctuation">.</span><span class="token function">reply</span><span class="token punctuation">(</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+        url<span class="token punctuation">:</span> <span class="token string">'https://github.com/#example'</span><span class="token punctuation">,</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+
+    <span class="token keyword">await</span> <span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span></code></pre></div><p>We import the actions core library and the run method we just created in our honk action. We only have two tests, a very basic test which guarantees that by default we don’t throw errors. The second uses <code class="language-text">nock</code> to mock out any external calls. These expectations must be satisfied or the test will fail. Additionally, if there are any unexpected external calls the test will fail.</p><p>In order to run these tests we’ll need to configure Jest. Create a new file called <code class="language-text">jest.config.js</code> in the root of your project:</p><div class="gatsby-highlight" data-language="js"><pre class="language-js"><code class="language-js"><span class="token comment">// Setup nock to disable all external calls</span>
+<span class="token keyword">const</span> nock <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'nock'</span><span class="token punctuation">)</span>
+nock<span class="token punctuation">.</span><span class="token function">disableNetConnect</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment">// By default, debug messages are written to the console which can make the test output confusing</span>
+<span class="token comment">// Instead, bind to stdout and hide all debug messages</span>
+<span class="token keyword">const</span> processStdoutWrite <span class="token operator">=</span> process<span class="token punctuation">.</span>stdout<span class="token punctuation">.</span><span class="token function">write</span><span class="token punctuation">.</span><span class="token function">bind</span><span class="token punctuation">(</span>process<span class="token punctuation">.</span>stdout<span class="token punctuation">)</span>
+process<span class="token punctuation">.</span>stdout<span class="token punctuation">.</span><span class="token function-variable function">write</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">str<span class="token punctuation">,</span> encoding<span class="token punctuation">,</span> cb</span><span class="token punctuation">)</span> <span class="token operator">=></span> <span class="token punctuation">{</span>
+  <span class="token comment">// Debug messages begin with ::</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>str<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/^::/</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token keyword">return</span> <span class="token boolean">false</span>
+  <span class="token keyword">return</span> <span class="token function">processStdoutWrite</span><span class="token punctuation">(</span>str<span class="token punctuation">,</span> encoding<span class="token punctuation">,</span> cb<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+  clearMocks<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  moduleFileExtensions<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'js'</span><span class="token punctuation">,</span> <span class="token string">'ts'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  testEnvironment<span class="token punctuation">:</span> <span class="token string">'node'</span><span class="token punctuation">,</span>
+  testMatch<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">'**/*.test.ts'</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  transform<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+    <span class="token string">'^.+\\.ts$'</span><span class="token punctuation">:</span> <span class="token string">'ts-jest'</span><span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  verbose<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre></div><p>At this point you can run the tests. From your terminal run:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> run <span class="token builtin class-name">test</span></code></pre></div><p>You should see:</p><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">&gt; @ test /Users/njero/Code/Examples/honk-action-2
+&gt; tsc --noEmit &amp;&amp; jest
+
+ PASS  __tests__/honk.test.ts
+  honk action
+    ✓ runs (10ms)
+    ✓ deletes the comment and adds a comment (32ms)
+
+  console.log honk.ts:37
+    Deleted comment! 200
+
+  console.log honk.ts:47
+    Honk! https://github.com/#example
+
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        1.729s
+Ran all test suites.</code></pre></div><p>We can also run our <code class="language-text">lint</code> task to verify that our code is clean:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> run lint</code></pre></div><p>It should succeed with no errors and no warnings.</p><h3 id="create-the-actionyml-for-the-honk-action"><a href="#create-the-actionyml-for-the-honk-action" aria-label="create the actionyml for the honk action permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create the action.yml for the honk action</h3><p>We’ve written the code for our action and a test that tells us it is working. Unfortunately we haven’t defined how our action should be used. To do that we have to configure the action in a <code class="language-text">yml</code> file. In our previous post on Working with GitHub Actions our action was embedded in our project and wasn’t meant to be reused. In this case we want the action to be used; create <code class="language-text">action.yml</code> in the project root:</p><div class="gatsby-highlight" data-language="yaml"><pre class="language-yaml"><code class="language-yaml"><span class="token key atrule">name</span><span class="token punctuation">:</span> honk
+<span class="token key atrule">description</span><span class="token punctuation">:</span> <span class="token string">"Checks to see if a comment contains 'Honk', otherwise deletes it"</span>
+<span class="token key atrule">author</span><span class="token punctuation">:</span> <span class="token string">'@jeffrafter'</span>
+<span class="token key atrule">runs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">using</span><span class="token punctuation">:</span> <span class="token string">'node12'</span>
+  <span class="token key atrule">main</span><span class="token punctuation">:</span> <span class="token string">'./honk.js'</span></code></pre></div><p>There are <a href="https://help.github.com/en/articles/metadata-syntax-for-github-actions">more configuration options available</a> for actions but this represents the minimum amount needed to run. Specifically, it gives the action a name (which does not need to match the name of our TypeScript file) and points to the the code <code class="language-text">./honk.js</code>. Unfortunately, we don’t yet have a file called <code class="language-text">honk.js</code>, we have a file called <code class="language-text">honk.ts</code>.</p><p>GitHub Actions have built-in support for JavaScript and cannot run TypeScript directly. Because of this we will need to <em>transpile</em> our TypeScript to JavaScript before it can be run. We’ll do this as part of our release step.</p><h1 id="releasing-a-github-action"><a href="#releasing-a-github-action" aria-label="releasing a github action permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Releasing a GitHub Action</h1><p>At this point our action is built. If we create the honk-action repository on GitHub and push up the results, however, it won’t work. When workflows refer to actions defined in other repositories it expects there to be a release.</p><p>GitHub provides documentation on releasing your action:</p><ul>
+<li><a href="https://help.github.com/en/github/automating-your-workflow-with-github-actions/creating-a-javascript-action#commit-and-push-your-action-to-github">https://help.github.com/en/github/automating-your-workflow-with-github-actions/creating-a-javascript-action#commit-and-push-your-action-to-github</a></li>
+<li><a href="https://help.github.com/en/github/automating-your-workflow-with-github-actions/publishing-actions-in-github-marketplace">https://help.github.com/en/github/automating-your-workflow-with-github-actions/publishing-actions-in-github-marketplace</a></li>
+</ul><p>In order to use a published action a repository must use a workflow. For example:</p><div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Honk workflow
+<span class="token key atrule">on</span><span class="token punctuation">:</span>
+  <span class="token key atrule">issue_comment</span><span class="token punctuation">:</span>
+    <span class="token key atrule">types</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>created<span class="token punctuation">]</span>
+
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">build</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> Honk
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> jeffrafter/honk<span class="token punctuation">-</span>action@v1
+        <span class="token key atrule">env</span><span class="token punctuation">:</span>
+          <span class="token key atrule">GITHUB_TOKEN</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.GITHUB_TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre></div><p>Notice that the action is referenced by the username and action repository along with a versions number; in this case <code class="language-text">@v1</code>. This version number refers to a tagged release. This helps ensure that that users of your action have consistent behavior (for example providing the correct inputs and seeing consistent outputs). As an action author you can make use of whatever versioning system you want (including semantic versions) however the actions runned will treat everything after the <code class="language-text">@</code> as a ref<sup id="fnref-ref"><a href="#fn-ref" class="footnote-ref">ref</a></sup> and expects and exact match.</p><p>To release our action we need to do the following:</p><ol>
+<li>Verify that our tests pass and there are no lint errors</li>
+<li>Compile our TypeScript to JavaScript</li>
+<li>Include our dependencies (but not our development dependencies)</li>
+<li>Push our release</li>
+<li>Create a tag for our release</li>
+</ol><p>Start by creating a new branch:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> checkout -b releases/v1</code></pre></div><p>Run all of the checks:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> run lint
+<span class="token function">npm</span> <span class="token builtin class-name">test</span></code></pre></div><p>Build our TypeScript</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> run build</code></pre></div><p>This will generate two files. If you check the current <code class="language-text">git status</code> you’ll see:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">On branch releases/v1
+Untracked files:
+  <span class="token punctuation">(</span>use <span class="token string">"git add &lt;file>..."</span> to include <span class="token keyword">in</span> what will be committed<span class="token punctuation">)</span>
+
+	__tests__/honk.test.js
+	honk.js
+
+nothing added to commit but untracked files present <span class="token punctuation">(</span>use <span class="token string">"git add"</span> to track<span class="token punctuation">)</span></code></pre></div><p>For our release we need to include <code class="language-text">*.js</code> so let’s add these files to the commit:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span></code></pre></div><p>We also need to add our action’s dependencies. These are stored in the <code class="language-text">node_modules</code> folder. Unfortunately our <code class="language-text">node_modules</code> folder includes all of our development dependencies as well (which we needed to run our checks and build our TypeScript). At this point we need to reset the <code class="language-text">node_modules</code> folder to remove those dependencies. We’ll do this by deleting the folder and reinstalling:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">rm</span> -rf node_modules
+<span class="token function">npm</span> <span class="token function">install</span> --production</code></pre></div><p>Now our <code class="language-text">node_modules</code> folder is smaller, but it still can’t be added to our release because we’ve explicitly ignored it. We’ll have to remove that line from the <code class="language-text">.gitignore</code>. On a Mac you can run:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">sed</span> -i <span class="token string">''</span> <span class="token string">'/node_modules/d'</span> .gitignore</code></pre></div><p>Or you could just open the <code class="language-text">.gitignore</code> and remove the line manually and save the file. Running <code class="language-text">git status</code> you should see:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">On branch releases/v1
+Changes to be committed:
+  <span class="token punctuation">(</span>use <span class="token string">"git reset HEAD &lt;file>..."</span> to unstage<span class="token punctuation">)</span>
+
+	new file:   __tests__/honk.test.js
+	new file:   honk.js
+
+Changes not staged <span class="token keyword">for</span> commit:
+  <span class="token punctuation">(</span>use <span class="token string">"git add &lt;file>..."</span> to update what will be committed<span class="token punctuation">)</span>
+  <span class="token punctuation">(</span>use <span class="token string">"git checkout -- &lt;file>..."</span> to discard changes <span class="token keyword">in</span> working directory<span class="token punctuation">)</span>
+
+	modified:   .gitignore
+
+Untracked files:
+  <span class="token punctuation">(</span>use <span class="token string">"git add &lt;file>..."</span> to include <span class="token keyword">in</span> what will be committed<span class="token punctuation">)</span>
+
+	node_modules/</code></pre></div><p>We’ve changed the <code class="language-text">.gitignore</code> and are no longer ignoring the <code class="language-text">node_modules</code> folder. Let’s add it:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span></code></pre></div><p>At this point we can create a commit:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> commit -m <span class="token string">"v1"</span></code></pre></div><p>Let’s push the <code class="language-text">releases/v1</code> branch to GitHub:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> push origin releases/v1</code></pre></div><p>Next we’ll want to create a tag for our release and push it:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> tag -fa v1 -m <span class="token string">"v1"</span>
+<span class="token function">git</span> push origin v1</code></pre></div><p>Honk action <code class="language-text">v1</code> is now ready to be used by remote workflows.</p><p>When you begin developing again you’ll need to re-install the development dependencies. This feels cumbersome. In fact, you can use Zeit’s packaging tool you can avoid changing <code class="language-text">node_modules</code> completely.</p></section>
+<section><h2 id="pushing-changes-to-a-release"><a href="#pushing-changes-to-a-release" aria-label="pushing changes to a release permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Pushing changes to a release</h2><p>When you are first creating your action you might want to push changes to your tagged release. You can do this by creating a new commit and force-pushing it and removing and republishing the associated tags. I’ve included all of the commands to reset to master, remove and install node modules and force push commits here:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> checkout releases/v1
+<span class="token comment"># Get this branch even with master so the latest changes are included</span>
+<span class="token function">git</span> reset --hard master
+<span class="token comment"># Reinstalling all dependencies here might be redundant</span>
+<span class="token function">rm</span> -rf node_modules
+<span class="token function">npm</span> <span class="token function">install</span>
+<span class="token comment"># Rerun the checks and rebuild the TypeScript</span>
+<span class="token function">npm</span> run build
+<span class="token comment"># Reinstall only the production dependencies</span>
+<span class="token function">rm</span> -rf node_modules
+<span class="token function">npm</span> <span class="token function">install</span> --production
+<span class="token comment"># Make it non-ignored</span>
+<span class="token function">sed</span> -i <span class="token string">''</span> <span class="token string">'/node_modules/d'</span> .gitignore
+<span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span>
+<span class="token function">git</span> commit -m <span class="token string">"v1"</span>
+<span class="token comment"># Force push to overwrite any previous commits for this branch</span>
+<span class="token function">git</span> push -f origin releases/v1
+<span class="token comment"># Remove previously pushed tags (v1 will be unusable momentarily until you re-push)</span>
+<span class="token function">git</span> push origin :refs/tags/v1
+<span class="token comment"># Tag and push the new tag</span>
+<span class="token function">git</span> tag -fa v1 -m <span class="token string">"v1"</span>
+<span class="token function">git</span> push origin v1</code></pre></div><h1 id="using-the-released-action-in-a-workflow"><a href="#using-the-released-action-in-a-workflow" aria-label="using the released action in a workflow permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using the released action in a workflow</h1><p>In order to execute the <code class="language-text">honk-action</code> we need to create a workflow. Let’s create another repository called <code class="language-text">honk-test</code>.</p><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">mkdir honk-test
+cd honk-test</code></pre></div><p>Workflows should be kept in the <code class="language-text">.github/workflows</code> folder in your repository. Your repository may contain multiple workflows. Create <code class="language-text">.github/workflows/honk-workflow.yml</code>:</p><div class="gatsby-highlight" data-language="yml"><pre class="language-yml"><code class="language-yml"><span class="token key atrule">name</span><span class="token punctuation">:</span> Honk workflow
+<span class="token key atrule">on</span><span class="token punctuation">:</span>
+  <span class="token key atrule">issue_comment</span><span class="token punctuation">:</span>
+    <span class="token key atrule">types</span><span class="token punctuation">:</span> <span class="token punctuation">[</span>created<span class="token punctuation">]</span>
+
+<span class="token key atrule">jobs</span><span class="token punctuation">:</span>
+  <span class="token key atrule">build</span><span class="token punctuation">:</span>
+    <span class="token key atrule">name</span><span class="token punctuation">:</span> Honk
+    <span class="token key atrule">runs-on</span><span class="token punctuation">:</span> ubuntu<span class="token punctuation">-</span>latest
+    <span class="token key atrule">steps</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token key atrule">uses</span><span class="token punctuation">:</span> jeffrafter/honk<span class="token punctuation">-</span>action@v1
+        <span class="token key atrule">env</span><span class="token punctuation">:</span>
+          <span class="token key atrule">GITHUB_TOKEN</span><span class="token punctuation">:</span> $<span class="token punctuation">{</span><span class="token punctuation">{</span> secrets.GITHUB_TOKEN <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre></div><p>We’ve created a workflow that should be executed whenever issue comments are <code class="language-text">[created]</code>. There are many different <a href="https://help.github.com/en/articles/events-that-trigger-workflows">events that trigger worklows</a>. By specifying <code class="language-text">[created]</code> we’re saying that every time a new comment is added to an issue in our GitHub repository our workflow should be executed. In this case we’ve chosen to execute our workflow using the <code class="language-text">ubuntu-latest</code> environment. Our workflow has a single step which uses the <code class="language-text">honk-action@v1</code> we released.</p><p>Notice that we’ve also specified the <code class="language-text">GITHUB_TOKEN</code> to be used in the environemnt of the <code class="language-text">honk-action</code> step. The environment for each step is is sandboxed so you must specify the variables you want to use for every step that uses them.</p><p>This should be enough to run our <code class="language-text">honk-action</code>. Commit this and push it to GitHub.</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> status</code></pre></div><p>You should see:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">On branch master
+Untracked files:
+  <span class="token punctuation">(</span>use <span class="token string">"git add &lt;file>..."</span> to include <span class="token keyword">in</span> what will be committed<span class="token punctuation">)</span>
+
+	.github/workflows/
+
+nothing added to commit but untracked files present <span class="token punctuation">(</span>use <span class="token string">"git add"</span> to track<span class="token punctuation">)</span></code></pre></div><p>Let’s add the workflow:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span></code></pre></div><p>And commit:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> commit -m <span class="token string">"Honk workflow and configuration"</span></code></pre></div><p>Our test repository and workflow are ready. All that’s left is to push it to GitHub and try it out. Create a <a href="https://github.com/new">new repository</a>. Again, I called mine <code class="language-text">honk-test</code> and made it public.</p><p>
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/b075ba625d97710b8c1a17f233aa1880/6b5c3/action-create-a-new-repository.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block;  max-width: 745px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 105.36912751677852%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAIAAADJt1n/AAAACXBIWXMAAAsSAAALEgHS3X78AAACPklEQVQ4y41Uy5LTMBD0/38D3LiQ257gwo0jXCi2KmxI4vghvy3LetmW5NCyw1aATRZV11hxMjM90zMJhnHM87zxp66qqiyLLM+naTr/xwmkVLuf++MpOZzIPkyfDlGcpJR2Het7zmFgORfLR2/xZKx3znlnYywXgglN1dxKW3OD9/gO7631Fk8PYxa7XIyZ5yXzMAx10zDGQFlrdT7P1ns5YA3/4pkXBErpYxidojiKU8Z4LyToCSm5kIj7Ss3IUlR1lJCOixcyrPxuOqM8e6GHYkBkgADD+MxvdrO7xuwtYgKBFGK3fazbVqFipfaH8BQlSUpAnS/87yQPlJTbx2+HMMrLqqUdyfKUZAAEixMSE0I7ihgQinFGedPLjsv+4qy1zvKiKMuqrtFzEEaftGeh/UVpiUlQSCHhwwQVqpf60p0Aw9RSynqOJo/jZB2kcqtU6wUF2t8Fz34EPJYpsMGqmF164C6ef1hj3GTsX0CPgaCTjpQdIRmqQmbtyaLdIy7jNIE7MtxsGAJgWrEMtGNwRoHanwE1Iw5gb89ZAB217FB2xxhSKjXAS3r3AYEmY+4NCRiCMH63Ahvj5cWqMNa2dB3vdST+BcbTpoQcjyEmAzYMT7j8eNq1bYv0CI0u3syM9ldNQ4oiK4q8LLHHEBzKV3Xjl0RIc5t5cIZowhrpxn5y4wz9IHrXi7ppmRisu7tVscw2yYcH8mmTfvzafl934XqrlnOj5kMfvd1u3u0e3mzff86/XDnPr/6H/QIWv8BKbJxmlwAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;"
+        alt="Creating a new repository"
+        title=""
+        src="/static/b075ba625d97710b8c1a17f233aa1880/6b5c3/action-create-a-new-repository.png"
+        srcset="/static/b075ba625d97710b8c1a17f233aa1880/01387/action-create-a-new-repository.png 320w,
+/static/b075ba625d97710b8c1a17f233aa1880/e49a9/action-create-a-new-repository.png 640w,
+/static/b075ba625d97710b8c1a17f233aa1880/6b5c3/action-create-a-new-repository.png 745w"
+        sizes="(max-width: 745px) 100vw, 745px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p><p>Once you’ve created the repository you’ll need to click the <code class="language-text">SSH</code> button make sure to setup the remote for your repository to use <code class="language-text">ssh</code> instead of HTTPs:</p><p>
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/7bce14b679800a0b17c30c2c183f0dd3/6b691/action-http-ssh.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block;  max-width: 975px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 13.435897435897438%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAIAAAAcOLh5AAAACXBIWXMAAAsSAAALEgHS3X78AAAAl0lEQVQI1x3L2w6DIBAEUP//6/rQmhqtyCIILhcVqwgmFpucTOZhpmjYSLgWxrccidAfphqQhGPOisoe5zVdPt7Wv+W45nBbwlU8301ZkxryR5VV+3jVhKlOIIGhpT1wKdFJtErndAJnuwS/n36P0zcVdLAweqIj2MT01uFBTQJ3MhMG45ma+nEC6XLJWgwsz2zkdutM+gHdl6Uk9WXKwgAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;"
+        alt="Choose ssh"
+        title=""
+        src="/static/7bce14b679800a0b17c30c2c183f0dd3/6b691/action-http-ssh.png"
+        srcset="/static/7bce14b679800a0b17c30c2c183f0dd3/01387/action-http-ssh.png 320w,
+/static/7bce14b679800a0b17c30c2c183f0dd3/e49a9/action-http-ssh.png 640w,
+/static/7bce14b679800a0b17c30c2c183f0dd3/6b691/action-http-ssh.png 975w"
+        sizes="(max-width: 975px) 100vw, 975px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p><p>Unfortunately you can’t push workflow changes via HTTPs as it is considered an integration. If you try you’ll see something like the following when you try to push:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">Enumerating objects: <span class="token number">31</span>, done.
+Counting objects: <span class="token number">100</span>% <span class="token punctuation">(</span><span class="token number">31</span>/31<span class="token punctuation">)</span>, done.
+Delta compression using up to <span class="token number">12</span> threads
+Compressing objects: <span class="token number">100</span>% <span class="token punctuation">(</span><span class="token number">25</span>/25<span class="token punctuation">)</span>, done.
+Writing objects: <span class="token number">100</span>% <span class="token punctuation">(</span><span class="token number">31</span>/31<span class="token punctuation">)</span>, <span class="token number">55.08</span> KiB <span class="token operator">|</span> <span class="token number">7.87</span> MiB/s, done.
+Total <span class="token number">31</span> <span class="token punctuation">(</span>delta <span class="token number">6</span><span class="token punctuation">)</span>, reused <span class="token number">0</span> <span class="token punctuation">(</span>delta <span class="token number">0</span><span class="token punctuation">)</span>
+remote: Resolving deltas: <span class="token number">100</span>% <span class="token punctuation">(</span><span class="token number">6</span>/6<span class="token punctuation">)</span>, done.
+To https://github.com/jeffrafter/example-github-action-typescript.git
+ <span class="token operator">!</span> <span class="token punctuation">[</span>remote rejected<span class="token punctuation">]</span> master -<span class="token operator">></span> master <span class="token punctuation">(</span>refusing to allow an integration to create or update .github/workflows/debug-workflow.yml<span class="token punctuation">)</span>
+error: failed to push some refs to <span class="token string">'https://github.com/jeffrafter/example-github-action-typescript.git'</span></code></pre></div><p>Setup your remote by copying the instructions on the page for <code class="language-text">an existing repository from the command line</code>:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> remote <span class="token function">add</span> origin git@github.com:jeffrafter/example-github-action-typescript.git</code></pre></div><p>Then push:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> push -u origin master</code></pre></div><p>On GitHub, click on the <code class="language-text">Actions</code> tab of your repository and click on the running build. When complete you should see something like:</p><p>
+  <a
+    class="gatsby-resp-image-link"
+    href="/static/a0a53f46e9ec9328b8f1d85f48976dc0/fbfd0/action-debug-first-run.png"
+    style="display: block"
+    target="_blank"
+    rel="noopener"
+  >
+  
+  <span
+    class="gatsby-resp-image-wrapper"
+    style="position: relative; display: block;  max-width: 1280px; margin-left: auto; margin-right: auto;"
+  >
+    <span
+      class="gatsby-resp-image-background-image"
+      style="padding-bottom: 58.46036585365854%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAIAAADtbgqsAAAACXBIWXMAAAsSAAALEgHS3X78AAABpUlEQVQoz4WQ2U7CUBCG+yZuLAVaoBSKDYuCNhE0rgnojT6NlyYmJr6TqMgiXBmCIsYulGOhBVqhDtQYMU08+XLyn2n/zMyPIWXIy9qrpAJtSX3hFamrqJrWV7W+Nvi+Z0LVBoIky+hD6iK4O12EiX3UQYooQ6knygpCH0O1N5mYk9kZgzBBm+Ppy/xzsGel1X5rv7camtrrK+imUCjc3tVq9XKlCpTKlfviQ/GhBICoVKuV6qNVhwr29KrUm52WNBB6Zq3Br3EZPx3106s4GfIFIzhJLbvJFXwKCIJighGWDDHeAO3w+LHcVeP4urlz8bR72cycF71MmmZYIhT1+GkwwB9Ob+AHeFpFwOULYobxqRufw5EBG70LYjzNRdgEm0hB2xWcsHraMjXrM7OuGxAAL4hr3BbNJsNs0ukLuAjKTYZwkrbFEwh/m0f6rDMvbB+dbO3l9vOnB/mz7OFJnNuJbWRtiW9uz5th7BQHbSkmBmNDPG6C+r3zb1xEcM7MCxKbTC86vfDtZzcrHltszAsOjxXsv8ybRSm2vrnkJmBaCPNfvgA5lW0c2T6SSQAAAABJRU5ErkJggg=='); background-size: cover; display: block;"
+    >
+      <img
+        class="gatsby-resp-image-image"
+        style="width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;"
+        alt="Completed action"
+        title=""
+        src="/static/a0a53f46e9ec9328b8f1d85f48976dc0/0309e/action-debug-first-run.png"
+        srcset="/static/a0a53f46e9ec9328b8f1d85f48976dc0/01387/action-debug-first-run.png 320w,
+/static/a0a53f46e9ec9328b8f1d85f48976dc0/e49a9/action-debug-first-run.png 640w,
+/static/a0a53f46e9ec9328b8f1d85f48976dc0/0309e/action-debug-first-run.png 1280w,
+/static/a0a53f46e9ec9328b8f1d85f48976dc0/fbfd0/action-debug-first-run.png 1312w"
+        sizes="(max-width: 1280px) 100vw, 1280px"
+      />
+    </span>
+  </span>
+  
+  </a>
+    </p><p>The action ran and the build was marked as complete. But we can’t see the debug information we added. By default, GitHub will <a href="https://github.com/actions/toolkit/blob/getting-started-docs/docs/action-debugging.md#step-debug-logs">not output debug information in the action logs</a>. To see debug output in the logs you need to add a new secret to your repository. Go to the <code class="language-text">Settings</code> tab of your repository and click <code class="language-text">Secrets</code> on the sidebar. Then click <code class="language-text">Add a new secret</code>. Set the name to <code class="language-text">ACTIONS_STEP_DEBUG</code> with the value <code class="language-text">true</code> and click <code class="language-text">Add</code>. Currently, there is no way to re-run an action. We’ll see the debug information when we push a new commit.</p><h1 id="thanks"><a href="#thanks" aria-label="thanks permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Thanks</h1><p>Lots of folks @GitHub helped review and solve some of the issues I came across while writing this post. Special shout-outs go to <a href="https://github.com/jasonetco">@jasonetco</a>, <a href="https://github.com/mscoutermarsh">@mscoutermarsh</a>, and <a href="https://github.com/mikekavouras">@mikekavouras</a>. Also, special thanks to the docs team and the octokit/rest.js team who make great things.</p></section>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn-goose">
+<p>The inspiration for this GitHub Action came from a Discord Bot created by [@melissamcewen](<a href="https://twitter.com/melissamcewen/status/1176980019811405824">https://twitter.com/melissamcewen/status/1176980019811405824</a>].</p>
+<a href="#fnref-goose" class="footnote-backref">↩</a>
+</li>
+<li id="fn-environments">
+<p>There are several different <a href="https://help.github.com/en/articles/virtual-environments-for-github-actions#supported-virtual-environments-and-hardware-resources">virtual operating systems</a> you can use for your actions which come preloaded with <a href="https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions">useful software</a>. Additionally, you can utilize Docker containers running in one of these virtual environments to pre-configure your hosts.</p>
+<a href="#fnref-environments" class="footnote-backref">↩</a>
+</li>
+<li id="fn-dotfiles">
+<p>Notice that the <code class="language-text">.nvmrc</code> file starts with a ”<code class="language-text">.</code>” (period). By default on most systems this creates a hidden file. Oftentimes general project config is hidden away. On MacOS you can show hidden files in Finder by running <code class="language-text">defaults write com.apple.finder AppleShowAllFiles -bool true</code> and restarting Finder. If you want to list hidden files in your console use the <code class="language-text">-a</code> parameter: <code class="language-text">ls -a</code>.</p>
+<a href="#fnref-dotfiles" class="footnote-backref">↩</a>
+</li>
+<li id="fn-camelcase">
+<p>There are lots of ways to name variables including <code class="language-text">camelCase</code>, <code class="language-text">snake_case</code>, <code class="language-text">ProperCase</code>, and <code class="language-text">CONSTANT_CASE</code>. JavaScript and TypeScript tend to use <code class="language-text">camelCase</code> for variable names, but Ruby (which is what much of GitHub and the GitHub API is written in) generally uses <code class="language-text">snake_case</code>. This is one of those places where the idioms of different languages collide and you have to make the best of it.</p>
+<a href="#fnref-camelcase" class="footnote-backref">↩</a>
+</li>
+<li id="fn-run">
+<p>We’ve named our function <code class="language-text">run</code> but you could name the function anything you wanted. <code class="language-text">run</code> is a convention used in the base <a href="https://github.com/actions/javascript-template/blob/master/src/main.ts"><code class="language-text">javascript-template</code></a></p>
+<a href="#fnref-run" class="footnote-backref">↩</a>
+</li>
+<li id="fn-ref">
+<p>Workflows can also refer to GitHub Actions by SHA. In many cases this is much safer as an author could make changes to the code for a given tag.</p>
+<a href="#fnref-ref" class="footnote-backref">↩</a>
+</li>
+</ol>
+</div></div><ul class="sc-htpNat dGwHBP"><li><a rel="prev" href="/working-with-github-actions/">← <!-- -->Working with GitHub Actions</a></li></ul></div></article></main><footer class="footer sc-bwzfXH aCPwf">© <!-- -->2019<!-- -->,<!-- --> <a href="https://jeffrafter.com">jeffrafter.com</a>. Built with<!-- --> <a href="https://www.gatsbyjs.org">Gatsby</a></footer></div></div><script>
+  
+  
+  if(true) {
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  }
+  if (typeof ga === "function") {
+    ga('create', 'UA-61511214-2', 'auto', {});
+      
+      
+      
+      
+      
+      }</script><script id="gatsby-script-loader">/*<![CDATA[*/window.pagePath="/releasing-github-actions/";window.webpackCompilationHash="710cfbf1bc629db9a44f";/*]]>*/</script><script id="gatsby-chunk-mapping">/*<![CDATA[*/window.___chunkMapping={"app":["/app-e9d133dc920b9bbecfad.js"],"component---src-templates-post-tsx":["/component---src-templates-post-tsx-b66619650c89546d34f7.js"],"component---src-templates-tag-tsx":["/component---src-templates-tag-tsx-27df79a084644066061c.js"],"component---src-pages-404-tsx":["/component---src-pages-404-tsx-6ab431001cb5ec509e00.js"],"component---src-pages-about-tsx":["/component---src-pages-about-tsx-275f48ccd72fdc89b34d.js"],"component---src-pages-index-tsx":["/component---src-pages-index-tsx-a0e0185b64c28e613576.js"],"component---src-pages-tags-tsx":["/component---src-pages-tags-tsx-3a75e2fc13f4b9aaec5b.js"]};/*]]>*/</script><script src="/webpack-runtime-c0ce8ab1a4d661fcbec1.js" async=""></script><script src="/commons-fec927d88082be228f07.js" async=""></script><script src="/app-e9d133dc920b9bbecfad.js" async=""></script><script src="/component---src-templates-post-tsx-b66619650c89546d34f7.js" async=""></script><script src="/styles-6b7db68d4fb816f0b847.js" async=""></script></body></html>
