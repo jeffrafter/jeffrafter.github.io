@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeff Rafter]]></title><description><![CDATA[How to.]]></description><link>https://jeffrafter.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 04 Nov 2019 21:04:41 GMT</lastBuildDate><item><title><![CDATA[Releasing GitHub Actions]]></title><description><![CDATA[Previously, I posted about working with GitHub Actions. It covered how the basics of setting up a repository, configuring embedded actions…]]></description><link>https://jeffrafter.com/releasing-github-actions/</link><guid isPermaLink="false">https://jeffrafter.com/releasing-github-actions/</guid><pubDate>Tue, 05 Nov 2019 07:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;figure class=&quot;fullwidth&quot;&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeff Rafter]]></title><description><![CDATA[How to.]]></description><link>https://jeffrafter.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 04 Nov 2019 22:08:37 GMT</lastBuildDate><item><title><![CDATA[Releasing GitHub Actions]]></title><description><![CDATA[Previously, I posted about working with GitHub Actions. It covered how the basics of setting up a repository, configuring embedded actions…]]></description><link>https://jeffrafter.com/releasing-github-actions/</link><guid isPermaLink="false">https://jeffrafter.com/releasing-github-actions/</guid><pubDate>Tue, 05 Nov 2019 07:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;figure class=&quot;fullwidth&quot;&gt;
   &lt;span
     class=&quot;gatsby-resp-image-wrapper&quot;
     style=&quot;position: relative; display: block;  max-width: 1280px; margin-left: auto; margin-right: auto;&quot;
@@ -10,7 +10,7 @@
       &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;Octocats launhing a spaceship&quot;
+        alt=&quot;Octocats launching a spaceship&quot;
         title=&quot;&quot;
         src=&quot;/static/d0a43dcf6d9204bf622e7ba48c8ea463/0309e/actions.png&quot;
         srcset=&quot;/static/d0a43dcf6d9204bf622e7ba48c8ea463/01387/actions.png 320w,
@@ -409,10 +409,10 @@ Untracked files:
 
 	.github/workflows/
 
-nothing added to commit but untracked files present &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;use &lt;span class=&quot;token string&quot;&gt;&quot;git add&quot;&lt;/span&gt; to track&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Let’s add the workflow:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And commit:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; commit -m &lt;span class=&quot;token string&quot;&gt;&quot;Honk workflow and configuration&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Our test repository and workflow are ready. All that’s left is to push it to GitHub and try it out. Create a &lt;a href=&quot;https://github.com/new&quot;&gt;new repository&lt;/a&gt;. Again, I called mine &lt;code class=&quot;language-text&quot;&gt;honk-test&lt;/code&gt; and made it public.&lt;/p&gt;&lt;p&gt;
+nothing added to commit but untracked files present &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;use &lt;span class=&quot;token string&quot;&gt;&quot;git add&quot;&lt;/span&gt; to track&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Let’s add the workflow:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; &lt;span class=&quot;token builtin class-name&quot;&gt;.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And commit:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; commit -m &lt;span class=&quot;token string&quot;&gt;&quot;Honk workflow and configuration&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;All that’s left is to push it to GitHub and try it out. Create a &lt;a href=&quot;https://github.com/new&quot;&gt;new repository&lt;/a&gt;. Again, I called mine &lt;code class=&quot;language-text&quot;&gt;honk-test&lt;/code&gt; and made it public.&lt;/p&gt;&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/b075ba625d97710b8c1a17f233aa1880/6b5c3/action-create-a-new-repository.png&quot;
+    href=&quot;/static/e9f15c50e6a3543a05bdaad2d6bda985/40920/action-honk-test.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -420,22 +420,23 @@ nothing added to commit but untracked files present &lt;span class=&quot;token p
   
   &lt;span
     class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 745px; margin-left: auto; margin-right: auto;&quot;
+    style=&quot;position: relative; display: block;  max-width: 1280px; margin-left: auto; margin-right: auto;&quot;
   &gt;
     &lt;span
       class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 105.36912751677852%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAIAAADJt1n/AAAACXBIWXMAAAsSAAALEgHS3X78AAACPklEQVQ4y41Uy5LTMBD0/38D3LiQ257gwo0jXCi2KmxI4vghvy3LetmW5NCyw1aATRZV11hxMjM90zMJhnHM87zxp66qqiyLLM+naTr/xwmkVLuf++MpOZzIPkyfDlGcpJR2Het7zmFgORfLR2/xZKx3znlnYywXgglN1dxKW3OD9/gO7631Fk8PYxa7XIyZ5yXzMAx10zDGQFlrdT7P1ns5YA3/4pkXBErpYxidojiKU8Z4LyToCSm5kIj7Ss3IUlR1lJCOixcyrPxuOqM8e6GHYkBkgADD+MxvdrO7xuwtYgKBFGK3fazbVqFipfaH8BQlSUpAnS/87yQPlJTbx2+HMMrLqqUdyfKUZAAEixMSE0I7ihgQinFGedPLjsv+4qy1zvKiKMuqrtFzEEaftGeh/UVpiUlQSCHhwwQVqpf60p0Aw9RSynqOJo/jZB2kcqtU6wUF2t8Fz34EPJYpsMGqmF164C6ef1hj3GTsX0CPgaCTjpQdIRmqQmbtyaLdIy7jNIE7MtxsGAJgWrEMtGNwRoHanwE1Iw5gb89ZAB217FB2xxhSKjXAS3r3AYEmY+4NCRiCMH63Ahvj5cWqMNa2dB3vdST+BcbTpoQcjyEmAzYMT7j8eNq1bYv0CI0u3syM9ldNQ4oiK4q8LLHHEBzKV3Xjl0RIc5t5cIZowhrpxn5y4wz9IHrXi7ppmRisu7tVscw2yYcH8mmTfvzafl934XqrlnOj5kMfvd1u3u0e3mzff86/XDnPr/6H/QIWv8BKbJxmlwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+      style=&quot;padding-bottom: 105.09383378016086%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAYAAABG1c6oAAAACXBIWXMAABYlAAAWJQFJUiTwAAACiklEQVQ4y41Vy3LUMBD0/9/hABcOOUFx4UcoKAgJ+44365csv+WHZDczk3iTVFG7dlWXtLLV6pnp0Xp1XcM/PiJNU8RxhCiKcDqdEIQhxnHE0meaJoFXlCXWmy38xwCHY4jdwwmbvY9TEILfMaqqprGSsZQ5rZGQktbm9/Pj9cNAC/Si6ZEZQFWOYOk0wDkHa61geB5lPryMAmtfFDIZh8chh0GAvmtJ/ygbmJAxjtPykFku59A/nhDFikJpJAQOqW4awUBRzJuuPRJyEMZ4IMLGtFcVXIPHIb0+2NIBbWvQtS36vmOmZ2WTzMdrhCqJsbr/jaoxlNwBUVribuPj8Bgj0RVaC0HVjejdhRziSZVXFrkQslUSpRDpGhs/QaAq6GpATKVXRQtfFUgLymffo+06mM4QGsEw9Oe0eJz0WKXQWiPLMhRFQYUw4rc8L6CzHBmNWVbIO/Yer2elRlomUHkkpLNOjw27Wm+xP/hSaZVq2lgip81ccbaMo445w81zyic1EsPSGheX171xdGhIkYCqLLYhsEJWaq07Y3ht5uGtsXnkVvVUNSKi/HAPs9+eusOdTc1rc6cs9KGj/GgcydwldU1jjJjZkFpWPc8Nrc+Xxf+Ip7koE7WZqXPEiZKEt20nEBLyYkcVZeLXZBd92NImvjFEGd8g1dMNwiMfkOW5VHVxp/Tkq91ujy1hf3iQq2wrv3f4u1qLlTjcjr5bckl41lnEKRlaJQjjGJoUsZXYPpwGrTOqupGKX8rhmXCitrK1E/TlAP7NanReIiM/KiY0w3NjLQj5Z3GPD4fPuDl+w8fDF/wqVm96EwuJzoTf1S3e3d7g0+or3v+5wY/0TigcVf/lw8V/LfgHUyBgHSx8azEAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
     &gt;
       &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
         alt=&quot;Creating a new repository&quot;
         title=&quot;&quot;
-        src=&quot;/static/b075ba625d97710b8c1a17f233aa1880/6b5c3/action-create-a-new-repository.png&quot;
-        srcset=&quot;/static/b075ba625d97710b8c1a17f233aa1880/01387/action-create-a-new-repository.png 320w,
-/static/b075ba625d97710b8c1a17f233aa1880/e49a9/action-create-a-new-repository.png 640w,
-/static/b075ba625d97710b8c1a17f233aa1880/6b5c3/action-create-a-new-repository.png 745w&quot;
-        sizes=&quot;(max-width: 745px) 100vw, 745px&quot;
+        src=&quot;/static/e9f15c50e6a3543a05bdaad2d6bda985/0309e/action-honk-test.png&quot;
+        srcset=&quot;/static/e9f15c50e6a3543a05bdaad2d6bda985/01387/action-honk-test.png 320w,
+/static/e9f15c50e6a3543a05bdaad2d6bda985/e49a9/action-honk-test.png 640w,
+/static/e9f15c50e6a3543a05bdaad2d6bda985/0309e/action-honk-test.png 1280w,
+/static/e9f15c50e6a3543a05bdaad2d6bda985/40920/action-honk-test.png 1492w&quot;
+        sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
       /&gt;
     &lt;/span&gt;
   &lt;/span&gt;
@@ -444,7 +445,7 @@ nothing added to commit but untracked files present &lt;span class=&quot;token p
     &lt;/p&gt;&lt;p&gt;Once you’ve created the repository you’ll need to click the &lt;code class=&quot;language-text&quot;&gt;SSH&lt;/code&gt; button make sure to setup the remote for your repository to use &lt;code class=&quot;language-text&quot;&gt;ssh&lt;/code&gt; instead of HTTPs:&lt;/p&gt;&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/7bce14b679800a0b17c30c2c183f0dd3/6b691/action-http-ssh.png&quot;
+    href=&quot;/static/e6230310baff33832139a54516252b58/995af/action-http-ssh-honk-test.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -452,22 +453,23 @@ nothing added to commit but untracked files present &lt;span class=&quot;token p
   
   &lt;span
     class=&quot;gatsby-resp-image-wrapper&quot;
-    style=&quot;position: relative; display: block;  max-width: 975px; margin-left: auto; margin-right: auto;&quot;
+    style=&quot;position: relative; display: block;  max-width: 1280px; margin-left: auto; margin-right: auto;&quot;
   &gt;
     &lt;span
       class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 13.435897435897438%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAIAAAAcOLh5AAAACXBIWXMAAAsSAAALEgHS3X78AAAAl0lEQVQI1x3L2w6DIBAEUP//6/rQmhqtyCIILhcVqwgmFpucTOZhpmjYSLgWxrccidAfphqQhGPOisoe5zVdPt7Wv+W45nBbwlU8301ZkxryR5VV+3jVhKlOIIGhpT1wKdFJtErndAJnuwS/n36P0zcVdLAweqIj2MT01uFBTQJ3MhMG45ma+nEC6XLJWgwsz2zkdutM+gHdl6Uk9WXKwgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+      style=&quot;padding-bottom: 11.14616193480547%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAACCAIAAADXZGvcAAAACXBIWXMAAAsSAAALEgHS3X78AAAAbklEQVQI1zXG4QqDIBRA4d7/8QaLpWVXvWVeHZZLQQe19iP4OJyGw/Rko9AG0Ha9fLSsG2QPyIRu2bi8YypnKkeuZ67H7f/hUxqYHAfkyktKAv1LGGV3TQkpauPUfKHFry5EGzJtX7tWF/LV2W8/9Jlt2UpyYhMAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
     &gt;
       &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
         alt=&quot;Choose ssh&quot;
         title=&quot;&quot;
-        src=&quot;/static/7bce14b679800a0b17c30c2c183f0dd3/6b691/action-http-ssh.png&quot;
-        srcset=&quot;/static/7bce14b679800a0b17c30c2c183f0dd3/01387/action-http-ssh.png 320w,
-/static/7bce14b679800a0b17c30c2c183f0dd3/e49a9/action-http-ssh.png 640w,
-/static/7bce14b679800a0b17c30c2c183f0dd3/6b691/action-http-ssh.png 975w&quot;
-        sizes=&quot;(max-width: 975px) 100vw, 975px&quot;
+        src=&quot;/static/e6230310baff33832139a54516252b58/0309e/action-http-ssh-honk-test.png&quot;
+        srcset=&quot;/static/e6230310baff33832139a54516252b58/01387/action-http-ssh-honk-test.png 320w,
+/static/e6230310baff33832139a54516252b58/e49a9/action-http-ssh-honk-test.png 640w,
+/static/e6230310baff33832139a54516252b58/0309e/action-http-ssh-honk-test.png 1280w,
+/static/e6230310baff33832139a54516252b58/995af/action-http-ssh-honk-test.png 1902w&quot;
+        sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
       /&gt;
     &lt;/span&gt;
   &lt;/span&gt;
@@ -480,12 +482,12 @@ Compressing objects: &lt;span class=&quot;token number&quot;&gt;100&lt;/span&gt;
 Writing objects: &lt;span class=&quot;token number&quot;&gt;100&lt;/span&gt;% &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;31&lt;/span&gt;/31&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;, &lt;span class=&quot;token number&quot;&gt;55.08&lt;/span&gt; KiB &lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;7.87&lt;/span&gt; MiB/s, done.
 Total &lt;span class=&quot;token number&quot;&gt;31&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;delta &lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;, reused &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;delta &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
 remote: Resolving deltas: &lt;span class=&quot;token number&quot;&gt;100&lt;/span&gt;% &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt;/6&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;, done.
-To https://github.com/jeffrafter/example-github-action-typescript.git
+To https://github.com/jeffrafter/honk-test.git
  &lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;remote rejected&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; master -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; master &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;refusing to allow an integration to create or update .github/workflows/debug-workflow.yml&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-error: failed to push some refs to &lt;span class=&quot;token string&quot;&gt;&apos;https://github.com/jeffrafter/example-github-action-typescript.git&apos;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Setup your remote by copying the instructions on the page for &lt;code class=&quot;language-text&quot;&gt;an existing repository from the command line&lt;/code&gt;:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; remote &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; origin git@github.com:jeffrafter/example-github-action-typescript.git&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then push:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push -u origin master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;On GitHub, click on the &lt;code class=&quot;language-text&quot;&gt;Actions&lt;/code&gt; tab of your repository and click on the running build. When complete you should see something like:&lt;/p&gt;&lt;p&gt;
+error: failed to push some refs to &lt;span class=&quot;token string&quot;&gt;&apos;https://github.com/jeffrafter/honk-test.git&apos;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Setup your remote by copying the instructions on the page for &lt;code class=&quot;language-text&quot;&gt;an existing repository from the command line&lt;/code&gt;:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; remote &lt;span class=&quot;token function&quot;&gt;add&lt;/span&gt; origin git@github.com:jeffrafter/honk-test.git&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then push:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push -u origin master&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;On GitHub, click on the &lt;code class=&quot;language-text&quot;&gt;Actions&lt;/code&gt; tab of your repository. Nothing is running yet. Remember, our workflow only runs when issue comments are created. &lt;a href=&quot;https://github.com/jeffrafter/honk-test/issues/1&quot;&gt;Open an issue&lt;/a&gt; and then create a comment that doesn’t contain the word &lt;code class=&quot;language-text&quot;&gt;honk&lt;/code&gt;.&lt;/p&gt;&lt;p&gt;
   &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/a0a53f46e9ec9328b8f1d85f48976dc0/fbfd0/action-debug-first-run.png&quot;
+    href=&quot;/static/2c67839554674e152adb2a18cd8c5fad/c9a4a/please-honk.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
@@ -497,25 +499,92 @@ error: failed to push some refs to &lt;span class=&quot;token string&quot;&gt;&a
   &gt;
     &lt;span
       class=&quot;gatsby-resp-image-background-image&quot;
-      style=&quot;padding-bottom: 58.46036585365854%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAIAAADtbgqsAAAACXBIWXMAAAsSAAALEgHS3X78AAABpUlEQVQoz4WQ2U7CUBCG+yZuLAVaoBSKDYuCNhE0rgnojT6NlyYmJr6TqMgiXBmCIsYulGOhBVqhDtQYMU08+XLyn2n/zMyPIWXIy9qrpAJtSX3hFamrqJrWV7W+Nvi+Z0LVBoIky+hD6iK4O12EiX3UQYooQ6knygpCH0O1N5mYk9kZgzBBm+Ppy/xzsGel1X5rv7camtrrK+imUCjc3tVq9XKlCpTKlfviQ/GhBICoVKuV6qNVhwr29KrUm52WNBB6Zq3Br3EZPx3106s4GfIFIzhJLbvJFXwKCIJighGWDDHeAO3w+LHcVeP4urlz8bR72cycF71MmmZYIhT1+GkwwB9Ob+AHeFpFwOULYobxqRufw5EBG70LYjzNRdgEm0hB2xWcsHraMjXrM7OuGxAAL4hr3BbNJsNs0ukLuAjKTYZwkrbFEwh/m0f6rDMvbB+dbO3l9vOnB/mz7OFJnNuJbWRtiW9uz5th7BQHbSkmBmNDPG6C+r3zb1xEcM7MCxKbTC86vfDtZzcrHltszAsOjxXsv8ybRSm2vrnkJmBaCPNfvgA5lW0c2T6SSQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+      style=&quot;padding-bottom: 29.869281045751634%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsSAAALEgHS3X78AAAA+klEQVQY03WRP0/DMBDF8/2Z2TrxHZhg6YKQEAxU6gaNKuo09R8SO25ix/Hj4jRSEMXSzyffWc/3zhlnHGzHwA4FdnkOVhTQ2uC/FWMk5viX7H6/xs3bCq8f78g/9zgwBiEVtDFomgaGsNairjW6zs2yyxcu5ymXbcQWT+oFuj+nxDBEhDDA9yHhvCd6OOfRh4CBBMY7M1O3E2Mte7i7xfb5EdJE5GS//D7jqJoUed2i8UgYaq7uIur2N0xaFCPKwjoSrBSHEAKq0vhiJUoucTwJQuIkFISqwGUFY1sE6sLT1i/ofEg4Yqxl8yg82bpGsnyxe/0jFpZpBD8FP8+pEeEI4wAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
     &gt;
       &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
-        alt=&quot;Completed action&quot;
+        alt=&quot;Please honk&quot;
         title=&quot;&quot;
-        src=&quot;/static/a0a53f46e9ec9328b8f1d85f48976dc0/0309e/action-debug-first-run.png&quot;
-        srcset=&quot;/static/a0a53f46e9ec9328b8f1d85f48976dc0/01387/action-debug-first-run.png 320w,
-/static/a0a53f46e9ec9328b8f1d85f48976dc0/e49a9/action-debug-first-run.png 640w,
-/static/a0a53f46e9ec9328b8f1d85f48976dc0/0309e/action-debug-first-run.png 1280w,
-/static/a0a53f46e9ec9328b8f1d85f48976dc0/fbfd0/action-debug-first-run.png 1312w&quot;
+        src=&quot;/static/2c67839554674e152adb2a18cd8c5fad/0309e/please-honk.png&quot;
+        srcset=&quot;/static/2c67839554674e152adb2a18cd8c5fad/01387/please-honk.png 320w,
+/static/2c67839554674e152adb2a18cd8c5fad/e49a9/please-honk.png 640w,
+/static/2c67839554674e152adb2a18cd8c5fad/0309e/please-honk.png 1280w,
+/static/2c67839554674e152adb2a18cd8c5fad/c9a4a/please-honk.png 1530w&quot;
         sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
       /&gt;
     &lt;/span&gt;
   &lt;/span&gt;
   
   &lt;/a&gt;
-    &lt;/p&gt;&lt;p&gt;The action ran and the build was marked as complete. But we can’t see the debug information we added. By default, GitHub will &lt;a href=&quot;https://github.com/actions/toolkit/blob/getting-started-docs/docs/action-debugging.md#step-debug-logs&quot;&gt;not output debug information in the action logs&lt;/a&gt;. To see debug output in the logs you need to add a new secret to your repository. Go to the &lt;code class=&quot;language-text&quot;&gt;Settings&lt;/code&gt; tab of your repository and click &lt;code class=&quot;language-text&quot;&gt;Secrets&lt;/code&gt; on the sidebar. Then click &lt;code class=&quot;language-text&quot;&gt;Add a new secret&lt;/code&gt;. Set the name to &lt;code class=&quot;language-text&quot;&gt;ACTIONS_STEP_DEBUG&lt;/code&gt; with the value &lt;code class=&quot;language-text&quot;&gt;true&lt;/code&gt; and click &lt;code class=&quot;language-text&quot;&gt;Add&lt;/code&gt;. Currently, there is no way to re-run an action. We’ll see the debug information when we push a new commit.&lt;/p&gt;&lt;h1 id=&quot;thanks&quot;&gt;&lt;a href=&quot;#thanks&quot; aria-label=&quot;thanks permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Thanks&lt;/h1&gt;&lt;p&gt;Lots of folks @GitHub helped review and solve some of the issues I came across while writing this post. Special shout-outs go to &lt;a href=&quot;https://github.com/jasonetco&quot;&gt;@jasonetco&lt;/a&gt;, &lt;a href=&quot;https://github.com/mscoutermarsh&quot;&gt;@mscoutermarsh&lt;/a&gt;, and &lt;a href=&quot;https://github.com/mikekavouras&quot;&gt;@mikekavouras&lt;/a&gt;. Also, special thanks to the docs team and the octokit/rest.js team who make great things.&lt;/p&gt;&lt;/section&gt;
+    &lt;/p&gt;&lt;p&gt;Once you add the comment, the action will run and be marked as successful.&lt;/p&gt;&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/be667e398664cd2d38912c49ee002701/649f3/honk-action-run.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 1280px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 34.06374501992032%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAHCAYAAAAIy204AAAACXBIWXMAAAsSAAALEgHS3X78AAABQUlEQVQoz3VR207CQBDtVxgNYghULhZqaYFuoWxKMci3mPjgJxjjHxiivhlCUEOMn9Rn0gR4kNi+HHdWNjElNjmZzs7ZM2dnNNvto90N0OkNUDNbKFXNHc6h1/ZBNeKxfoiWx2G7vkSlbuP0zIKmGxZMx0PDZpJMl8pGUxZVngXVSIB4Cro4o6gRgbrxcCyj1x+CXFcbjrxYFg2VMwU6z0IJS8FOL4AfjMD8EP5gJB3Xm65w7Yp/Jt38dZsv1nCYLwnoODrRkSuUZaRcI3WaAQ8vwYdjdPmFFMq6Uk/NFSq4ur7B4uMTs/kbprM5Jo/PeJnO8Pq++HVI83PFUsiVnMc/y6iI2sFxEQ+TJ9CXJAk2mzXWqxW22y+Rf0MrCbLD+M4Zg9XuwbDaewuhnJrR027v7hHHMZbLJaIoQpqmEtTgB9qn/SSxS9lbAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Honk action run&quot;
+        title=&quot;&quot;
+        src=&quot;/static/be667e398664cd2d38912c49ee002701/0309e/honk-action-run.png&quot;
+        srcset=&quot;/static/be667e398664cd2d38912c49ee002701/01387/honk-action-run.png 320w,
+/static/be667e398664cd2d38912c49ee002701/e49a9/honk-action-run.png 640w,
+/static/be667e398664cd2d38912c49ee002701/0309e/honk-action-run.png 1280w,
+/static/be667e398664cd2d38912c49ee002701/a987b/honk-action-run.png 1920w,
+/static/be667e398664cd2d38912c49ee002701/649f3/honk-action-run.png 2008w&quot;
+        sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;&lt;p&gt;The action should have deleted the comment and added a honk comment in it’s place:&lt;/p&gt;&lt;p&gt;
+  &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f26e478fd7bc43c0834dd5b55773a47d/c381c/honk-comment-honk.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+  
+  &lt;span
+    class=&quot;gatsby-resp-image-wrapper&quot;
+    style=&quot;position: relative; display: block;  max-width: 1280px; margin-left: auto; margin-right: auto;&quot;
+  &gt;
+    &lt;span
+      class=&quot;gatsby-resp-image-background-image&quot;
+      style=&quot;padding-bottom: 69.91441737985518%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsSAAALEgHS3X78AAADNklEQVQ4y32U7U9bZRjG+/dMPo3tE4lGpxMnGRhjjNkLScUPazb0g0DbQ9/O6SktbaEt5SWDgttYUDcyt0RWMwaOLdMY/bDND3PgxmQotNjSt2NrX34+PYxg4sudXHnuk+e5r/u6nvvJMfA8nqw+5cGDH0ml0ySSSXK5PNvbGTLZrI5sNkdya4tkcotsLkehoPFvYdA0jWKxSD6fJ7O9redaoUCpVNLzPZTQtD/YPV/fL1cqlMsVKpUdVKs1DD6fl5sLC5Rq8Hu2QEYr6rlWrukolqtoxTI1/jsED3lRV65UMWxsbJDJZLhzZZZLAwE+jwxydTTKpVCQzwb8zEyMs/T1DX74/i7ffbvE3TuL3L51k8WFeeLxr5i7Hmdu7jpfzsXZ3Exg2O0SMX3Aqf0v8FHTQc7sb6Dz8CuYXn2Jk0deZ2y4n2jIQ8AnI7scmC299PRYBSx095ixmCW6usw8fPgThlqtJrxXGf7QhKnpALZ3jiJ3HGMkOsDocAjVbiUQ8KO6VZxOBY9bIRZVcSuy+JZRZJVuqVs0cvPo0fKOwjrhVNCD2nOGiFASGQrg93tRPR5kRcVud+nFVslOOBzm/q0rhIMDKO5+jJ0nOHS8iY5OI8vLKzuEdZWXZ2fw+lQ8qgenQ8ZRhyByOHbI7GJVZJmzsavMXF5kZGiK0FCMt4zNNLY18Pb7rfy88vi5QkEYi01hFnehK7H2ityKzeYQ6py6VZdLweF0EzkbxxWN4w+EkcXZtvYWGlv2YTxt5MnjX/YIJyendCJFWLwxv8C9e/c5d26asZExMQwfXm8/qlA/PTsvpnobVXHrjY62v0Hjm/voON0hCJ/+nfATJMmGTSj6dPo8S/Fr9PX16w0UWRGWZcaiES6Oj/LNtS8IBYJIvQ5ajUc42NrAiVPvsra2tkc4MTGp26zfXa+5G0vXx6LArtuuN6lbt4jnUh/U7OQ4TskphiLz2vEXOdDSQJupmZXfVnanXOPChYvIslu31ifg9fqFQt8/4BN7g4NBJs6P4IpINJ98mUPvNdEuHWM1ubpHmMlkSaVSAun/RVr8PHK5LOl8mvXEOusbz/h1c51EKkGp/Cd/AV5+V6+KzvEVAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    &gt;
+      &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        style=&quot;width: 100%; height: 100%; margin: 0; vertical-align: middle; position: absolute; top: 0; left: 0; box-shadow: inset 0px 0px 0px 400px white;&quot;
+        alt=&quot;Honk action deleting a comment and adding a honk comment&quot;
+        title=&quot;&quot;
+        src=&quot;/static/f26e478fd7bc43c0834dd5b55773a47d/0309e/honk-comment-honk.png&quot;
+        srcset=&quot;/static/f26e478fd7bc43c0834dd5b55773a47d/01387/honk-comment-honk.png 320w,
+/static/f26e478fd7bc43c0834dd5b55773a47d/e49a9/honk-comment-honk.png 640w,
+/static/f26e478fd7bc43c0834dd5b55773a47d/0309e/honk-comment-honk.png 1280w,
+/static/f26e478fd7bc43c0834dd5b55773a47d/c381c/honk-comment-honk.png 1519w&quot;
+        sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
+      /&gt;
+    &lt;/span&gt;
+  &lt;/span&gt;
+  
+  &lt;/a&gt;
+    &lt;/p&gt;&lt;h1 id=&quot;thanks&quot;&gt;&lt;a href=&quot;#thanks&quot; aria-label=&quot;thanks permalink&quot; class=&quot;anchor&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Thanks&lt;/h1&gt;&lt;p&gt;Lots of folks @GitHub helped review and solve some of the issues I came across while writing this post. Also, special thanks to the docs team and the octokit/rest.js team who make great things.&lt;/p&gt;&lt;/section&gt;
 &lt;div class=&quot;footnotes&quot;&gt;
 &lt;hr&gt;
 &lt;ol&gt;
