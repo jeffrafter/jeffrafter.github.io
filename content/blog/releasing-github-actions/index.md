@@ -29,7 +29,7 @@ In order to follow this, you'll need a GitHub account. Additionally, you'll need
 
 For our example we'll create a GitHub Action which listens for new issue comments - if the comment doesn't contain the word "honk" our action will delete the comment and add a new comment with a picture of the goose from [Untitled Goose Game](https://goose.game/).[^goose] This isn't very practical, but it should serve as a good foundation for building actions that respond to comments.
 
-[^goose]: The inspiration for this GitHub Action came from a Discord Bot created by [@melissamcewen](https://twitter.com/melissamcewen/status/1176980019811405824].
+[^goose]: The inspiration for this GitHub Action came from a Discord Bot created by [@melissamcewen](https://twitter.com/melissamcewen/status/1176980019811405824).
 
 Here is the layout for our action:
 
