@@ -1,7 +1,7 @@
 ---
 title: Abusive Organizations
 date: '2019-11-12T00:01:00'
-published: true
+published: false
 slug: abusive-organizations
 image: ../../assets/mona-ice.png
 layout: post
