@@ -10,5 +10,16 @@
   "search.exclude": {
     "public/**": true,
     "node_modules/**": true
-  }
+  },
+  "cSpell.ignoreWords": [
+    "camelcase",
+    "dotfiles",
+    "eslintcache",
+    "eslintignore",
+    "fullwidth",
+    "gitignore",
+    "nvmrc",
+    "octocats",
+    "octokit"
+  ]
 }

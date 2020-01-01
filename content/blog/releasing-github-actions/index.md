@@ -49,7 +49,7 @@ README.md
 tsconfig.json
 ```
 
-Notice that `honk.ts` and `__tests__` are both in the root of our respository. In this case our action is not very complex, using only a single file. If you have a complex action which contains many modules it might make sense to to put these into a `src` or `lib` folder.
+Notice that `honk.ts` and `__tests__` are both in the root of our repository. In this case our action is not very complex, using only a single file. If you have a complex action which contains many modules it might make sense to to put these into a `src` or `lib` folder.
 
 We'll dig into each of these files.
 
@@ -207,7 +207,7 @@ By default this allows us to build all of the actions contained in our repositor
 
 > Note: this section is not required to complete this tutorial; if you want to skip it feel free.
 
-Everyone has different preferences when they edit code. Some prefer tabs over spaces. Some want two spaces instead of four. Some prefer semicolons and some don't. It shouldn't matter right? But it does. If editors are autoformatting code based on user preferences it is important to make sure everyone has chosen the same set of defaults for that autoformatting. This makes it easy to tell what changed between versions – even when different developers (with different preferences) have made changes.
+Everyone has different preferences when they edit code. Some prefer tabs over spaces. Some want two spaces instead of four. Some prefer semicolons and some don't. It shouldn't matter right? But it does. If editors are auto-formatting code based on user preferences it is important to make sure everyone has chosen the same set of defaults for that auto-formatting. This makes it easy to tell what changed between versions – even when different developers (with different preferences) have made changes.
 
 For this reason we'll setup a linter and code formatter for our code. Install [eslint](https://eslint.org/) and [prettier](https://prettier.io/):
 
@@ -324,7 +324,7 @@ const run = async (): Promise<void> => {
 
     // The environment contains a variable for current repository. The repository
     // will be formatted as a name with owner (`nwo`); e.g., jeffrafter/example
-    // We'll spliit this into two separate variables for later use
+    // We'll split this into two separate variables for later use
     const nwo = process.env['GITHUB_REPOSITORY'] || '/'
     const [owner, repo] = nwo.split('/')
 
@@ -562,7 +562,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-Notice that the action is referenced by the username and action repository along with a versions number; in this case `@v1`. This version number refers to a tagged release. This helps ensure that that users of your action have consistent behavior (for example providing the correct inputs and seeing consistent outputs). As an action author you can make use of whatever versioning system you want (including semantic versions) however the actions runned will treat everything after the `@` as a ref[^ref] and expects and exact match.
+Notice that the action is referenced by the username and action repository along with a versions number; in this case `@v1`. This version number refers to a tagged release. This helps ensure that that users of your action have consistent behavior (for example providing the correct inputs and seeing consistent outputs). As an action author you can make use of whatever versioning system you want (including semantic versions) however the actions runner will treat everything after the `@` as a ref[^ref] and expects and exact match.
 
 [^ref]: Workflows can also refer to GitHub Actions by SHA. In many cases this is much safer as an author could make changes to the code for a given tag.
 
@@ -742,9 +742,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-We've created a workflow that should be executed whenever issue comments are `[created]`. There are many different [events that trigger worklows](https://help.github.com/en/articles/events-that-trigger-workflows). By specifying `[created]` we're saying that every time a new comment is added to an issue in our GitHub repository our workflow should be executed. In this case we've chosen to execute our workflow using the `ubuntu-latest` environment. Our workflow has a single step which uses the `honk-action@v1` we released.
+We've created a workflow that should be executed whenever issue comments are `[created]`. There are many different [events that trigger workflows](https://help.github.com/en/articles/events-that-trigger-workflows). By specifying `[created]` we're saying that every time a new comment is added to an issue in our GitHub repository our workflow should be executed. In this case we've chosen to execute our workflow using the `ubuntu-latest` environment. Our workflow has a single step which uses the `honk-action@v1` we released.
 
-Notice that we've also specified the `GITHUB_TOKEN` to be used in the environemnt of the `honk-action` step. The environment for each step is is sandboxed so you must specify the variables you want to use for every step that uses them.
+Notice that we've also specified the `GITHUB_TOKEN` to be used in the environment of the `honk-action` step. The environment for each step is is sandboxed so you must specify the variables you want to use for every step that uses them.
 
 This should be enough to run our `honk-action`. Commit this and push it to GitHub.
 
