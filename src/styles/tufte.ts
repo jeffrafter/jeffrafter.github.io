@@ -118,7 +118,7 @@ blockquote footer { width: 55%;
                     font-size: 1.1rem;
                     text-align: right; }
 
-section > p, section > footer, section > table { width: 55%; }
+section > p, section > footer, section > table { width: 55%; clear: left; }
 
 /* 50 + 5 == 55, to be the same width as paragraph */
 section > ol, section > ul { width: 50%;
@@ -279,4 +279,15 @@ label.margin-toggle:not(.sidenote-number) { display: none; }
 :not(pre) > code[class*="language-"] {
   font-size: 0.9em !important;
 }
+
+.gatsby-highlight:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.gatsby-highlight {
+  clear:both;
+}
+
 `
