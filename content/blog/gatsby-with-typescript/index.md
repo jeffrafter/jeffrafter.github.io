@@ -23,12 +23,7 @@ many other modern approaches. Gatsby is, in many ways, the JavaScript successor 
 [Jekyll](https://jekyllrb.com/). I've upgraded several sites to Gatsby (including this one) finding
 a way to integrate TypeScript as part of the journey.
 
-Before you read this it is important to point out: you should start with a template. In this post I
-am going to work through all of the steps and try to explain them along the way. Included
-in this post are some of the reasons behind why I've chosen one particular plugin or skipped
-another. Often – especially when you choose a default Gatsby starter – it is difficult to understand
-how all of the pieces fit together, or how you might build your own starter template. Hopefully
-this post provides some helpful examples.
+Before you read this it is important to point out: normally, you should probably start with a template. In this post I am going to work through all of the steps and try to explain them along the way. Included in this post are some of the reasons behind why I've chosen one particular plugin or skipped another. Often – especially when you choose a default Gatsby starter – it is difficult to understand how all of the pieces fit together, or how you might build your own starter template. Hopefully this post provides some helpful examples.
 
 Also: the Gatsby [documentation](https://www.gatsbyjs.org/docs/) is extremely good. There is a
 fantastic [tutorial](https://www.gatsbyjs.org/tutorial/), [quick start](https://www.gatsbyjs.org/docs/quick-start) and some recipes. I've relied on those and a host of other blogs when working on this
