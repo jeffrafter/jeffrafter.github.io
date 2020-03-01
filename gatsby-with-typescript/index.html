@@ -69,236 +69,210 @@
       />
     </span></figure><figcaption class="fullwidth">
 Image credit: <a href="https://getliterary.com/the-great-gatsby-throughout-the-years/">The Great Gatsby Throughout the Years</a>
-</figcaption><p>Creating a static website involves an almost infinite set of choices. Among these is
+</figcaption><p><em><em>Updated: February 2020</em></em></p><p>Creating a static website involves an almost infinite set of choices. Among these is
 <a href="https://gatsbyjs.com">Gatsby</a> – a static site framework based on <code class="language-text">React</code>, <code class="language-text">JSX</code>, <code class="language-text">CSS-in-JS</code> and
 many other modern approaches. Gatsby is, in many ways, the JavaScript successor to
 <a href="https://jekyllrb.com/">Jekyll</a>. I’ve upgraded several sites to Gatsby (including this one) finding
-a way to integrate TypeScript as part of the journey.</p><p>Before you read this it is important to point out: normally, you should probably start with a template. In this post I am going to work through all of the steps and try to explain them along the way. Included in this post are some of the reasons behind why I’ve chosen one particular plugin or skipped another. Often – especially when you choose a default Gatsby starter – it is difficult to understand how all of the pieces fit together, or how you might build your own starter template. Hopefully this post provides some helpful examples.</p><p>Also: the Gatsby <a href="https://www.gatsbyjs.org/docs/">documentation</a> is extremely good. There is a
+a way to integrate TypeScript as part of the journey.</p><p>In this post I am going to work through all of the pieces of a default Gatsby site and try to explain them along the way. Included in this post are some of the reasons why I’ve chosen one particular plugin or skipped another. Often – especially when you choose a default Gatsby starter – it is difficult to understand how all of the pieces fit together, or how you might build your own starter template. Hopefully this post provides some helpful examples.</p><p>Also: the Gatsby <a href="https://www.gatsbyjs.org/docs/">documentation</a> is extremely good. There is a
 fantastic <a href="https://www.gatsbyjs.org/tutorial/">tutorial</a>, <a href="https://www.gatsbyjs.org/docs/quick-start">quick start</a> and some recipes. I’ve relied on those and a host of other blogs when working on this
-post.</p><p>In order to follow this, you’ll need access to a terminal (or console) and you’ll need Node, Node Version Manager, and git installed.</p><blockquote>
-<p>All of the code (and commits) are availble on GitHub: <a href="https://github.com/example-gatsby-typescript-blog/example-gatsby-typescript-blog.github.io">https://github.com/example-gatsby-typescript-blog/example-gatsby-typescript-blog.github.io</a></p>
-</blockquote><h1 id="getting-started"><a href="#getting-started" aria-label="getting started permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Getting started</h1><p>First you want to create a folder for your project:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">mkdir</span> example
-<span class="token builtin class-name">cd</span> example</code></pre></div><p>We’ll be using Gatsby which is a toolkit that is written in TypeScript and requires Node. If you have multiple local projects you might run into a conflict about which Node version should be used. Node Version Manager solves this problem. To control which version of Node should be used in your project, add an <code class="language-text">.nvmrc</code><label for="sd-notice-that-the-less" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sd-notice-that-the-less" class="margin-toggle" /><span class="sidenote">Notice that the <code>.nvmrc</code> file starts with a "<code>.</code>" (period). By default on most systems this creates a hidden file. Oftentimes general project config is hidden away. On MacOS you can show hidden files in Finder by running <code>defaults write com.apple.finder AppleShowAllFiles -bool true</code> and restarting Finder. If you want to list hidden files in your console use the <code>-a</code> parameter: <code>ls -a</code>.</span> file:</p><div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token number">10.16</span>.<span class="token number">0</span></code></pre></div><p>The file is pretty simple; just the version. At the time you read this there may be a newer version of Node. You can check <a href="https://nodejs.org">https://nodejs.org</a>.</p></section>
-<section><h2 id="ignore-some-things"><a href="#ignore-some-things" aria-label="ignore some things permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ignore some things</h2><p>We plan to use <code class="language-text">git</code> to keep track of our changes. As we work on our project locally, there will be a lot of files we won’t want to keep track of; we’ll want to ignore them. To do this we’ll create a new file called <code class="language-text">.gitignore</code> <label for="sd-less-than-code" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sd-less-than-code" class="margin-toggle" /><span class="sidenote"><code>.gitignore</code> also starts with a "<code>.</code>" and you can start to see a pattern emerge.</span>. These files can be very short and specific, or they can be very long and general. We’ll use a more generic one that will work on different kinds of computers. If you are looking for an example <code class="language-text">.gitignore</code> you can check out <a href="https://github.com/github/gitignore">https://github.com/github/gitignore</a>. For now, just copy the following:</p><div class="gatsby-highlight" data-language=".gitignore"><pre class="language-.gitignore"><code class="language-.gitignore"># =========================
-# Node.js-Specific Ignores
-# =========================
-
-# Build directory
-public/
-
-# Gatsby cache
-.cache/
-
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Directory for instrumented libs generated by jscoverage/JSCover
-lib-cov
-
-# Coverage directory used by tools like istanbul
-coverage
-
-# nyc test coverage
-.nyc_output
-
-# Grunt intermediate storage (http://gruntjs.com/creating-plugins#storing-task-files)
-.grunt
-
-# Bower dependency directory (https://bower.io/)
-bower_components
-
-# node-waf configuration
-.lock-wscript
-
-# Compiled binary addons (http://nodejs.org/api/addons.html)
-build/Release
-
-# Dependency directories
+post.</p><p>In order to follow this, you’ll need access to a terminal (or console) and you’ll need <a href="https://nodejs.org/">Node</a>, <a href="http://npm.github.io/installation-setup-docs/installing/using-a-node-version-manager.html">Node Version Manager</a>, and <a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git">git</a> installed.</p><blockquote>
+<p>All of the code (and commits) are available on GitHub: <a href="https://github.com/example-gatsby-typescript-blog/example-gatsby-typescript-blog.github.io">https://github.com/example-gatsby-typescript-blog/example-gatsby-typescript-blog.github.io</a></p>
+</blockquote><h1 id="getting-started"><a href="#getting-started" aria-label="getting started permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Getting started</h1><p>To get started, we’ll follow the <a href="https://www.gatsbyjs.org/docs/quick-start">quick start</a>. First, install the Gatsby CLI (command line interface):</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> -g gatsby-cli</code></pre></div><p>Next, we’ll want to create a new Gatsby site. In this post we’ll assume that our site is called (rather uninspiringly) <code class="language-text">example</code>. Run the following command (it will generate a new folder called <code class="language-text">example</code> where you run the command):</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">gatsby new example</code></pre></div><p>Change directory to newly created folder <code class="language-text">example</code>:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token builtin class-name">cd</span> example</code></pre></div><p>The <code class="language-text">new</code> command created a project folder and automatically installed our node modules and setup defaults. The project structure should look like:</p><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">.git/
+.gitignore
+.prettierignore
+.prettierrc
+LICENSE
+README.md
+gatsby-browser.js
+gatsby-config.js
+gatsby-node.js
+gatsby-ssr.js
 node_modules/
-jspm_packages/
-
-# Typescript v1 declaration files
-typings/
-
-# Optional npm cache directory
-.npm
-
-# Optional eslint cache
-.eslintcache
-
-# Optional REPL history
-.node_repl_history
-
-# Output of &#39;npm pack&#39;
-*.tgz
-
-# Yarn Integrity file
-.yarn-integrity
-
-# dotenv environment variables file
-.env
-
-# =========================
-# Operating System Files
-# =========================
-
-# OSX
-# =========================
-
-.DS_Store
-.AppleDouble
-.LSOverride
-
-# Thumbnails
-._*
-
-# Files that might appear on external disk
-.Spotlight-V100
-.Trashes
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-# Windows
-# =========================
-
-# Windows image file caches
-Thumbs.db
-ehthumbs.db
-
-# Folder config file
-Desktop.ini
-
-# Recycle Bin used on file shares
-$RECYCLE.BIN/
-
-# Windows Installer files
-*.cab
-*.msi
-*.msm
-*.msp
-
-# Windows shortcuts
-*.lnk</code></pre></div><h3 id="configure-your-editor"><a href="#configure-your-editor" aria-label="configure your editor permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configure your editor</h3><blockquote>
+package-lock.json
+package.json
+src/
+  components/
+    header.js
+    image.js
+    layout.css
+    layout.js
+    seo.js
+  images/
+    gatsby-astronaut.png
+    gatsby-icon.png
+  pages/
+    404.js
+    index.js
+    page-2.js</code></pre></div><p>With this, we already have enough to run Gatsby and view our site. Run:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> start</code></pre></div><p>This will start Gatsby in <code class="language-text">develop</code> mode. Open a browser to <code class="language-text">http://localhost:8000</code> and you should see:</p><p><span
+      class="gatsby-resp-image-wrapper"
+      style="position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 1068px;"
+    >
+      <span
+    class="gatsby-resp-image-background-image"
+    style="padding-bottom: 63.10861423220974%; position: relative; bottom: 0; left: 0; background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAAAsSAAALEgHS3X78AAABOElEQVQ4y62SzUrDQBSF510E38JHEH8WbsRX8AGkCurOhdQfcCEoKDShKFSEbizYgFilqKWiUmgtrVZo2phOzI9pkxybSam6ixMvnLl3MfNxDnfI8kwSi1MCFsYT8OfYhIDYpIClaRHzY3uYHdnA3OhmaJHUdh6nOzc4jl/jKJ5Dcv2SyZ/FtQscrGRxuCqFFnkqPaJ4X0ClWsZ/FGk2ZciyDEVR0FE7sMxPeJ4H1x3Icb/nECKUaqCUQlVV1ll5YFAeEcdx/PesTN2G8vYRMAcX/hzZP7qGCUulkBJF5NOVAOhyAqms41ZMI7t7hvP9HNoNfeiQaym9roe7lITM1gmU1/dfcbkj1x5aKGSe4fTcSO6GwNJVA/U+9CeQO7JpATq1+0uI7o4B6y8UVNPQatswjOATRoF+AWXZxrN2/TJXAAAAAElFTkSuQmCC'); background-size: cover; display: block;"
+  ></span>
+  <img
+        class="gatsby-resp-image-image"
+        alt="gatsby default"
+        title="gatsby default"
+        src="/static/1bdf8ed59edbe6e243fbb3cc947aee4a/451b6/gatsby-default.png"
+        srcset="/static/1bdf8ed59edbe6e243fbb3cc947aee4a/01387/gatsby-default.png 320w,
+/static/1bdf8ed59edbe6e243fbb3cc947aee4a/e49a9/gatsby-default.png 640w,
+/static/1bdf8ed59edbe6e243fbb3cc947aee4a/451b6/gatsby-default.png 1068w"
+        sizes="(max-width: 1068px) 100vw, 1068px"
+        loading="lazy"
+      />
+    </span></p><p>The default covers the basics but isn’t very personalized. Let’s work on that now.</p></section>
+<section><h2 id="configuring-the-node-version"><a href="#configuring-the-node-version" aria-label="configuring the node version permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuring the node version</h2><p>Gatsby requires Node to run on your computer. If you have multiple local projects on your computer, you might run into a conflict about which Node version should be used. Node Version Manager solves this problem. After installing a Node Version Manager, check which version of Node you have installed:</p><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">nvm ls</code></pre></div><p>If you don’t have the version you want, find a remote version:</p><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">nvm ls-remote</code></pre></div><p>This will show lots of versions. Find the last one with <code class="language-text">LTS</code> (for Long Term Support). Generally LTS versions are very stable. Install it using:</p><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">nvm install 12.16.1</code></pre></div><p>To control which version of Node should be used in our project, we’ll add a <code class="language-text">.nvmrc</code><label for="sd-notice-that-the-less" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sd-notice-that-the-less" class="margin-toggle" /><span class="sidenote">Notice that the <code>.nvmrc</code> file starts with a "<code>.</code>" (period). By default on most systems this creates a hidden file. Oftentimes general project config is hidden away. On MacOS you can show hidden files in Finder by running <code>defaults write com.apple.finder AppleShowAllFiles -bool true</code> and restarting Finder. If you want to list hidden files in your console use the <code>-a</code> parameter: <code>ls -a</code>.</span> file (within the project directory):</p><div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token number">12.16</span>.<span class="token number">1</span></code></pre></div><p>The file is pretty simple; just the version. At the time you read this there may be a newer version of Node. You can also find the latest version at <a href="https://nodejs.org">https://nodejs.org</a>.</p><p>Once you’ve created the <code class="language-text">.nvmrc</code> file, run:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">nvm use</code></pre></div><p>You should see:</p><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Found &#39;.nvmrc&#39; with version &lt;12.16.1&gt;
+Now using node v12.16.1 (npm v6.13.4)</code></pre></div></section>
+<section><h2 id="ignore-some-things"><a href="#ignore-some-things" aria-label="ignore some things permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ignore some things</h2><p>We plan to use <code class="language-text">git</code> to keep track of our changes. The default Gatsby starter has already initialized our project to use <code class="language-text">git</code>. As we work on our project locally, there will be a lot of files we create but we won’t want to keep track of (because they are specific to our machine or for security reasons); we’ll want to ignore them. To do this we’ll need a <code class="language-text">.gitignore</code> file<label for="sd-less-than-code" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sd-less-than-code" class="margin-toggle" /><span class="sidenote"><code>.gitignore</code> also starts with a "<code>.</code>" and you can start to see a pattern emerge.</span>. These files can be very short and specific, or they can be very long and general. Luckily, Gatsby has created this for us already. If you are looking for more examples of what might go in a <code class="language-text">.gitignore</code> file, you can check out <a href="https://github.com/github/gitignore">https://github.com/github/gitignore</a>.</p><p>Take a look at the provided file. Notice that we are ignoring environment (<code class="language-text">.env*</code>) files. We’ll use these later to setup values specific to our development or production environments. For more information on environments see <a href="https://www.gatsbyjs.org/docs/environment-variables/">Environment Variables</a>.</p></section>
+<section><h2 id="keeping-things-clean"><a href="#keeping-things-clean" aria-label="keeping things clean permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Keeping things clean</h2><p>People have different preferences when they edit code. Some prefer tabs over spaces. Some want two spaces instead of four. Some prefer semicolons and some don’t. It shouldn’t matter right? Actually it does. If editors are auto-formatting code based on user preferences, it is important to make sure everyone has chosen the same set of defaults. This makes it easy to tell what changed between versions – even when different developers (with different preferences) have made changes.</p><h3 id="prettier--code-classlanguage-textprettierrccode"><a href="#prettier--code-classlanguage-textprettierrccode" aria-label="prettier  code classlanguage textprettierrccode permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Prettier &#x26; <code class="language-text">.prettierrc</code></h3><p>Gatsby automatically includes support for Prettier. Prettier works to auto-format your code based on a shared configuration. The default configuration is setup in the <code class="language-text">.prettierrc</code> file:</p><div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"endOfLine"</span><span class="token operator">:</span> <span class="token string">"lf"</span><span class="token punctuation">,</span>
+  <span class="token property">"semi"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token property">"singleQuote"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token property">"tabWidth"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+  <span class="token property">"trailingComma"</span><span class="token operator">:</span> <span class="token string">"es5"</span>
+<span class="token punctuation">}</span></code></pre></div><p>This is a fairly safe set of defaults. I tend to use the following <code class="language-text">.prettierrc</code> configuration:</p><div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"endOfLine"</span><span class="token operator">:</span> <span class="token string">"lf"</span><span class="token punctuation">,</span>
+  <span class="token property">"semi"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token property">"singleQuote"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token property">"tabWidth"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+  <span class="token property">"trailingComma"</span><span class="token operator">:</span> <span class="token string">"all"</span><span class="token punctuation">,</span>
+  <span class="token property">"bracketSpacing"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token property">"jsxBracketSameLine"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token property">"printWidth"</span><span class="token operator">:</span> <span class="token number">120</span>
+<span class="token punctuation">}</span></code></pre></div><p>You might have different preferences in your project. That’s fine, so long as all of the developers
+working on the code agree. For more information on the available options, view the <a href="https://prettier.io/docs/en/options.html">Prettier docs</a>.</p><p>There are some files in our project that we shouldn’t (or don’t want to) prettify. The reasons we might not want to run Prettier vary but include: different formatting preferences, external libraries, generated files, frequency of change, or speed. Luckily we can tell Prettier to ignore files. The default <code class="language-text">.prettierignore</code> file should be good:</p><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">.cache
+package.json
+package-lock.json
+public</code></pre></div><h3 id="configure-your-editor"><a href="#configure-your-editor" aria-label="configure your editor permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configure your editor</h3><blockquote>
 <p>This section is completely optional. This is here mostly so I can copy and paste the configuration for myself. 🎡</p>
-</blockquote><p>If there are several people working on your project, the chances are high that they use different editors for their code. At the very least their settings might not be consistent. You can provide hints to their editors. This can be done by including a generic <code class="language-text">.editorconfig</code> file (based on the format from <a href="https://editorconfig.org">https://editorconfig.org</a>):</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">root <span class="token operator">=</span> <span class="token boolean">true</span>
+</blockquote><p>If there are several people working on your project, the chances are high that they use different editors for their code. At the very least their settings might not be consistent. In some cases, the editors might not have support for Prettier. You can provide hints to their editors. This can be done by including a generic <code class="language-text">.editorconfig</code> file (based on the format from <a href="https://editorconfig.org">https://editorconfig.org</a>). Create <code class="language-text">.editorconfig</code> in your project and add the following:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">root <span class="token operator">=</span> <span class="token boolean">true</span>
 
 <span class="token punctuation">[</span>*<span class="token punctuation">]</span>
 indent_style <span class="token operator">=</span> space
 indent_size <span class="token operator">=</span> <span class="token number">2</span>
 charset <span class="token operator">=</span> utf-8
 trim_trailing_whitespace <span class="token operator">=</span> <span class="token boolean">true</span>
-insert_final_newline <span class="token operator">=</span> <span class="token boolean">true</span></code></pre></div><p>Depending on the editor this may or may not be used. Not to worry, we’ll add <code class="language-text">prettier</code> later which will ensure that the code is consistent. You might be using <a href="https://code.visualstudio.com/">VSCode</a>. In that case you can add some additional configuration. To do that you can create a <code class="language-text">.vscode</code> folder with the settings for your project.</p><p>Create the folder:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">mkdir</span> .vscode</code></pre></div><p>And in that folder make <code class="language-text">settings.json</code></p><div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+insert_final_newline <span class="token operator">=</span> <span class="token boolean">true</span></code></pre></div><p>Depending on the editor this may or may not be used. For example, you might be using <a href="https://code.visualstudio.com/">VSCode</a>. In that case you can add some additional configuration. To do that you can create a <code class="language-text">.vscode</code> folder with the settings for your project.</p><p>Create the folder:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">mkdir</span> .vscode</code></pre></div><p>And in that folder make <code class="language-text">settings.json</code></p><div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"editor.tabSize"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
   <span class="token property">"editor.insertSpaces"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
   <span class="token property">"editor.renderWhitespace"</span><span class="token operator">:</span> <span class="token string">"boundary"</span><span class="token punctuation">,</span>
-  <span class="token property">"editor.rulers"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"editor.rulers"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token number">120</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token property">"editor.formatOnSave"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
   <span class="token property">"files.encoding"</span><span class="token operator">:</span> <span class="token string">"utf8"</span><span class="token punctuation">,</span>
   <span class="token property">"files.trimTrailingWhitespace"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
   <span class="token property">"files.insertFinalNewline"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-  <span class="token property">"prettier.eslintIntegration"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-  <span class="token property">"prettier.requireConfig"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
   <span class="token property">"typescript.tsdk"</span><span class="token operator">:</span> <span class="token string">"node_modules/typescript/lib"</span><span class="token punctuation">,</span>
   <span class="token property">"search.exclude"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
     <span class="token property">"public/**"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
     <span class="token property">"node_modules/**"</span><span class="token operator">:</span> <span class="token boolean">true</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div></section>
-<section><h2 id="keeping-things-clean"><a href="#keeping-things-clean" aria-label="keeping things clean permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Keeping things clean</h2><p>People have different preferences when they edit code. Some prefer tabs over spaces. Some want
-two spaces instead of four. Some prefer semicolons and some don’t. It shouldn’t matter right?
-Actually it does. If editors are autoformatting code based on user preferences, it is important
-to make sure everyone has chosen the same set of defaults. This makes it easy to tell what changed
-between versions – even when different developers (with different preferences) have made changes.</p><h3 id="prettier--code-classlanguage-textprettierrccode"><a href="#prettier--code-classlanguage-textprettierrccode" aria-label="prettier  code classlanguage textprettierrccode permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Prettier &#x26; <code class="language-text">.prettierrc</code></h3><p>Prettier works to autoformat your code based on a shared configuration. To do this, create
-a <code class="language-text">.prettierrc</code> file:</p><div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"tabWidth"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
-  <span class="token property">"singleQuote"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-  <span class="token property">"trailingComma"</span><span class="token operator">:</span> <span class="token string">"all"</span><span class="token punctuation">,</span>
-  <span class="token property">"bracketSpacing"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-  <span class="token property">"jsxBracketSameLine"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-  <span class="token property">"printWidth"</span><span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
-  <span class="token property">"semi"</span><span class="token operator">:</span> <span class="token boolean">false</span>
-<span class="token punctuation">}</span></code></pre></div><p>You might have different preferences in your project. That’s fine, so long as all of the developers
-on your website agree.</p><h3 id="code-classlanguage-texttslintcode"><a href="#code-classlanguage-texttslintcode" aria-label="code classlanguage texttslintcode permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code class="language-text">tslint</code></h3><p>Because we’ll be using TypeScript, we’ll want to use TSlint<label for="sd-less-than-code" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sd-less-than-code" class="margin-toggle" /><span class="sidenote"><code>tslint</code> is related to <code>eslint</code> or EcmaScript linter. In fact, you could use <code>eslint</code> instead of
-<code>tslint</code>. When only focusing on TypeScript I've found <code>tslint</code> slightly easier to configure.</span>. “Linting” is very similar to using
-prettier and in fact the two toolkits work together.</p><p>To configure <code class="language-text">tslint</code>, create a new file called <code class="language-text">tslint.config</code>:</p><div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"compilerOptions"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"module"</span><span class="token operator">:</span> <span class="token string">"commonjs"</span><span class="token punctuation">,</span>
-    <span class="token property">"target"</span><span class="token operator">:</span> <span class="token string">"esnext"</span><span class="token punctuation">,</span>
-    <span class="token property">"jsx"</span><span class="token operator">:</span> <span class="token string">"preserve"</span><span class="token punctuation">,</span>
-    <span class="token property">"lib"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"dom"</span><span class="token punctuation">,</span> <span class="token string">"es2015"</span><span class="token punctuation">,</span> <span class="token string">"es2017"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-    <span class="token property">"strict"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"noEmit"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"isolatedModules"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"esModuleInterop"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"skipLibCheck"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"noUnusedLocals"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"noUnusedParameters"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
-    <span class="token property">"removeComments"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
-    <span class="token property">"preserveConstEnums"</span><span class="token operator">:</span> <span class="token boolean">true</span>
-  <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token property">"include"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"./src/**/*"</span><span class="token punctuation">]</span>
-<span class="token punctuation">}</span></code></pre></div><p>Because we’ll be using it with prettier we will also want to create a <code class="language-text">tslint.json</code> file:</p><div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"rulesDirectory"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"tslint-plugin-prettier"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"extends"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"tslint-config-blvd/react"</span><span class="token punctuation">,</span> <span class="token string">"tslint-config-prettier"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span></code></pre></div><h3 id="code-classlanguage-texteslintcode"><a href="#code-classlanguage-texteslintcode" aria-label="code classlanguage texteslintcode permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a><code class="language-text">eslint</code></h3><blockquote>
+<p>Note: a previous version of this post used <code class="language-text">tslint</code> to add TypeScript support. It is now recommended to use <code class="language-text">eslint</code> which includes the functionality of <code class="language-text">tslint</code>.</p>
+</blockquote><p>Using Prettier and configuring our editor helps keep our code clean. Even with these tools we will still want to check our code for problems. <em>Linters</em> do exactly that. They can be configured to check our files for syntax errors, missing types, formatting problems and more. “Linting” is very similar to using prettier and in fact <code class="language-text">eslint</code> and prettier can work together.</p><p>To configure <code class="language-text">eslint</code>, create a new file called <code class="language-text">.eslintrc.json</code>:</p><div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"parser"</span><span class="token operator">:</span> <span class="token string">"@typescript-eslint/parser"</span><span class="token punctuation">,</span>
+  <span class="token property">"plugins"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"@typescript-eslint"</span><span class="token punctuation">,</span> <span class="token string">"prettier"</span><span class="token punctuation">,</span> <span class="token string">"react"</span><span class="token punctuation">,</span> <span class="token string">"react-hooks"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"extends"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"eslint:recommended"</span><span class="token punctuation">,</span>
+    <span class="token string">"plugin:@typescript-eslint/recommended"</span><span class="token punctuation">,</span>
+    <span class="token string">"prettier/@typescript-eslint"</span><span class="token punctuation">,</span>
+    <span class="token string">"plugin:prettier/recommended"</span><span class="token punctuation">,</span>
+    <span class="token string">"plugin:react/recommended"</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
   <span class="token property">"rules"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"prettier"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token property">"prettier/prettier"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+      <span class="token string">"error"</span><span class="token punctuation">,</span>
+      <span class="token punctuation">{</span>
+        <span class="token property">"singleQuote"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+        <span class="token property">"trailingComma"</span><span class="token operator">:</span> <span class="token string">"all"</span><span class="token punctuation">,</span>
+        <span class="token property">"bracketSpacing"</span><span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+        <span class="token property">"printWidth"</span><span class="token operator">:</span> <span class="token number">120</span><span class="token punctuation">,</span>
+        <span class="token property">"tabWidth"</span><span class="token operator">:</span> <span class="token number">2</span><span class="token punctuation">,</span>
+        <span class="token property">"semi"</span><span class="token operator">:</span> <span class="token boolean">false</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token property">"react-hooks/rules-of-hooks"</span><span class="token operator">:</span> <span class="token string">"error"</span><span class="token punctuation">,</span>
+    <span class="token property">"react-hooks/exhaustive-deps"</span><span class="token operator">:</span> <span class="token string">"warn"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"env"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"browser"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"node"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token property">"jest"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"parserOptions"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"ecmaVersion"</span><span class="token operator">:</span> <span class="token number">2018</span><span class="token punctuation">,</span>
+    <span class="token property">"sourceType"</span><span class="token operator">:</span> <span class="token string">"module"</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div></section>
-<section><h2 id="save-your-progress-using-version-control"><a href="#save-your-progress-using-version-control" aria-label="save your progress using version control permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Save your progress using version control</h2><p>At this point we really haven’t made anything (except a lot of configuration). Even though our website isn’t even a website yet – it still makes sense to save our work. If we make a mistake having our code saved will help us. To do this we’ll use <code class="language-text">git</code> - a version control software that lets us create commits or <em>versions</em> as we go. To initialize a <code class="language-text">git</code> repository run:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> init</code></pre></div><p>By default this creates an empty git repository (none of our files have been added to it). Generally, I use <a href="https://desktop.github.com/">GitHub Desktop</a><label for="sd-it-might-surprise" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sd-it-might-surprise" class="margin-toggle" /><span class="sidenote">It might surprise you but some of the top coders at GitHub including <a href="https://github.com/cheshire137">cheshire137</a> use GitHub Desktop and micro-commit; that is, they make lots of very small commits for every change they make.</span>; however, I’ll use the command line here.</p><p>You can check the status of your changes and repository:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> status</code></pre></div><p>You should see:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">On branch master
+<span class="token punctuation">}</span></code></pre></div><p>To ignore specific folders and files, create a new file called <code class="language-text">.eslintignore</code>:</p><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">*.js
+.cache</code></pre></div><p>Here, we’re ignoring all JavaScript files (so that we can focus only on TypeScript).</p></section>
+<section><h2 id="save-your-progress-using-version-control"><a href="#save-your-progress-using-version-control" aria-label="save your progress using version control permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Save your progress using version control</h2><p>At this point we really haven’t added anything to the default (except a lot of configuration). Even though our website isn’t even a website yet – it still makes sense to save our work. If we make a mistake having our code saved will help us. To do this we’ll use <code class="language-text">git</code> - a version control software that lets us create commits or <em>versions</em> as we go.</p><p>By default Gatsby creates a git repository and the default files have been added to it. Generally, I use <a href="https://desktop.github.com/">GitHub Desktop</a><label for="sd-it-might-surprise" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sd-it-might-surprise" class="margin-toggle" /><span class="sidenote">It might surprise you but some of the top coders at GitHub including <a href="https://github.com/cheshire137">cheshire137</a> use GitHub Desktop and micro-commit; that is, they make lots of very small commits for every change they make. This makes it easier to look back at their change history and see each step along the way to solving a problem or implementing a feature.</span>; however, I’ll use the command line here.</p><p>You can check the status of your changes and repository:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> status</code></pre></div><p>You should see:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">On branch master
+Changes not staged <span class="token keyword">for</span> commit:
+  <span class="token punctuation">(</span>use <span class="token string">"git add &lt;file>..."</span> to update what will be committed<span class="token punctuation">)</span>
+  <span class="token punctuation">(</span>use <span class="token string">"git checkout -- &lt;file>..."</span> to discard changes <span class="token keyword">in</span> working directory<span class="token punctuation">)</span>
 
-No commits yet
+	modified:   .prettierrc
 
 Untracked files:
   <span class="token punctuation">(</span>use <span class="token string">"git add &lt;file>..."</span> to include <span class="token keyword">in</span> what will be committed<span class="token punctuation">)</span>
 
 	.editorconfig
-	.gitignore
+	.eslintignore
+	.eslintrc.json
 	.nvmrc
-	.prettierrc
 	.vscode/
-	tslint.config
-	tslint.json
 
-nothing added to commit but untracked files present <span class="token punctuation">(</span>use <span class="token string">"git add"</span> to track<span class="token punctuation">)</span></code></pre></div><p>Let’s get ready to create a commit by adding all of the files:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span></code></pre></div><p>Here the <code class="language-text">.</code> means: “everything in the current folder”. But what are we adding it to? We are adding it to the commit <em>stage</em>. Let’s check the status again:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> status</code></pre></div><p>You should see:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">On branch master
-
-No commits yet
-
+no changes added to commit <span class="token punctuation">(</span>use <span class="token string">"git add"</span> and/or <span class="token string">"git commit -a"</span><span class="token punctuation">)</span></code></pre></div><p>Let’s get ready to create a commit by adding all of the files:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> <span class="token function">add</span> <span class="token builtin class-name">.</span></code></pre></div><p>Here the <code class="language-text">.</code> means: “everything in the current folder”. But what are we adding it to? We are adding it to the commit <em>stage</em>. Let’s check the status again:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> status</code></pre></div><p>You should see:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">On branch master
 Changes to be committed:
-  <span class="token punctuation">(</span>use <span class="token string">"git rm --cached &lt;file>..."</span> to unstage<span class="token punctuation">)</span>
+  <span class="token punctuation">(</span>use <span class="token string">"git reset HEAD &lt;file>..."</span> to unstage<span class="token punctuation">)</span>
 
 	new file:   .editorconfig
-	new file:   .gitignore
+	new file:   .eslintignore
+	new file:   .eslintrc.json
 	new file:   .nvmrc
-	new file:   .prettierrc
-	new file:   .vscode/settings.json
-	new file:   tslint.config
-	new file:   tslint.json</code></pre></div><p>We’re getting ready to add four new files to our repository. Let’s commit:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> commit -m <span class="token string">"Initial commit with configuration"</span></code></pre></div><p>This creates a commit with the message we specified. The commit acts like a save point. If we add or delete files or change something and make a mistake, we can always revert back to this point. We’ll continue to commit as we make changes.</p></section>
-<section><h2 id="packages--dependencies"><a href="#packages--dependencies" aria-label="packages  dependencies permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Packages &#x26; Dependencies</h2><p>For almost any Node project you’ll find that you use a lot of packages – you’ll have far more code in packages in your <code class="language-text">node_modules</code> folder (where package code is stored) than your main project.<label for="sd-in-fact-the-size-of" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sd-in-fact-the-size-of" class="margin-toggle" /><span class="sidenote">In fact the size of the <code>node_modules</code> folder has become a meme: <img src="https://rpl.cat/uploads/CGDjNUft9F5pY9XrMjvQBjOW9zPb7zBhyg6I2P9zd40/public.png"></span></p><p>Initialize your packages:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> init -y</code></pre></div><p>Now you have a <code class="language-text">package.json</code>:</p><div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
-  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"blog"</span><span class="token punctuation">,</span>
-  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"1.0.0"</span><span class="token punctuation">,</span>
-  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-  <span class="token property">"main"</span><span class="token operator">:</span> <span class="token string">"index.js"</span><span class="token punctuation">,</span>
-  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
-    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>
+	modified:   .prettierrc
+	new file:   .vscode/settings.json</code></pre></div><p>We’re getting ready to add the new files (and modify one file) to our repository. Let’s commit:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">git</span> commit -m <span class="token string">"Add more configuration"</span></code></pre></div><p>This creates a commit with the message we specified. The commit acts like a save point. If we add or delete files or change something and make a mistake, we can always revert back to this point. We’ll continue to commit as we make changes.</p></section>
+<section><h2 id="packages--dependencies"><a href="#packages--dependencies" aria-label="packages  dependencies permalink" class="anchor"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Packages &#x26; Dependencies</h2><p>By default, Gatsby has created a <code class="language-text">package.json</code>. Within the <code class="language-text">package.json</code>, you’ll find metadata about your project as well as a list of dependencies used by Node (and Gatsby). The metadata in <code class="language-text">package.json</code> isn’t used by Gatsby but the list of dependencies are used.</p><p>For almost any Node project you’ll find that you use a lot of packages – you’ll have far more code in your <code class="language-text">node_modules</code> folder (where package code is stored) than your main project (for example in your <code class="language-text">src</code> folder).<label for="sd-in-fact-the-size-of" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sd-in-fact-the-size-of" class="margin-toggle" /><span class="sidenote">In fact the size of the <code>node_modules</code> folder has become a meme: <img src="https://rpl.cat/uploads/CGDjNUft9F5pY9XrMjvQBjOW9zPb7zBhyg6I2P9zd40/public.png"></span></p><p>Td</p><div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"name"</span><span class="token operator">:</span> <span class="token string">"gatsby-starter-default"</span><span class="token punctuation">,</span>
+  <span class="token property">"private"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token property">"description"</span><span class="token operator">:</span> <span class="token string">"A simple starter to get up and developing quickly with Gatsby"</span><span class="token punctuation">,</span>
+  <span class="token property">"version"</span><span class="token operator">:</span> <span class="token string">"0.1.0"</span><span class="token punctuation">,</span>
+  <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">"Kyle Mathews &lt;mathews.kyle@gmail.com>"</span><span class="token punctuation">,</span>
+  <span class="token property">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"gatsby"</span><span class="token operator">:</span> <span class="token string">"^2.19.7"</span><span class="token punctuation">,</span>
+    <span class="token property">"gatsby-image"</span><span class="token operator">:</span> <span class="token string">"^2.2.39"</span><span class="token punctuation">,</span>
+    <span class="token property">"gatsby-plugin-manifest"</span><span class="token operator">:</span> <span class="token string">"^2.2.39"</span><span class="token punctuation">,</span>
+    <span class="token property">"gatsby-plugin-offline"</span><span class="token operator">:</span> <span class="token string">"^3.0.32"</span><span class="token punctuation">,</span>
+    <span class="token property">"gatsby-plugin-react-helmet"</span><span class="token operator">:</span> <span class="token string">"^3.1.21"</span><span class="token punctuation">,</span>
+    <span class="token property">"gatsby-plugin-sharp"</span><span class="token operator">:</span> <span class="token string">"^2.4.3"</span><span class="token punctuation">,</span>
+    <span class="token property">"gatsby-source-filesystem"</span><span class="token operator">:</span> <span class="token string">"^2.1.46"</span><span class="token punctuation">,</span>
+    <span class="token property">"gatsby-transformer-sharp"</span><span class="token operator">:</span> <span class="token string">"^2.3.13"</span><span class="token punctuation">,</span>
+    <span class="token property">"prop-types"</span><span class="token operator">:</span> <span class="token string">"^15.7.2"</span><span class="token punctuation">,</span>
+    <span class="token property">"react"</span><span class="token operator">:</span> <span class="token string">"^16.12.0"</span><span class="token punctuation">,</span>
+    <span class="token property">"react-dom"</span><span class="token operator">:</span> <span class="token string">"^16.12.0"</span><span class="token punctuation">,</span>
+    <span class="token property">"react-helmet"</span><span class="token operator">:</span> <span class="token string">"^5.2.1"</span>
   <span class="token punctuation">}</span><span class="token punctuation">,</span>
-  <span class="token property">"keywords"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
-  <span class="token property">"author"</span><span class="token operator">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
-  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"ISC"</span>
+  <span class="token property">"devDependencies"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"prettier"</span><span class="token operator">:</span> <span class="token string">"^1.19.1"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"keywords"</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"gatsby"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"license"</span><span class="token operator">:</span> <span class="token string">"MIT"</span><span class="token punctuation">,</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"build"</span><span class="token operator">:</span> <span class="token string">"gatsby build"</span><span class="token punctuation">,</span>
+    <span class="token property">"develop"</span><span class="token operator">:</span> <span class="token string">"gatsby develop"</span><span class="token punctuation">,</span>
+    <span class="token property">"format"</span><span class="token operator">:</span> <span class="token string">"prettier --write \"**/*.{js,jsx,json,md}\""</span><span class="token punctuation">,</span>
+    <span class="token property">"start"</span><span class="token operator">:</span> <span class="token string">"npm run develop"</span><span class="token punctuation">,</span>
+    <span class="token property">"serve"</span><span class="token operator">:</span> <span class="token string">"gatsby serve"</span><span class="token punctuation">,</span>
+    <span class="token property">"clean"</span><span class="token operator">:</span> <span class="token string">"gatsby clean"</span><span class="token punctuation">,</span>
+    <span class="token property">"test"</span><span class="token operator">:</span> <span class="token string">"echo \"Write tests! -> https://gatsby.dev/unit-testing\" &amp;&amp; exit 1"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"repository"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"type"</span><span class="token operator">:</span> <span class="token string">"git"</span><span class="token punctuation">,</span>
+    <span class="token property">"url"</span><span class="token operator">:</span> <span class="token string">"https://github.com/gatsbyjs/gatsby-starter-default"</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"bugs"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"url"</span><span class="token operator">:</span> <span class="token string">"https://github.com/gatsbyjs/gatsby/issues"</span>
+  <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div><p>Let’s simplify it a bit:</p><div class="gatsby-highlight" data-language="json"><pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
   <span class="token property">"private"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
   <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
