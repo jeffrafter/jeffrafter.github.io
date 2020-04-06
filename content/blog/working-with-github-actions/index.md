@@ -366,7 +366,8 @@ Now that we have the packages we'll need to configure them in `.eslintrc.json`:
   },
   "env": {
     "node": true,
-    "jest": true
+    "jest": true,
+    "es6": true
   },
   "parserOptions": {
     "ecmaVersion": 2018,

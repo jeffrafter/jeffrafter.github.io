@@ -161,6 +161,12 @@ In order to select a profile you'll need to export an environment variable (repl
 export AWS_PROFILE=example
 ```
 
+If you are using the `fish` shell:
+
+```
+set -x AWS_PROFILE example
+```
+
 On Windows:
 
 ```

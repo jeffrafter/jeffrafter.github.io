@@ -1,13 +1,13 @@
 ---
 title: Releasing GitHub Actions
-date: '2019-11-05T00:01:00'
+date: '2020-01-31T00:01:00'
 published: true
 slug: releasing-github-actions
 image: ../../assets/actions.png
 layout: post
 tags: ['typescript', 'github', 'actions', 'honk', 'goose']
 category: Web
-excerpt: Once you've made some amazing GitHub Actions and you want to re-use them and share them with your friends. To do that you'll want to organize your project a little differently, publish and release them.
+excerpt: Once you've made some amazing GitHub Actions, you'll want to re-use them and share them with your friends. To do that you'll want to organize your project a little differently, publish and release them.
 ---
 
 <figure class="fullwidth">
@@ -17,13 +17,13 @@ excerpt: Once you've made some amazing GitHub Actions and you want to re-use the
 Image credit: GitHub's <a href="https://www.youtube.com/watch?v=STWzZsg973o" rel="noopener noreferrer">Bring innovation to work with GitHub Enterprise</a>
 </figcaption>
 
-Previously, I posted about <a href="./working-with-github-actions">working with GitHub Actions</a>. It covered the basics of setting up a repository, configuring embedded actions and the associated workflows. If you haven't worked with GitHub Actions before, you might want to read that first.
+Previously, I posted about <a href="/working-with-github-actions">Working with GitHub Actions</a>. It covered the basics of setting up a repository, configuring embedded actions and the associated workflows. If you haven't worked with GitHub Actions before, you might want to read that first.
 
 Once you've created your amazing GitHub Actions, you'll want to re-use them and share them with your friends. To do that you'll want to organize your project a little differently. Also, you'll want to release your actions with all of the dependencies included so that they run efficiently. In this post we'll create a repository which contains a GitHub Action - built in TypeScript - and a second repository which will use the action.
 
 Before you read this it is important to note: starting with a [template](https://github.com/jeffrafter/typescript-action-template) will save you a lot of time and setup. Creating actions can be very simple. In this post, however, I am going to work through and explain all of the steps. Included in this post are some of the reasons I've chosen one particular setup and skipped another. When getting started with GitHub Actions it is difficult to understand how all of the pieces fit together, or why you might want to create an action for a particular task. Hopefully this post provides some helpful examples. That said, there are probably steps here that you've seen before, don't care about, or just want to skip and that's okay.
 
-In order to follow this, you'll need a GitHub account. You'll need Node, Node Version Manager (`nvm`), and Node Package Manager (`npm`). The examples will be in TypeScript.
+In order to follow this, you'll need a GitHub account. You'll need Node, Node Version Manager (`nvm`), and Node Package Manager (`npm`). The examples will be in TypeScript. All of the code is available at https://github.com/jeffrafter/honk-action.
 
 # Honk
 
@@ -68,13 +68,31 @@ As we did in the previous post we'll be using TypeScript to build our action, wh
 
 [^environments]: There are several different [virtual operating systems](https://help.github.com/en/articles/virtual-environments-for-github-actions#supported-virtual-environments-and-hardware-resources) you can use for your actions which come preloaded with [useful software](https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions). Additionally, you can utilize Docker containers running in one of these virtual environments to pre-configure your hosts.
 
-Let's setup our example to use Node. If you have multiple local projects you might run into a conflict about which Node version should be used. [Node Version Manager](https://npm.github.io/installation-setup-docs/installing/using-a-node-version-manager.html) solves this problem. To control which version of Node should be used in your project, add an `.nvmrc`[^dotfiles] file:
+Let's setup our example to use Node. If you have multiple local projects you might run into a conflict about which Node version should be used. [Node Version Manager](https://npm.github.io/installation-setup-docs/installing/using-a-node-version-manager.html) solves this problem. After installing a Node Version Manager, check which version of Node you have installed:
 
-```json
-12.7.0
+```
+nvm ls
 ```
 
-The file is pretty simple; just the version. I chose 12.7.0 because it matches the version that is used to run our action (`node12`). Node 10.16.3 is installed in the default [GitHub Action software environment](https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions) and can be used as well but will not match the running action environment. At the time you read this there may be a newer version of Node or you may chose to use an older version because your code requires it. You can check https://nodejs.org.
+If you don't have the version you want, find a remote version:
+
+```
+nvm ls-remote
+```
+
+This will show lots of versions. Find the last one with `LTS` (for Long Term Support). Generally LTS versions are very stable. Install it using:
+
+```
+nvm install 12.16.1
+```
+
+To control which version of Node should be used in your project, add a `.nvmrc`[^dotfiles] file:
+
+```json
+12.16.1
+```
+
+The file is pretty simple; just the version. I chose 12.16.1 because it matches the version that is used to run our action (`node12`). Node 10.16.3 is installed in the default [GitHub Action software environment](https://help.github.com/en/articles/software-in-virtual-environments-for-github-actions) and can be used as well but will not match the running action environment. At the time you read this there may be a newer version of Node or you may chose to use an older version because your code requires it. You can check https://nodejs.org.
 
 [^dotfiles]: Notice that the `.nvmrc` file starts with a "`.`" (period). By default on most systems this creates a hidden file. Oftentimes general project config is hidden away. On MacOS you can show hidden files in Finder by running `defaults write com.apple.finder AppleShowAllFiles -bool true` and restarting Finder. If you want to list hidden files in your console use the `-a` parameter: `ls -a`.
 
@@ -251,7 +269,8 @@ Now that we have the packages we'll need to configure them in `.eslintrc.json`:
   },
   "env": {
     "node": true,
-    "jest": true
+    "jest": true,
+    "es6": true
   },
   "parserOptions": {
     "ecmaVersion": 2018,
@@ -315,9 +334,9 @@ import * as github from '@actions/github'
 const run = async (): Promise<void> => {
   try {
     // Our action will need to API access the repository so we require a token
-    // This will need to be set in the calling workflow, otherwise we'll exit
-    const token = process.env['GITHUB_TOKEN']
-    if (!token) return
+    // This can be set in the calling workflow or it can use the default
+    const token = process.env['GITHUB_TOKEN'] || core.getInput('token')
+    if (!token || token === '') return
 
     // Create the octokit client
     const octokit: github.GitHub = new github.GitHub(token)
@@ -378,7 +397,7 @@ The image this includes is:
 
 ![honk](https://user-images.githubusercontent.com/4064/65900857-cf462f80-e36b-11e9-9a9c-76170c99618b.png)
 
-[^run]: We've named our function `run` but you could name the function anything you wanted. `run` is a convention used in the base [`javascript-template`](https://github.com/actions/javascript-template/blob/master/src/main.ts)
+[^run]: We've named our function `run` but you could name the function anything you wanted. `run` is a convention used in the base [`typescript-template`](https://github.com/actions/typescript-action/blob/master/src/main.ts)
 
 ## Testing the action
 
@@ -386,6 +405,7 @@ Create a new file called `__tests__/honk.test.ts`:
 
 ```ts
 import * as github from '@actions/github'
+import * as core from '@actions/core'
 import {WebhookPayload} from '@actions/github/lib/interfaces'
 import nock from 'nock'
 import run from '../honk'
@@ -394,9 +414,12 @@ beforeEach(() => {
   // resetModules allows you to safely change the environment and mock imports
   // separately in each of your tests
   jest.resetModules()
+  jest.spyOn(core, 'getInput').mockImplementation((name: string): string => {
+    if (name === 'token') return '12345'
+    return ''
+  })
 
   process.env['GITHUB_REPOSITORY'] = 'example/repository'
-  process.env['GITHUB_TOKEN'] = '12345'
 
   // Create a mock payload for our tests to use
   // https://developer.github.com/v3/activity/events/types/#issuecommentevent
@@ -413,6 +436,12 @@ beforeEach(() => {
       body: 'Honk',
     },
   } as WebhookPayload
+})
+
+afterEach(() => {
+  expect(nock.pendingMocks()).toEqual([])
+  nock.isDone()
+  nock.cleanAll()
 })
 
 describe('honk action', () => {
@@ -451,7 +480,7 @@ describe('honk action', () => {
 })
 ```
 
-We import the actions core library and the run method we just created in our honk action. We only have two tests, a very basic test which guarantees that by default we don't throw errors. The second uses `nock` to mock out any external calls. These expectations must be satisfied or the test will fail. Additionally, if there are any unexpected external calls the test will fail.
+We import the actions core library and the run method we just created in our honk action. We only have two tests, a very basic test which guarantees that by default we don't throw errors. The second uses `nock` to mock out any external calls. These expectations must be satisfied or the test will fail (because of the check in the `afterEach` callback). Additionally, if there are any unexpected external calls the test will fail.
 
 In order to run these tests we'll need to configure Jest. Create a new file called `jest.config.js` in the root of your project:
 
@@ -490,7 +519,7 @@ npm test
 You should see:
 
 ```
-> @ test /Users/njero/Code/Examples/honk-action-2
+> @ test ...
 > tsc --noEmit && jest
 
  PASS  __tests__/honk.test.ts
@@ -529,14 +558,31 @@ We've written the code for our action and a test that tells us it is working. Un
 name: honk
 description: "Checks to see if a comment contains 'Honk', otherwise deletes it"
 author: '@jeffrafter'
+inputs:
+  token:
+    description: >
+      GitHub token used to create and remove comments. By default, this uses the
+      repository token provided by GitHub Actions. You can customize the user by
+      replacing this token with a user token which has write-access to your
+      repository. Note that the token will be accessible to all repository
+      collaborators.
+    default: ${{ github.token }}
 runs:
   using: 'node12'
-  main: './honk.js'
+  main: './dist/index.js'
 ```
 
-There are [more configuration options available](https://help.github.com/en/articles/metadata-syntax-for-github-actions) for actions but this represents the minimum amount needed to run. Specifically, it gives the action a name (which does not need to match the name of our TypeScript file) and points to the the code `./honk.js`. Unfortunately, we don't yet have a file called `honk.js`, we have a file called `honk.ts`.
+There are [more configuration options available](https://help.github.com/en/articles/metadata-syntax-for-github-actions) for actions but this represents the minimum amount needed to run. Specifically, it gives the action a name (which does not need to match the name of our TypeScript file) and points to the the code `./dist/index.js`. Unfortunately, we don't yet have a file called `dist/index.js`, we only have a file called `honk.ts`. GitHub Actions have built-in support for JavaScript and cannot run TypeScript directly. Because of this we will need to _transpile_ our TypeScript to JavaScript before it can be run. We'll do this as part of our release step.
 
-GitHub Actions have built-in support for JavaScript and cannot run TypeScript directly. Because of this we will need to _transpile_ our TypeScript to JavaScript before it can be run. We'll do this as part of our release step.
+We've also included an input for our `token` which defaults to the repository token provided by the GitHub Actions runner. By using an input (instead of an environment variable) we simplify the configuration for workflows that use our action.[^joshmgross] By default the workflow doesn't need to include any value. Individual workflows can be customized by overriding the default and setting an input (generally, by using a token stored in the repository's secrets).
+
+[^joshmgross]: Previously, I would use an environment variable out of habit. [Josh Gross](https://github.com/joshmgross) showed me this trick. Not only can you have default values (as we've done here), but you can add documentation for users that will appear in the workflow editor (when you publish your action in the marketplace).
+
+For more information on creating secrets, see [Creating and using encrypted secrets](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets).
+
+For more information on using secrets and tokens for authentication, see [Authenticating with the github token](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/authenticating-with-the-github_token).[^security]
+
+[^security]: Be careful when using [personal access tokens](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line) as secrets. Because GitHub Actions have the ability to read your repository secrets, any collaborator could steal your token by modifying the workflow and exfiltrating the secret. If the token you've included in your secrets has a broad set of permissions this can be very dangerous.
 
 # Releasing a GitHub Action
 
@@ -563,8 +609,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: jeffrafter/honk-action@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 Notice that the action is referenced by the username and action repository along with a version number; in this case `@v1`. This version number refers to a tagged release. This helps ensure that that users of your action have consistent behavior (for example providing the correct inputs and seeing consistent outputs). As an action author you can make use of whatever versioning system you want (including semantic versions) however the actions runner will treat everything after the `@` as a ref[^ref] and expects and exact match.
@@ -581,129 +625,9 @@ To release our action we need to do the following:
 1. Push our release
 1. Create a tag for our release
 
-There are a few ways to do this; manually working through all of the steps is overly cumbersome but will give us an opportunity to see how all of the pieces fit together so we'll start there. Ultimately we'll opt for a more streamlined approach.
-
-Start by creating a new branch:
-
-```bash
-git checkout -b releases/v1
-```
-
-Run all of the checks:
-
-```bash
-npm run lint
-npm test
-```
-
-Build our TypeScript
-
-```bash
-npm run build
-```
-
-This will generate two files. If you check the current `git status` you'll see:
-
-```bash
-On branch releases/v1
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-
-	__tests__/honk.test.js
-	honk.js
-
-nothing added to commit but untracked files present (use "git add" to track)
-```
-
-For our release we need to include `*.js` (not the TypeScript) so let's add these files to the commit:
-
-```bash
-git add .
-```
-
-We also need to add our action's dependencies. These are stored in the `node_modules` folder. Unfortunately our `node_modules` folder includes all of our development dependencies as well (which we needed to run our checks and build our TypeScript). At this point we need to reset the `node_modules` folder to remove those dependencies. We'll do this by deleting the folder and reinstalling:
-
-```bash
-rm -rf node_modules
-npm install --production
-```
-
-Now our `node_modules` folder is smaller (depending on your package versions this could save more than 160 megabytes), but it still can't be added to our release because we've explicitly ignored it. We'll have to remove that line from the `.gitignore`. On a Mac you can run:
-
-```bash
-sed -i '' '/node_modules/d' .gitignore
-```
-
-Or you could just open the `.gitignore` and remove the line manually and save the file. Running `git status` you should see:
-
-```bash
-On branch releases/v1
-Changes to be committed:
-  (use "git reset HEAD <file>..." to unstage)
-
-	new file:   __tests__/honk.test.js
-	new file:   honk.js
-
-Changes not staged for commit:
-  (use "git add <file>..." to update what will be committed)
-  (use "git checkout -- <file>..." to discard changes in working directory)
-
-	modified:   .gitignore
-
-Untracked files:
-  (use "git add <file>..." to include in what will be committed)
-
-	node_modules/
-```
-
-We've changed the `.gitignore` and are no longer ignoring the `node_modules` folder. Let's add it:
-
-```bash
-git add .
-```
-
-At this point we can create a commit:
-
-```bash
-git commit -m "v1"
-```
-
-Let's push the `releases/v1` branch to GitHub:
-
-```bash
-git push origin releases/v1
-```
-
-Next we'll want to create a tag for our release and push it:
-
-```bash
-git tag -fa v1 -m "v1"
-git push origin v1
-```
-
-Honk action `v1` is now ready to be used by remote workflows.
-
-This process feels impossibly cumbersome. Uninstalling and reinstalling dependencies, removing node modules, changing the `.gitignore`: all of these steps are going to lead to mistakes.
-
-## Developing once you've created a release
-
-When you begin developing again you'll need to checkout master and re-install the development dependencies.
-
-```bash
-git checkout master
-# Get this branch even with master so the latest changes are included
-git reset --hard HEAD
-# Remove the production dependencies
-rm -rf node_modules
-# Reinstall all dependencies, including development dependencies
-npm install
-```
-
-In fact, you can use Zeit's packaging tool you can avoid changing `node_modules` completely.
-
 ## Compiling a release using Zeit's `ncc`
 
-If your action is utilizing a small set of runtime dependencies which are cross-platform then you can utilize [zeit/ncc](https://github.com/zeit/ncc) to compile your action to a single file. In most cases this is a much simpler and better workflow as it completely eliminates the need to swap your node modules. Additionally, `ncc` works with TypeScript, simplifying things even more.
+If your action is utilizing a small set of runtime dependencies which are cross-platform, you can utilize [zeit/ncc](https://github.com/zeit/ncc) to compile your action to a single file. In most cases this is a much simpler and better workflow then manually preparing your dependencies for release. Additionally, `ncc` works with TypeScript, simplifying things even more.
 
 Install it as a development dependency:
 
@@ -736,16 +660,16 @@ The `build` script will do a few things:
 
 We've also specified that our `main` is `dist/index.js` (the file `ncc` will generate). This isn't required but can help with discovery and automation.
 
-Note that the distribution includes only the _necessary_ dependencies. This means the resulting file is incredibly small (when compared to the size of `node_modules`). Even though the file is smaller it is still complex and can be easily auto-generated. Because of this, it doesn't need to be stored in our repository; it will make reviewing future pull-requests more difficult. For this reason you might choose to add it to your `.gitignore`. On the other hand, swapping things in and out of your `.gitignore` can be cumbersome.
+The distribution that `ncc` creates includes only the _necessary_ dependencies. This means the resulting distribution file is incredibly small (when compared to the size of `node_modules`). Even though the file is smaller it is still complex and can be easily auto-generated. Because of this, it doesn't need to be stored in our repository; it will make reviewing future pull-requests more difficult. For this reason you might choose to add it to your `.gitignore`. On the other hand, swapping things in and out of your `.gitignore` can be cumbersome.
 
 My solution is to do nothing: which happens to be the easiest solution. Instead, I _only_ run `build` on release branches.[^mistake]
 
 [^mistake]: What happens if someone accidentally runs `build` on a feature branch or on master? Well as log as they don't mistakenly add the `dist` folder to git, nothing happens. If they do add the `dist` folder to their change you can easily reject the change or remove the folder in a subsequent change. To avoid this you could add a release branch check to the build script before running `ncc`.
 
-Let's create `v2` of our Honk action. Start by creating a new branch:
+Let's create `v1` of our Honk action. Start by creating a new branch:
 
 ```bash
-git checkout -b releases/v2
+git checkout -b releases/v1
 ```
 
 Run all of the checks:
@@ -764,7 +688,7 @@ npm run build
 Checking `git status` you see:
 
 ```
-On branch releases/v2
+On branch releases/v1
 Untracked files:
   (use "git add <file>..." to include in what will be committed)
 
@@ -782,35 +706,35 @@ git add .
 At this point we can create a commit:
 
 ```bash
-git commit -m "v2"
+git commit -m "v1"
 ```
 
-Let's push the `releases/v2` branch to GitHub:
+Let's push the `releases/v1` branch to GitHub:
 
 ```bash
-git push origin releases/v2
+git push origin releases/v1
 ```
 
 Next we'll want to create a tag for our release and push it:
 
 ```bash
-git tag -fa v2 -m "v2"
-git push origin v2
+git tag -fa v1 -m "v1"
+git push origin v1
 ```
 
-Honk action `v2` is now ready to be used by remote workflows.
+Honk action `v1` is now ready to be used by remote workflows.
 
-This workflow is much simpler and requires less editing and re-installing. So why wouldn't you do this all the time? In general you should choose this release strategy. I've only found it useful to use the manual strategy when your action relies on native dependencies which must be compiled for the target platform (for example, you are developing on Windows or a Mac and you have to compile a dependency for running on Ubuntu). In those cases, creating your distribution requires more explicit control.
+Utilizing `ncc` to generate your distribution simplifies the process of transpiling, preparing your dependencies for release, and bundling it all together. So why wouldn't you do this all the time? In general you should. Very rarely, it is useful manually prepare a release when your action relies on native dependencies which must be compiled for the target platform (for example, you are developing on Windows or a Mac and you have to compile a dependency for running on Ubuntu). In those cases, creating your distribution requires more explicit control.
 
 ## Pushing changes to a release
 
-Understanding how to create and tag new releases is helpful. But sometimes you want to push changes to an existing tagged release. This is convenient because it doesn't require changes to existing workflows that use your action. However, you should only do this if the change is backward compatible with the existing usage. If, for example, you add a new required input, you'll need to create a new release and have users upgrade.
+Understanding how to create and tag new releases is helpful. But sometimes you want to push changes to an existing tagged release. This is convenient because it doesn't require changes to workflows that use your action. However, you should only do this if the change is backward compatible with the existing usage. If, for example, you add a new required input, you'll need to create a new release and have users upgrade.
 
-To change an existing release, you can create a new commit and force-push it, then remove and republish the associated tags. I've included all of the commands to reset to master, remove and install node modules and force push commits here:
+To change an existing release, you can create a new commit and force-push it, then remove and republish the associated tags. I've included all of the commands here:
 
 ```bash
 # Checkout the release branch
-git checkout releases/v2
+git checkout releases/v1
 # Get this branch even with master so the latest changes are included
 git reset --hard master
 # Rerun the checks and rebuild the TypeScript and ncc distribution
@@ -818,15 +742,15 @@ npm run build
 # Add the dist
 git add .
 # Commit
-git commit -m "v2"
+git commit -m "v1"
 # Force push to overwrite any previous commits for this branch
-git push -f origin releases/v2
-# Remove previously pushed tags (v2 will be unusable momentarily until you re-push)
-git push origin :refs/tags/v2
+git push -f origin releases/v1
+# Remove previously pushed tags (v1 will be unusable momentarily until you re-push)
+git push origin :refs/tags/v1
 # Re-apply the tag
-git tag -fa v2 -m "v2"
+git tag -fa v1 -m "v1"
 # Push everything
-git push origin v2
+git push origin v1
 ```
 
 These steps are tedious but can be easily automated.
@@ -853,18 +777,12 @@ jobs:
     name: Honk
     runs-on: ubuntu-latest
     steps:
-      - uses: jeffrafter/honk-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: jeffrafter/honk-action@v1
 ```
 
-We've created a workflow that should be executed whenever issue comments are `[created]`. There are many different [events that trigger workflows](https://help.github.com/en/articles/events-that-trigger-workflows). By specifying `[created]` we're saying that every time a new comment is added to an issue in our GitHub repository our workflow should be executed. In this case we've chosen to execute our workflow using the `ubuntu-latest` environment. Our workflow has a single step which uses the `honk-action@v2` we released.
-
-> At this point the `@v1` and `@v2` versions of the Honk action do the same thing. The only difference is that the `@v2` package is significantly smaller in size.[^versioning]
+We've created a workflow that should be executed whenever issue comments are `[created]`. There are many different [events that trigger workflows](https://help.github.com/en/articles/events-that-trigger-workflows). By specifying `[created]` we're saying that every time a new comment is added to an issue in our GitHub repository our workflow should be executed. In this case we've chosen to execute our workflow using the `ubuntu-latest` environment. Our workflow has a single step which uses the `honk-action@v1` we released.[^versioning]
 
 [^versioning]: Versioning can be very difficult. We've started with a very simple numeric strategy here. This is fine for most projects but in larger projects you may want to use Semantic Versioning or rely on the the versioning system built into `npm`. GitHub also has [action versioning recommendations](https://github.com/actions/toolkit/blob/master/docs/action-versioning.md#recommendations).
-
-Notice that we've also specified the `GITHUB_TOKEN` to be used in the environment of the `honk-action` step. The environment for each step is is sandboxed so you must specify the variables you want to use for every step that uses them.
 
 This should be enough to run our `honk-action`. Commit this and push it to GitHub.
 
@@ -942,6 +860,56 @@ Once you add the comment, the action will run and be marked as successful.
 The action should have deleted the comment and added a honk comment in it's place:
 
 ![Honk action deleting a comment and adding a honk comment](../../assets/honk-comment-honk.png)
+
+# Using GitHub Actions to run your tests
+
+Not only can we create GitHub actions, we can use them. We'll setup an action to run our tests whenever new code is pushed to GitHub. This form of CI (or Continuous Integration) is what GitHub Actions was built for.
+
+Create a new file called `.github/workflows/ci.yml`:
+
+```yaml
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: npm install
+      - run: npm run lint
+      - run: npm test
+```
+
+Add this file:
+
+```bash
+git add .
+```
+
+And commit it:
+
+```bash
+git commit -m "Add CI"
+```
+
+And then push to GitHub:
+
+```bash
+git push origin master
+```
+
+You should see your tests run and build pass with a green checkmark.
 
 # Thanks
 
