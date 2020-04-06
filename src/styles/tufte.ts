@@ -171,7 +171,7 @@ img { max-width: 100%; }
 
 .sidenote, .marginnote { float: right;
                          clear: right;
-                         margin-right: -60%;
+                         margin-right: -75%;
                          width: 50%;
                          margin-top: 0;
                          margin-bottom: 0;
