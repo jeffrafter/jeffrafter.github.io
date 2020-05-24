@@ -2378,7 +2378,7 @@ at the bottom of each post.[^any]
 
   You'll notice that the type of `previous` and `next` is `any` – in TypeScript this is
   considered bad practice and represents someone throwing their hands in the air saying "I
-  have know idea what you are sending me." I'll leave these as an exercise for the reader.
+  have no idea what you are sending me." I'll leave these as an exercise for the reader.
 
 Another interesting part of this template is the ominously named `dangerouslySetInnerHTML`.
 
