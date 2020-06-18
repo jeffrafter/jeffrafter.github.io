@@ -1,10 +1,10 @@
 import React from 'react'
-import {Link, graphql} from 'gatsby'
+import { Link, graphql } from 'gatsby'
 
 import Layout from '../components/layout'
 import Head from '../components/head'
 import Bio from '../components/bio'
-import {styled} from '../styles/theme'
+import { styled } from '../styles/theme'
 
 interface Props {
   readonly data: PageQueryData
@@ -16,7 +16,7 @@ const Container = styled('div')`
 
 export default class Index extends React.Component<Props> {
   render() {
-    const {data} = this.props
+    const { data } = this.props
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark ? data.allMarkdownRemark.edges : []
 
@@ -26,7 +26,7 @@ export default class Index extends React.Component<Props> {
         <Bio />
         <Container>
           <div className={`page-content`}>
-            {posts.map(({node}) => {
+            {posts.map(({ node }) => {
               const excerpt = node.frontmatter.excerpt || node.excerpt
               const title = node.frontmatter.title || node.fields.slug
               return (
