@@ -2,24 +2,14 @@
   "editor.tabSize": 2,
   "editor.insertSpaces": true,
   "editor.renderWhitespace": "boundary",
-  "editor.rulers": [100],
+  "editor.rulers": [120],
   "editor.formatOnSave": true,
   "files.encoding": "utf8",
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
+  "typescript.tsdk": "node_modules/typescript/lib",
   "search.exclude": {
     "public/**": true,
     "node_modules/**": true
-  },
-  "cSpell.ignoreWords": [
-    "camelcase",
-    "dotfiles",
-    "eslintcache",
-    "eslintignore",
-    "fullwidth",
-    "gitignore",
-    "nvmrc",
-    "octocats",
-    "octokit"
-  ]
+  }
 }

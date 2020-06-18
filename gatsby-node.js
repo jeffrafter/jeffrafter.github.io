@@ -2,13 +2,16 @@ const path = require(`path`)
 const {createFilePath} = require(`gatsby-source-filesystem`)
 
 const isDevelopment = process.env.NODE_ENV === 'development'
-const filter = isDevelopment ? '' : 'frontmatter: {published: {ne: false}}'
+console.log({isDevelopment})
 
 exports.createPages = ({graphql, actions}) => {
-  return graphql(`
+  // Get the templates
+  const postTemplate = path.resolve(`./src/templates/post.tsx`)
+  const tagTemplate = path.resolve('./src/templates/tag.tsx')
+  const publishedPromise = graphql(`
     {
       allMarkdownRemark(
-        filter: {${filter}}
+        filter: {frontmatter: {published: {ne: false}}}
         sort: {fields: [frontmatter___date], order: DESC}
         limit: 1000
       ) {
@@ -29,10 +32,6 @@ exports.createPages = ({graphql, actions}) => {
     if (result.errors) {
       throw result.errors
     }
-
-    // Get the templates
-    const postTemplate = path.resolve(`./src/templates/post.tsx`)
-    const tagTemplate = path.resolve('./src/templates/tag.tsx')
 
     // Create post pages
     const posts = result.data.allMarkdownRemark ? result.data.allMarkdownRemark.edges : []
@@ -72,6 +71,48 @@ exports.createPages = ({graphql, actions}) => {
       })
     })
   })
+
+  const draftPromise = graphql(`
+    {
+      allMarkdownRemark(
+        sort: {fields: [frontmatter___date], order: DESC}
+        limit: 1000
+      ) {
+        edges {
+          node {
+            fields {
+              slug
+            }
+            frontmatter {
+              published
+              tags
+              title
+            }
+          }
+        }
+      }
+    }
+  `).then(result => {
+    if (result.errors) {
+      throw result.errors
+    }
+
+    // Create draft post pages
+    const posts = result.data.allMarkdownRemark ? result.data.allMarkdownRemark.edges : []
+    posts.forEach((post, index) => {
+      if (!post.node.frontmatter.published && post.node.frontmatter.tags.indexOf('draft') >= 0) {
+        actions.createPage({
+          path: post.node.fields.slug,
+          component: postTemplate,
+          context: {
+            slug: post.node.fields.slug
+          },
+        })
+      }
+    })
+  })
+
+  return Promise.all([publishedPromise, draftPromise])
 }
 
 exports.onCreateNode = ({node, actions, getNode}) => {

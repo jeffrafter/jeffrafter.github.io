@@ -2,6 +2,7 @@
 title: Abusive Organizations
 date: '2019-11-12T00:01:00'
 published: false
+hidden: true
 slug: abusive-organizations
 image: ../../assets/mona-ice.png
 layout: post
@@ -14,7 +15,7 @@ excerpt: The turing test of our industry will be to bring back humanity.
 ![Momtocat separated from her kids by OctoLiberty](../../assets/mona-ice.png)
 </figure>
 <figcaption class="fullwidth">
-Image credit: GitHub's <a href="https://octodex.github.com/momtocat/" rel="noopener noreferrer">Octodex.</a>
+Image credit: GitHub's <a href="https://octodex.github.com/momtocat/" rel="noopener noreferrer">Octodex</a>.
 </figcaption>
 
 Within GitHub, and more broadly the tech industry, there is an ongoing debate about the ethics of working with organizations which do things we find abhorrent. For GitHub, this debate is centered on it's contract with the [Immigrations and Customs Enforcement](https://www.ice.gov/) arm of the Department of Homeland Security (in the United States).

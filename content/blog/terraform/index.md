@@ -1,11 +1,11 @@
 ---
 title: Gatsby, Express, Terraform, and Amazon Web Services
 date: '2019-12-15T00:01:00'
-published: true
+published: false
 slug: gatsby-express-terraform-aws
 image: ../../assets/terraform.jpg
 layout: post
-tags: ['terraform', 'aws', 'gatsby']
+tags: ['terraform', 'aws', 'gatsby', 'draft']
 category: Web
 excerpt: .
 ---
@@ -19,7 +19,7 @@ Image credit: <a href="https://terraform.io" rel="noopener noreferrer">Hashicorp
 
 I've previously written about <a href="./gatsby-with-typescript">building a website with Gatsby and TypeScript</a>. I've also written about <a href="./deploying-gatsby-to-github-pages">deploying a website to GitHub Pages</a>. If you're building a static website like a blog these solutions are more than enough. But what if the website you are building needs user authentication and authorization? What if you need to store and retrieve items from a database? What if you need server side processing. There are a lot of options and managing it all quickly becomes difficult.
 
-## Trade-offs
+# Setup
 
 Before you begin building anything it is useful to understand the trade-offs associated with different platforms, frameworks and languages. When I'm building something new I tend to optimize for the following:
 
@@ -28,15 +28,37 @@ Before you begin building anything it is useful to understand the trade-offs ass
 3. Performance
 4. Maintainability
 
-It is very likely your priorities are different. I put price first because I don't want to be restricted from making a lot of websites. Using <a href="https://now.sh" rel="noopener">Now</a> or <a href="https://netflify.com" rel="noopener">Netlify</a> or <a href="https://heroku.com" rel="noopener">Heroku</a> will get you up and running very quickly. In many cases you can get your website running for free and it will be free forever. As you scale your service though - adding authentication, storage, background jobs and more the price quickly goes up - even if you don't have a large number of users.
+It is very likely your priorities are different. I put price first because I don't want to be restricted from making a lot of websites. Using[Now](https://now.sh) or [Netlify](https://netflify.com) or [Heroku](https://heroku.com) will get you up and running very quickly. In many cases you can get your website running for free and it will be free forever. As you scale your service though - adding authentication, storage, background jobs and more the price quickly goes up - even if you don't have a large number of users.
 
-If you anticipate a small consistent scale you could spin up a VPS on <a href="https://digitalocean.com" rel="noopener">Digital Ocean</a> and the price will stay constant, but you'll have a lot more to manage including security updates.
+If you anticipate a small consistent scale you could spin up a VPS on [Digital Ocean](https://digitalocean.com) and the price will stay constant, but you'll have a lot more to manage including security updates.
 
 Building on a cloud platform like AWS, Azure or Google Cloud allows you to keep a low price while providing massive scalability. For all of these platforms you have access to a free-tier that allows you to build your website at virtually no-cost. For the kinds of websites I build Amazon Web Services has the best pricing, but is arguably the most difficult to work with.
 
 The setup here should allow you to build a dynamic website that should be essentially free until it scales beyond 50,000 users per month.
 
-## Terraform
+Our website can be divided into three main projects:
+
+- Our infrastructure and configuration - built using Terraform
+- Our front-end website - built using Gatsby
+- Our server-side API - built using Express
+
+We'll keep these in separate folders (and each will have a separate repository):
+
+```
+example/
+  |
+  |- terraform/
+  |   |- .git
+  |   |- ... Terraform project files
+  |- site/
+  |   |- .git
+  |   |- ... Gatsby project files
+  |- api/
+  |   |- .git
+  |   |- ... Express project files
+```
+
+# Terraform
 
 There are a lot of options for configuring AWS.[^tools] [Terraform](https://terraform.io) is a tool for configuring remote infrastructure. You can create Terraform configuration files (`*.tf`) and treat your infrastructure as code; versioning the changes and storing your settings in your repository.
 
@@ -50,33 +72,33 @@ brew install terraform
 
 ## Getting started
 
-To get started I'll assume you've purchased a domain. You can buy a domain pretty much anywhere for $0.99 to $12.00 for the first year. I use <a href="https://domains.google" rel="noopener">Google Domains</a> because I use Gmail and it's easier to keep track of. By default you get an email address you can use to start setting up services.
+To get started I'll assume you've purchased a domain, but for the purposes of this post, we'll pretend our domain is `example.com` (you'll need to replace `example.com` with your domain throughout). You can buy a domain pretty much anywhere for $0.99 to $12.00 for the first year. I use [Google Domains](https://domains.google) because I use Gmail so it's easier to keep track of. By default you get an email address you can use to start setting up services.
 
 ![Setting up an email alias in Google Domains](../../assets/google-domains-email-alias.png)
 
-To get started I setup `*@kindawow.com` to point to my personal email address. This way any email sent to `kindawow.com` will still get through.
+Within your domain provider, setup an alias for `*@example.com` to point to your personal email address. This way any email sent to `example.com` will still get through.
 
-Next, [sign up for AWS](https://aws.amazon.com/) using the new email address. When signing up I tend to use `aws@kindawow.com` and the domain name as the AWS Account Name. To complete your account creation you'll need to enter a credit card for billing[^billing] and you'll need to select a support plan (I generally choose the free support plan). You'll also need a phone number for verification.
+Next, [sign up for AWS](https://aws.amazon.com/) using the new email address. When signing up, I tend to use a single-use email like `aws@example.com` and I generally use the domain name as the AWS Account Name. To complete your account creation you'll need to enter a credit card for billing[^billing] and you'll need to select a support plan (I generally choose the free support plan). You'll also need a phone number for verification.
 
 [^billing]: Though we'll attempt to keep the costs down, we'll be utilizing Route53 for DNS. Because of this the bill will be at least \$0.50 per month (the cost of the primary DNS zone).
 
 ## Setting up an IAM user
 
-In general, it is not a good practice to use root user accounts to manage your configuration. Creating IAM users for each person in your organization allows you to control access at an individual level. Additionally, if credentials are compromised for a given user those credentials can be revoked centrally.
+In general, it is not a good practice to use root user accounts to log into the console and manage your configuration. Creating IAM users for each person in your organization allows you to control access at an individual level. Additionally, if credentials are compromised for a given user those credentials can be revoked centrally.
 
 Let's create a user in the [Identity and Access Management service](https://console.aws.amazon.com/iam/home?#/home). Choose your own username and choose **AWS Management Console Access**:
 
-![](https://rpl.cat/uploads/pmODExSVGRvcfl4waMOHoTZ6gkSAF38wbMzN_fu9Kig/public.png)
+![Add user](../../assets/iam-add-user.png)
 
 Setup your password and configure your policies:
 
-![](https://rpl.cat/uploads/RpJGY2zjFdIf6pfPHUksJgAj5nqfTu_g8eV_2eRq8UA/public.png)
+![Configure AdministratorAccess](../../assets/iam-add-user-administrator-access.png)
 
 You might want more granular access controls, but when getting started `AdministratorAccess` policy keeps things simple.
 
 Create a user for programmatic access; I've called my user `terraform`:
 
-![](https://rpl.cat/uploads/0m3PUXnYjZXG-sLN-Av35WIC_eWkpT5n-7R0jTFm9O4/public.png)
+![Access Type](../../assets/iam-access-type.png)
 
 Once you create the user you'll need to keep a copy of the `AWS Access Key ID` and the `AWS Secret Access Key`. We'll configure the AWS Command Line Interface (CLI) on our machine use these. [Download and install](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) `awscli`. On a mac you can use Homebrew:
 
@@ -91,7 +113,7 @@ Once installed, `awscli` will need to know about your credentials. There are a f
 - Configuring a profile
 - Using environment variables
 
-### Saving your credentials in Terraform
+### Saving your credentials in Terraform (wrong)
 
 It is possible to put your credentials directly inside of Terraform (**don't do this**):
 
@@ -102,7 +124,7 @@ provider "aws" {
 }
 ```
 
-Not only is this unsafe (you should never store credentials in your repository), it cannot be easily overridden by each developer meaning that everyone will share credentials.
+Not only is this unsafe (you should never store credentials in your repository), it cannot be easily overridden by other developers; meaning everyone will share credentials.
 
 ### Configuring the default credentials
 
@@ -127,24 +149,28 @@ By default, I've chosen to use `us-east-1` (also known as `N. Virginia`). You mi
 
 Storing default credentials works great, but what if you have multiple projects on your machine - each with different credentials? Luckily, `awscli` can work with multiple profiles. Profile names may include your project name, domain name, an environment (like staging or production). There is [good documentation](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) on different configurations for the `awscli` tool.
 
-To configure a profile run:
+You can name a profile anything you like. For now, just use your domain name without the `.com` (in our case, `example`). Then run:
 
 ```bash
-aws configure --profile YOUR_PROFILE_NAME
+aws configure --profile example
 ```
 
-For now, replace `YOUR_PROFILE_NAME` with your domain name (without the `.com`, such as `kindawow`).
-
-In order to select a profile you'll need to export an environment variable. On Mac/Linux:
+In order to select a profile you'll need to export an environment variable (replacing `example` with the profile name you configured). On Mac/Linux:
 
 ```
-export AWS_PROFILE=YOUR_PROFILE_NAME
+export AWS_PROFILE=example
+```
+
+If you are using the `fish` shell:
+
+```
+set -x AWS_PROFILE example
 ```
 
 On Windows:
 
 ```
-C:\> setx AWS_PROFILE YOUR_PROFILE_NAME
+C:\> setx AWS_PROFILE example
 ```
 
 ### Using environment variables
@@ -167,9 +193,9 @@ This pattern is particularly useful when running terraform in a continuous integ
 
 [^env]: Managing multiple environments locally can be cumbersome. A helpful tool for this is [`direnv`](https://direnv.net/): it allows you to control the environment on a per-folder basis.
 
-# Setting up the project
+## Project organization choices
 
-There are a number of different approaches to Terraform project organization which fit into three categories:
+There are several different approaches we could follow for our Terraform project organization. These fit into three categories:
 
 - Keep all of the configuration in one folder or one file
 - Separate the configuration of resources into separate modules
@@ -177,7 +203,7 @@ There are a number of different approaches to Terraform project organization whi
 
 Each of these patterns offer advantages and disadvantages.
 
-## Keep all of the configuration in one folder or one file
+### Keep all of the configuration in one folder or one file
 
 Terraform is made up of a series of configuration files, variables, outputs and states. When starting a project, all of this can be kept in a single `terraform.tf` file:
 
@@ -187,7 +213,7 @@ terraform/
   |- terraform.tf
 ```
 
-After you `apply` your Terraform configuration a local copy of your state will be created:
+After you `apply` your Terraform configuration, a local copy of your state will be created:
 
 ```
 terraform/
@@ -197,7 +223,7 @@ terraform/
   |- terraform.tfstate.backup
 ```
 
-As your infrastructure grows, however, the number of services and resources you rely on will quickly grow and a single file will become unwieldy. It is possible to separate out each service to a separate file as well as separating out the variables and outputs. Terraform automatically combines all of these files into a single configuration and figures out the interdependencies. For example:
+As your infrastructure grows, however, the number of services and resources you rely on will quickly grow and a single file will become unwieldy. It is possible to separate out each service to a separate file as well as separating out the variables and outputs. Terraform sees all of these files as a single configuration and figures out the interdependencies. For example:
 
 ```
 terraform/
@@ -220,7 +246,7 @@ terraform/
 
 In this case, it is clear where changes need to be made for specific resources. Unfortunately this setup can be cumbersome when making a small change (such as creating a new version of a lambda function) because running `terraform apply` will need to check the state of every service when it runs.
 
-## Separate the configuration of resources into separate modules
+### Separate the configuration of resources into separate modules
 
 Terraform has a built in module system that works well to separate out your resources. To do this you would create subfolders for each resource. A default `terraform.tf` file imports the modules and runs them:
 
@@ -274,13 +300,13 @@ terraform/
   |   |- outputs.tf
 ```
 
-This is a lot of repeated files and filenames and it is easy to get confused when making changes in an editor. At the same time, this separation of concerns is very powerful. Normally the modules (subfolders) would not contain configuration specific to your website. Instead the specific names and values would be passed into the modules via variables. Because of this, modules can actually be open source and shared between projects.[^modules]
+This is a lot of repeated files and filenames and it is easy to get confused when making changes in an editor ("which `main.tf` am I editing?"). At the same time, this separation of concerns is very powerful. Normally the modules (subfolders) would not contain configuration specific to your website. Instead the specific names and values would be passed into the modules via variables. Because of this, modules can actually be open source and shared between projects.[^modules]
 
 [^modules]: [Cloud Posse](https://cloudposse.com/) maintains a huge set of [open source modules](https://github.com/cloudposse) that can be used in your project. In many cases using these modules is the right choice if you are looking to follow best practices around specific resources.
 
 Just as we saw in the previous setup, when running `terraform apply`, Terraform sees all of the modules as a single configuration. Knowing where to make a change is still relatively easy, but each change requires re-applying the entire state.
 
-## Control access and permissions to each resource configuration and state individually
+### Control access and permissions to each resource configuration and state individually
 
 As your website grows and more developers are working on it, it will not make sense to keep everything in a single file. Likewise, maintaining all of your infrastructure in a single state file can become problematic. As your team grows you'll have developers that understand networking, others that understand database concerns, some will work on site security, and others will deploy changes to the API and site. You'll want to restrict access to different parts of the infrastructure. For example:
 
@@ -307,9 +333,10 @@ terraform-database/
 ...
 ```
 
-In this setup, the Terraform state is managed per-module and each of the modules are kept in separate folders (and, likely, separate repositories). Access to the various services is managed through repository permissions and different IAM policies and roles so that only specific users could make changes to (or even see the configuration for) specific services. This is the most secure and least risky way to manage your infrastructure. Individual developers can't accidentally make a change or destroy a critical resource if they don't have access to it.
+In this setup, the Terraform state is managed per-module and each of the modules are kept in separate folders (and, likely, separate repositories). Access to the various services is managed through repository permissions and different IAM policies and roles so that only specific users can make changes to (or even see the configuration for) specific services. This is the most secure and least risky way to manage your infrastructure. Individual developers can't accidentally make a change or destroy a critical resource if they don't have access to it.
 
-Unfortunately, this is also the most challenging setup. Making coordinated changes can be extremely cumbersome. For example, suppose you wanted to create an API action that sent an email from a new email sender when an entry was added to a new database table. You would need to coordinate changes to deploy the new database, create the new email address (and wait for verification), and deploy the serverless function that used both of these. This would require changes to three repositories and at least three separate `terraform apply` invocations to modify the different services. In a production site with many active users, it makes sense to plan and execute changes like this independently. In a small site with only one or two developers, this level of rigor is probably over-zealous.
+Unfortunately, this is also the most challenging setup. Making coordinated changes can be extremely cumbersome. For example, suppose you wanted to create an API action that sent an email from a new email sender when an entry was added to a new database table. You would need to coordinate changes to deploy the new database, create the new email address (and wait for verification), and deploy the serverless function. This would require changes to three repositories and at least three separate `terraform apply` invocations to modify the different services. In a production site with many active users, it makes sense to plan and execute changes like this independently. In a small site with only
+one or two developers, this level of rigor is probably over-zealous.
 
 ## Basic project setup
 
@@ -337,6 +364,22 @@ We'll be using version control so that we can see what changes were made to our 
 *.tfvars
 ```
 
+## Variables
+
+Most of the configuration we'll create will be generic. In fact, it could easily be repurposed for multiple websites with only a few small changes. Unfortunately, those small changes will be scattered across our configuration files. Terraform allows you to declare and use variables to simplify this. In the `terraform` folder create a new file called `variables.tf`:
+
+```tf
+variable "region" {
+  default = "us-east-1"
+}
+
+variable "domain" {
+  default = "example.com"
+}
+```
+
+We'll use these variables as we write our configuration. For more information, see the [Terraform documentation on input variables](https://www.terraform.io/docs/configuration/variables.html).
+
 ## Collaboration and remote backends
 
 Terraform tracks the last-known state for your configuration in the `terraform.tfstate` and `terraform.tfstate.backup` files. Terraform compares the stored state and configuration with what exists in the cloud. Running `terraform apply` repeatedly should not make any changes. If we make a change to our configuration files and then run `terraform apply` it will check the local state and apply the changes without completely recreating the resource. Because of this, the state[^state] files are extremely important.
@@ -360,18 +403,28 @@ To start, we'll set the provider. Again, for this post we'll be using AWS, so we
 ```tf
 # Setup the provider for this Terraform instance
 provider "aws" {
-  region  = "us-east-1"
+  region  = "${var.region}"
 }
 ```
 
+Notice that the value for the region uses a _variable interpolation_.
+
 > Even though we configured `awscli` with our chosen region `us-east-1`, we still need to set the `region` in the provider block. This should be unnecessary but because of how Terraform connects to providers we must include it again.
 
-Next we'll want to create an S3 bucket that will hold the state. Create a new file called `storage.tf` in the `terraform` folder:
+We'll need to create an S3 bucket that will hold the state. Because S3 bucket names are global you'll need to choose a unique name. To make sure my bucket name is unique, I generally use my domain name (without the `.com`) as a prefix and add `-state`. For example: `example-state`. Create a new variable by adding the following to `variables.tf` (replacing `example` with your name):
+
+```tf
+variable "state_bucket" {
+  default = "example-state"
+}
+```
+
+Next, create a new file called `storage.tf` in the `terraform` folder:
 
 ```tf
 # Create a bucket to for remotely tracking Terraform state
 resource "aws_s3_bucket" "state" {
-  bucket = "YOUR_STATE_BUCKET"
+  bucket = "${var.state_bucket}"
   acl    = "private"
 
   versioning {
@@ -384,13 +437,13 @@ resource "aws_s3_bucket" "state" {
 }
 ```
 
-You'll need to replace `YOUR_STATE_BUCKET` with your chosen name. Because S3 bucket names are global you'll need to choose a unique name. To make sure my bucket name is unique, I generally use my domain name (without the `.com`) as a prefix and add `-state`. For example: `kindawow-state`. We've enabled `versioning` for the bucket (as well as turning on `prevent_destroy`). Though not required, this is highly recommended. Save `storage.tf` and run the following command (from within the `terraform` folder):
+We've enabled `versioning` for the bucket (as well as turning on `prevent_destroy`). Though not required, this is highly recommended. Save `storage.tf` and run the following command (from within the `terraform` folder):
 
 ```bash
 terraform init
 ```
 
-> If you are using an `awscli` profile (as noted above) you'll need to make sure you've exported the `AWS_PROFILE` environment variable. On a Mac, you can even do this as part of the command, i.e, `AWS_PROFILE=kindawow terraform init`.
+> If you are using an `awscli` profile (as noted above) you'll need to make sure you've exported the `AWS_PROFILE` environment variable. On a Mac, you can even do this as part of the command, i.e, `AWS_PROFILE=example terraform init`.
 
 You should see:
 
@@ -447,7 +500,7 @@ Create a new file[^multiple] called `state.tf` in the `terraform` folder:
 terraform {
   backend "s3" {
     region  = "us-east-1"
-    bucket  = "YOUR_STATE_BUCKET"
+    bucket  = "example-state"
     key     = "terraform"
     encrypt = true
   }
@@ -456,9 +509,9 @@ terraform {
 
 [^multiple]: Terraform will still work even though we're splitting our configuration across multiple files. Terraform will read all of the `*.tf` files in the current folder when it is run. The order of your declarations doesn't matter. Terraform will do its best to determine the order things should be created or applied based on the interdependencies in the declarations.
 
-Again we'll want to set the `bucket` to the name of the bucket we've just created.
+Again we'll want to set the `bucket` value to the name of the bucket we've just created (replace `example-state` with your chosen name).
 
-> Terraform reads the values for the `backend` very early in its lifecycle; because of this you cannot use variable interpolations, and it cannot utilize the values in the `provider` node. All of the values need to be redeclared.
+> Terraform reads the values for the `backend` very early in its lifecycle; because of this you cannot use variable interpolations and it cannot utilize the values in the `provider` node. All of the values need to be redeclared as shown.
 
 With this new configuration in place we can check the plan:
 
@@ -508,15 +561,15 @@ Terraform failed to load the states. The data in both the source and the
 destination remain unmodified. Please resolve the above error and try again.
 ```
 
-Why did we get a permission error? We just created the bucket; shouldn't we be able to see the contents? Actually, we shouldn't. We set the access control (`acl`) of the bucket to `private` and haven't told AWS who should be able to see the private resources.
+Why did we get a permission error? We just created the bucket; shouldn't we be able to see the contents? Actually, we shouldn't. We set the access control (`acl`) of the bucket to `private` and haven't told AWS that we should be able to see the private resources.
 
-There are several ways to grant access to our user, including using Terraform itself. For state management, however I prefer to grant access through the [IAM console](https://console.aws.amazon.com/iam/home?region=us-east-1#/policies). Controlling state access through roles allows us to grant access to the state of each resource for specific groups of users.
+There are several ways to grant access to our user, including using Terraform itself. For state management, however I prefer to grant access through the [IAM console](https://console.aws.amazon.com/iam). Controlling state access through roles allows us to grant access to the state of each resource for specific groups of users.
 
 Click on the **Policies** link on the sidebar then click **Create policy**:
 
-![Create policy button](https://rpl.cat/uploads/O_TPN1bAMExF2c_FyCk12zZ32ACNvgU6tISj_2zbDDA/public.png)
+![Create policy button](../../assets/iam-create-policy.png)
 
-Next, click on the **JSON** tab and enter the following (changing `YOUR_STATE_BUCKET` to the name
+Next, click on the **JSON** tab and enter the following (changing `example-state` to the name
 of the S3 bucket created previously):
 
 ```
@@ -526,24 +579,24 @@ of the S3 bucket created previously):
     {
       "Effect": "Allow",
       "Action": "s3:ListBucket",
-      "Resource": "arn:aws:s3:::YOUR_STATE_BUCKET"
+      "Resource": "arn:aws:s3:::example-state"
     },
     {
       "Effect": "Allow",
       "Action": ["s3:GetObject", "s3:PutObject"],
-      "Resource": "arn:aws:s3:::YOUR_STATE_BUCKET/*"
+      "Resource": "arn:aws:s3:::example-state/*"
     }
   ]
 }
 ```
 
-This policy is very permissive and grants access to all files in the state bucket. This is fine for now and we can lock it down later if we want to add more granular access. Click **Review Policy**. I named my policy `terraform-state-access`. Then clicked **Create Policy**.
+This policy is very permissive and grants access to all files in the state bucket. This is fine for now; we can add more specific controls later if we want more granular access. Click **Review Policy** and name the policy `terraform_state_access_policy`. Then clicked **Create Policy**.
 
-![](https://rpl.cat/uploads/k7iuO5SmJPiOHKwIDY1UvB7sIxISVAVY8ZIAXzNH-Qg/public.png)
+![Create state policy](../../assets/iam-create-state-policy.png)
 
 After creating the policy, you'll need to attach it to the programmatic user you created earlier. Find the user in the Users section and click **Add Permissions** and select the new policy:
 
-![](https://rpl.cat/uploads/XZy1OdmW3v84QHpPj7YS98GeVQiQKyiKqK_8oa5fPyo/public.png)
+![Add permissions](../../assets/iam-add-permissions.png)
 
 Click **Next: Review** and then **Add permissions**.
 
@@ -599,7 +652,7 @@ Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but will not be
 persisted to local or remote state storage.
 
-aws_s3_bucket.state: Refreshing state... (ID: YOUR_STATE_BUCKET)
+aws_s3_bucket.state: Refreshing state... (ID: example-state)
 
 ------------------------------------------------------------------------
 
@@ -619,6 +672,8 @@ rm terraform.tfstate.backup
 
 That's a lot of setup; but at this point we're ready to start building out the main resources for our application and, ideally, we won't need to configure anything else in the AWS console directly.
 
+> Note: we could go even further and introduce remote-state locking (see https://dev.to/theodesp/using-terraform-remote-state-for-collaboration-4661). Ultimately, we'll want to move our infrastructure management into our continuous deployment tooling; at that point locking will need to be managed differently.
+
 ## DNS
 
 We'll want to use our own domain for everything: our site, our email, and our API. Domain configuration is controlled through a domain's nameservers. There are a number of options available for managing your DNS nameservers and entries. You could choose to use the default nameservers provided by the service where you purchased your domain (such as [Google Domains](https://domains.google)). You could also use [Cloudflare](https://developers.cloudflare.com/terraform/) which provides a built-in CDN, shared SSL certificates, and DOS protection (and is free for the basic plan). You can also use [Route53](https://aws.amazon.com/route53/) which is part of AWS.
@@ -632,7 +687,7 @@ We'll start with our primary zone configuration and nameservers. Within the `ter
 ```tf
 # Define the primary zone for our domain
 resource "aws_route53_zone" "domain_zone" {
-  name = "YOUR_DOMAIN_NAME"
+  name = "${var.domain}"
 }
 
 # Create the nameservers for our domain
@@ -652,7 +707,9 @@ resource "aws_route53_record" "domain_nameservers" {
 }
 ```
 
-Your domain name should be set to the root domain name (such as `kindawow.com`) and should not include the subdomain. For example, do not include `www` or the protocol. Notice that we have set a very short `ttl` (Time-to-live). This controls how long DNS servers (and browsers) should cache your domain after looking it up. Setting a very short time like this (30 seconds) makes it much faster to make changes without needing to wait a long time for propagation. However, it also increases the number of requests that users need to make (and that AWS needs to serve). Long-term, we'll want to change this to `300` or `600` (5 minutes or 10 minutes).
+We've configured the `name` of our zone using a variable interpolation. We've already setup the `domain` variable in `variables.tf`. Your domain name should be set to the root domain name (such as `example.com`) and should not include the subdomain. For example, do not include `www` or the protocol `https`.
+
+Notice that we have set a very short `ttl` (Time-to-live). This controls how long DNS servers (and browsers) should cache your domain after looking it up. Setting a very short time like this (30 seconds) makes it much faster to make changes without needing to wait a long time for propagation. However, it also increases the number of requests that users need to make (and that AWS needs to serve). Long-term, we'll want to change this to `300` or `600` (5 minutes or 10 minutes).
 
 We've also specified `allow_overwrite`. When the nameservers are created, [Terraform automatically generates](https://www.terraform.io/docs/providers/aws/r/route53_record.html#ns-and-soa-record-management) `NS` and `SOA` entries by default. We want to allow those entries to be set in our state (overwriting anything that might already be present).
 
@@ -680,7 +737,7 @@ Do you want to perform these actions?
 aws_route53_zone.domain_zone: Creating...
   comment:        "" => "Managed by Terraform"
   force_destroy:  "" => "false"
-  name:           "" => "YOUR_DOMAIN_NAME"
+  name:           "" => "example.com"
   name_servers.#: "" => "<computed>"
   vpc_id:         "" => "<computed>"
   vpc_region:     "" => "<computed>"
@@ -692,7 +749,7 @@ aws_route53_zone.domain_zone: Creation complete after 34s (ID: REDACTED)
 aws_route53_record.domain_nameservers: Creating...
   allow_overwrite:    "" => "true"
   fqdn:               "" => "<computed>"
-  name:               "" => "YOUR_DOMAIN_NAME"
+  name:               "" => "example.com"
   records.#:          "" => "4"
   records.0000000000: "" => "ns-336.awsdns-42.com"
   records.0000000000: "" => "ns-574.awsdns-07.net"
@@ -709,7 +766,7 @@ aws_route53_record.domain_nameservers: Creation complete after 37s (ID: REDACTED
 Apply complete! Resources: 2 added, 0 changed, 0 destroyed.
 ```
 
-The primary zone and nameserver entries should have been created. In the output you should see the list of nameservers:
+The primary zone and nameserver entries should be created. In the output you should see the list of nameservers:
 
 ```
 records.0000000000: "" => "ns-336.awsdns-42.com"
@@ -720,14 +777,16 @@ records.0000000000: "" => "ns-1614.awsdns-09.co.uk"
 
 > These nameservers are just an example; the nameservers listed for your zone will be different.
 
-We'll need to edit the nameservers on our domain registrar to point to these:
+We'll need to edit the nameservers on our domain registrar to point to these.[^dns]
 
 ![Add the nameserver entries to Google Domains](../../assets/google-domains-nameservers.png)
 
-One saved, you'll need to wait for the changes to propagate through DNS. This can take up to 48 hours; however I find this usually happens much faster (sometimes as fast as 5 minutes). If you want to check what nameservers are reported for your domain run:
+[^dns]: _Be careful_: at this point our Route53 configuration is completely empty. For a new domain that's probably fine. If you've added DNS entries to your current nameservers (or if there are default entries managed by your registrar) these will no longer be set. For example, if you've setup an email alias (as described earlier) your existing DNS configuration likely has an `MX` record denoting it. We'll fix this later but if you are relying on your current setup, you should proceed cautiously.
+
+Once saved, you'll need to wait for the changes to propagate through DNS. This can take up to 48 hours; however I find this usually happens much faster (sometimes as fast as 5 minutes). If you want to check what nameservers are reported for your domain run:
 
 ```bash
- dig +short NS kindawow.com
+ dig +short NS example.com
 ```
 
 If the DNS has fully propagated the answer should match the nameservers listed above. You'll need to wait for this before proceeding.
@@ -808,7 +867,7 @@ Although we don't need to setup email just yet, verifying your email and increas
 
 For now we have three goals:
 
-- Enable sending from a `no-reply@kindawow.com` email address
+- Enable sending from a `no-reply@example.com` email address
 - Enable SPF verification of the emails we send
 - Allow email forwarding through our Google Domain email forwards
 
@@ -839,8 +898,8 @@ resource "aws_route53_record" "domain_mail_from_mx" {
   type    = "MX"
   ttl     = "600"
 
-  # Change `us-east-1` to the region in which `aws_ses_domain_identity` is created
-  records = ["10 feedback-smtp.us-east-1.amazonses.com"]
+  # The region must match the region in which `aws_ses_domain_identity` is created
+  records = ["10 feedback-smtp.${var.region}.amazonses.com"]
 }
 
 resource "aws_route53_record" "domain_mail_from_spf" {
@@ -855,7 +914,7 @@ resource "aws_ses_email_identity" "no_reply" {
   email = "no-reply@${aws_ses_domain_identity.domain_identity.domain}"
 }
 
-# This enables googles domain email forwarding for emails sent to *@kindawow.com
+# This enables Google's domain email forwarding for emails
 # https://support.google.com/domains/answer/9428703
 # Create this record first to avoid resending the email verification
 resource "aws_route53_record" "google_mx" {
@@ -884,7 +943,7 @@ Based on the domain identity we'll create an `aws_ses_domain_mail_from` resource
 
 When sending or receiving mail, remote servers will look up the domain of the email address in DNS. It will use the records to determine how to exchange mail for the domain and whether or not to trust the email. Because of this we need to add a Mail Exchanger (`MX`) record to Route53 for our mail-from domain. Additionally we'll add a Sender Policy Framework (`SPF`) record. Without this, our emails would always end up in user's spam folders and therefore it is required.
 
-With the mail-from domain configured we can create an email identity for sending emails. In this case, I've chosen `no-reply@kindawow.com`. This is fairly standard if you don't plan on handling replies, however you might want something more personal or in-line with your website's brand. Change the `name` however you like.
+With the mail-from domain configured we can create an email identity for sending emails. In this case, I've chosen `no-reply@example.com`. This is fairly standard if you don't plan on handling replies, however you might want something more personal or in-line with your website's brand. Change the `name` however you like.
 
 Lastly, we configure what happens to emails sent directly to our domain. Remember, we configured email forwarding at the very beginning of the post. You might have noticed when we changed our nameservers to point to Route53 that email forwarding completely broke. This is because email exchange servers no longer know where to send the emails. To fix this we'll point the exchangers back to our registrar (in my case Google Domains).
 
@@ -902,24 +961,82 @@ terraform apply
 
 This should complete in a few minutes.
 
-With the creation complete we can move on to the approvals. If you open the [Simple Email Service console](https://console.aws.amazon.com/ses/home?region=us-east-1#verified-senders-email:) you'll see that you need to confirm the email address for sending.
+### Verifications
+
+With the creation complete we can move on to the approvals. If you open the [Simple Email Service console](https://console.aws.amazon.com/ses/) you'll see that you need to confirm the email address for sending.
 
 ![Pending verification](../../assets/ses-pending-verification.png)
 
-You should have received an email to `no-reply@kindawow.com`. If you haven't received an email it might be because your email forwarding setup hasn't propagated. Wait a few minutes and click **resend**. Once you've click the link in the verification email, you're done.
+You should have received an email to `no-reply@example.com`. If you haven't received an email it might be because your email forwarding setup hasn't propagated. Wait a few minutes and click **resend**. Once you've click the link in the verification email, you're done.
+
+### Sandbox mode and sending limits
+
+At this point your account should still be in **Sandbox** mode (you can see this by going to https://console.aws.amazon.com/ses and clicking on the **Sending Statistics** link in the sidebar). In this mode you can send emails only to verified email addresses. You can verify your own email address for development purposes but you need to request that the limit be increased before moving to production.
+
+![Sandbox mode](../../assets/ses-sending-limit.png)
+
+Click **Request a Sending Limit Increase**.
+
+![Service limit increase](../../assets/ses-service-limit-increase.png)
+
+Choose \*_Service limit increase_ (it should be selected by default).
+
+![Case classification](../../assets/ses-case-classification.png)
+
+Next make sure the **Limit type** is `SES Sending Limit`, the **Mail Type** is `Transactional` and you have entered your domain name (it is okay that your website isn't deployed).
+
+Amazon's Terms and AUP are very specific about how emails, bounces, and unsubscribes are treated. The links offer helpful recommendations and are worth reading. We're not planning on using SES for a mailing list (all of our emails are transactional and related to the service). For the next two questions I answer:
+
+```
+The emails in this case are all transactional (signup, password-reset)
+```
+
+Handling complaints and - more importantly - reducing the number of complaint is also important. Here is how I describe my process:
+
+```
+We'll remove addresses that bounce or when users have complained. But more importantly valid addresses are required to be verified to submit content. We only ask for an account at the time we need to; to avoid fake addresses.
+```
+
+![Request limit](../../assets/ses-request-limit.png)
+
+To start, I've chosen to increase the `Desired Daily Sending Quota` to `10000`. This should be more than enough to get started.
+
+![Case Description](../../assets/ses-case-description.png)
+
+For the **Use case description** I normally keep it simple. We're trying to get to production and start a beta (remember to replace `example.com` with your domain):
+
+```
+We're building out example.com and would like to move our account out of the sandbox so we can proceed to a beta. Thanks!
+```
+
+You shouldn't need to change the contact options:
+
+![Contact Options](../../assets/ses-contact-options.png)
+
+Once filled out you can click **Submit**. This process can take up to 72 hours (though, I've seen it take less than a day). Luckily, you can continue while the limit increase request is processed.
 
 ## Storage
 
-Storing files on Amazon Simple Storage Service (S3) is easy and reliable. We'll add private S3 buckets for two things:
+Storing files on Amazon Simple Storage Service (S3) is easy and reliable. We'll use private S3 buckets for two things:
 
 - Storing Terraform state
 - Transferring packaged lambda functions when deploying
 
-We've already setup a bucket for storing our Terraform state in `storage.tf`. Let's add a new bucket for deploying:
+We've already setup a bucket for storing our Terraform state in `storage.tf`.
+
+Let's add a new bucket for deploying. First, let's add a variable for the name of our deploy bucket; like our state bucket, we'll use our domain name (without the `.com`) and the suffix `-deploys`. Add the following to `variables.tf`:
+
+```tf
+variable "deploys_bucket" {
+  default = "example-deploys"
+}
+```
+
+You'll need to change this value for your site. Next, add the following to `storage.tf`:
 
 ```tf
 resource "aws_s3_bucket" "deploys" {
-  bucket = "YOUR_DEPLOYS_BUCKET"
+  bucket = "${var.deploys_bucket}"
   acl    = "private"
 
   versioning {
@@ -944,15 +1061,15 @@ And apply it:
 terraform apply
 ```
 
-# Site
+## Static site
 
-When building our website, we'll use Gatsby to generate all of the static content and assets. Though there are many tools and frameworks for making a static website (including pure HTML and CSS), Gatsby offers numerous plugins, themes, and tools that will help us build something professional with relatively little effort. When deploying our website, we'll generate a build and push all of the changes to an S3 bucket.
+When building our website we'll use Gatsby to generate all of the static content and assets. Though there are many tools and frameworks for making a static website (including pure HTML and CSS), Gatsby offers numerous plugins, themes, and tools that will help us build something professional with relatively little effort. When deploying our website, we'll generate a build and push all of the changes to an S3 bucket.
 
 Before we setup Gatsby and the content for our website, let's create the bucket. Create a new file in the `terraform` folder called `site.tf`:
 
 ```tf
 resource "aws_s3_bucket" "site" {
-  bucket = "YOUR_DOMAIN_NAME"
+  bucket = "${var.domain}"
   acl    = "public-read"
 
   policy = <<EOF
@@ -967,7 +1084,7 @@ resource "aws_s3_bucket" "site" {
                 "s3:GetObject"
             ],
             "Resource": [
-                "arn:aws:s3:::YOUR_DOMAIN_NAME/*"
+                "arn:aws:s3:::${var.domain}/*"
             ]
         }
     ]
@@ -977,7 +1094,7 @@ EOF
   cors_rule {
     allowed_headers = ["*"]
     allowed_methods = ["GET"]
-    allowed_origins = ["https://YOUR_DOMAIN_NAME"]
+    allowed_origins = ["https://${var.domain}"]
     expose_headers  = ["ETag"]
     max_age_seconds = 3000
   }
@@ -993,7 +1110,9 @@ EOF
 }
 ```
 
-When creating the bucket for our static website, the bucket name will be the same as our domain name (including the `.com` but without the `https`), i.e., `kindawow.com`. We've made the bucket readable to anyone on the Internet. We setup a CORS (Cross origin resource sharing) rule to limit access to our domain. Note: it is possible to manually construct requests that will bypass the CORS rule (for example, using cURL); this rule only affects browsers. Additionally we've added a default `index_document` and `error_document`. This way if someone requests `https://kindawow.com/` it will automatically return `https://kindawow.com/index.html` (which will work perfectly with a default Gatsby website). This is enough for us to setup our website.
+When creating the bucket for our static website the bucket name will be the same as our domain name (including the `.com` but without the `https`), i.e., `example.com`. We've used the `domain` variable.
+
+The bucket is readable to anyone on the Internet. We configured a Cross-Origin-Resource-Sharing (`CORS`) rule to limit access to our domain. Note: it is possible to manually construct requests that will bypass the `CORS` rule (for example, using cURL); this rule only affects browsers. Additionally we've added a default `index_document` and `error_document`. This way if someone requests `https://example.com/` it will automatically return `https://example.com/index.html` (which will work perfectly with a default Gatsby website). This is enough for us to setup our website.
 
 Unfortunately, serving your website directly from S3 is not efficient. Instead, you'll want to use a CDN (Content Delivery Network) to ensure that users see the fastest page loads possible. This will also act as a cache to reduce the number of reads performed directly against our S3 buckets. Fortunately, Amazon offers a CDN, called CloudFront for exactly this purpose. The first 2,000,000 requests per month are free.
 
@@ -1003,18 +1122,18 @@ Add the following to `site.tf`:
 resource "aws_cloudfront_distribution" "site_distribution" {
   origin {
     domain_name = "${aws_s3_bucket.site.bucket_domain_name}"
-    origin_id   = "YOUR_DOMAIN_NAME"
+    origin_id   = "${var.domain}"
   }
 
   enabled             = true
-  aliases             = ["YOUR_DOMAIN_NAME"]
+  aliases             = ["${var.domain}"]
   price_class         = "PriceClass_100"
   default_root_object = "index.html"
 
   default_cache_behavior {
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "YOUR_DOMAIN_NAME"
+    target_origin_id = "${var.domain}"
 
     forwarded_values {
       query_string = true
@@ -1058,7 +1177,7 @@ With the CloudFront distribution configured, all that's left is to create a DNS 
 
 ```tf
 resource "aws_route53_record" "site" {
-  name    = "YOUR_DOMAIN_NAME"
+  name    = "${var.domain}"
   type    = "A"
   zone_id = "${aws_route53_zone.domain_zone.zone_id}"
 
@@ -1095,34 +1214,53 @@ This should be more than enough to get started. We'll start off by creating a ta
 Create a new file in the `terraform` folder called `database.tf`:
 
 ```tf
-resource "aws_dynamodb_table" "purchases_table" {
-  name           = "Purchases"
+resource "aws_dynamodb_table" "database" {
+  name           = "Database"
   billing_mode   = "PROVISIONED"
-  read_capacity  = 5
-  write_capacity = 5
-  hash_key       = "userId"
-  range_key      = "purchaseId"
+  read_capacity  = 20
+  write_capacity = 20
+  hash_key       = "pk"
+  range_key      = "sk"
 
   attribute {
-    name = "userId"
+    name = "pk"
     type = "S"
   }
 
   attribute {
-    name = "purchaseId"
+    name = "sk"
     type = "S"
+  }
+
+  attribute {
+    name = "data"
+    type = "S"
+  }
+
+  global_secondary_index {
+    name            = "gs1"
+    hash_key        = "sk"
+    range_key       = "data"
+    write_capacity  = 5
+    read_capacity   = 5
+    projection_type = "ALL"
   }
 
   tags = {
-    Name        = "Purchases"
+    Name        = "Database"
     Environment = "production"
   }
 }
+
 ```
 
-DynamoDB is a document database and is very different from normal relational databases. In this case we've created a single table with a provisioned set of read and write units. Using [provisioned capacity](https://aws.amazon.com/dynamodb/pricing/provisioned/) units means we are attempting to predict our usage. Setting the `read_capacity` to `5` (the minimum) indicates that we expect a maximum of `10` (eventually consistent) reads per second. Setting `write_capacity` to `5` (the minimum) means we expect at most `5` writes per second. If we exceed the provisioned capacity our requests could be throttled. To avoid this you can instead use [on-demand capacity](https://aws.amazon.com/dynamodb/pricing/on-demand/). For more information, see [how it works](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html).
+DynamoDB is a document database and is very different from normal relational databases. In this case we've created a single table with a provisioned set of read and write units. Using [provisioned capacity](https://aws.amazon.com/dynamodb/pricing/provisioned/) units means we are attempting to predict our usage. Setting the `read_capacity` to `20` indicates that we expect a maximum of `40` (eventually consistent) reads per second. Setting `write_capacity` to `20` means we expect at most `20` writes per second. If we exceed the provisioned capacity our requests could be throttled. To avoid this you can instead use [on-demand capacity](https://aws.amazon.com/dynamodb/pricing/on-demand/). For more information, see [how it works](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.ReadWriteCapacityMode.html).
 
-For our `Purchases` table, we've declared two fields which we use for our `hash_key` and `range_key`. We won't go into detail about how these work right now; but this should be enough for us to record information about user purchases.
+We've added a Global Secondary Index (`GSI`) and set the read and write capacity to `5` (the minimum).
+
+Our table is very generic (we've even named it generically: `Database`). We've declared three fields which we use for our `hash_key` and `range_key` and for the `range_key` of our `GSI`. This pattern allows you overload a single table with all of your data. This pattern is explained well at https://www.trek10.com/blog/dynamodb-single-table-relational-modeling/ and https://www.youtube.com/watch?v=HaEPXoXVf2k.
+
+We won't go into detail about how these work right now; but this should be enough for us to record and quickly query almost any kind of information.
 
 Let's check the plan:
 
@@ -1141,6 +1279,9 @@ Some helpful links:
 - https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithDynamo.html
 - https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html
 - https://hackernoon.com/the-upside-down-world-of-dynamodb-8170411492c0
+- https://www.dynamodbguide.com/leaderboard-write-sharding
+- https://www.trek10.com/blog/dynamodb-single-table-relational-modeling/
+- https://www.youtube.com/watch?v=HaEPXoXVf2k
 
 ## Users and Identities
 
@@ -1212,7 +1353,9 @@ There are a lot of choices when creating a User Pool (see https://www.terraform.
 
 In this case we've marked the email address as `required` and set a minimum and maximum length. If you don't set the constraints, Terraform will re-create the User Pool every time you apply the configuration which would be bad.
 
-We want the email address to be verified (this dramatically reduces the amount of fake users). To do this, we'll have Cognito send a confirmation email with a code. We'll send it from the `no-reply` address we created earlier.
+We want the email address to be verified (this dramatically reduces the amount of fake users). To do this, we'll have Cognito send a confirmation email with a code. We'll send it from the `no-reply` address we created earlier[^verification].
+
+[^verification]: There are several ways to verify an account. We've chosen to use email and SES because it supports the highest sending rate at the lowest cost (we get 10,000 free emails per month). You could let Cognito itself send the emails but the maximum sending rate is very low and there is little customization. You could also choose to send SMS verifications through SNS. SNS allows you to send 100 free text messages per month to U.S. numbers, after that the cost is charged per send.
 
 With the pool configuration created, we'll also want to register a client for interacting with the pool from our website. Add the following to `users.tf`:
 
@@ -1284,12 +1427,12 @@ resource "aws_cognito_identity_pool" "identities" {
   cognito_identity_providers {
     client_id               = "${aws_cognito_user_pool_client.users_client.id}"
     server_side_token_check = true
-    provider_name = "cognito-idp.us-east-1.amazonaws.com/${aws_cognito_user_pool.users.id}"
+    provider_name = "cognito-idp.${var.region}.amazonaws.com/${aws_cognito_user_pool.users.id}"
   }
 }
 ```
 
-We've created an Identity Pool with a single provider: the User Pool we just created. Note that the provider name includes the region `us-east-1` and the User Pool `id`. If you've created your User Pool in another region, you'll need to modify the provider name to point to it. This is all we need to create the Identity Provider but we haven't set any access restrictions or permissions yet. To do that, we'll need to create `IAM` roles for authenticated and unauthenticated users and attach policies to those roles. Add the following to `identities.tf`:
+We've created an Identity Pool with a single provider: the User Pool we just created. Note that the provider name includes the region and the User Pool `id`. If you've created your User Pool in a different region, you'll need to modify the provider name to point to it. This is all we need to create the Identity Provider but we haven't set any access restrictions or permissions yet. To do that, we'll need to create `IAM` roles for authenticated and unauthenticated users and attach policies to those roles. Add the following to `identities.tf`:
 
 ```tf
 resource "aws_iam_role" "cognito_authenticated" {
@@ -1459,6 +1602,8 @@ To upload this function we'll need to zip it:
 zip -r api.zip api.js
 ```
 
+> Note: while this is a very basic function which only echoes back the context and event; it can be very dangerous. You wouldn't want a function like this to exist for a production website as it could leak critical server-side information. Eventually, we'll replace this with a much more in-depth function built using Express.
+
 ### Use Terraform to upload and configure the function
 
 Now that we've created the function (and compressed it) we can begin writing the Terraform configuration. In the `terraform` folder create `api.tf`:
@@ -1606,7 +1751,7 @@ resource "aws_api_gateway_method_response" "site_api_method_response" {
 }
 ```
 
-Here we are allowing the header `Access-Control-Allow-Origin` to be sent in the response. This header is important for Cross-Origin-Request-Sharing (`CORS`). Without it our website couldn't send requests and view responses from our API.
+Here we are allowing the header `Access-Control-Allow-Origin` to be sent in the response. This header is important for Cross-Origin-Resource-Sharing (`CORS`). Without it our website couldn't send requests and view responses from our API.
 
 Unfortunately, `CORS` support is a little more complex. When determining if a server allows Cross-Origin-Resource-Sharing for a given domain, the browser will send an `OPTIONS` query to the server before sending the actual request (`POST`, `GET`, etc.). We could pass these `OPTIONS` requests through to Lambda but we would need to write handler functions for them and it would essentially double the number of invocations. Instead we'll create a `MOCK` integration in API Gateway itself. To create the integration we'll need to configure requests handlers and responses. Add the following to `api.tf`:
 
@@ -1733,9 +1878,9 @@ resource "aws_api_gateway_deployment" "site_api_deployment" {
 }
 ```
 
-We chosen `production` as our stage name. In theory, you could have multiple stages (possibly pointing to different Lambda functions) for `staging`, `development`, etc. Alternatively, you could use deployment stages to deploy multiple versions of your API simultaneously (again, each pointing to a different Lambda function).
+We've set `production` as our stage name. In theory, you could have multiple stages (possibly pointing to different Lambda functions) for `staging`, `development`, etc. Alternatively, you could use stages to deploy multiple versions of your API simultaneously (again, each pointing to a different Lambda function).
 
-By default, Amazon generates a domain for our API. Even though it isn't directly visible to users (unless they are using the developer console), it's ugly. Luckily, we can specify a custom domain name that points to a particular deployment stage. Add the following to `api.tf`:
+By default, Amazon generates a unique domain for our API. Even though it isn't directly visible to users (unless they are using the developer console), it's ugly. Luckily, we can specify a custom domain name that points to a particular deployment stage. Add the following to `api.tf`:
 
 ```tf
 resource "aws_api_gateway_domain_name" "site_api_domain_name" {
@@ -1801,7 +1946,7 @@ resource "aws_iam_policy" "lambda_dynamodb_policy" {
         "dynamodb:UpdateItem",
         "dynamodb:DeleteItem"
       ],
-      "Resource": "arn:aws:dynamodb:us-east-1:*:*",
+      "Resource": "arn:aws:dynamodb:${var.region}:*:*",
       "Effect": "Allow"
     }
   ]
@@ -1815,7 +1960,39 @@ resource "aws_iam_role_policy_attachment" "site_lambda_function_dynamodb_policy_
 }
 ```
 
-First we create a generic DynamoDB policy to allow access; then we attach that policy to the Lambda role we created earlier. Notice that our policy's `Resource` is locked to DynamoDB resources created in `us-east-1`. If you've created your database in another region you'll need to change the policy accordingly. Alternatively, you could change `us-east-1` to `*` to allow access to DynamoDB tables created in any region.
+First we create a generic DynamoDB policy to allow access; then we attach that policy to the Lambda role we created earlier. Notice that our policy's `Resource` is locked to DynamoDB resources created in our default region (`${var.region}`). If you've created your database in another region you'll need to change the policy accordingly. Alternatively, you could change `${var.region}` to `*` to allow access to DynamoDB tables created in any region.
+
+We'll also want to be able to send emails from our Lambda, add the following to `api.tf`:
+
+```
+resource "aws_iam_policy" "lambda_ses_policy" {
+  name = "lambda_ses_policy"
+  path = "/"
+
+  policy = <<EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Action": [
+        "ses:SendEmail",
+        "ses:SendRawEmail"
+      ],
+      "Resource": "*",
+      "Effect": "Allow"
+    }
+  ]
+}
+EOF
+}
+
+resource "aws_iam_role_policy_attachment" "site_lambda_function_ses_policy_attachment" {
+  role       = "${aws_iam_role.site_lambda_function_role.name}"
+  policy_arn = "${aws_iam_policy.lambda_ses_policy.arn}"
+}
+```
+
+For more information see https://aws.amazon.com/premiumsupport/knowledge-center/lambda-send-email-ses/.
 
 We're finally ready to push our configuration. Let's check the plan:
 
@@ -1937,7 +2114,7 @@ resource "aws_iam_policy" "site_log_policy" {
         "logs:CreateLogStream",
         "logs:PutLogEvents"
       ],
-      "Resource": "arn:aws:logs:us-east-1:*:*",
+      "Resource": "arn:aws:logs:${var.region}:*:*",
       "Effect": "Allow"
     }
   ]
@@ -1965,7 +2142,7 @@ And apply it:
 terraform apply
 ```
 
-Once you've applied the configuration you can log into the [AWS console to view the logs](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logStream:group=Site).
+Once you've applied the configuration you can log into the [AWS console to view the logs](https://console.aws.amazon.com/cloudwatch/).
 
 ## Outputs
 
@@ -1995,37 +2172,435 @@ Here we've added three outputs (which will be very useful when we connect our Ga
 terraform output
 ```
 
-## Variables
+# Site
 
-> This section is optional
+We've completed the setup for our AWS infrastructure; but at this point we don't really have a website. As we said earlier, we'll use Gatsby to make the primary website. It will be deployed to our S3 bucket, leverage Cognito for authentication and authorization and interact with our API hosted on Lambda.
 
-Most of the configuration we've created has been generic. In fact, it could easily be repurposed with only a few small changes. Unfortunately, those small changes are scattered across our files. Terraform allows you to declare and use variables throughout your files.
+In a larger company your website might be split across various repositories with varying developer permissions. To keep things simpler, we'll create a single repository and follow the [Gatsby Quick Start Guide](https://www.gatsbyjs.org/docs/quick-start/).[^gatsby]
 
-In the `terraform` folder create a new file called `variables.tf`:
+[^gatsby]: Actually, when making a Gatsby site, I usually follow [my own blog](../gatsby-with-typescript) and build everything in TypeScript. Again, we'll stick to a more vanilla Gatsby site for the purposes of this post.
 
-```tf
-variable "region" {
-  default = "us-east-1"
-}
+Install the Gatsby client (globally):
 
-variable "domain" {
-  default = "example.com"
+```bash
+npm install -g gatsby-cli
+```
+
+Make sure you are **not** in the `terraform` folder when generating your Gatsby site; we'll want everything to be kept separately. We'll setup the projects as follows:
+
+```bash
+gatsby new site
+```
+
+This should generate a new folder with a default Gatsby site:
+
+```bash
+cd site
+```
+
+Within the `site` folder you can start the server:
+
+```bash
+gatsby develop
+```
+
+At this point you should have a basic Gatsby website running on http://localhost:8000.
+
+![Default Gatsby Site](../../assets/gatsby-default.png)
+
+With this in place we can:
+
+- Let users signup
+- Handle email verification
+- Let users login
+- Allow password resets
+- Let users logout
+- Create an account page
+
+Before we can do that, however, we'll need a foundation.
+
+## Configuring Amplify
+
+You can communicate Amazon Web Services by writing all of the requests and responses manually. This offers you a lot of control but at the cost of complexity. [AWS Amplify](https://aws.amazon.com/amplify/https://aws.amazon.com/amplify/) hides most of that complexity. Because of this we'll use it here; even though it is overkill. Install the package (from within the `site` folder):
+
+```bash
+npm install --save-dev aws-amplify
+```
+
+Next we'll need to setup the AWS configuration. Create a new folder called `src/util`:
+
+```bash
+mkdir src/util
+```
+
+Within the `util` folder create a new file called `aws-config.js`:
+
+```js
+import Amplify, {Auth} from 'aws-amplify'
+
+const isBrowser = typeof window !== `undefined`
+
+if (isBrowser) {
+  try {
+    Amplify.configure({
+      Auth: {
+        mandatorySignIn: true,
+        region: 'YOUR_REGION',
+        identityPoolId: 'YOUR_IDENTITY_POOL_ID',
+        userPoolId: 'YOUR_USER_POOL_ID',
+        userPoolWebClientId: 'YOUR_USER_POOL_WEB_CLIENT_ID',
+      },
+    })
+  } catch (err) {
+    console.error(err)
+  }
 }
 ```
 
-With this file in place you can replace all occurrences of your domain name and region. For example:
+This is where we connect the dots. You'll need to replace the above values with your specific identifiers. By default our region was `us-east-1` (though you may have chosen an alternate region). Luckily, we added the rest of the values as outputs. Back in your `terraform` folder run:
 
-```tf
-resource "aws_route53_zone" "domain_zone" {
-  name = "${var.domain}"
+```bash
+terraform output
+```
+
+With the values replaced, we're ready to use the configuration. So far, we're focusing only on the authentication. There is great documentation detailing all of the options at https://aws-amplify.github.io/docs/js/authentication.
+
+## Hooks
+
+Gatsby is based on React. When working with global state (such as authentication) there are several strategies for providing the state to all components: passing down `props`, using `redux`, and by leveraging `hooks`. We'll create a hook. Within the `src/util` folder create a new file called `use-auth.js`:
+
+```js
+import React, {useState, useEffect, useContext, createContext} from 'react'
+import {Auth} from 'aws-amplify'
+import './aws-config'
+
+// We can't use auth when generating the static parts of the website
+const isBrowser = typeof window !== `undefined`
+
+// Create a context that we can provide and use
+const authContext = createContext()
+
+export const useAuth = () => {
+  return useContext(authContext)
+}
+
+export const ProvideAuth = ({children}) => {
+  const auth = useAuthEffect()
+  return <authContext.Provider value={auth}>{children}</authContext.Provider>
+}
+
+const useAuthEffect = () => {
+  const [isAuthenticating, setIsAuthenticating] = useState(true)
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [user, setUser] = useState(null)
+
+  useEffect(() => {
+    if (!isBrowser) return
+
+    try {
+      // Check for a current valid session in the session storage
+      Auth.currentSession()
+        .then(cognitoUserSession => {
+          setUser(cognitoUserSession)
+          setIsAuthenticated(true)
+          setIsAuthenticating(false)
+        })
+        .catch(error => {
+          // "No current user" is expected when auth is missing or expired
+          if (error !== 'No current user') {
+            console.error({error})
+          }
+          setUser(null)
+          setIsAuthenticating(false)
+        })
+    } catch (error) {
+      console.error({error})
+    }
+  }, [])
+
+  return {
+    user,
+    isAuthenticated,
+    isAuthenticating,
+  }
 }
 ```
 
-For more information, see the [Terraform documentation on input variables](https://www.terraform.io/docs/configuration/variables.html).
+Hooks can be confusing and this one is no exception. Let's break it down.
 
-# Gatsby
+We start of by importing the configuration we just created (along with some React and Amplify specific objects). Then we check to see if the current process is running in a browser. Gatsby is intended for client-side interactions but is built and deployed statically. When we deploy our website it will attempt to generate a static copy all of the pages to make the initial loading faster. No users will be logged in when building (in fact Amplify isn't even available); so we skip it.
 
-# Server
+Next we create a context (which is shared) and export a hook called `useAuth` and a provider component called `ProvideAuth`. The provider will eventually provide helpful methods but for the moment only checks to see if there is a current session. It does this by using the `Auth` singleton from Amplify which checks for session values in the browser's local storage. No users have ever signed in (or even signed up) so at this point the user will always be `null`.
+
+We'll be adding more to this hook but this should be enough to get started.
+
+By default, we want to use the provider globally. Open `gatsby-browser.js` and replace the contents:
+
+```js
+import React from 'react'
+import {ProvideAuth} from './src/util/use-auth'
+
+export const wrapRootElement = ({element}) => {
+  return <ProvideAuth>{element}</ProvideAuth>
+}
+```
+
+We wrap the root element with our new `ProvideAuth` component. By doing this, our context will be initialized with our root element and won't be reinitialized do to changing state or re-renders.
+
+> If you haven't used `useState` or `useEffect` before, I highly recommend the deep dive on Overreacted: https://overreacted.io/a-complete-guide-to-useeffect/
+
+## Signup page
+
+We've added a lot but if you refresh the browser you shouldn't see anything change. Let's add a signup page so that users can create accounts. To start, we'll add a link to the signup page in the header; we won't show the link if you are already logged in.
+
+Replace `src/components/header.js` with:
+
+```js
+import {Link} from 'gatsby'
+import PropTypes from 'prop-types'
+import React from 'react'
+import {useAuth} from '../util/use-auth.js'
+
+const Header = ({siteTitle}) => {
+  // When not rendering in a browser useAuth() will return null
+  const auth = useAuth() || {}
+
+  return (
+    <header
+      style={{
+        background: `rebeccapurple`,
+        marginBottom: `1.45rem`,
+      }}>
+      <div
+        style={{
+          margin: `0 auto`,
+          maxWidth: 960,
+          padding: `1.45rem 1.0875rem`,
+        }}>
+        <h1 style={{margin: 0}}>
+          <Link
+            to="/"
+            style={{
+              color: `white`,
+              textDecoration: `none`,
+            }}>
+            {siteTitle}
+          </Link>
+        </h1>
+        <div style={{color: `white`}}>
+          {auth.user ? (
+            <div>
+              <span>You are logged in</span>
+            </div>
+          ) : (
+            <>
+              <div>You are not logged in</div>
+              <div>
+                Don't have an account?{' '}
+                <Link to="/signup" style={{color: `white`}}>
+                  Signup
+                </Link>
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+    </header>
+  )
+}
+
+Header.propTypes = {
+  siteTitle: PropTypes.string,
+}
+
+Header.defaultProps = {
+  siteTitle: ``,
+}
+
+export default Header
+```
+
+Let's break this down. We've added an import for our new hook:
+
+```js
+import {useAuth} from '../util/use-auth.js'
+```
+
+And then called it in the `Header` function (we had to convert the function to use `{` and `}`):
+
+```js
+// When not rendering in a browser useAuth() will return null
+const auth = useAuth() || {}
+```
+
+With this in place we can check for a currently authenticated user and show the link to Signup if no user is present:
+
+```js
+<div style={{color: `white`}}>
+  {auth.user ? (
+    <div>
+      <span>You are logged in</span>
+    </div>
+  ) : (
+    <>
+      <div>You are not logged in</div>
+      <div>
+        Don't have an account?{' '}
+        <Link to="/signup" style={{color: `white`}}>
+          Signup
+        </Link>
+      </div>.
+    </>
+  )}
+</div>
+```
+
+We're linking to a `signup` page that doesn't exist yet. Let's make that next; create `src/pages/signup.js`:
+
+```js
+import React, {useState} from 'react'
+import {Link} from 'gatsby'
+
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+
+import {useAuth} from '../util/use-auth.js'
+
+const Signup = () => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [confirmPassword, setConfirmPassword] = useState('')
+  const [confirmationCode, setConfirmationCode] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+
+  const auth = useAuth() || {}
+
+  const validateForm = () => {
+    return email.length > 0 && password.length > 0 && password === confirmPassword
+  }
+
+  const validateConfirmationForm = () => {
+    return confirmationCode.length > 0
+  }
+
+  const handleSubmit = async event => {
+    event.preventDefault()
+    setIsLoading(true)
+    try {
+      await auth.signUp(email, password)
+    } catch (error) {
+      alert(error.message)
+      console.error(error)
+    }
+    setIsLoading(false)
+  }
+
+  const handleConfirmationSubmit = async event => {
+    event.preventDefault()
+    setIsLoading(true)
+    try {
+      await auth.confirmSignUp(confirmationCode, email, password)
+    } catch (error) {
+      alert(error.message)
+      console.error(error)
+    }
+    setIsLoading(false)
+  }
+
+  return (
+    <Layout>
+      <SEO title="Signup" />
+      <div className="Signup">
+        {auth.user ? (
+          <form onSubmit={handleConfirmationSubmit}>
+            <div>
+              <label>Confirmation Code</label>
+              <br />
+              <input
+                type="tel"
+                value={confirmationCode}
+                onChange={e => setConfirmationCode(e.target.value)}
+              />
+              <br />
+              <div>Check your email for your confirmation code.</div>
+            </div>
+            <br />
+            <div>
+              <button disabled={!validateConfirmationForm() || isLoading}>
+                {isLoading ? 'Confirming...' : 'Confirm'}
+              </button>
+            </div>
+          </form>
+        ) : (
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label>Email</label>
+              <br />
+              <input type="email" value={email} onChange={e => setEmail(e.target.value)} />
+            </div>
+            <div>
+              <label>Password</label>
+              <br />
+              <input type="password" value={password} onChange={e => setEmail(e.target.value)} />
+            </div>
+            <div>
+              <label>Confirm Password</label>
+              <br />
+              <input
+                type="password"
+                value={confirmPassword}
+                onChange={e => setConfirmPassword(e.target.value)}
+              />
+            </div>
+            <br />
+            <div>
+              <button disabled={!validateForm() || isLoading}>
+                {isLoading ? 'Submitting...' : 'Signup'}
+              </button>
+            </div>
+          </form>
+        )}
+      </div>
+
+      <Link to="/">Go back to the homepage</Link>
+    </Layout>
+  )
+}
+
+export default Signup
+```
+
+If you get a Sandbox Error when signing up it means that your sending limit request hasn't been approved.
+
+![Sandbox error](../../assets/ses-sandbox-error.png)
+
+You can find details about the limit increase request in the [support section](https://console.aws.amazon.com/support) in AWS console. For now you can simply verify your own email address and use it for testing. Go to the [SES console](https://console.aws.amazon.com/ses) and click on **Email Addresses** in the sidebar. Then click the **Verify a New Email Address** button:
+
+![Verify a new email address](../../assets/ses-verify-a-new-email-address.png)
+
+Enter your email address, wait for the confirmation and confirm it.
+
+If you see an error that `An account with the given email already exists`:
+
+![User already exists](../../assets/cognito-user-exists.png)
+
+Then you may have already registered the user. You have three options:
+
+1. Use a different email address (you might have to verify another email in the SES console)
+2. Delete the user (either through the terminal or through the Cognito User Pool console)
+3. Use the `+` trick.[^plus]
+
+[^plus]: When registering for an account using your email address, most websites treat `name@example.com` and `name+anything@example.com` as completely different email addresses. Luckily, most email providers ignore everything after the `+` when receiving email. This means you can create multiple accounts for the same email address.
+
+## Login page
+
+## Password reset page
+
+## Logout link
+
+## Account page
+
+# API
 
 # Deploying
 
@@ -2066,7 +2641,7 @@ resource "aws_lambda_permission" "cognito" {
 
 # Bonus: Custom authentication domain
 
-> Note: this is used for the built-in hosted auth pages; because of existing CORS policies, I haven't been able to use a custom domain to back my website auth.
+> Note: this is used for the built-in hosted auth pages; because of existing `CORS` policies, I haven't been able to use a custom domain to back my website auth.
 
 By default, our website will need to communicate with the default Cognito domain `https://cognito-idp.us-east-1.amazonaws.com/`.[^userdomain] We can create a custom domain for our User Pool. Add the following to `users.tf`:
 
@@ -2097,3 +2672,5 @@ Here we've created a domain and secured it using the certificate we generated ea
 # Bonus: Managing users and permissions with terraform
 
 # Troubleshooting
+
+TBD

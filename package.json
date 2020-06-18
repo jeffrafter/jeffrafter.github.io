@@ -27,18 +27,20 @@
     "node": ">=12.0.0"
   },
   "devDependencies": {
-    "@tufte-markdown/remark-figure-transformer": "^1.0.0",
-    "@tufte-markdown/remark-sidenotes": "^1.0.0",
-    "@tufte-markdown/remark-wrap-in-section": "^2.0.1",
     "@types/classnames": "^2.2.9",
     "@types/node": "^12.12.7",
     "@types/react": "^16.9.11",
     "@types/react-dom": "^16.9.4",
     "@types/react-helmet": "^5.0.14",
     "@types/styled-components": "^4.4.0",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
     "babel-plugin-styled-components": "^1.10.6",
     "classnames": "^2.2.6",
-    "gatsby": "^2.17.11",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.2",
+    "gatsby": "^2.20.12",
     "gatsby-image": "^2.2.31",
     "gatsby-plugin-canonical-urls": "^2.1.14",
     "gatsby-plugin-feed": "^2.3.20",
@@ -54,7 +56,7 @@
     "gatsby-remark-prismjs": "^3.3.22",
     "gatsby-remark-responsive-iframe": "^2.2.26",
     "gatsby-remark-smartypants": "^2.1.15",
-    "gatsby-remark-tufte": "^1.0.4",
+    "gatsby-remark-tufte": "^1.0.6",
     "gatsby-source-filesystem": "^2.1.36",
     "gatsby-transformer-json": "^2.2.17",
     "gatsby-transformer-remark": "^2.6.33",
@@ -73,5 +75,9 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-plugin-prettier": "^2.0.1",
     "typescript": "^3.7.2"
+  },
+  "dependencies": {
+    "@reach/router": "^1.2.1",
+    "query-string": "^6.9.0"
   }
 }
