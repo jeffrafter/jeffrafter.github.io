@@ -1,51 +1,9 @@
-# Jeff Rafter
+👋 Hi.
 
-```
-npm install --save-dev \
-  gatsby \
-  gatsby-image \
-  gatsby-plugin-canonical-urls \
-  gatsby-plugin-feed \
-  gatsby-plugin-google-analytics \
-  gatsby-plugin-manifest \
-  gatsby-plugin-react-helmet \
-  gatsby-plugin-sharp \
-  gatsby-plugin-styled-components \
-  gatsby-plugin-typescript \
-  gatsby-remark-autolink-headers \
-  gatsby-remark-copy-linked-files \
-  gatsby-remark-images \
-  gatsby-remark-prismjs \
-  gatsby-remark-responsive-iframe \
-  gatsby-remark-tufte \
-  gatsby-remark-smartypants \
-  gatsby-source-filesystem \
-  gatsby-transformer-json \
-  gatsby-transformer-remark \
-  gatsby-transformer-sharp \
-  prism-themes \
-  prismjs\
-  styled-components \
-  babel-plugin-styled-components \
-  classnames \
-  react \
-  react-dom \
-  react-helmet \
-  typescript \
-  @types/node \
-  @types/react \
-  @types/react-dom \
-  @types/react-helmet \
-  @types/classnames \
-  @types/styled-components \
-  gh-pages \
-  prettier \
-  rimraf \
-  tslint \
-  tslint-config-blvd \
-  tslint-config-prettier \
-  tslint-plugin-prettier \
-  @tufte-markdown/remark-figure-transformer \
-  @tufte-markdown/remark-sidenotes \
-  @tufte-markdown/remark-wrap-in-section
-```
+I'm Jeff. I'm a Senior Software Engineer @GitHub. where I get to invent and work and play all at the same time. I have a great family (Ali, Jude & Gavin) and a great dog (Stella). I studied Creative Writing and English Literature at the University of Iowa and once upon a time wrote some techinical books.
+
+This repository is where I write long-form posts on how to do things on the Internet for [my blog](https://jeffrafter.com).
+
+My website is hosted on GitHub Pages and is built using Gatsby. The theme is inspired by the work of Edward Tufte.
+
+Feel free to check out the [comments](https://github.com/jeffrafter/jeffrafter.github.io/issues?q=is%3Aissue+is%3Aopen+label%3A%22Comments+%3Aspeech_balloon%3A%22)
