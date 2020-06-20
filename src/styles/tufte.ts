@@ -1,4 +1,4 @@
-export default () => `
+export default (): string => `
 @charset "UTF-8";
 
 /* Import ET Book styles
@@ -289,5 +289,4 @@ label.margin-toggle:not(.sidenote-number) { display: none; }
 .gatsby-highlight {
   clear:both;
 }
-
 `

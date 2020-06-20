@@ -11,42 +11,36 @@ interface Props {
   }
 }
 
-export default class TagTemplate extends React.Component<Props> {
-  render() {
-    const {pageContext, data} = this.props
-    const {tag} = pageContext
-    const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges
+const TagTemplate: React.FC<Props> = ({data, pageContext}) => {
+  const {tag} = pageContext
+  const siteTitle = data.site.siteMetadata.title
+  const posts = data.allMarkdownRemark.edges
 
-    return (
-      <Layout title={siteTitle}>
-        <Head
-          title={`Posts tagged "${tag}"`}
-          keywords={[`blog`, `gatsby`, `javascript`, `react`, tag]}
-        />
-        <article>
-          <header>
-            <h1>Posts tagged {tag}</h1>
-          </header>
-          <div className={`page-content`}>
-            {posts.map(({node}) => {
-              const title = node.frontmatter.title || node.fields.slug
-              const excerpt = node.frontmatter.excerpt || node.excerpt
-              return (
-                <div key={node.fields.slug}>
-                  <h3>
-                    <Link to={node.fields.slug}>{title}</Link>
-                  </h3>
-                  <small>{node.frontmatter.date}</small>
-                  <p dangerouslySetInnerHTML={{__html: excerpt}} />
-                </div>
-              )
-            })}
-          </div>
-        </article>
-      </Layout>
-    )
-  }
+  return (
+    <Layout title={siteTitle}>
+      <Head title={`Posts tagged "${tag}"`} keywords={[tag]} />
+      <article>
+        <header>
+          <h1>Posts tagged {tag}</h1>
+        </header>
+        <div className={`page-content`}>
+          {posts.map(({node}) => {
+            const title = node.frontmatter.title || node.fields.slug
+            const excerpt = node.frontmatter.excerpt || node.excerpt
+            return (
+              <div key={node.fields.slug}>
+                <h3>
+                  <Link to={node.fields.slug}>{title}</Link>
+                </h3>
+                <small>{node.frontmatter.date}</small>
+                <p dangerouslySetInnerHTML={{__html: excerpt}} />
+              </div>
+            )
+          })}
+        </div>
+      </article>
+    </Layout>
+  )
 }
 
 interface PageQueryData {
@@ -98,3 +92,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default TagTemplate

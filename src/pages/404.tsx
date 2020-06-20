@@ -3,30 +3,35 @@ import {graphql} from 'gatsby'
 
 import Layout from '../components/layout'
 import Head from '../components/head'
+import {Link} from '@reach/router'
 
 interface Props {
   readonly data: PageQueryData
 }
 
-export default class NotFoundPage extends React.Component<Props> {
-  render() {
-    const {data} = this.props
-    const siteTitle = data.site.siteMetadata.title
+const NotFound: React.FC<Props> = ({data}) => {
+  const siteTitle = data.site.siteMetadata.title
+  const siteKeywords = data.site.siteMetadata.keywords
 
-    return (
-      <Layout title={siteTitle}>
-        <Head title="404: Not Found" />
-        <h1>Not Found</h1>
-        <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-      </Layout>
-    )
-  }
+  return (
+    <Layout title={siteTitle}>
+      <Head title="Not found" keywords={siteKeywords} />
+      <article>
+        <p>🤔 Hmmm.</p>
+        <p>We went looking everywhere for your page and we couldn’t find it. It will probably turn up sometime.</p>
+        <p>
+          <Link to={`/`}>Start over</Link>
+        </p>
+      </article>
+    </Layout>
+  )
 }
 
 interface PageQueryData {
   site: {
     siteMetadata: {
       title: string
+      keywords: [string]
     }
   }
 }
@@ -36,7 +41,10 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        keywords
       }
     }
   }
 `
+
+export default NotFound

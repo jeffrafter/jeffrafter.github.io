@@ -3,20 +3,27 @@ import {Link, graphql} from 'gatsby'
 
 import Layout from '../components/layout'
 import Head from '../components/head'
+import Bio from '../components/bio'
+import {styled} from '../styles/theme'
+
+const Container = styled('div')`
+  margin-top: 100px;
+`
 
 interface Props {
   readonly data: PageQueryData
 }
 
-export default class Tags extends React.Component<Props> {
-  render() {
-    const {data} = this.props
-    const siteTitle = data.site.siteMetadata.title
-    const group = data.allMarkdownRemark && data.allMarkdownRemark.group
+const Tags: React.FC<Props> = ({data}) => {
+  const siteTitle = data.site.siteMetadata.title
+  const siteKeywords = data.site.siteMetadata.keywords
+  const group = data.allMarkdownRemark && data.allMarkdownRemark.group
 
-    return (
-      <Layout title={siteTitle}>
-        <Head title="All tags" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
+  return (
+    <Layout title={siteTitle}>
+      <Head title={siteTitle} keywords={siteKeywords} />
+      <Bio />
+      <Container>
         <article>
           <h1>All tags</h1>
           <div className={`page-content`}>
@@ -37,15 +44,16 @@ export default class Tags extends React.Component<Props> {
               )}
           </div>
         </article>
-      </Layout>
-    )
-  }
+      </Container>
+    </Layout>
+  )
 }
 
 interface PageQueryData {
   site: {
     siteMetadata: {
       title: string
+      keywords: [string]
     }
   }
   allMarkdownRemark: {
@@ -61,6 +69,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        keywords
       }
     }
     allMarkdownRemark(filter: {frontmatter: {published: {ne: false}}}) {
@@ -71,3 +80,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default Tags

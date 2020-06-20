@@ -14,7 +14,7 @@ export const theme = {
   },
 }
 
-const reset = () => `
+const reset = (): string => `
 html {
   box-sizing: border-box;
   margin: 0;

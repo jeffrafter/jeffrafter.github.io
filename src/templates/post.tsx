@@ -8,7 +8,9 @@ import Head from '../components/head'
 interface Props {
   readonly data: PageQueryData
   readonly pageContext: {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     previous?: any
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     next?: any
   }
 }
@@ -22,45 +24,43 @@ const StyledUl = styled('ul')`
   }
 `
 
-export default class PostTemplate extends React.Component<Props> {
-  render() {
-    const post = this.props.data.markdownRemark
-    const siteTitle = this.props.data.site.siteMetadata.title
-    const {previous, next} = this.props.pageContext
-    const excerpt = post.frontmatter.excerpt || post.excerpt
-    const image = post.frontmatter.image && post.frontmatter.image.childImageSharp.resize.src
-
-    return (
-      <Layout title={siteTitle}>
-        <Head title={post.frontmatter.title} description={excerpt} image={image} />
-        <article>
-          <header>
-            <h1>{post.frontmatter.title}</h1>
-            <p>{post.frontmatter.date}</p>
-          </header>
-          <div className={`page-content`}>
-            <div dangerouslySetInnerHTML={{__html: post.html}} />
-            <StyledUl>
-              {previous && (
-                <li>
-                  <Link to={previous.fields.slug} rel="prev">
-                    ← {previous.frontmatter.title}
-                  </Link>
-                </li>
-              )}
-              {next && (
-                <li>
-                  <Link to={next.fields.slug} rel="next">
-                    {next.frontmatter.title} →
-                  </Link>
-                </li>
-              )}
-            </StyledUl>
-          </div>
-        </article>
-      </Layout>
-    )
-  }
+const PostTemplate: React.FC<Props> = ({data, pageContext}) => {
+  const post = data.markdownRemark
+  const siteTitle = data.site.siteMetadata.title
+  const keywords = post.frontmatter.tags
+  const {previous, next} = pageContext
+  const excerpt = post.frontmatter.excerpt || post.excerpt
+  const image = post.frontmatter.image && post.frontmatter.image.childImageSharp.resize.src
+  return (
+    <Layout title={siteTitle}>
+      <Head title={post.frontmatter.title} description={excerpt} image={image} keywords={keywords} />
+      <article>
+        <header>
+          <h1>{post.frontmatter.title}</h1>
+          <p>{post.frontmatter.date}</p>
+        </header>
+        <div className={`page-content`}>
+          <div dangerouslySetInnerHTML={{__html: post.html}} />
+          <StyledUl>
+            {previous && (
+              <li>
+                <Link to={previous.fields.slug} rel="prev">
+                  ← {previous.frontmatter.title}
+                </Link>
+              </li>
+            )}
+            {next && (
+              <li>
+                <Link to={next.fields.slug} rel="next">
+                  {next.frontmatter.title} →
+                </Link>
+              </li>
+            )}
+          </StyledUl>
+        </div>
+      </article>
+    </Layout>
+  )
 }
 
 interface PageQueryData {
@@ -76,7 +76,8 @@ interface PageQueryData {
     frontmatter: {
       title: string
       date: string
-      excerpt: string
+      tags: [string]
+      excerpt?: string
       image: {
         childImageSharp: {
           resize: {
@@ -102,6 +103,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        tags
         image {
           childImageSharp {
             resize(width: 1500, height: 1500) {
@@ -114,3 +116,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default PostTemplate

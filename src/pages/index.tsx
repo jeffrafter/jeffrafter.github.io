@@ -1,32 +1,32 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
+import {Link, graphql} from 'gatsby'
 
 import Layout from '../components/layout'
 import Head from '../components/head'
 import Bio from '../components/bio'
-import { styled } from '../styles/theme'
-
-interface Props {
-  readonly data: PageQueryData
-}
+import {styled} from '../styles/theme'
 
 const Container = styled('div')`
   margin-top: 100px;
 `
 
-export default class Index extends React.Component<Props> {
-  render() {
-    const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark ? data.allMarkdownRemark.edges : []
+interface Props {
+  readonly data: PageQueryData
+}
 
-    return (
-      <Layout title={siteTitle}>
-        <Head title="All posts" keywords={[`blog`, `gatsby`, `javascript`, `react`]} />
-        <Bio />
-        <Container>
+const Index: React.FC<Props> = ({data}) => {
+  const siteTitle = data.site.siteMetadata.title
+  const siteKeywords = data.site.siteMetadata.keywords
+  const posts = data.allMarkdownRemark.edges
+
+  return (
+    <Layout title={siteTitle}>
+      <Head title={siteTitle} keywords={siteKeywords} />
+      <Bio />
+      <Container>
+        <article>
           <div className={`page-content`}>
-            {posts.map(({ node }) => {
+            {posts.map(({node}) => {
               const excerpt = node.frontmatter.excerpt || node.excerpt
               const title = node.frontmatter.title || node.fields.slug
               return (
@@ -35,21 +35,22 @@ export default class Index extends React.Component<Props> {
                     <Link to={node.fields.slug}>{title}</Link>
                   </h3>
                   <small>{node.frontmatter.date}</small>
-                  <p>{excerpt}</p>
+                  <p dangerouslySetInnerHTML={{__html: excerpt}} />
                 </div>
               )
             })}
           </div>
-        </Container>
-      </Layout>
-    )
-  }
+        </article>
+      </Container>
+    </Layout>
+  )
 }
 
 interface PageQueryData {
   site: {
     siteMetadata: {
       title: string
+      keywords: [string]
     }
   }
   allMarkdownRemark: {
@@ -60,9 +61,9 @@ interface PageQueryData {
           slug: string
         }
         frontmatter: {
+          excerpt?: string
           date: string
           title: string
-          excerpt: string
         }
       }
     }[]
@@ -74,6 +75,7 @@ export const pageQuery = graphql`
     site {
       siteMetadata {
         title
+        keywords
       }
     }
     allMarkdownRemark(
@@ -87,12 +89,14 @@ export const pageQuery = graphql`
             slug
           }
           frontmatter {
+            excerpt
             date(formatString: "MMMM DD, YYYY")
             title
-            excerpt
           }
         }
       }
     }
   }
 `
+
+export default Index

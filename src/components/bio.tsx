@@ -14,40 +14,46 @@ type StaticQueryData = {
   }
 }
 
-export default function() {
-  return (
-    <StaticQuery
-      query={graphql`
-        query {
-          site {
-            siteMetadata {
-              description
-              social {
-                twitter
-                instagram
-                github
-              }
+const Bio: React.FC = () => (
+  <StaticQuery
+    query={graphql`
+      query {
+        site {
+          siteMetadata {
+            description
+            social {
+              twitter
+              instagram
+              github
             }
           }
         }
-      `}
-      render={(data: StaticQueryData) => {
-        const {description, social} = data.site.siteMetadata
-        return (
-          <div>
-            <h1>{description}</h1>
-            <p>
-              By Jeff Rafter
-              <br />
-              <a href={social.twitter}>Twitter</a>
-              {' / '}
-              <a href={social.instagram}>Instagram</a>
-              {' / '}
-              <a href={social.github}>GitHub</a>
-            </p>
-          </div>
-        )
-      }}
-    />
-  )
-}
+      }
+    `}
+    render={(data: StaticQueryData): React.ReactElement | null => {
+      const {description, social} = data.site.siteMetadata
+      return (
+        <div>
+          <h1>{description}</h1>
+          <p>
+            By Jeff Rafter
+            <br />
+            <a href={social.twitter} rel="noopener noreferrer">
+              Twitter
+            </a>
+            {' / '}
+            <a href={social.instagram} rel="noopener noreferrer">
+              Instagram
+            </a>
+            {' / '}
+            <a href={social.github} rel="noopener noreferrer">
+              GitHub
+            </a>
+          </p>
+        </div>
+      )
+    }}
+  />
+)
+
+export default Bio

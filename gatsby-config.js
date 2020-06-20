@@ -4,6 +4,7 @@ module.exports = {
   siteMetadata: {
     title: 'Jeff Rafter',
     description: 'How to.',
+    keywords: ['jeffrafter', 'how-to', 'blog'],
     siteUrl: 'https://jeffrafter.com',
     author: {
       name: 'Jeff Rafter',
@@ -53,9 +54,9 @@ module.exports = {
             resolve: `gatsby-remark-prismjs`,
             options: {
               aliases: {
-                sh: "bash",
-                tf: "ruby"
-              }
+                sh: 'bash',
+                tf: 'ruby',
+              },
             },
           },
           `gatsby-remark-autolink-headers`,

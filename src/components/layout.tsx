@@ -25,38 +25,35 @@ const StyledFooter = styled.footer`
 
 interface Props {
   readonly title?: string
+  readonly children: React.ReactNode
 }
 
-export default class Layout extends React.Component<Props> {
-  render() {
-    const {children} = this.props
+const Layout: React.FC<Props> = ({children}) => (
+  <>
+    <GlobalStyle />
+    <StyledNav className="navigation">
+      <ul>
+        <li>
+          <Link to={`/`}>&</Link>
+        </li>
+        <li>
+          <Link to={`/tags`}>Tags</Link>
+        </li>
+        <li>
+          <Link to={`/about`}>About</Link>
+        </li>
+      </ul>
+    </StyledNav>
+    <main className="content" role="main">
+      {children}
+    </main>
+    <StyledFooter className="footer">
+      © {new Date().getFullYear()},{` `}
+      <a href="https://jeffrafter.com">jeffrafter.com</a>. Built with
+      {` `}
+      <a href="https://www.gatsbyjs.org">Gatsby</a>
+    </StyledFooter>
+  </>
+)
 
-    return (
-      <>
-        <GlobalStyle />
-        <StyledNav className="navigation">
-          <ul>
-            <li>
-              <Link to={`/`}>&</Link>
-            </li>
-            <li>
-              <Link to={`/tags`}>Tags</Link>
-            </li>
-            <li>
-              <Link to={`/about`}>About</Link>
-            </li>
-          </ul>
-        </StyledNav>
-        <main className="content" role="main">
-          {children}
-        </main>
-        <StyledFooter className="footer">
-          © {new Date().getFullYear()},{` `}
-          <a href="https://jeffrafter.com">jeffrafter.com</a>. Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </StyledFooter>
-      </>
-    )
-  }
-}
+export default Layout
