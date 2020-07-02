@@ -15,13 +15,6 @@ jobs:
         with:
           node-version: 12
 
-      # https://github.com/pkgjs/gh-pages/blob/master/entrypoint.sh
-      # git remote set-url origin "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$INPUT_REPO.git"
-      - run: |
-          git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
-          git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
-        name: Configure git
-
       # https://docs.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows#example-using-the-cache-action
       - name: Cache node modules
         uses: actions/cache@v2
@@ -67,6 +60,15 @@ jobs:
 
       - run: npm test
         name: Test
+
+      # https://github.com/pkgjs/gh-pages/blob/master/entrypoint.sh
+      - run: |
+          git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
+          git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
+          git remote set-url origin "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$INPUT_REPO.git"
+        name: Configure git
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # https://www.gatsbyjs.org/docs/page-build-optimizations-for-incremental-data-changes/
       - run: npm run deploy
