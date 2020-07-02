@@ -77,7 +77,9 @@
     "typescript": "^3.7.2"
   },
   "dependencies": {
+    "@github/g-emoji-element": "^1.1.4",
     "@reach/router": "^1.2.1",
+    "github-markdown-css": "^4.0.0",
     "query-string": "^6.9.0"
   }
 }

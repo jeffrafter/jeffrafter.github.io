@@ -1,0 +1,26 @@
+.markdown-body p,
+.markdown-body ol,
+.markdown-body ul {
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.markdown-body blockquote {
+  font-size: inherit;
+}
+
+.markdown-body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px;
+  letter-spacing: normal;
+  border-bottom: 1px solid #efefef;
+}
+
+@media (max-width: 767px) {
+  .markdown-body {
+    padding: 15px;
+  }
+}
