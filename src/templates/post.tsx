@@ -4,6 +4,7 @@ import {styled} from '../styles/theme'
 
 import Layout from '../components/layout'
 import Head from '../components/head'
+import {Comments} from '../components/comments'
 
 interface Props {
   readonly data: PageQueryData
@@ -41,6 +42,14 @@ const PostTemplate: React.FC<Props> = ({data, pageContext}) => {
         </header>
         <div className={`page-content`}>
           <div dangerouslySetInnerHTML={{__html: post.html}} />
+          <Comments url={post.frontmatter.comments} />
+          <hr />
+          <h2>There’s more to read</h2>
+          <div>
+            <p>
+              <em>Looking for more long-form posts? Here ya go...</em>
+            </p>
+          </div>
           <StyledUl>
             {previous && (
               <li>
@@ -78,6 +87,7 @@ interface PageQueryData {
       date: string
       tags: [string]
       excerpt?: string
+      comments: string
       image: {
         childImageSharp: {
           resize: {
@@ -104,6 +114,8 @@ export const pageQuery = graphql`
         title
         date(formatString: "MMMM DD, YYYY")
         tags
+        excerpt
+        comments
         image {
           childImageSharp {
             resize(width: 1500, height: 1500) {
@@ -111,7 +123,6 @@ export const pageQuery = graphql`
             }
           }
         }
-        excerpt
       }
     }
   }
