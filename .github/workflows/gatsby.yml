@@ -65,7 +65,7 @@ jobs:
       - run: |
           git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
           git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
-          git remote set-url origin "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$INPUT_REPO.git"
+          git remote set-url origin "https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git"
         name: Configure git
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
