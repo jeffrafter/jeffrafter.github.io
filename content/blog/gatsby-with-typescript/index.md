@@ -3,6 +3,7 @@ title: Building a Static Gatsby-based Website with TypeScript
 date: '2019-05-25T00:01:00'
 published: true
 slug: gatsby-with-typescript
+comments: https://github.com/jeffrafter/jeffrafter.github.io/issues/6
 image: ../../assets/Great-Gatsby-Covers.jpg
 layout: post
 tags: ['javascript', 'typescript', 'node', 'gatsby']

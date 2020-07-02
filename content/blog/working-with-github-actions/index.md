@@ -3,6 +3,7 @@ title: Working with GitHub Actions
 date: '2019-09-19T00:01:00'
 published: true
 slug: working-with-github-actions
+comments: https://github.com/jeffrafter/jeffrafter.github.io/issues/8
 image: ../../assets/hubot.png
 layout: post
 tags: ['typescript', 'github', 'actions']

@@ -3,6 +3,7 @@ title: Getting started with ESP8266 and Arduino
 date: '2020-05-20T00:01:00'
 published: true
 slug: getting-started-with-arduino-and-esp8266
+comments: https://github.com/jeffrafter/jeffrafter.github.io/issues/10
 image: ../../assets/getting-started-in-electronics.jpg
 layout: post
 tags: ['esp8266', 'hardware', 'arduino']

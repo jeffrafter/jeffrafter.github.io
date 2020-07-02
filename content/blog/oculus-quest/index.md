@@ -3,6 +3,7 @@ title: Developing for the Oculus Quest
 date: '2019-07-25T00:01:00'
 published: true
 slug: oculus-quest
+comments: https://github.com/jeffrafter/jeffrafter.github.io/issues/7
 image: ../../assets/oculus-quest.jpg
 layout: post
 tags: ['oculus', 'quest', 'unity', 'development']

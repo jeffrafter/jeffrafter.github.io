@@ -3,6 +3,7 @@ title: Releasing GitHub Actions
 date: '2020-01-31T00:01:00'
 published: true
 slug: releasing-github-actions
+comments: https://github.com/jeffrafter/jeffrafter.github.io/issues/9
 image: ../../assets/actions.png
 layout: post
 tags: ['typescript', 'github', 'actions', 'honk', 'goose']
