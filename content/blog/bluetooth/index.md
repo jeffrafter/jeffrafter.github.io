@@ -50,10 +50,10 @@ Bluetooth communications rely upon proximity and frequency hopping, making it di
 
 Since Bluetooth 4.1, peripherals can implement Secure Simple Pairing which can be broken down into four models:
 
-* Numeric Comparison
-* Passkey Entry
-* Just Works
-* Out of Band
+- Numeric Comparison
+- Passkey Entry
+- Just Works
+- Out of Band
 
 In the case of Numeric Comparison and Passkey Entry user input and interaction is required to pair a device and peripheral. These are generally more difficult to attack (though some strategies still exist). In the case of Just Works it... Just Works. The peripheral, like our robot, can be connected automatically without any user interaction.
 
@@ -65,9 +65,9 @@ Even if the connection is fully encrypted it is possible that the key itself may
 
 Because we want to connect to our robot, we'll limit our scope to simple Bluetooth Low Energy devices that connect automatically (Just Works). Our goal is to be able to send commands to our robot without using the associated iPad application. We know our robot doesn't require a number or passkey to connect; so we should be able to establish a connection. To start, we'll need to figure out what we're dealing with:
 
-* Can we scan for the device's GATT?
-* If we connect to the device is there a challenge/response interaction?
-* Are the communications encrypted?
+- Can we scan for the device's GATT?
+- If we connect to the device is there a challenge/response interaction?
+- Are the communications encrypted?
 
 To find the answers to these questions we'll use [GATTacker](https://gattack.io/), a Bluetooth discovery tool written in JavaScript and [available on GitHub](https://github.com/securing/gattacker) written by [Slawomir Jasek](https://twitter.com/slawekja). At the 2016 Blackhat conference, Slawomir gave an introductory talk:
 
@@ -133,8 +133,8 @@ sudo apt-get install libudev-dev gcc g++ make
 
 We'll use [GATTacker](https://github.com/securing/gattacker) on both of our Raspberry Pis to setup our man-in-the-middle. In addition to the [README](https://github.com/securing/gattacker), there is some helpful documentation in the Wiki:
 
-* [Dump and replay](https://github.com/securing/gattacker/wiki/Dump-and-replay)
-* [FAQ](https://github.com/securing/gattacker/wiki/FAQ)
+- [Dump and replay](https://github.com/securing/gattacker/wiki/Dump-and-replay)
+- [FAQ](https://github.com/securing/gattacker/wiki/FAQ)
 
 Additionally, there is a very good [whitepaper](http://gattack.io/whitepaper.pdf) (PDF).
 
@@ -297,4 +297,3 @@ hciconfig reset
 ```
 
 And start the processes again.
-
