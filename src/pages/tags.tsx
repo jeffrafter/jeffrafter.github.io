@@ -6,9 +6,7 @@ import Head from '../components/head'
 import Bio from '../components/bio'
 import {styled} from '../styles/theme'
 
-const Container = styled('div')`
-  margin-top: 100px;
-`
+const Container = styled('div')``
 
 interface Props {
   readonly data: PageQueryData
@@ -25,7 +23,6 @@ const Tags: React.FC<Props> = ({data}) => {
       <Bio />
       <Container>
         <article>
-          <h1>All tags</h1>
           <div className={`page-content`}>
             {group &&
               group.map(
@@ -43,6 +40,7 @@ const Tags: React.FC<Props> = ({data}) => {
                   ),
               )}
           </div>
+          <br />
         </article>
       </Container>
     </Layout>

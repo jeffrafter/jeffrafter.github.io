@@ -6,9 +6,7 @@ import Head from '../components/head'
 import Bio from '../components/bio'
 import {styled} from '../styles/theme'
 
-const Container = styled('div')`
-  margin-top: 100px;
-`
+const Container = styled('div')``
 
 interface Props {
   readonly data: PageQueryData
@@ -36,6 +34,7 @@ const Index: React.FC<Props> = ({data}) => {
                   </h3>
                   <small>{node.frontmatter.date}</small>
                   <p dangerouslySetInnerHTML={{__html: excerpt}} />
+                  <br />
                 </div>
               )
             })}

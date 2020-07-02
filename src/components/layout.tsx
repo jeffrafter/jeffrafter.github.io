@@ -5,8 +5,9 @@ import {GlobalStyle, styled} from '../styles/theme'
 const StyledNav = styled.nav`
   ul {
     list-style-type: none;
-    margin: 0;
+    margin: 1rem 0;
     padding: 0;
+    margin-left: -16px;
   }
 
   li {
