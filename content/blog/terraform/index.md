@@ -2516,11 +2516,7 @@ const Signup = () => {
             <div>
               <label>Confirmation Code</label>
               <br />
-              <input
-                type="tel"
-                value={confirmationCode}
-                onChange={e => setConfirmationCode(e.target.value)}
-              />
+              <input type="tel" value={confirmationCode} onChange={e => setConfirmationCode(e.target.value)} />
               <br />
               <div>Check your email for your confirmation code.</div>
             </div>
@@ -2546,17 +2542,11 @@ const Signup = () => {
             <div>
               <label>Confirm Password</label>
               <br />
-              <input
-                type="password"
-                value={confirmPassword}
-                onChange={e => setConfirmPassword(e.target.value)}
-              />
+              <input type="password" value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)} />
             </div>
             <br />
             <div>
-              <button disabled={!validateForm() || isLoading}>
-                {isLoading ? 'Submitting...' : 'Signup'}
-              </button>
+              <button disabled={!validateForm() || isLoading}>{isLoading ? 'Submitting...' : 'Signup'}</button>
             </div>
           </form>
         )}
