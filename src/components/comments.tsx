@@ -174,7 +174,7 @@ export const Comments: React.FC<CommentProps> = ({url}) => {
 
       const json = await response.json()
       console.log(json)
-      setComments(json as CommentResponse)
+      setComments(json)
     }
     fetchComments()
   }, [url])
@@ -192,7 +192,8 @@ export const Comments: React.FC<CommentProps> = ({url}) => {
           </p>
         </div>
         {comments &&
-          comments.map(comment => {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          comments.map((comment: any) => {
             return (
               <Comment key={comment.id} className="comment sans">
                 <div className="content">
