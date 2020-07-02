@@ -15,6 +15,11 @@ jobs:
         with:
           node-version: 12
 
+      - run: |
+          git config --local user.email "jeffrafter@gmail.com"
+          git config --local user.name "Jeff Rafter"
+        name: Configure git
+
       # https://docs.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows#example-using-the-cache-action
       - name: Cache node modules
         uses: actions/cache@v2
