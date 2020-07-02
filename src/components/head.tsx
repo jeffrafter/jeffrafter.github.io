@@ -39,13 +39,10 @@ const Head: React.FC<Props> = ({title, description, image, lang, keywords}) => (
     `}
     render={(data: StaticQueryData): React.ReactElement | null => {
       const metaDescription = description || data.site.siteMetadata.description
-      image = image ? `https://jeffrafter.com/${image}` : ''
-      lang = lang || 'en'
-      keywords = keywords || []
       return (
         <Helmet
           htmlAttributes={{
-            lang,
+            lang: lang || 'en',
           }}
           title={title}
           titleTemplate={`%s | ${data.site.siteMetadata.title}`}
@@ -68,7 +65,7 @@ const Head: React.FC<Props> = ({title, description, image, lang, keywords}) => (
             },
             {
               property: `og:image`,
-              content: image,
+              content: image ? `https://jeffrafter.com/${image}` : '',
             },
             {
               name: `twitter:card`,
@@ -87,7 +84,7 @@ const Head: React.FC<Props> = ({title, description, image, lang, keywords}) => (
               content: metaDescription,
             },
           ].concat(
-            keywords.length > 0
+            keywords && keywords.length > 0
               ? {
                   name: `keywords`,
                   content: keywords.join(`, `),
