@@ -1,6 +1,5 @@
 name: Gatsby Deploy
 
-#
 on:
   push:
     branches:
@@ -57,17 +56,17 @@ jobs:
             ${{ runner.os }}-
 
       - run: npm install
-      - name: Install dependencies
+        name: Install dependencies
 
       - run: npm test
-      - name: Test
+        name: Test
 
       # https://www.gatsbyjs.org/docs/page-build-optimizations-for-incremental-data-changes/
       - run: npm run build
-      - name: Build
+        name: Build
         env:
           GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES: true
           NODE_ENV: production
 
       - run: npm run deploy
-      - name: Deploy
+        name: Deploy
