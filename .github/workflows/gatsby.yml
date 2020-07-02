@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: 12
 
-      # https://docs.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows#example-using-the-cache-action
+      # Based on https://docs.github.com/en/actions/configuring-and-managing-workflows/caching-dependencies-to-speed-up-workflows#example-using-the-cache-action
       - name: Cache node modules
         uses: actions/cache@v2
         env:
@@ -61,7 +61,7 @@ jobs:
       - run: npm test
         name: Test
 
-      # https://github.com/pkgjs/gh-pages/blob/master/entrypoint.sh
+      # Based on https://github.com/pkgjs/gh-pages/blob/master/entrypoint.sh
       - run: |
           git config user.name "$(git --no-pager log --format=format:'%an' -n 1)"
           git config user.email "$(git --no-pager log --format=format:'%ae' -n 1)"
@@ -70,7 +70,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # https://www.gatsbyjs.org/docs/page-build-optimizations-for-incremental-data-changes/
+      # Based on https://www.gatsbyjs.org/docs/page-build-optimizations-for-incremental-data-changes/
       - run: npm run deploy
         name: Deploy
         env:
