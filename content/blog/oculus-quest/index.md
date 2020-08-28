@@ -114,7 +114,7 @@ If you're using a `LocalAvatar` you'll notice you don't have hands. You'll need 
   - Remove `Vulkan` from the Graphics APIs list (Other Settings)
   - Set the Package Name (Other Settings)[^package]
   - Set the Minimum API Level to Android 4.4 'KitKat' (Other Settings)
-  - Check VR Intergation (XR Settings)
+  - Check VR Integration (XR Settings)
   - Add the Oculus Virtual Reality SDK (XR Settings)
 - Download Oculus Integration from the Asset Store (slow)
 - Import All from the Oculus Integration (very slow)
