@@ -1,4 +1,295 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeff Rafter]]></title><description><![CDATA[How to.]]></description><link>https://jeffrafter.com</link><generator>GatsbyJS</generator><lastBuildDate>Fri, 28 Aug 2020 18:38:10 GMT</lastBuildDate><item><title><![CDATA[Realtime and multiplayer]]></title><description><![CDATA[Multiplayer howto #research  In Unreal https://docs.unrealengine.com/en-US/Gameplay/Networking/index.html
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeff Rafter]]></title><description><![CDATA[How to.]]></description><link>https://jeffrafter.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 13 Sep 2020 23:58:42 GMT</lastBuildDate><item><title><![CDATA[Working with Unity and GitHub]]></title><description><![CDATA[Working with Unity makes development easy. You can quickly prototype a game and show it off. But what if there are multiple developers…]]></description><link>https://jeffrafter.com/unity-and-github/</link><guid isPermaLink="false">https://jeffrafter.com/unity-and-github/</guid><pubDate>Sun, 13 Sep 2020 00:01:00 GMT</pubDate><content:encoded>&lt;figure class=&quot;fullwidth&quot;&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1280px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/faf61e299edfc435c9b37d4e31167c3d/fb1ef/unity-and-github.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 40.9375%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsSAAALEgHS3X78AAABsElEQVQoz42R/UvTURTGv/9bPwsiYWg2EcWXFLQUUZN8ARFJDSdqamwikQyniG7Ippu66TbzhVR8AfGlMsm3XFo6ovnxnvtlIdIP/fDwnHvuuc95zrnG1Cn8L/wnN5pnvkPNWwf5ta8Y3jwi+AN8x3F9ZySKhO/G91kgj0I/obKjn4zn1RTUNfNEsXv/QjeRGiNRmHhkIv6PnILKBaKQZMnDuX7INpD6tJQe/xLhK9OlIQ6kSDpMC87M8+yFyp3zd0S58x3/4cNvqO5+T53dSbdvkQcpabqR6TAuDuO8W9gm+0UD/ZEtppTg8OY3+kIbjO2c6/10eedpHprQLuzBNQZXv9CjxNpdQRwrn/EcXOE9jGkzRuOAm+TsQspe99LkGNfC6SWVWMpeklVRj+PjJ8qtNh7mP8O1FyWzpAJLcTmpOYWkWHLIq6rnUW4RVe02wtdK0LUbpXXEz2Ml8mZyAfvcuhYZXDugbWwG79cYA8t7WN2zeFTcOR7COjpNlyeMLbBC65CXFqdHxwE1jSF7krHkp2RfoV/mOQHJCcu4MpLcixPhOfXjERVHYiq+NHd4C9tmFS8AxfCVAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity and GitHub&quot;
+        title=&quot;Unity and GitHub&quot;
+        src=&quot;/static/faf61e299edfc435c9b37d4e31167c3d/21b4d/unity-and-github.png&quot;
+        srcset=&quot;/static/faf61e299edfc435c9b37d4e31167c3d/72799/unity-and-github.png 320w,
+/static/faf61e299edfc435c9b37d4e31167c3d/6af66/unity-and-github.png 640w,
+/static/faf61e299edfc435c9b37d4e31167c3d/21b4d/unity-and-github.png 1280w,
+/static/faf61e299edfc435c9b37d4e31167c3d/fb1ef/unity-and-github.png 1879w&quot;
+        sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/figure&gt;
+&lt;figcaption class=&quot;fullwidth&quot;&gt;
+&lt;/figcaption&gt;
+&lt;p&gt;Working with Unity makes development easy. You can quickly prototype a game and show it off. But what if there are multiple developers. Storing your source code on GitHub makes collaboration easy; but there are a lot of tradeoffs when working with larger assets and projects.&lt;/p&gt;
+&lt;p&gt;Unity has built-in collaboration functionality: &lt;a href=&quot;https://unity.com/unity/features/collaborate&quot;&gt;https://unity.com/unity/features/collaborate&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Likewise, GitHub has released tools for working with GitHub inside Unity: &lt;a href=&quot;https://unity.github.com/&quot;&gt;https://unity.github.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;In my case, I often use the command-line or GitHub Desktop.&lt;/p&gt;
+&lt;p&gt;Create the project. Within the project we’ll need to setup git:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;git init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;There are a lot of files that we don’t want to track in version control. These files are specific to our machine and editor and can’t be easily shared. We want to ignore them, so create a file called &lt;code class=&quot;language-text&quot;&gt;.gitignore&lt;/code&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;# This .gitignore file should be placed at the root of your Unity project directory
+#
+# Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
+#
+
+*DS_Store
+
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+
+# MemoryCaptures can get excessive in size.
+# They also could contain extremely sensitive data
+/[Mm]emoryCaptures/
+
+# Asset meta data should only be ignored when the corresponding asset is also ignored
+!/[Aa]ssets/**/*.meta
+
+# Uncomment this line if you wish to ignore the asset store tools plugin
+# /[Aa]ssets/AssetStoreTools*
+
+# Autogenerated Jetbrains Rider plugin
+/[Aa]ssets/Plugins/Editor/JetBrains*
+
+# Visual Studio cache directory
+.vs/
+
+# Gradle cache directory
+.gradle/
+
+# Autogenerated VS/MD/Consulo solution and project files
+ExportedObj/
+.consulo/
+*.csproj
+*.unityproj
+*.sln
+*.suo
+*.tmp
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+
+# Unity3D generated meta files
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+
+# Unity3D generated file on crash reports
+sysinfo.txt
+
+# Builds
+*.apk
+
+# Crashlytics generated file
+crashlytics-build.properties&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Note that we are ignoring: &lt;code class=&quot;language-text&quot;&gt;*DS_Store&lt;/code&gt; files. These are specific to OSX. You may want to ignore other files specific to your code editor or operating system (for example if you use Vim). If you normally put your project files in a subfolder you may want to change how the folders are listed. For example:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Here the leading &lt;code class=&quot;language-text&quot;&gt;/&lt;/code&gt; indicates that only folders matching the names in the root folder should be ignored. But in many cases you’ll want to ignore these files even if they are in a subfolder. To do this, remove the leading &lt;code class=&quot;language-text&quot;&gt;/&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We’ll have a lot of large files (audio, textures, models). When changing these files the entire file is changed (not a single line as in text files) Next we’ll need to setup Git LFS (large file storage). On GitHub you get a certain amount of LFS storage and bandwidth for free every month. The limits are per account (not per repository):&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Every account using Git Large File Storage receives 1 GB of free storage and 1 GB a month of free bandwidth. If the bandwidth and storage quotas are not enough, you can choose to purchase an additional quota for Git LFS. &lt;label for=&quot;sd-less-than-a-href&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;sd-less-than-a-href&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;&lt;a href=&quot;https://docs.github.com/en/github/managing-large-files/about-storage-and-bandwidth-usage&quot;&gt;https://docs.github.com/en/github/managing-large-files/about-storage-and-bandwidth-usage&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Additional bandwidth or storage costs money (though it is fairly inexpensive). Because of this, the LFS option should be considered optional. Within your folder, create a file called &lt;code class=&quot;language-text&quot;&gt;.gitattributes&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;# Specify what files should be processed by LFS
+Assets/Scenes/*.unity filter=lfs diff=lfs merge=lfs -text lockable
+
+# 3D models
+*.3dm filter=lfs diff=lfs merge=lfs -text
+*.3ds filter=lfs diff=lfs merge=lfs -text
+*.blend filter=lfs diff=lfs merge=lfs -text
+*.c4d filter=lfs diff=lfs merge=lfs -text
+*.collada filter=lfs diff=lfs merge=lfs -text
+*.dae filter=lfs diff=lfs merge=lfs -text
+*.dxf filter=lfs diff=lfs merge=lfs -text
+*.fbx filter=lfs diff=lfs merge=lfs -text
+*.jas filter=lfs diff=lfs merge=lfs -text
+*.lws filter=lfs diff=lfs merge=lfs -text
+*.lxo filter=lfs diff=lfs merge=lfs -text
+*.ma filter=lfs diff=lfs merge=lfs -text
+*.max filter=lfs diff=lfs merge=lfs -text
+*.mb filter=lfs diff=lfs merge=lfs -text
+*.obj filter=lfs diff=lfs merge=lfs -text
+*.ply filter=lfs diff=lfs merge=lfs -text
+*.skp filter=lfs diff=lfs merge=lfs -text
+*.stl filter=lfs diff=lfs merge=lfs -text
+*.ztl filter=lfs diff=lfs merge=lfs -text
+
+# Audio
+*.aif filter=lfs diff=lfs merge=lfs -text
+*.aiff filter=lfs diff=lfs merge=lfs -text
+*.it filter=lfs diff=lfs merge=lfs -text
+*.mod filter=lfs diff=lfs merge=lfs -text
+*.mp3 filter=lfs diff=lfs merge=lfs -text
+*.ogg filter=lfs diff=lfs merge=lfs -text
+*.s3m filter=lfs diff=lfs merge=lfs -text
+*.wav filter=lfs diff=lfs merge=lfs -text
+*.xm filter=lfs diff=lfs merge=lfs -text
+
+# Fonts
+*.otf filter=lfs diff=lfs merge=lfs -text
+*.ttf filter=lfs diff=lfs merge=lfs -text
+
+# Images
+*.bmp filter=lfs diff=lfs merge=lfs -text
+*.exr filter=lfs diff=lfs merge=lfs -text
+*.gif filter=lfs diff=lfs merge=lfs -text
+*.hdr filter=lfs diff=lfs merge=lfs -text
+*.iff filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.pict filter=lfs diff=lfs merge=lfs -text
+*.png filter=lfs diff=lfs merge=lfs -text
+*.psd filter=lfs diff=lfs merge=lfs -text
+*.tga filter=lfs diff=lfs merge=lfs -text
+*.tif filter=lfs diff=lfs merge=lfs -text
+*.tiff filter=lfs diff=lfs merge=lfs -text
+
+# Collapse Unity-generated files on GitHub
+*.asset linguist-generated
+*.mat linguist-generated
+*.meta linguist-generated
+*.prefab linguist-generated
+*.unity linguist-generated
+
+# Unity packages
+*.unitypackage filter=lfs diff=lfs merge=lfs -text
+
+# Zips
+*.zip filter=lfs diff=lfs merge=lfs -text&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;This specifies which files we want to track with LFS. In order to use the settings you must install LFS:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;git lfs install&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;You should see:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;*➜*git lfs install
+Updated git hooks.
+Git LFS initialized.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you are working in GitHub Desktop you might see:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 400px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/35437232cbb2951c4be7f8f69341caa8/e17e5/unity-and-github-lfs.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 59.06250000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsSAAALEgHS3X78AAAB80lEQVQoz5VTzY7TMBDOc/AOnBF3xNNw4sRhkbghIcFleQkOICTEhVcAhAAt26QsVdqmTfPjxHb+E+djPEnLXkCLlS8ztmfG38zYzsUqRq5KHFKJJNOMSChIVaBualT1zaHLAs4u0dhu1vj46TMWiwWWy5/wPA9JkuB/xjiORELD8cOcFwZjeJG+GfZnGFa9yTBk6Gwiha5rUVVEu6pQliXatqF0W8ga0A1Ib3hPac37ZVlBFwUUMbLQetINkaKAEvvdDpcLD1+/fYfrLTlld3mFH76Au07g+2tc/VqRjQvX9ZAKgSiKEVNZDlGEfRiyHIaBAh4kRZeI4gT7fTgZxzE7JHGEmAyzLEOaCgiRIZfyn2k7W0q5riskZKyIepZLclIQmeR5lFCgLOf1jKQ91LIJgh22QUC+9akp41TD6cSe6NrGmLk5ZtZtGsO8d9S73qDtJjmYkQCW3JT14U+XjV00x2CTPl5rMR90mo/XYE4615BbPjsfYeeWddO2XAJ7x9quJ4Y9nn2QePha4fE7hUdvFc5IPngl8eZLCSeI9V8L3FMuBV0Rf7PFyt+wPhL7++cpbj/Nce+lxJ3nOe6+yHHrTODJewXnYhWhqFpkqkKua4YsanYu6e7ZJ2VZWvA9JQhZIEw1QlHgQAgFPVd6slKX+A1P8JKu3TcjDwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;GitHub Desktop LFS warning&quot;
+        title=&quot;GitHub Desktop LFS warning&quot;
+        src=&quot;/static/35437232cbb2951c4be7f8f69341caa8/e17e5/unity-and-github-lfs.png&quot;
+        srcset=&quot;/static/35437232cbb2951c4be7f8f69341caa8/72799/unity-and-github-lfs.png 320w,
+/static/35437232cbb2951c4be7f8f69341caa8/e17e5/unity-and-github-lfs.png 400w&quot;
+        sizes=&quot;(max-width: 400px) 100vw, 400px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Before continuing, you’ll want to setup your project in Unity to work with version control. Open the Project Settings and click on the Editor pane. Set Asset Serialization to &lt;code class=&quot;language-text&quot;&gt;Force Text&lt;/code&gt; (the default):&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1280px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/3d62cbc8afc4e460a956ea4e86e9c5bc/aea0a/unity-and-github-editor-settings.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 68.12499999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsSAAALEgHS3X78AAABhklEQVQ4y3VU2ZKDIBDkW3IqeIuKRiuxfNj9/w9i1qbSKbKpPLQDON3MVajfh/PjfZC6rL3RiWQ6FaO16B3GmIC6rsVaK0VRhH2WZeF/mqaEh02SxKtm+ZG8X31qF0nbWZLmJrZ30rbNmyjJ3O9kuV6vL1wuFw9/NS4Pf7tvUjS9zyorpmzFjZNM0xgiyfM82GEYZJ7nYAHn3AfGcdwF3e7Qd5JnJiAzWrrOBgekyPSmaZJt2wIJ629Q+MAJdWI0bdtK3/evMwBrnjVN8wGeKzgBJEIQDWBqEK+qKoBEgucEzhQI67oGZ4jFguwqQFJZlh9Cb4IgLssSNhTsui6UAZfgQkQOAtZMEWtweAGtApHRMGUSKMC6whflwYUARYlQQ3zwE5YpgoQRQeq4meMDwOd0OsnhcJDj8fgC9ufzWRScOf1xU+KOIhXWkv7foHYR/7zdx4KYQ3aV0bFWRLznWj1FfDw2KAFHhmWAMM7ZzVg4horE3iLEwMMyQj4G+vlwoF6o5X/8AeZAtMpmPhTkAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Editor Settings&quot;
+        title=&quot;Editor Settings&quot;
+        src=&quot;/static/3d62cbc8afc4e460a956ea4e86e9c5bc/21b4d/unity-and-github-editor-settings.png&quot;
+        srcset=&quot;/static/3d62cbc8afc4e460a956ea4e86e9c5bc/72799/unity-and-github-editor-settings.png 320w,
+/static/3d62cbc8afc4e460a956ea4e86e9c5bc/6af66/unity-and-github-editor-settings.png 640w,
+/static/3d62cbc8afc4e460a956ea4e86e9c5bc/21b4d/unity-and-github-editor-settings.png 1280w,
+/static/3d62cbc8afc4e460a956ea4e86e9c5bc/29114/unity-and-github-editor-settings.png 1920w,
+/static/3d62cbc8afc4e460a956ea4e86e9c5bc/aea0a/unity-and-github-editor-settings.png 2018w&quot;
+        sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Next, click on the Version Control pane (in Unity 2020) and set the Version Control mode to &lt;code class=&quot;language-text&quot;&gt;Visible Meta Files&lt;/code&gt;:&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1280px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/14451556ab8154c7f86ec7aeedbf8883/aea0a/unity-and-github-version-control-settings.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 68.12499999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsSAAALEgHS3X78AAABGElEQVQ4y62T3XKEIAyFfRt/AAURUdy22ptOZ9//dUhzqDq23els114cIZB8SZiYvS1THOZA2tgoREVCCKqq6ouMMdR1HdV1ne6hsiypKIq0suJqx8w6T02jo5Ryd27blvq+J+89aa13MO7gB8EGcFOe54mRhTDGy2ViaBOVUskZEED5LFWFc+yHYUhJcGet/SF0kY3jmKrZMt8SgPeKKwwEKN5pq/AW5LeER2WoDvoeuO2P610VWu57WRZ+F8uBHPwgaAd619HTFKjV/Pg8NtA54OuV+vmdRD9T5V6odM8k64YUWv8jLAFbnkM3BDKdJ6UticZ8gh4FSvwdPKRYlRRJp1rmT1yNdbDVaSAC4xFyCgjYBv0P4AfuNK21Y9JvAQAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Version Control Settings&quot;
+        title=&quot;Version Control Settings&quot;
+        src=&quot;/static/14451556ab8154c7f86ec7aeedbf8883/21b4d/unity-and-github-version-control-settings.png&quot;
+        srcset=&quot;/static/14451556ab8154c7f86ec7aeedbf8883/72799/unity-and-github-version-control-settings.png 320w,
+/static/14451556ab8154c7f86ec7aeedbf8883/6af66/unity-and-github-version-control-settings.png 640w,
+/static/14451556ab8154c7f86ec7aeedbf8883/21b4d/unity-and-github-version-control-settings.png 1280w,
+/static/14451556ab8154c7f86ec7aeedbf8883/29114/unity-and-github-version-control-settings.png 1920w,
+/static/14451556ab8154c7f86ec7aeedbf8883/aea0a/unity-and-github-version-control-settings.png 2018w&quot;
+        sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;At this point you should be able to commit and push your changes - sharing them with multiple developers (or between multiple machines). Even with this, Ive found that sometimes the assets and editor site can get out of sync. In these cases, restarting Unity usually helps.&lt;/p&gt;
+&lt;h1 id=&quot;more-help&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#more-help&quot; aria-label=&quot;more help permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;More help&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;How to use GitHub with Unity - by Brackeys - &lt;a href=&quot;https://www.youtube.com/watch?v=qpXxcvS-g3g&quot;&gt;https://www.youtube.com/watch?v=qpXxcvS-g3g&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[Realtime and multiplayer]]></title><description><![CDATA[Multiplayer howto #research  In Unreal https://docs.unrealengine.com/en-US/Gameplay/Networking/index.html
 In blueprints https://docs…]]></description><link>https://jeffrafter.com/realtime-and-multiplayer/</link><guid isPermaLink="false">https://jeffrafter.com/realtime-and-multiplayer/</guid><pubDate>Tue, 01 Sep 2020 00:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;h1 id=&quot;multiplayer&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#multiplayer&quot; aria-label=&quot;multiplayer permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Multiplayer&lt;/h1&gt;&lt;h1 id=&quot;howto-research&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#howto-research&quot; aria-label=&quot;howto research permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;howto #research&lt;/h1&gt;&lt;/section&gt;
 &lt;section&gt;&lt;h2 id=&quot;in-unreal&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#in-unreal&quot; aria-label=&quot;in unreal permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;In Unreal&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://docs.unrealengine.com/en-US/Gameplay/Networking/index.html&quot;&gt;https://docs.unrealengine.com/en-US/Gameplay/Networking/index.html&lt;/a&gt;
 In blueprints &lt;a href=&quot;https://docs.unrealengine.com/en-US/Gameplay/Networking/Blueprints/index.html&quot;&gt;https://docs.unrealengine.com/en-US/Gameplay/Networking/Blueprints/index.html&lt;/a&gt;
