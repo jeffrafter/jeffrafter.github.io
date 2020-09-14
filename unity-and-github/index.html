@@ -98,20 +98,18 @@
 <p>In my case, I often use the command-line or GitHub Desktop.</p>
 <p>Create the project. Within the project we’ll need to setup git:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">git init</code></pre></div>
-<p>There are a lot of files that we don’t want to track in version control. These files are specific to our machine and editor and can’t be easily shared. We want to ignore them, so create a file called <code class="language-text">.gitignore</code></p>
+<p>There are a lot of files that we don’t want to track in version control. These files are specific to our machine and editor and can’t be easily shared. We want to ignore them, so create a file called <code class="language-text">.gitignore</code>:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text"># This .gitignore file should be placed at the root of your Unity project directory
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-
-*DS_Store
-
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
+/[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -160,10 +158,34 @@ sysinfo.txt
 
 # Builds
 *.apk
+*.aab
+*.app
+*.exe
+*.unitypackage
 
 # Crashlytics generated file
-crashlytics-build.properties</code></pre></div>
-<p>Note that we are ignoring: <code class="language-text">*DS_Store</code> files. These are specific to OSX. You may want to ignore other files specific to your code editor or operating system (for example if you use Vim). If you normally put your project files in a subfolder you may want to change how the folders are listed. For example:</p>
+crashlytics-build.properties
+
+# Packed Addressables
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+
+# Temporary auto-generated Android Assets
+/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# IL2CPP build artifacts should be ignored
+*BackUpThisFolder_ButDontShipItWithYourGame
+
+# OSX specific files
+*DS_Store
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db</code></pre></div>
+<p>This <code class="language-text">.gitignore</code> is based on the standard one found at <a href="https://github.com/github/gitignore/blob/master/Unity.gitignore">https://github.com/github/gitignore/blob/master/Unity.gitignore</a>.
+Note that we are ignoring: <code class="language-text">*DS_Store</code> files. These are specific to OSX. You may want to ignore other files specific to your code editor or operating system (for example if you use Vim). We’ve also ignored the <code class="language-text">*BackUpThisFolder_ButDontShipItWithYourGame</code> folder. This folder contains IL2CPP files that may or may not be generated depending on how you are building your project. As the name implied you want to keep a backup of this folder for every release of your game (it helps with debugging user submitting bug reports); but we don’t need it in version control.</p>
+<p>If you normally put your project files in a subfolder you may want to change how the folders are listed. For example:</p>
 <div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">/[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
@@ -177,6 +199,7 @@ crashlytics-build.properties</code></pre></div>
 [Bb]uild/
 [Bb]uilds/
 [Ll]ogs/</code></pre></div>
+<p>Alternatively, you can leave the file as it is and move the <code class="language-text">.gitignore</code> to the subfolder.</p>
 <p>We’ll have a lot of large files (audio, textures, models). When changing these files the entire file is changed (not a single line as in text files) Next we’ll need to setup Git LFS (large file storage). On GitHub you get a certain amount of LFS storage and bandwidth for free every month. The limits are per account (not per repository):</p>
 <blockquote>
 <p>Every account using Git Large File Storage receives 1 GB of free storage and 1 GB a month of free bandwidth. If the bandwidth and storage quotas are not enough, you can choose to purchase an additional quota for Git LFS. <label for="sd-less-than-a-href" class="margin-toggle sidenote-number"></label><input type="checkbox" id="sd-less-than-a-href" class="margin-toggle" /><span class="sidenote"><a href="https://docs.github.com/en/github/managing-large-files/about-storage-and-bandwidth-usage">https://docs.github.com/en/github/managing-large-files/about-storage-and-bandwidth-usage</a></span></p>
@@ -351,6 +374,9 @@ Git LFS initialized.</code></pre></div>
 <h1 id="more-help" style="position:relative;"><a href="#more-help" aria-label="more help permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>More help</h1>
 <ul>
 <li>How to use GitHub with Unity - by Brackeys - <a href="https://www.youtube.com/watch?v=qpXxcvS-g3g">https://www.youtube.com/watch?v=qpXxcvS-g3g</a></li>
+<li>Git with Unity - by Edward Thomson - <a href="https://www.edwardthomson.com/blog/git_with_unity.html">https://www.edwardthomson.com/blog/git_with_unity.html</a></li>
+<li>Project Architecture: Unity Project Folder Structure <a href="https://learn.unity.com/tutorial/project-architecture-unity-project-folder-structure#5c7f8528edbc2a002053b672">https://learn.unity.com/tutorial/project-architecture-unity-project-folder-structure#5c7f8528edbc2a002053b672</a></li>
+<li><a href="https://docs.unity3d.com/Manual/WindowsPlayerIL2CPPBuildProducedFiles.html?_ga=2.72841616.225271014.1599972203-1864417594.1590958312">https://docs.unity3d.com/Manual/WindowsPlayerIL2CPPBuildProducedFiles.html?_ga=2.72841616.225271014.1599972203-1864417594.1590958312</a></li>
 </ul></div><hr/><h2>Comments</h2><div class="sc-ifAKCX ddlDEo github"><div><p>Thanks for reading ❤️ – comment by replying to the <a href="https://github.com/jeffrafter/jeffrafter.github.io/issues/14">issue for this post</a>.<!-- --> <!-- -->There’s no comments yet; you could be the first.<br/></p></div><div class="sc-gzVnrw bOnSNx"><a href="https://github.com/jeffrafter/jeffrafter.github.io/issues/14#new_comment_field" target="_blank" rel="noreferrer noopener" class="button btn">Add a comment →</a></div></div><hr/><h2>There’s more to read</h2><div><p><em>Looking for more long-form posts? Here ya go...</em></p></div><ul class="sc-htoDjs gXLbcD"><li><a rel="prev" href="/getting-started-with-arduino-and-esp8266/">← <!-- -->Getting started with ESP8266 and Arduino</a></li></ul></div></article></main><footer class="sc-bwzfXH aCPwf footer">© <!-- -->2020<!-- -->,<!-- --> <a href="https://jeffrafter.com">jeffrafter.com</a>. Built with<!-- --> <a href="https://www.gatsbyjs.org">Gatsby</a></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
   
   
