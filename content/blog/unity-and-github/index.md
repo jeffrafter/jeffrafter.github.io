@@ -31,22 +31,20 @@ Create the project. Within the project we'll need to setup git:
 git init
 ```
 
-There are a lot of files that we don't want to track in version control. These files are specific to our machine and editor and can't be easily shared. We want to ignore them, so create a file called `.gitignore`
+There are a lot of files that we don't want to track in version control. These files are specific to our machine and editor and can't be easily shared. We want to ignore them, so create a file called `.gitignore`:
 
 ```
 # This .gitignore file should be placed at the root of your Unity project directory
 #
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
-
-*DS_Store
-
 /[Ll]ibrary/
 /[Tt]emp/
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
 /[Ll]ogs/
+/[Uu]ser[Ss]ettings/
 
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
@@ -95,12 +93,37 @@ sysinfo.txt
 
 # Builds
 *.apk
+*.aab
+*.app
+*.exe
+*.unitypackage
 
 # Crashlytics generated file
 crashlytics-build.properties
+
+# Packed Addressables
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+
+# Temporary auto-generated Android Assets
+/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# IL2CPP build artifacts should be ignored
+*BackUpThisFolder_ButDontShipItWithYourGame
+
+# OSX specific files
+*DS_Store
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
 ```
 
-Note that we are ignoring: `*DS_Store` files. These are specific to OSX. You may want to ignore other files specific to your code editor or operating system (for example if you use Vim). If you normally put your project files in a subfolder you may want to change how the folders are listed. For example:
+This `.gitignore` is based on the standard one found at https://github.com/github/gitignore/blob/master/Unity.gitignore.
+Note that we are ignoring: `*DS_Store` files. These are specific to OSX. You may want to ignore other files specific to your code editor or operating system (for example if you use Vim). We've also ignored the `*BackUpThisFolder_ButDontShipItWithYourGame` folder. This folder contains IL2CPP files that may or may not be generated depending on how you are building your project. As the name implied you want to keep a backup of this folder for every release of your game (it helps with debugging user submitting bug reports); but we don't need it in version control.
+
+If you normally put your project files in a subfolder you may want to change how the folders are listed. For example:
 
 ```
 /[Ll]ibrary/
@@ -121,6 +144,8 @@ Here the leading `/` indicates that only folders matching the names in the root 
 [Bb]uilds/
 [Ll]ogs/
 ```
+
+Alternatively, you can leave the file as it is and move the `.gitignore` to the subfolder.
 
 We'll have a lot of large files (audio, textures, models). When changing these files the entire file is changed (not a single line as in text files) Next we'll need to setup Git LFS (large file storage). On GitHub you get a certain amount of LFS storage and bandwidth for free every month. The limits are per account (not per repository):
 
@@ -228,3 +253,6 @@ At this point you should be able to commit and push your changes - sharing them 
 # More help
 
 - How to use GitHub with Unity - by Brackeys - https://www.youtube.com/watch?v=qpXxcvS-g3g
+- Git with Unity - by Edward Thomson - https://www.edwardthomson.com/blog/git_with_unity.html
+- Project Architecture: Unity Project Folder Structure https://learn.unity.com/tutorial/project-architecture-unity-project-folder-structure#5c7f8528edbc2a002053b672
+- https://docs.unity3d.com/Manual/WindowsPlayerIL2CPPBuildProducedFiles.html?_ga=2.72841616.225271014.1599972203-1864417594.1590958312
