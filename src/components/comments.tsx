@@ -173,7 +173,6 @@ export const Comments: React.FC<CommentProps> = ({url}) => {
       })
 
       const json = await response.json()
-      console.log(json)
       setComments(json)
     }
     fetchComments()
