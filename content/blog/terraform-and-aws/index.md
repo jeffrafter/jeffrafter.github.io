@@ -1,6 +1,6 @@
 ---
 title: Terraform and Amazon Web Services
-date: '2020-09-22T00:01:00'
+date: '2020-10-09T00:01:00'
 published: true
 slug: terraform-and-aws
 comments: https://github.com/jeffrafter/jeffrafter.github.io/issues/16
@@ -8,14 +8,14 @@ image: ../../assets/terraform.jpg
 layout: post
 tags: ['terraform', 'aws', 'express', 'gatsby']
 category: Web
-excerpt: There are a lot of options for configuring AWS. Terraform from Hashicorp is a tool for configuring remote infrastructure. You can create Terraform configuration files and treat your infrastructure as code; versioning the changes and storing your settings in your repository.
+excerpt: There are a lot of options for configuring AWS. Terraform from HashiCorp is a tool for configuring remote infrastructure. You can create Terraform configuration files and treat your infrastructure as code; versioning the changes and storing your settings in your repository.
 ---
 
 <figure class="fullwidth">
 ![Terraform + AWS](../../assets/terraform.jpg)
 </figure>
 <figcaption class="fullwidth">
-Image credit: <a href="https://terraform.io" rel="noopener noreferrer">Hashicorp's Terraform</a>
+Image credit: <a href="https://terraform.io" rel="noopener noreferrer">HashiCorp's Terraform</a>
 </figcaption>
 
 I've previously written about [building a static website with Gatsby and TypeScript](./gatsby-with-typescript). If you're building a static website like a blog then deploying to GitHub Pages is more than enough. But what if the website you are building needs user authentication and authorization? What if you need to store and retrieve items from a database? What if you need server side processing. What if you want to integrate payment processing? There are a lot of options and managing it all quickly becomes difficult.
