@@ -47,13 +47,13 @@ If you anticipate a small consistent scale you could spin up a VPS (virtual priv
 
 Building on a cloud platform like AWS, Azure or Google Cloud allows you to keep a low price while providing massive scalability. These platforms have a free-tier that allows you to build your website at virtually no-cost. For the kinds of websites I build Amazon Web Services has the best pricing, but is arguably the most difficult to work with. That's the trade-off: you get more options, scalability and lower-price but it comes with higher complexity.
 
-In this post, I'll detail my setup. It should allow you to build a dynamic website that at essentially no cost until it scales beyond 50,000 users per month.
+In this post, I'll detail my setup. It should allow you to build a dynamic website at essentially no cost until it scales beyond 50,000 users per month.
 
 Our website can be divided into three main projects:
 
 - Our infrastructure - built using Terraform
-- Our front-end website - built using Gatsby
 - Our server-side API - built using Express
+- Our front-end website - built using Gatsby
 
 We'll keep these in separate folders (and each will have a separate repository):
 
@@ -63,12 +63,12 @@ example/
   |- terraform/
   |   |- .git
   |   |- ... Terraform project files
-  |- site/
-  |   |- .git
-  |   |- ... Gatsby project files
   |- api/
   |   |- .git
   |   |- ... Express project files
+  |- site/
+  |   |- .git
+  |   |- ... Gatsby project files
 ```
 
 # Terraform
@@ -577,7 +577,7 @@ Do you want to copy existing state to the new backend?
   Enter a value:
 ```
 
-Type `yes` and everything should and press enter:
+Type `yes` and press enter:
 
 ```
 Successfully configured the backend "s3"! Terraform will automatically
