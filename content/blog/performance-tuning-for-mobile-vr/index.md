@@ -1,7 +1,7 @@
 ---
-title: Performance tuning for mobile VR
+title: Exploring - Performance tuning for mobile VR
 date: '2020-07-09T00:01:00'
-published: false
+published: true
 slug: performance-tuning-for-mobile-vr
 comments: https://github.com/jeffrafter/jeffrafter.github.io/issues/11
 image: ../../assets/OpenGLInsights-TileBasedArchitectures.png
@@ -17,6 +17,8 @@ excerpt: Whatever you learned tuning the performance for mobile or for desktop o
 <figcaption>
 Data flow in (a) tiled-based and (b) immediate-mode GPUs for multisampled rendering. Yellow boxes are computational units, blue boxes are memory, and thick borders indicate multisampled buffers. The immediate-mode GPU moves multisampled pixel data on and off the chip, consuming a lot of bandwidth. From [OpenGL Insights, Performance Tuning for Tile-Based Architectures](https://www.seas.upenn.edu/~pcozzi/OpenGLInsights/OpenGLInsights-TileBasedArchitectures.pdf) by Bruce Merry
 </figcaption>
+
+**🗺 Exploring - Work in progress**
 
 Getting every ounce of performance out of your game is a dark art. Its study leads to game specific and platform specific shader optimizations, baked lighting, mesh decimation, and horrific tales of endless overdraw. To make it even more difficult, the answers that you've learned along the way for every other platform and every other game engine (and their successive rendering pipelines) are probably not applicable.
 
