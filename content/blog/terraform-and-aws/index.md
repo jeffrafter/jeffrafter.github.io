@@ -1716,7 +1716,9 @@ resource "aws_api_gateway_method" "site_api_method" {
   # Proxy all HTTP methods including POST, GET, DELETE, etc.
   http_method   = "ANY"
 
-  # Authorize invocations through IAM
+  # Authorize invocations through IAM, if you want your API to
+  # work for anonymous users (not signed in), then set this value
+  # to NONE (the default)
   authorization = "AWS_IAM"
 }
 
@@ -1742,6 +1744,8 @@ This creates an API Gateway called `site_api`. We've configured it as a proxy to
 This type of proxy setup is the most flexible but the least efficient. If you want to handle only specific HTTP methods for specific paths, applying that configuration in the API Gateway will result in faster response times and fewer Lambda invocations (especially in the case of errors). Additionally, it is possible to have different Lambda functions for different routes. Here, we're proxying all routes to a single function. In large applications this can become problematic as the function you need to upload grows.
 
 For our use cases the efficiency gains are very small so we've opted for more flexibility.
+
+Notice that we have set the `authorization` to `AWS_IAM`. This assumes that the API will only work for signed in users (users that were created through AWS Cognito, which we will setup below). API Gateway will reject anonymous requests (potentially saving you money) and will pass the authenticated requests to Lambda with the user's information. For your site, you may want to allow anonymous API requests (if you are fetching a list of featured items or a default home page feed for example). In that case change the value to `NONE`.
 
 We've configured how API Gateway handles and proxies requests (inputs) to Lambda but we also need to handle outputs from Lambda and send responses. Add the following to `api.tf`:
 
@@ -1882,13 +1886,42 @@ resource "aws_api_gateway_deployment" "site_api_deployment" {
   stage_name  = "production"
 
   depends_on = [
+    aws_api_gateway_rest_api.site_api,
     aws_api_gateway_integration.site_api_integration,
+    aws_api_gateway_resource.site_api_resource,
+    aws_api_gateway_method.site_api_method,
+    aws_api_gateway_method_response.site_api_method_response,
+    aws_api_gateway_method.site_api_options_method,
     aws_api_gateway_integration.site_api_options_integration,
+    aws_api_gateway_method_response.site_api_options_method_response,
+    aws_api_gateway_integration_response.site_api_options_integration_response,
+    aws_api_gateway_gateway_response.default_4xx,
+    aws_api_gateway_gateway_response.default_5xx
   ]
+
+  triggers = {
+    redeployment = sha1(join(",", list(
+      jsonencode(aws_api_gateway_rest_api.site_api),
+      jsonencode(aws_api_gateway_integration.site_api_integration),
+      jsonencode(aws_api_gateway_resource.site_api_resource),
+      jsonencode(aws_api_gateway_method.site_api_method),
+      jsonencode(aws_api_gateway_method_response.site_api_method_response),
+      jsonencode(aws_api_gateway_method.site_api_options_method),
+      jsonencode(aws_api_gateway_integration.site_api_options_integration),
+      jsonencode(aws_api_gateway_method_response.site_api_options_method_response),
+      jsonencode(aws_api_gateway_integration_response.site_api_options_integration_response),
+      jsonencode(aws_api_gateway_gateway_response.default_4xx),
+      jsonencode(aws_api_gateway_gateway_response.default_5xx)
+    )))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 ```
 
-We've set `production` as our stage name. In theory, you could have multiple stages (possibly pointing to different Lambda functions) for `staging`, `development`, etc. Alternatively, you could use stages to deploy multiple versions of your API simultaneously (again, each pointing to a different Lambda function).
+We've set `production` as our stage name. In theory, you could have multiple stages (possibly pointing to different Lambda functions) for `staging`, `development`, etc. Alternatively, you could use stages to deploy multiple versions of your API simultaneously (again, each pointing to a different Lambda function). We've configured a redeployment trigger to make sure our API is redeployed when there is a change to any part of the setup. This is required even though Terraform is managing the changes because any updates will not be pushed to our production stage until they are _deployed_.
 
 By default, Amazon generates a unique domain for our API. Even though it isn't directly visible to users (unless they are using the developer console), it's ugly. Luckily, we can specify a custom domain name that points to a particular deployment stage. Add the following to `api.tf`:
 

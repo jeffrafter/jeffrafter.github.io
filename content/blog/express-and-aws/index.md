@@ -296,7 +296,7 @@ You should see:
 Listening on http://localhost:4000
 ```
 
-If you open http://localhost:4000 you should see:
+If you open http://localhost:4000/ok you should see:
 
 ```json
 {"ok": "ok"}
@@ -317,6 +317,9 @@ git init
 Let's make sure to ignore our environment variables (which may include sensitive secrets) and some of the files we've generated. Create a `.gitignore` file:
 
 ```gitignore
+# Ignore built releases
+dist/*
+
 # =========================
 # Node.js-Specific Ignores
 # =========================
@@ -630,6 +633,46 @@ npm run release
 
 Our compressed `api.zip` is only `235 KiB`.
 
+### Remove the extracted comments
+
+In newer versions of webpack the comments will be automatically extracted and placed in a `LICENSE.txt` file. If you want to avoid this you can turn off comment extraction in your `webpack.config.js`:
+
+```js
+const path = require('path')
+const TerserPlugin = require("terser-webpack-plugin")
+
+module.exports = {
+  entry: './lambda.js',
+  output: {
+    library: 'api',
+    libraryTarget: 'umd',
+    umdNamedDefine: true,
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'api.js',
+  },
+  target: 'node',
+  mode: 'production',
+  stats: {
+    warningsFilter: warning => {
+      return RegExp('node_modules/express/lib/view.js').test(warning)
+    },
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: {
+          format: {
+            comments: false,
+          },
+        },
+        extractComments: false,
+      }),
+    ],
+  },
+}
+```
+
 ## Use terraform to deploy our changes
 
 Now that we have prepared the release we should be able to apply our changes using `terraform`. Check the plan:
@@ -720,7 +763,7 @@ Next, we'll need to deploy the change using Terraform. Let's add a `deploy` scri
     "zip": "cd dist; zip -r ../../terraform/api.zip api.js",
     "build": "webpack",
     "release": "npm run build && npm run zip",
-    "deploy": "cd ../terraform; terraform apply --auto-approve" //highlight-line
+    "deploy": "cd ../terraform; terraform apply --auto-approve"
   },
 ```
 
