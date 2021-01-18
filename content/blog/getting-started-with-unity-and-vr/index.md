@@ -8,7 +8,7 @@ image: ../../assets/oculus-quest-2.jpg
 layout: post
 tags: ['oculus', 'quest', 'unity', 'development', 'vr', 'virtual-reality']
 category: development
-excerpt: Virtual reality is incredibly immersive and a blast to play with. The Oculus Quest 2 has made it more accessible than ever before. Best practices for setting up your environment and building a game have changed frequently enough that it be hard to find current tutorials and examples without getting confused.
+excerpt: Virtual reality is incredibly immersive and a blast to play with. The Oculus Quest 2 has made it more accessible than ever before. Best practices for setting up your environment and building a game have changed frequently enough that it can be hard to find current tutorials and examples without getting confused.
 ---
 
 <figure class="fullwidth">
@@ -18,9 +18,9 @@ excerpt: Virtual reality is incredibly immersive and a blast to play with. The O
 Image credit: <a href="https://oculus.com">Oculus Quest</a>
 </figcaption>
 
-Virtual reality is incredibly immersive and a blast to play with. The Oculus Quest 2 has made it more accessible than ever before. Of course, the moment I put it on, I immediately wanted to make my own games and got started with Unity[^unity]. Best practices for setting up your environment and building a game have changed frequently enough that it be hard to find current tutorials and examples without getting confused.
+Virtual reality is incredibly immersive and a blast to play with. The Oculus Quest 2 has made it more accessible than ever before. Of course, the moment I put it on, I immediately wanted to make my own games and got started with Unity[^unity]. Best practices for setting up your environment and building a game have changed frequently enough that it can be hard to find current tutorials and examples without getting confused.
 
-[^unity]: Unity is a game engine that makes it easier to build a fully functioning game (including physics, collisions, rendering, and much more) that works on multiple platforms. There are many freely available game engines but the most popular are Unity and Unreal Engine. [Lots](https://gametorrahod.com/objectively-comparing-unity-and-unreal-engine/) of [articles](https://developer.oculus.com/documentation/quest/latest/concepts/book-intro/?locale=en_US) on Unity versus Unreal Engine versus building your own engine entirely from scratch using Oculus Native support. For me, my goal was to get something running as quickly as possible. Harder decisions later.
+[^unity]: Unity is a game engine that makes it easier to build a fully functioning game (including physics, collisions, rendering, and much more) that works on multiple platforms. There are many freely available game engines but the most popular are Unity and Unreal Engine. There are [lots](https://gametorrahod.com/objectively-comparing-unity-and-unreal-engine/) of [articles](https://developer.oculus.com/documentation/quest/latest/concepts/book-intro/?locale=en_US) on Unity versus Unreal Engine versus building your own engine entirely from scratch using Oculus Native support. For me, my goal was to get something running as quickly as possible. Harder decisions later.
 
 ### Mac versus Windows
 
@@ -30,25 +30,25 @@ If you are using Windows, you are in luck: many of the tutorials and videos you'
 
 We'll be using Unity to develop our game. Unity is constantly releasing new versions and new features. Because of this it is very common to have multiple versions of Unity installed (for different projects). Luckily this is easy to manage using Unity Hub. [Download](https://unity3d.com/get-unity/download) Unity Hub and install it[^unity-hub].
 
-[^unity-hub]: Can't you just download and install a specific version of Unity instead of Unity hub? Of course. But even if you only plan to use one version of Unity forever, Unity Hub is still extremely useful for configuring your installation.
+[^unity-hub]: Can't you just download and install a specific version of Unity instead of Unity Hub? Of course. But even if you only plan to use one version of Unity forever, Unity Hub is still extremely useful for configuring your installation.
 
 Once you have installed Unity Hub, you'll need to install a version of Unity.
 
 ![Install Unity on Unity Hub](../../assets/unity-hub-add-unity-version.png)
 
-I generally try to install the latest Official Version. Even though the LTS (long term support) versions are guaranteed to receive updates they won't necessarily have all of the newest features. Choose a version and click Next.
+I generally try to install the latest Official Release. Even though the LTS (long term support) versions are guaranteed to receive updates they won't necessarily have all of the newest features. Choose a version and click the "NEXT" button.
 
 When building a game for Oculus Quest (which uses a custom Android operating system internally), you'll need to use a version of Unity with Android Support and OpenJDK. Select the Android Build Support option (and all sub-options):
 
 ![Install Unity on Unity Hub and add modules](../../assets/unity-hub-add-modules.png)
 
-I also select `Mac Build Support` and `Documentation`. If you're not sure if you'll need something, you can always add modules later. Click Next.
+I also select `Mac Build Support` and `Documentation`. If you're not sure if you'll need something, you can always add modules later. Click the "NEXT" button.
 
 You'll need to agree to the Android SDK and NDK License Terms from Google:
 
 ![Android SDK and NDK License Terms from Google](../../assets/unity-hub-eula.png)
 
-Check the box and click Done. The installation should take a few minutes.
+Check the box and click the "DONE" button. The installation should take a few minutes.
 
 ## Setting up a basic project
 
@@ -132,7 +132,7 @@ That's all we need for now (this is just to get the scene running and visible; n
 
 ![Unity connect XR objects and cameras](../../assets/unity-connect-xr-objects.png)
 
-At this point we can remove the `Main Camera` game object, we'll be using the `XR` camera instead.
+At this point we can remove the `Main Camera` game object; we'll be using the `XR` camera instead.
 
 ### Creating a basic world
 
@@ -158,7 +158,7 @@ Make another material called `Red` and set the `Base Map` color to red:
 
 ![Unity red material](../../assets/unity-red-material.png)
 
-Drag the `Black` material into your game view and drop it onto the `Floor` object. Drag the `Red` material into the game view and drop it onto the `Table` object.
+Drag the `Black` material into your scene view and drop it onto the `Floor` object. Drag the `Red` material into the scene view and drop it onto the `Table` object.
 
 ![Unity basic scene](../../assets/unity-basic-scene.png)
 
@@ -168,7 +168,7 @@ At this point we could run our game by pressing the ▶️ button in Unity to se
 
 ### Building and deploying the application to your Oculus Quest
 
-To utilize Oculus and Facebook features such as social integration and user avatars, you'll need a Facebook account (starting with Oculus Quest 2) and an Oculus Developer account (free, but starting in February 2021, you need a [Verified Developer Account](https://developer.oculus.com/faqs/?locale=en_US#faq_343265393702048) which requires a payment method on file). Go to https://developer.oculus.com and sign up using your Facebook account. You'll also need to [setup your device for developer mode](https://developer.oculus.com/documentation/native/android/mobile-device-setup/). To do this you'll need to (again, follow [the instructions on the Oculus website](https://developer.oculus.com/documentation/native/android/mobile-device-setup/)):
+To utilize Oculus and Facebook features such as social integration and user avatars, you'll need a Facebook account (starting with Oculus Quest 2) and an Oculus Developer account (free, but starting in February 2021, you need a [Verified Developer Account](https://developer.oculus.com/faqs/?locale=en_US#faq_343265393702048) which requires a payment method on file). Go to https://developer.oculus.com and sign up using your Facebook account. You'll also need to [setup your device for developer mode](https://developer.oculus.com/documentation/native/android/mobile-device-setup/). To do this you'll need to:
 
 * Join or Create an Oculus Developer Organization (part of your Oculus account)
 * Enable Developer Mode on your headset
@@ -176,6 +176,8 @@ To utilize Oculus and Facebook features such as social integration and user avat
 * Install the Oculus ADB Drivers (Windows only)
 
 [^usb-cable]: The USB cable that comes with the Oculus will work for development. An Oculus Link cable will also work. In general, any data-capable USB-C cable should work. If you are having trouble you might want to check the cable. Also, if you have an Oculus Elite Strap (or another external battery pack) make sure your USB cable is plugged into the headset itself, not the battery pack.
+
+ The [instructions on the Oculus website](https://developer.oculus.com/documentation/native/android/mobile-device-setup/) explain how to do each of these steps.
 
 Once your Quest is in developer mode and plugged in, you can configure your project.
 
@@ -209,7 +211,7 @@ Once you save the game it should start compiling the application. This generally
 
 When the game starts on the headset, Unity will connect to the logs from the headset and display them in an `Android Logcat` window (because we installed the `Android Logcat` plugin into our project). The logging is almost constant but can be filtered. This is a cumbersome way to get debugging information from the headset as you play - but it is the only way to do it on MacOS. On Windows you can use the ▶️ button in Unity to start the application in development mode on the headset. This is not possible on MacOS because there are no Apple-compatible Oculus drivers and applications.
 
-Our game is not very exciting (we don't even have hands!), but from this point you should be able to make changes in Unity, then click the `File` menu and choose `Build and run`. Your new changes will be compiled and a new version of the game (the compiled `APK` file) will be deployed to the headset and the game will restart.
+Our game is not very exciting (we don't even have hands!), but from this point you should be able to make changes in Unity, then click the `File` menu and choose `Build and Run`. Your new changes will be compiled and a new version of the game (the compiled `APK` file) will be deployed to the headset and the game will restart.
 
 # Writing a script
 
