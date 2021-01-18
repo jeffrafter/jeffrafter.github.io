@@ -1,4 +1,1098 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeff Rafter]]></title><description><![CDATA[How to.]]></description><link>https://jeffrafter.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 28 Dec 2020 17:18:07 GMT</lastBuildDate><item><title><![CDATA[Exploring - Using Express and Amazon Web Services]]></title><description><![CDATA[🗺 Exploring - Work in progress Using Express to build out your API can be challenging; but integrating it with all of the products…]]></description><link>https://jeffrafter.com/express-and-aws/</link><guid isPermaLink="false">https://jeffrafter.com/express-and-aws/</guid><pubDate>Fri, 09 Oct 2020 00:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;figure class=&quot;fullwidth&quot;&gt;&lt;span
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeff Rafter]]></title><description><![CDATA[How to.]]></description><link>https://jeffrafter.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 18 Jan 2021 01:08:49 GMT</lastBuildDate><item><title><![CDATA[Getting Started With Unity and Virtual Reality]]></title><description><![CDATA[Virtual reality is incredibly immersive and a blast to play with. The Oculus Quest 2 has made it more accessible than ever before. Of course…]]></description><link>https://jeffrafter.com/getting-started-with-unity-and-vr/</link><guid isPermaLink="false">https://jeffrafter.com/getting-started-with-unity-and-vr/</guid><pubDate>Sat, 16 Jan 2021 00:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;figure class=&quot;fullwidth&quot;&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1280px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 56.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEBf/EABUBAQEAAAAAAAAAAAAAAAAAAAEA/9oADAMBAAIQAxAAAAHUXUtpxgn/xAAYEAACAwAAAAAAAAAAAAAAAAAAAQIRIP/aAAgBAQABBQJlRWGf/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAGRAAAQUAAAAAAAAAAAAAAAAAAAERIDGB/9oACAEBAAY/AmLXY//EABsQAAIDAAMAAAAAAAAAAAAAAAABESExEFFh/9oACAEBAAE/IYNSlT0WGqdsN+cPTR//2gAMAwEAAgADAAAAEGMf/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGRABAQEBAQEAAAAAAAAAAAAAAREAgSEx/9oACAEBAAE/EApGF9I8dCpBUoncq0WhfmoUXrcbb67/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Oculus Quest with Controllers&quot;
+        title=&quot;Oculus Quest with Controllers&quot;
+        src=&quot;/static/29432bc29d931b884eea7ab75c8fb59e/eea4a/oculus-quest-2.jpg&quot;
+        srcset=&quot;/static/29432bc29d931b884eea7ab75c8fb59e/cb69c/oculus-quest-2.jpg 320w,
+/static/29432bc29d931b884eea7ab75c8fb59e/c08c5/oculus-quest-2.jpg 640w,
+/static/29432bc29d931b884eea7ab75c8fb59e/eea4a/oculus-quest-2.jpg 1280w&quot;
+        sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/figure&gt;&lt;figcaption class=&quot;fullwidth&quot;&gt;
+Image credit: &lt;a href=&quot;https://oculus.com&quot;&gt;Oculus Quest&lt;/a&gt;
+&lt;/figcaption&gt;&lt;p&gt;Virtual reality is incredibly immersive and a blast to play with. The Oculus Quest 2 has made it more accessible than ever before. Of course, the moment I put it on, I immediately wanted to make my own games and got started with Unity&lt;label for=&quot;sd-unity-is-a-game&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;sd-unity-is-a-game&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Unity is a game engine that makes it easier to build a fully functioning game (including physics, collisions, rendering, and much more) that works on multiple platforms. There are many freely available game engines but the most popular are Unity and Unreal Engine. &lt;a href=&quot;https://gametorrahod.com/objectively-comparing-unity-and-unreal-engine/&quot;&gt;Lots&lt;/a&gt; of &lt;a href=&quot;https://developer.oculus.com/documentation/quest/latest/concepts/book-intro/?locale=en_US&quot;&gt;articles&lt;/a&gt; on Unity versus Unreal Engine versus building your own engine entirely from scratch using Oculus Native support. For me, my goal was to get something running as quickly as possible. Harder decisions later.&lt;/span&gt;. Best practices for setting up your environment and building a game have changed frequently enough that it be hard to find current tutorials and examples without getting confused.&lt;/p&gt;&lt;h3 id=&quot;mac-versus-windows&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#mac-versus-windows&quot; aria-label=&quot;mac versus windows permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Mac versus Windows&lt;/h3&gt;&lt;p&gt;If you are using Windows, you are in luck: many of the tutorials and videos you’ll find assume you’re working on Windows. I’m using a MacBook Pro. This can create some challenges but the biggest challenges are around the platform support for the Oculus Quest itself. Oculus doesn’t make a version of it’s Oculus Desktop app (or libraries) available on MacOS. Because of this you’ll usually want to start with tutorials that are specific to the Mac and adjust. This post will try to focus on what works in both environments.&lt;/p&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h2 id=&quot;getting-started&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#getting-started&quot; aria-label=&quot;getting started permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Getting started&lt;/h2&gt;&lt;p&gt;We’ll be using Unity to develop our game. Unity is constantly releasing new versions and new features. Because of this it is very common to have multiple versions of Unity installed (for different projects). Luckily this is easy to manage using Unity Hub. &lt;a href=&quot;https://unity3d.com/get-unity/download&quot;&gt;Download&lt;/a&gt; Unity Hub and install it&lt;label for=&quot;sd-can-t-you-just&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;sd-can-t-you-just&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Can&apos;t you just download and install a specific version of Unity instead of Unity hub? Of course. But even if you only plan to use one version of Unity forever, Unity Hub is still extremely useful for configuring your installation.&lt;/span&gt;.&lt;/p&gt;&lt;p&gt;Once you have installed Unity Hub, you’ll need to install a version of Unity.&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1280px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/44de69e32eb132a1315863042d3cf17a/555cf/unity-hub-add-unity-version.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 61.24999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsSAAALEgHS3X78AAACHElEQVQoz4WS32/SUBTH+Sdb6MgWWIw6p9FFfTIxDijiKC1IWzKNiU++4sOIM/HBUcF/w2VboGykUOgvaO/X28sgxG3xJN+enntzPv2ee5tIJTdCnktBSKXJppBCNsUhk+KZsgKPbaoHW2nc39xg79k1bQsctmhPMpkmPCcgyQthQqpIOCiXyYeGhn39C540jrHXaOGp3sKuttAj9YhpWcd6rB1hRztmPZ8P6zjU3pOGVkeiLEmkVJYgvc2RZ59OkPkOPPzmItvywDVd8F+9lbimA3651pyCbwG7H38i8zxPuBcK9t5USIK6ix2iWBTxo93F6ZhgMhpiZFlwpjYQhVRzAASO4yDwfcwDHz7NcXQ6Hdx7mcfOawWvxAquRz7Afi6HtvELA2uKP6dnOOsP0R9cwTQH6F2N0bMCXFzaGFoj+qEprInHgL+7XbwriWioNdSqChLFsoySpCBXKMAwDLiuhz6F9M1L+MEMUUQwj4CQ5jAMQUjEQFEUrRzmCyLkag0VWaZnWFFYUSgWmUNrbOPi/JyNN5vNsAiC9SBkAWdA6rAgiqjWroGyIrNCpIsnRgcjZ4Z+r0eB7qr5Nt0JjB9xES+ykakz0zRh0UvxPO9WaBwrIB35TmC8OZlMGCxuXJ7Tv7G+91+HgR/Atm3M53MEQXBD8e8ypbfsuC58ymy3jZtAWVGwBOu6DlXTUFdVqHeJ7sdZ17UVaMn4C31190NomhW4AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Install Unity on Unity Hub&quot;
+        title=&quot;Install Unity on Unity Hub&quot;
+        src=&quot;/static/44de69e32eb132a1315863042d3cf17a/21b4d/unity-hub-add-unity-version.png&quot;
+        srcset=&quot;/static/44de69e32eb132a1315863042d3cf17a/72799/unity-hub-add-unity-version.png 320w,
+/static/44de69e32eb132a1315863042d3cf17a/6af66/unity-hub-add-unity-version.png 640w,
+/static/44de69e32eb132a1315863042d3cf17a/21b4d/unity-hub-add-unity-version.png 1280w,
+/static/44de69e32eb132a1315863042d3cf17a/29114/unity-hub-add-unity-version.png 1920w,
+/static/44de69e32eb132a1315863042d3cf17a/555cf/unity-hub-add-unity-version.png 1960w&quot;
+        sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;I generally try to install the latest Official Version. Even though the LTS (long term support) versions are guaranteed to receive updates they won’t necessarily have all of the newest features. Choose a version and click Next.&lt;/p&gt;&lt;p&gt;When building a game for Oculus Quest (which uses a custom Android operating system internally), you’ll need to use a version of Unity with Android Support and OpenJDK. Select the Android Build Support option (and all sub-options):&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1280px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/0f889b8470183f08db8ad8d0f2a2d220/555cf/unity-hub-add-modules.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 61.24999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsSAAALEgHS3X78AAACRklEQVQoz32RS2/TQBSF8x+R82jVqq0QUFoEFbBCQqSpQxQ7dkLjWAUhsWJbFo1aIRaQV1nyC1g0SIRWfsSJX4kzhzvTpDwquPKx5s5ovnvu3FQ2s5SkpSxy2WW2kstiPSthLZsWWs+lsUG6vbqMWytLIv9dGzkJq3Qnk1lmaSmHTDqXpNSKirKisJemgXzjLe6ZJ9gxm7jfaGLLuNTd+pHQtvFrb9s4wqZxIu68OdjHgfGCmcY+UoqqspKiQn2+yx68/oS198Cd4wAbzRDpd3/qxmEAiSTyQx/SEbD16iPWHhaY9EjHzrMKS5E77hDFoowPrR7OPAbPseE4DgJ/DLAZfQmABF/tCc4tB55L57ZFewzdXg83Hxew+VTHE7kC0bKilJHf3UW700EYhvCGLvzxGEEQYDKZII4ioSieiHMu3/fBo0fAckmGWa+hVtWRKioaSqqOfGEPn097uAiBC2dE0CFcd4jpdArGxF2MqQgvME0SBATl0el2UdiToVVrqGgavWFFF0lBlnFK1Xh8ORvh++AHLMuC540ElIfrugLInQ+pII8uAffobrU2B2q6JhK+yQ95nHsxxn6Av4O3yoEJOQznDq8B+Y8ncrGIVrst3uZb/wz9fh8RvdtsRkOhnrkGgwE59hCSQ9uy/g/km51uR7Rn27ZoaTQaCUeL4G8YxTFCGs5w6F0N5Z/ANjkUUyYXvC0OE1MmCBcvFhPM8QkaxYhmQKvVvg7UdB0LcMM0UTcM7NfrV6rPtVgbxuW60TCuQAvGT5D39dEsOsUUAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Install Unity on Unity Hub and add modules&quot;
+        title=&quot;Install Unity on Unity Hub and add modules&quot;
+        src=&quot;/static/0f889b8470183f08db8ad8d0f2a2d220/21b4d/unity-hub-add-modules.png&quot;
+        srcset=&quot;/static/0f889b8470183f08db8ad8d0f2a2d220/72799/unity-hub-add-modules.png 320w,
+/static/0f889b8470183f08db8ad8d0f2a2d220/6af66/unity-hub-add-modules.png 640w,
+/static/0f889b8470183f08db8ad8d0f2a2d220/21b4d/unity-hub-add-modules.png 1280w,
+/static/0f889b8470183f08db8ad8d0f2a2d220/29114/unity-hub-add-modules.png 1920w,
+/static/0f889b8470183f08db8ad8d0f2a2d220/555cf/unity-hub-add-modules.png 1960w&quot;
+        sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;I also select &lt;code class=&quot;language-text&quot;&gt;Mac Build Support&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;Documentation&lt;/code&gt;. If you’re not sure if you’ll need something, you can always add modules later. Click Next.&lt;/p&gt;&lt;p&gt;You’ll need to agree to the Android SDK and NDK License Terms from Google:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1280px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/c0bd2bc95a1d78ff405207fcc6fb8275/555cf/unity-hub-eula.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 61.24999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsSAAALEgHS3X78AAACQElEQVQoz42Ty2tTQRTG8y/ZQmo1Nm0aaoso5uZxk3sbcOVGQYxJsCgu8lDQ/8CFC21BBJcaWmuwJqnFhe6FJM37WaN5Nc/5nDPpDWhFPPC755vDnG9mDlzd8pJ5tLi4jJWF82zVoMdFw9yUVc7ahTlcMRlweckg9Gn0otdoNGHRaBrpnE4nZIeNmW8+wdm7rzDv28S8f0ug925h9g7Hs4mZ2y8w4/mdWc9znPG+hPnGY1xTZeZ2r0PnUhRmkyy49SzGHn4FAvsjhA4YHn0G7icYvHsMPs7GPnDvgPPpBK43EsCDL8D1p3F2bkXCJavCdC6XC5IkIbr9Bs1qHqXDb6jmkjgqHKJRyqBRTON7IYVRqw70fgLHPya52wAGLVAkYntYWJNgcSjQKYoLFosF73Z30R8MUasfodluC93rD6Z0j3voUY3TP8lUp/gYi0G2W+FeV6GTXQquSlZEo1E0m03UajW0Ox2hiTY31zJjbAI3oTwcDoVhjBtK3ENVVZqhCpvNju2dHVQqFaTTaeTzeWSzWeRyORSLRZTLZQHVC4UCSqWSqGcyGYzHYyQSCTE2YaiqCux2OyKRt6IpmUwhlUoJY2qgGh1EN9c0oR1CEY/HYbVaNUO6oY3P8L14Km2uVqtTNAPS9XpdZDLX0J48NVT4kx18oK8jH9AbA+3WZF5Ehx/Q7XaF7vf7+DNojqcM6UMLuvZ4zDAYDPC/8VdDRVEgyzL8fj/C4TACgQBCoRCCwaDI/4L2UI/P5wP9ceT1C93N3HdadKPpAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Android SDK and NDK License Terms from Google&quot;
+        title=&quot;Android SDK and NDK License Terms from Google&quot;
+        src=&quot;/static/c0bd2bc95a1d78ff405207fcc6fb8275/21b4d/unity-hub-eula.png&quot;
+        srcset=&quot;/static/c0bd2bc95a1d78ff405207fcc6fb8275/72799/unity-hub-eula.png 320w,
+/static/c0bd2bc95a1d78ff405207fcc6fb8275/6af66/unity-hub-eula.png 640w,
+/static/c0bd2bc95a1d78ff405207fcc6fb8275/21b4d/unity-hub-eula.png 1280w,
+/static/c0bd2bc95a1d78ff405207fcc6fb8275/29114/unity-hub-eula.png 1920w,
+/static/c0bd2bc95a1d78ff405207fcc6fb8275/555cf/unity-hub-eula.png 1960w&quot;
+        sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Check the box and click Done. The installation should take a few minutes.&lt;/p&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h2 id=&quot;setting-up-a-basic-project&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#setting-up-a-basic-project&quot; aria-label=&quot;setting up a basic project permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Setting up a basic project&lt;/h2&gt;&lt;p&gt;In Unity Hub, click on Projects on the left, then click on the New button. Create a new project with the Universal Render Pipeline selected:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1280px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/8cb1309769d6d5b8cebcf2181db71890/fb937/unity-hide-and-seek.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 54.0625%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAALCAYAAAB/Ca1DAAAACXBIWXMAAAsSAAALEgHS3X78AAABhklEQVQoz4VSWW7bMBTkzXKb3KCBHS/pWXKGHKT+MVzky1lQ2RKtraIoieSE82K2Keo2BAYzpMjH4Typ5e3Kzb7MEBFmN3MIOI+8ul1jtVhjfcbd6qsgnsFitsBivowsCMLzZVDjOMLaPuDX+C1DCO/AO38yZIPq+z6w6DRNYRgGxLmAa2RrrWii6zocj0dUVQXvPZxz8I7sg2jvg+LNzy8v2O12cg03bjYbGGNkfjqdkGWZaBY9H/zzBR+g3DTFWyaMg0WIG7k4cS1qMl3TJTW5LEu0bYumaaR4GtxPqLIxKLsRrfXQTS/PSkWo6ZSazKJ0ye9kfzZAJK10Y1H/NHJrZSYc8wL5Oae6rpHnOYqi+MvRv4ZqrYsZHfD4fYduCDiVVczwmxRhU/b7PbbbrWg6vJSd/wBVNDa8ZgWyQx4OlZGCWheSFV2xKVpr0akZ/3VYtwa6NkEzy6glt4juAlKzUqcTF53Dj9YJK9ubEIHE6T+8BDaGoGa+TzEOOr9+qHF1Xwu/Ab0MOPWhXByQAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Create a new project in Unity&quot;
+        title=&quot;Create a new project in Unity&quot;
+        src=&quot;/static/8cb1309769d6d5b8cebcf2181db71890/21b4d/unity-hide-and-seek.png&quot;
+        srcset=&quot;/static/8cb1309769d6d5b8cebcf2181db71890/72799/unity-hide-and-seek.png 320w,
+/static/8cb1309769d6d5b8cebcf2181db71890/6af66/unity-hide-and-seek.png 640w,
+/static/8cb1309769d6d5b8cebcf2181db71890/21b4d/unity-hide-and-seek.png 1280w,
+/static/8cb1309769d6d5b8cebcf2181db71890/fb937/unity-hide-and-seek.png 1820w&quot;
+        sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;The project should open and have a default scene in it. For our purposes, we don’t care about this scene and want to start with a blank canvas.&lt;label for=&quot;sd-in-many-of-the&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;sd-in-many-of-the&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;In many of the screenshots you&apos;ll notice I am using the &lt;code&gt;Tall&lt;/code&gt; layout. I tend to prefer this layout but you can choose whatever layout you want. To change the layout click on the &lt;code&gt;Window&lt;/code&gt; menu, click &lt;code&gt;Layouts&lt;/code&gt; then choose &lt;code&gt;Tall&lt;/code&gt;.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 368px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/5860f70aec6cef9502d0f3d2fa1f559f/2b727/unity-vr-sample-scene.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 150.31249999999997%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAeCAYAAAAsEj5rAAAACXBIWXMAAAsTAAALEwEAmpwYAAADN0lEQVRIx82WzW7TQBDH8y5V0za0cRLHdvwRO/6IY6dOnDpxk7agUlJAfAmQClXFDVoOcETiyhtw4Sl4JS5/ZrZy1UiAVChSD6NdWzu/+e/M7NqlfG8fW/kugniIoJ+ioegol8tYWVkRYzG/bPxueXn5wtbW1lCr1cRY2p7NkOdTOLYNpSmjQi8rlcqCra6uChA7LC0twXVdRFGEbrcLy7LQ6XSQpilM00QpToaYphqGSYQo7iOOY2iahnq9jmaziUajgXa7Ld77fiBsMplgPM4QBD48t0NAl+aBgJf8sAfLkMkhwmg0ooVjDAYDEb3VagnjyC45GrpOwVR4ngvdcCDVNNTqvEYTIlhAKQhDKKqGkMAsm4FZlglVvIiBrLa6sYF4M8WT58dYq9SQpxK+f5Pw8uE6yisSwRoijyW/G0KmbXmeJ1T1ej0kSSJUMVDXDWys38LB/ac4/fAZL47eUOE8vD+pAj/K+PrFQ0O2CVgXgUthFAsQJ5rNMAwhXVEUqKoqFDZooW6Y2Lk9x9HJO3JswnUUfPq4i7OzM8znh9igHXC+CRhhnI2xv7+PGVV8OBzC831KQQjbdoRKWZbhOLYoTJIMSHULqqYjG9+h9IxpXVuoEwrZ2TR03D+cIyVYtjWicSCq17ZMtKgIHNlxnPNWoWqyag5kmTrBdRGQ7RwYxnCDHu49eIRhlmOwNYHtdSFrBlTdgmbakJsKJVxCtVqFJEnCkYMUqnh+AbSmz6DtvMbB8QdsPnyL0eNTtHZeQcpeoEYmTY5QN33IdYnAzQs1vzIBdHt9WG5ICh8j2cqRTmbQbR+KYUOzOlAtVygsVPBYzAtbUOhSu1iUw8P5PSSbfYwof/2oR01MeVIVkcPLTr+yBSBXmY/S3bsHoqFnsx3Rh3yMisa+MpCPGjc2n0duDe7FogevDPSCrpgwgJuZm7pQ9lcKfTol52r0C0UF7O+BpOwy7J+AvOWbDgz+A1C9RqDrBws9dw1A/4YDO961A71/Bi7ch457NeBlcHE3Lih06Ev3JyBbcWmwQwEq5oUVfxklp/N7II+8kK+3vb09bG9vC8vzHNPpVPwU+FRUfuZrjz9YPwHUEvPbcdqVjwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity sample scene&quot;
+        title=&quot;Unity sample scene&quot;
+        src=&quot;/static/5860f70aec6cef9502d0f3d2fa1f559f/2b727/unity-vr-sample-scene.png&quot;
+        srcset=&quot;/static/5860f70aec6cef9502d0f3d2fa1f559f/72799/unity-vr-sample-scene.png 320w,
+/static/5860f70aec6cef9502d0f3d2fa1f559f/2b727/unity-vr-sample-scene.png 368w&quot;
+        sizes=&quot;(max-width: 368px) 100vw, 368px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Delete the following:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Assets/Scenes/SampleScene&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Assets/Scenes/SampleSceneLightingSettings&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Assets/ExampleAssets&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Assets/TutorialInfo&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Assets/Settings/SampleSceneProfile&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;Before we can build our game for the Oculus Quest, we’ll need to add some packages. Some of the packages we’ll need are very new. In current versions of Unity, you’ll need to show the preview packages. To do this we’ll need to enable preview packages in the Project Settings. Open the &lt;code class=&quot;language-text&quot;&gt;Edit&lt;/code&gt; menu and choose &lt;code class=&quot;language-text&quot;&gt;Project Settings...&lt;/code&gt;. Select &lt;code class=&quot;language-text&quot;&gt;Package Manager&lt;/code&gt; on the left then check the &lt;code class=&quot;language-text&quot;&gt;Enable Preview Packages&lt;/code&gt; checkbox:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1280px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/499351883322615011e4e42653ef3c17/3e992/unity-vr-project-settings-package-manager.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 68.4375%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsSAAALEgHS3X78AAAB/UlEQVQ4y4WSSXPaQBCF9XMAA0JoG4ERs2hDIsgYO5VDDs4ht/z/U2peugejAgpXDl91SdPz5vXiSW3+5lIjFZn1fR+LxQIc5/M5ZrOZi1EUIUkSLJdLDDnE3B+wHH2KntIa2hgrpUKapojjGJtNjqIsUdU1TFEgJjH+z6IOygtjgSBMEEQDlqPXNI3VWiHLMkvQxQRFYfD9/YS2qdFUBbTMoZWC5sevUEpesIrOCevt93scj0eXkOc5ViTafevx8/cfyKaH2Z8g21eYsgY/rBQLuctUyeaTZ2xyiVzV8Goqq6oqdgghBESaQDxLROUbVu0PhMUJU/mCLNcIqYej0Qjj8dgxmUwG+Hs6nZ0F27Z1L7Ig91EQwXwKfzrBYvZETBBHoesjD+URPCiuziuo6SUN4OLQCYqMJhoiIEfMIli6C0wQBA/hM37Q22636PveOWSxs6AY1uci9BWcw4K8UmEYwjPG4HA43AiuVityfHabJDF9Z8NK3cM7ul6vwZXygHhtwH28lMx7lpPr7vCKw8sbdvseRVW7tnxNdY4k6krmDymlc8a2u67Dx8cverVER2vV7HZucAznspt7WNQUtDbkyLIrKsmyQy6DxbkN7Jz3kx+97B6fPUKpAso08NzuCWE/49BH5nby4j+kboe9KzF7L3g99Uf/b6EcyvsH6R/YGOUeT7gAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity package manager project settings&quot;
+        title=&quot;Unity package manager project settings&quot;
+        src=&quot;/static/499351883322615011e4e42653ef3c17/21b4d/unity-vr-project-settings-package-manager.png&quot;
+        srcset=&quot;/static/499351883322615011e4e42653ef3c17/72799/unity-vr-project-settings-package-manager.png 320w,
+/static/499351883322615011e4e42653ef3c17/6af66/unity-vr-project-settings-package-manager.png 640w,
+/static/499351883322615011e4e42653ef3c17/21b4d/unity-vr-project-settings-package-manager.png 1280w,
+/static/499351883322615011e4e42653ef3c17/3e992/unity-vr-project-settings-package-manager.png 1902w&quot;
+        sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;You may see a warning that the packages are “not ready for production.” Click “I understand”:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 260px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/c4f8ec10fd466c8d716309c1983fac01/86c28/unity-package-manager-warning.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 105.76923076923077%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAYAAABG1c6oAAAACXBIWXMAAAsTAAALEwEAmpwYAAADk0lEQVQ4y5VVSU9bZxS12LBErFkiseAHsGDfpGqI2kYJg+f5eYIQ7OcJT9jGscEDtoGmCYOCGEKoUmgDVFWq/oz+hCrb7nmn997Hs7CaROri+Jvud+65w/ts8vsCfwWUEGi88XkVjQADtAfFHwSfBwMRQlj2fAQZdTu+o7Ed4aOJN70ev0aAx+3rgdcupwdzs2bMTM/i4dS3+P67R7DbnPDqd/rsPcTBTkxet++GD3VSX4+YHVktNoyPj2N0dBSTk5MYHh7G1IOHotjj0Z3evcdKTXRZMw4MZTyyt+kns5iYmICqqiiXyxgZGcH9e19L6Lqqnn0foeEJdwk5J08ez2BsbIwuepDNZkXhva/uf4oQt4T4LCErnJmew9DQEAYHB0XdwMAAHnwzhcD/Ibx7yHOL2Qaz2UpqpzE3Z4Hb5RVnXm+/gC8q5OpyNRkOu0vWTOR0uGXPZnX0kX2WkDf4Uiq5jK3NbXS7W/hh+wUa9SY2Wh3Z67S7ePVyB9GoKo5u2+6/hDyyCjbipCcTaUE+t4J0KkOVTmA5nUUuW8BKoSSt4yJ7Q3kfoUKHpWJZDIsrZSHiyzwvlVahxhKkOo1YNI7Mcg7xeFJsOZJyqYJabV26gklN/MNemGB9rSEhdTtb2Ozq4TXqLVSf11CpVMnpqszrlII2nbWabbRabSIvwu326grv9h1XLxJeEMxHnooyVlCtrpHaEp5XarLPbcMjIxSM9DqiR+imBeeNVS4+XZKQObxcNi+KmGiNwqpV15HN5OTs2WJUHCbiKRHTR8iFYKNuZxP19aaACZqNlp5HCpXTwQ7aGx00aJ+dsB2HvfQsJgXqC5mVLaczopITzyoLlBvOYau5ISQFKgRXXZRxFDRmMnnMzy8Sh78/ZLvdSa+LXZqWm9eYJ5PcOgXkM1nEozHYLVY4rLYebGYLnDY7PE43EVKVucJcBPYaXVIlNwZ4zcoDlCNnOI5gvIQQIWhALdJYRDi5Cn80T22jCOENfwXHR2+0o8MT7fL9FRhXl9c4Pn6DE0JzYxv51j7OfrrAu4trXP3+Jy5/+wPvrz/g1+sP2s/nl9rajydwKQv681Wr1bXd3X36pHaJ4LSHnVd72NvZR6XaQKr2AnsHpzg4eYfjs19weHqOo7fnOHx7gYOjM5S6rzWPsiBfyt/y36EE+Qk3HluB8Z/io2fKqSzCGUnBHlJvEYc9qDI0RzihuUIxvvPPv4uexwkLJ0dOAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity package manager warning&quot;
+        title=&quot;Unity package manager warning&quot;
+        src=&quot;/static/c4f8ec10fd466c8d716309c1983fac01/86c28/unity-package-manager-warning.png&quot;
+        srcset=&quot;/static/c4f8ec10fd466c8d716309c1983fac01/86c28/unity-package-manager-warning.png 260w&quot;
+        sizes=&quot;(max-width: 260px) 100vw, 260px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Open the Package Manager by clicking on the &lt;code class=&quot;language-text&quot;&gt;Window&lt;/code&gt; menu and choosing &lt;code class=&quot;language-text&quot;&gt;Package Manager&lt;/code&gt;. Once open, change the packages filter to &lt;code class=&quot;language-text&quot;&gt;Unity Registry&lt;/code&gt;:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 240px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/e72ba40468d1c5e5263845ab42a27579/8ff5a/unity-package-registry.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 68.75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAACu0lEQVQ4y2VT2W7TQBT1P4D4g2Zxm827nd12YsdLEtux0yxNugtUKvoBfYLSl6oIPowXkACh/sthZpqmIB6O7p07c4/PPTPmLG+McP8IZpBCtwIYdshQJ2i5EatR0LXUclESNeRyO8jn8/+gUCiwyPlBgMuLNxiPhpgkMdJ0gvVqRfIE+9MpsizFcrHAYj5Hp92GJEkoFHnwu7vgeQoexWJxS8r1HBdplsHu9RCGAQ4P5ljNp1gv9nFE8lka4WCekfoMh8sZjtdLFo825+JojL7jYDgcwvM8cH3XJUQhzG4HbcuBOTlHNzmHmb6GM3uLxugYjeEx2tEZOtEprMkZBrML2OSclZzBdnz0bJuROYSYi5MJoijGyWqOZnaF/PVP1G9/wb//DePmB0ZfHhB+foBD1vz1d7y4/IpX7x7x8uobpMEKoWvDD0ImjKOJQ8YeOD1o1hil6S209R3ap5+gktg6uUfn5A7y8hbl6UfsxO+RSz4gx+IN5PYAZqfFLLMsC5zd76NRr8Mlo+u6gepeEcmYfM1zcDBLmacNQ8NeMY9qiYdQ5lErb2KpSHp02GRkCt/3wVkk0TQNzWYTimZAVOuoiioqgkKihgrLVYhKHYJiQJA3IHlN0qGoOlqtFrrdLnpEJUelGobB5Go6IRNkhMMIPWcAzyc3FwzRd31UahLb22KzrokyBEGALMvsSW0JTdNkhLRxHE+IySOMogRxksEZBChXRbZH4zMkCISQkqmqyrAdmcpWyciSoqNUEVjDXrnGQBtFWWMQJHWLGrGDElJllExRFPKw6aU0GuwNaUaDkImYL1ZYHKwRTzJ0TJuR0/H+Vyj+r9Ak3lFmelt0ZEWrw7L7aHUeLZCJ6dSv2pNvf6HC6hJTSDmYwj55g3Rc+uvQW/I8n6mltWq1ClEUWQONz5C29Sd11DaKP83t9JcKFcLGAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity package registry&quot;
+        title=&quot;Unity package registry&quot;
+        src=&quot;/static/e72ba40468d1c5e5263845ab42a27579/8ff5a/unity-package-registry.png&quot;
+        srcset=&quot;/static/e72ba40468d1c5e5263845ab42a27579/8ff5a/unity-package-registry.png 240w&quot;
+        sizes=&quot;(max-width: 240px) 100vw, 240px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Find the &lt;code class=&quot;language-text&quot;&gt;XR Interaction Toolkit&lt;/code&gt;&lt;label for=&quot;sd-wait-what-is-xr-xr&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;sd-wait-what-is-xr-xr&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Wait - what is &quot;XR&quot;. XR is short for &quot;cross-reality&quot; - and is the abbreviation for games and projects that support both VR (virtual-reality) and AR (augmented-reality).&lt;/span&gt; package, select it, and click install:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1280px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/3a770a15d356a2aa856dc5ff18ae18b9/29007/unity-xr-interaction-toolkit.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsSAAALEgHS3X78AAABrklEQVQ4y5WT626bQBCFeZ9GYAzshcvCLmAMvlAprp02fypVfv8HSMTpsMZtotix8+PTzK6GM7Ojg6OL4iVNEsRxPETBHDP3G3z3geIDPNdD4PtgUYSI8Cl3XReeR8xmhI8ZRWLwPG+ML071+BvL/Z+hfToi3z6DLx6RdgfE7Q/IVCBMFCIuwTknBIQgpESWSkg+R0iNwjAcG1lRhzf7Idv8QrL6OYj2CWx5QLZ5RkooHSM2FVbb7zjsd9gTXddivV5jWScolYdY2iaDbUTREdEcPJyg/O2ZMZqKJlDFArruYRY9ct1AmTWKagtdbZDkLbiIIaYXOEJIvIW/Owv7VJVrFLqiaJCpfIoaShXUrLQrYCyytc406lXGImM06rqC0RpZlpJQhlwpy5inaUokkCR8UzAIAhyPR+x2O7u7vu/Rtu0HutUG2pT3TVgUhZ1inIDsdbFOJtrifCZ0zkcPnmxzjbGeWW4Knj+69ZIzXxK8R/iuHX5V8J/L79nnFf7/KYwxMiUbpvhh4ZfuLnHWcIwxr3VdoyzLgbD2yLKTWUe7jB47GfdThq7r0DTN61/poPler28I0wAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity XR Interaction Toolkit&quot;
+        title=&quot;Unity XR Interaction Toolkit&quot;
+        src=&quot;/static/3a770a15d356a2aa856dc5ff18ae18b9/21b4d/unity-xr-interaction-toolkit.png&quot;
+        srcset=&quot;/static/3a770a15d356a2aa856dc5ff18ae18b9/72799/unity-xr-interaction-toolkit.png 320w,
+/static/3a770a15d356a2aa856dc5ff18ae18b9/6af66/unity-xr-interaction-toolkit.png 640w,
+/static/3a770a15d356a2aa856dc5ff18ae18b9/21b4d/unity-xr-interaction-toolkit.png 1280w,
+/static/3a770a15d356a2aa856dc5ff18ae18b9/29007/unity-xr-interaction-toolkit.png 1600w&quot;
+        sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Install the &lt;code class=&quot;language-text&quot;&gt;Android Logcat&lt;/code&gt; plugin as well:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1280px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/433ed87559d5ccb9f0dae5e0accaf9dd/29007/unity-android-logcat.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsSAAALEgHS3X78AAABaklEQVQ4y6WU646CMBBGeSIuUShFbi0CAXFXjfH930PTb2fqZYlxkd39cTKlJWem04JzGtRZNilkkptFGMHzPPi+b3FdF2EYIssyC495zvf82zuBjZ7vG4/nguDsdMMHdp97s9sf0LYtiqKA1hplWSJNUyRJguUyRBRFiISAlBILEULSmkgyS7AUcP2F4ehorUzd1CwxLGPRHaUURYVh2OB0OuJ4PGC7HRDrFUQaQ8aEtElMTIniWBqHM/NWbAWvoLW8pMqr4YpuUeothKyIEmJVU+Xy4XBiyjKFoG1mObWhaqA072QNRWNtoed1S7GybeI+zxLWTYfNZkDfd+i6DmsSKHVtiWZIxnDPZwlLVSEvSntAUSR+bA+/60yJviM3fjrxnVnCMc/rfxY+j/9d4VRVs4Rj8W+F5vZg3lU7wcPh3I7cjI9+zKu5V9wd9C3rS13XqKrKEPZy8o3nyN8zX2Qev8H0fc8/l8sXUL/2uQyg8A4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity Android Logcat&quot;
+        title=&quot;Unity Android Logcat&quot;
+        src=&quot;/static/433ed87559d5ccb9f0dae5e0accaf9dd/21b4d/unity-android-logcat.png&quot;
+        srcset=&quot;/static/433ed87559d5ccb9f0dae5e0accaf9dd/72799/unity-android-logcat.png 320w,
+/static/433ed87559d5ccb9f0dae5e0accaf9dd/6af66/unity-android-logcat.png 640w,
+/static/433ed87559d5ccb9f0dae5e0accaf9dd/21b4d/unity-android-logcat.png 1280w,
+/static/433ed87559d5ccb9f0dae5e0accaf9dd/29007/unity-android-logcat.png 1600w&quot;
+        sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;We’re ready to create our scene. In the &lt;code class=&quot;language-text&quot;&gt;Scenes&lt;/code&gt; folder in &lt;code class=&quot;language-text&quot;&gt;Assets&lt;/code&gt;, create a new scene called Game (select the folder, then right-click in the blank panel and select &lt;code class=&quot;language-text&quot;&gt;Create&lt;/code&gt; and then click &lt;code class=&quot;language-text&quot;&gt;Scene&lt;/code&gt;):&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 355px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/04f4531ba3bf951dc5d97256efa3c786/526ee/unity-scene-game.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 155.9375%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAfCAYAAADnTu3OAAAACXBIWXMAAAsTAAALEwEAmpwYAAACfUlEQVRIx+2WS2/aQBSF+TGBQAgPQ2xjwNjY5o2Dy6MQSFHVDVJElUWzibrIopuqf/p0zi1GpKFNX1I3WRzNWOP55tyHNU5Er5foRzN43RB+bwTdaiCdTj+rk5MTJJNJEef5fF6UmM1miKIJXMdBxTSQPcvg9PQUmUzmEYAbU6mUiGudTgeNRgOu68I0TQRBgG63i0Sr08N4YKIVeHAcF82mB13X5bRSqQRN0+S52WwKoF6vy+arqyv0ej2Zc41jq9VCoukrsqchHPYxnc6wWCwQhqEsWpaFSqWCarWKfr8vrmpVSznpqOeBHBCv810q4Sq6blgCGAwGuLy8xGQyge/7Ego3XFxcIJs9Q6FQwGL1DnXbwfl5VtzHUXCkFNBTm0y0220FHIq76XSqwnckVJ6qaUV4QRsf7j/h/uELpvNrFFRKeFC5XH4kFbIPa2f70DpFhxxLykHD8XDz/g4fHz5jMlsin8sJMHa2dxgoZ/P5XMREs1JxqLF03VCOctDMGl69uUHNdlEsFp64E4e2SiyTu9lspGrj8VhGQg3DENGJVsyjMXoL//oOWsVGWaXhKLCtKhcOh9hutxiNRlgul+KSOWSPsSW+5VElXkGoMsMjQI1PgF3VDkMFvL29FXer1UpahFVmb7FYtVpNgIcbS0dgAqyrcFkMhszWiaJInLHCDJehx8kX0E57l98DWRQWY71eS//RIXNIYFyUR8AfONsDfflkAikM80WXDPGw0r8F5JfClxgeXXEz5wQdfim/DvQ8mDvAoQj7Y6BxBPhXDl+AL8AX4L8GPqf/B+QVcEzx9RnPfwqkuMYLi5c/fwJi8R7iXwbvHYpXh23b+AouRwhgxq8oewAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity Game Scene&quot;
+        title=&quot;Unity Game Scene&quot;
+        src=&quot;/static/04f4531ba3bf951dc5d97256efa3c786/526ee/unity-scene-game.png&quot;
+        srcset=&quot;/static/04f4531ba3bf951dc5d97256efa3c786/72799/unity-scene-game.png 320w,
+/static/04f4531ba3bf951dc5d97256efa3c786/526ee/unity-scene-game.png 355w&quot;
+        sizes=&quot;(max-width: 355px) 100vw, 355px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Double click to open it.&lt;/p&gt;&lt;h3 id=&quot;setting-up-xr&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#setting-up-xr&quot; aria-label=&quot;setting up xr permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Setting up XR&lt;/h3&gt;&lt;p&gt;To get started, we’ll want to setup our scene so that our headset is tracked and is used as the primary camera. In general this is the way VR works: think about your eyes as cameras that are filming the world. As your head moves around your eyes move as well. In Unity we’ll create a camera that tracks your head position and update the rendered view accordingly.&lt;/p&gt;&lt;p&gt;In the Hierarchy tab create a new empty object called &lt;code class=&quot;language-text&quot;&gt;XR&lt;/code&gt; (to do this, right click on the &lt;code class=&quot;language-text&quot;&gt;Game&lt;/code&gt; node, select &lt;code class=&quot;language-text&quot;&gt;GameObject&lt;/code&gt; from the menu and choose &lt;code class=&quot;language-text&quot;&gt;Create Empty&lt;/code&gt;; then name the newly created object &lt;code class=&quot;language-text&quot;&gt;XR&lt;/code&gt;):&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 358px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/1c89428a333d2d37b3ad94477751fe82/39185/unity-create-empty-xr.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 120.93750000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAYCAYAAAD6S912AAAACXBIWXMAAAsTAAALEwEAmpwYAAABUElEQVQ4y+3Sy26CQBgF4HmYioIICMKMVrmpIAiK9dJdbXdNu2ujq6arvvfpAPaywjZNumLx5Z+Bk5PJZEjfHsMPU0ziDFPOnsSQVR2NxgWEZhOCIJzV5DnDMCDLMkgYTDGPI9ijEQZ9Br2r8UAZarVaxTwnz0mSBFEUQeJ4jiiKkaYLbHc7ZKsVkiSB53lwHAeu68Lz/WJfJc8FQQBi9npg1MJ47GO9vsJ+f4PtZsNPHSPLlpjNQn76Idy83LErOLzYBZFkBR21C8OkmIYR0uWqMF9kxUz49CcBTNqHyQbVeIbos3voySOU9RPcuxekD29wbl+hbQ/QdwcY10fonLp5PkvjSEczoRoM1tADG5WsSxcm9zGLNf//E6TdFqF0ZH6PJqhVytf5vX7h+8/v1Uj+dhRFBWUM7IT+walQKYsoLbBv5b9VF9aFdWFd+D+F7+/LHfnZKMjbAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity Create Empty XR&quot;
+        title=&quot;Unity Create Empty XR&quot;
+        src=&quot;/static/1c89428a333d2d37b3ad94477751fe82/39185/unity-create-empty-xr.png&quot;
+        srcset=&quot;/static/1c89428a333d2d37b3ad94477751fe82/72799/unity-create-empty-xr.png 320w,
+/static/1c89428a333d2d37b3ad94477751fe82/39185/unity-create-empty-xr.png 358w&quot;
+        sizes=&quot;(max-width: 358px) 100vw, 358px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Select the object, set the &lt;code class=&quot;language-text&quot;&gt;Y&lt;/code&gt; position to &lt;code class=&quot;language-text&quot;&gt;1&lt;/code&gt;&lt;label for=&quot;sd-why-did-we-set-the&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;sd-why-did-we-set-the&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Why did we set the &lt;code&gt;Y&lt;/code&gt; to &lt;code&gt;1&lt;/code&gt;? We&apos;ll be adding a one-meter tall &quot;floor&quot; for us to stand on. The actual height of the camera from the &quot;floor&quot; will be controlled by how the headset position is tracked in the &lt;code&gt;Tracking Origin Mode&lt;/code&gt; (which we&apos;ve set to the default: &lt;code&gt;Device&lt;/code&gt;).&lt;/span&gt; and add an &lt;code class=&quot;language-text&quot;&gt;XR Rig&lt;/code&gt; component.&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 432px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/51a41dee225df4b8d845be2a3a6b4ba8/0e0c3/unity-add-xr-rig-component.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 131.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAYAAAC3g3x9AAAACXBIWXMAABYlAAAWJQFJUiTwAAACdUlEQVRIx+1USXfSUBjNv6EMZQpJyEQCISEkTAmCbXWjqx7d2no8rlx6/NHXd199GFEUdOvi9us33W96QUvTFPP5XCIIAlxfX6Ner1+EWq2GXq+HVqsFbb1eYzabwXVdhGEojY1GQ8oqWIhQ/majefBZloUkSTAej6HlWS6V0WiExWKBLMtkAXZLG8FCLOg4DjzPA6eqxkRRJHNp1zzPhee7mE6nWC6X2O/3KMtSBimw4GQykTFxHGO1WklQp5/kjKFPC8ehMIbwPV92RzCZYzi2A9u2YZqm1InhcIjBYCBBnX41LifQ+IetEgw4TuaInU4HV1dXcoeMbzab8hjU6adOP6XG3eT50x5ZjSQK1H3fR7vdPhAynoeo6oqQx9KYyD3QobozDEPAlOBoTwl1IVsyhpK2brcri3ICFqXUGMAkSoLEaRIjEXudpzMUxUZiKw5VloWwpRKZeLccl8XVigitOqI8hNhRvrnB6vYeSV5gXWyxWJfYlDuJOM0RxSmS+QKuOKRlmT+sSfvO/mToixfvTLeYvvgAw4vR7unQTRu9gYVO35CSMIYuBt+6U80cOlRG0zTEmwyQFbcIZwWCdIcwu0H58g2Ku3tMFncI5nuB5wiyWxi26FDknCC0xS51REmG149fsHv7GdmrT3CfvYddvINdPsDZPsIVcLYPcPcfYfjiqRm6zP2JUHXJj5x7jKIJkniKYOTDNAYYclcWRzRkV/bQOhzk5MiU1YszwVS+yuIVdF0/TVj9rNT/h+sfESm9GnsW4bGsPq9/IjzGf8LLCE/hrwj/hLMJq7/av8NZD5tfR7/fPwuMPX6v2q+WfSmqhF8BahtlncL1mBMAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity add XR Rig component&quot;
+        title=&quot;Unity add XR Rig component&quot;
+        src=&quot;/static/51a41dee225df4b8d845be2a3a6b4ba8/0e0c3/unity-add-xr-rig-component.png&quot;
+        srcset=&quot;/static/51a41dee225df4b8d845be2a3a6b4ba8/72799/unity-add-xr-rig-component.png 320w,
+/static/51a41dee225df4b8d845be2a3a6b4ba8/0e0c3/unity-add-xr-rig-component.png 432w&quot;
+        sizes=&quot;(max-width: 432px) 100vw, 432px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Within the &lt;code class=&quot;language-text&quot;&gt;XR&lt;/code&gt; object create a new empty object:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 363px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/c458d5ea028e3cfd67751cb1b8ee7e32/4e786/unity-add-camera-offset-game-object.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 191.875%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAmCAYAAADEO7urAAAACXBIWXMAABYlAAAWJQFJUiTwAAAE90lEQVRIx5VW2W7bVhTkT7RAkS4OGsuRLYo7RVKSrZ3aN+8OUti1kQIG+ligQNGH/lTQp6IL+l3TM0eiQjlx4j4M7hWpO5yzX8O2bYRhiEqlgiiK4Loudnd3sbOzg+fPn38QhRdfYe/Fl4rCt8+w//IbOOUCioWvYfR6PUynU6RpimaziTiOUSwWsbe39ygKBeKlYlf2xeIBypatqzEejzEajUDi4XCIdruNRqOBJEmUnGu1Wn2AJIeq/oc4PDyEkW0mkwlev36Nu7s7XF1d6UcWiwX6/T5arRY6nc5HQUGEQRMODg7gOI6aTfOplB8gKUEVvu8jCIJHwfeEQb+Rudvt4uLiAtfX11guF2J2E42jJlrNNiphBN/joXC1rveerElc3ahThYwqI1yv1zUoBPc81E+HqNcOYZYsOLYH23K3UXb1f7VaTc8QBiNqmqamDhEEq9VzfXQ7KYaD8YbgQ6Su46nJFMVzBv1nWZbm4DtUJB89RBWJXlxThaWDsiJPZpUdJcxymNgQ5h9y73m+BGeMyXiGTlv80+2rC0iSBwnDSrg59x5hpbJ6QYVURx9yPTpsKmg24Tr+evXU1EcJtxSK/6aTmahL1Vya/jAon1S4IVwHZTScYDyaIo6qKJv2xne29UST8wrH46nk5IkqDPzKmsj9fz7MXvCPrVZHAxMG0XsRzqfNE4Piqyrfk9YWxqhVV8FhdWSBsa0nBGWbUPZhIiQsuYokcKwkZdMRQl/BaD8tylKSg650kVYTI2kaS2kWw14XUzaO4QChvLfkrCtNJdyI+ZBCfRHCDaqotJcImgvEnWPE3VOEso/kWSS/7eoQZjyAE9TEiuBjhDEi30apdwv/53+Q/vY3ar/8icavf8H56Q98dvsWn9+9xbMffscXP/6L/f49Is+Uc8knFIZ1HI6/w/TqHu35DQZnb9Bdfo/hxT16J29g1aYoRiPYQf1xhUq6XumbnnTquYyIyWCA9tGR+i2Rw7F0F7tUQug4Kx+GOR+W5AUnX77bZHnY6w0luWfSvReSi7F0duk6JVthSqSTpK7ZsBXlQqGgIyBr8ZlSll4/HWgtM7H3i6WtKmEZsr15a8LMZQbnSJr2dBBx2rGDs+mWSqYoXLUsNgUSEHlC1rdZKmN/f19nElfj9PQMi+WZEvIrq5lckFIzlWw8mqgykmZkmdKqmMzZEscRBuJnHQGtZh2zYSKEbRyJ4/mQPjXNsjaF6WSuZZYRvSs7V02Oo0TFkJCDzqgmISZpKDN4ifPzc5ydnSHtp1qC7VZXari+IWKZZeAzVegFm2DyYmD4vozC6pF+gbN4Op3pgGcqNBtt9RODQhLPDTaw7RUhs4H+o+8Jg5Gt12s60Ek4m80U/CMb7GJ+rEpJmHUfJVyb7AgxCT3PUxiUyrma3Vsom2CbSiVteJgR5epr13lHyHaWJ1SFDALvNPTfycmJTn8llPxKewPMZwtVmjc58yHbGEeB4+YIyc77DC9J9CP9x3x0nJUCIoqSLf9lE2/VtR8QUiFvW/f39zg+Psbl5eUqJ+U+w6l3vDzFcnGCQX+0zj93ndjOJtHdPCH9R3NJuFwuNW1IGMcJmAGEZfGgtVofgDlLog0hH/DSeXt7q3fB+Xyuwcnqk2uWEo8hi7ASsjpubm7w6tUrDQrV0of5DpIdeAxbCnmIpFzpT7ogI8oTPkUl1/8ALVr04LqQEpsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity add empty object to the XR game object&quot;
+        title=&quot;Unity add empty object to the XR game object&quot;
+        src=&quot;/static/c458d5ea028e3cfd67751cb1b8ee7e32/4e786/unity-add-camera-offset-game-object.png&quot;
+        srcset=&quot;/static/c458d5ea028e3cfd67751cb1b8ee7e32/72799/unity-add-camera-offset-game-object.png 320w,
+/static/c458d5ea028e3cfd67751cb1b8ee7e32/4e786/unity-add-camera-offset-game-object.png 363w&quot;
+        sizes=&quot;(max-width: 363px) 100vw, 363px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Name it &lt;code class=&quot;language-text&quot;&gt;Camera Offset&lt;/code&gt;. Within the &lt;code class=&quot;language-text&quot;&gt;Camera Offset&lt;/code&gt; add a new Camera object:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 362px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ec658b468e1cb23dfcde1de0c7c01ab4/10600/unity-add-camera.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 120.625%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAYCAYAAAD6S912AAAACXBIWXMAAAsTAAALEwEAmpwYAAABZUlEQVQ4y+2UW2+CQBCF98d455IqV0FABZVrEDD64v//G6c7k9ikaRpstUkffPiyDLucPWcSRljLAElWI61a7MsGYZJB1ecYDAYYjUYYDoe9jMdjWJaF2WwGkSQxqrJAGKywdB1YpoHJZMJMp1PmVn8HnVEUhVeR5QWyLEN9POJ0OqGT0PN6vUYYhrxuNptettstkiSB8FcBbGmXXnZdh+v1isvlgqqquKbLoijq5XaxWBgmVGnXMAykaYqmaViMhIqiQFmWfJB6ZNt2L8KQB1VV4SLPc9R1jTiO4XkeEwQBfN/nfcdxehFLz4exWGAlPyQn5JCiUj/btuVnuoiE70FEMjs52O/32O12OBwOOJ/PLEa9pNjUbNq/B/E2n8vI6ifbFI96Zprm3VE/Iuu6Dk3TuHBd92G+CD4qLAW1JwtqfyKovwRfgv9AUPvRAOgZDhrof37GYGCHNK0VReVRdRtZtP6WdxAzHOQ0by1TAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity add camera&quot;
+        title=&quot;Unity add camera&quot;
+        src=&quot;/static/ec658b468e1cb23dfcde1de0c7c01ab4/10600/unity-add-camera.png&quot;
+        srcset=&quot;/static/ec658b468e1cb23dfcde1de0c7c01ab4/72799/unity-add-camera.png 320w,
+/static/ec658b468e1cb23dfcde1de0c7c01ab4/10600/unity-add-camera.png 362w&quot;
+        sizes=&quot;(max-width: 362px) 100vw, 362px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Add a &lt;code class=&quot;language-text&quot;&gt;Tracked Pose Driver&lt;/code&gt; component to the Camera object:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 433px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/d8592cdc73501c2fc0d3317a4204ea12/55fc0/unity-add-tracked-pose-driver-component.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 173.125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAjCAYAAACU9ioYAAAACXBIWXMAAAsTAAALEwEAmpwYAAADhklEQVRIx91VyXLTQBDV3ySOHTtxvGmzNku2LNvxhg0hUFAsFy5cqIKiqGK58s+Pfp1MylYREpYTh1ejafW86e7Xaln5aITxeIxxniOOYtSPj1E5rKB6VMXR0dFPUVVUb54PDw/RqDdwcnICazabYSSkjuOg3+/D8319Ua1WURPyWq12heMajq/3fEcyY282mxikKeI4hsXohsMhfCEqigKbzQbT6VTJDYIggOd5sG1b18FgoGfCMNT3URTpWXJZrudKVK46TSYTrFYrRSo30kZkWaZrkiT6zMPz+VxJaeNKO2EFUSjOITzXw1gc6czDvV5PIyK63a6CNqLT6aDdbt/YzMWu68Lq9WzkIsgoH+lL42RWpnR6eopKpaK14yHujUD+dc0pDPcWxSiKiYZNZxOFIeSBer2Og4MDPUB/7knAS1jTRqNxs7d4cJDEStZqtdC5TsUQ0s4IqDAPsgRcuScxL+CeinNvRYMM0WwNWw6z0FSYUdFxN2LuSbZbW9p4MbMznSIqexhJyrFIb1rBHGLxecF6vVYFzcEyqAGhbcNbMmkRHmAL7NaPhOxBNixvvw2so3m2qOJisdDe421shzIpbVzvA4sR8PNjaiTmLeXW+R1cRzjXr4T12xXiT2Ax//liqTVkwzI9A9M+d8H4a8quYyMOzrQFWEN+QvyOKVA59d3VtA1XimaEs4bDFK9ebNGXzXa71TqyTTh1TCuYtuB3zlHHlQTMjiViuaiBji/WcDI7h2M7El2iEXIcMUI+s6505Ep7GEaaAYlMxBSWPIzYYu4ckMz/7OxMHNj50sTayBmWEjFFWy2XiolER3tRjBHJJbs11xqar8KoZDsuslxSK2bIJ+eYrzc4Xz7AfLXRfZLlCJNUV68fKsmeyrtqMboWG1tI+3K7L6k4no+QBQ9CnEoGTRkgRLt75WsIDYdVVq/TdRCOt0hmTxBPLxWLyzfYPH8rtqfw80fo5xcIiifo+qlMp9ZeB+wRtuVlEGV49u47zl9+weL1N8X81VdMX3xG8vgjwocfEG7fI7z4BDvdoNNqgkP6p4QM3/M9XFw+FFFS+bXKvyIV1cMAUdBHmkQyOw3423D2Ut4jNAYq3u10tW20WaUdrhTkF9G5AfdNqemdhOXJ8qsBoRP+LsJdp/L/pbz/bcLbxthfE5bxnxPehr9S+Z9EeNfYvzehmY/3AQnLrfUD64GhoOdn4vsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity add tracked pose driver component&quot;
+        title=&quot;Unity add tracked pose driver component&quot;
+        src=&quot;/static/d8592cdc73501c2fc0d3317a4204ea12/55fc0/unity-add-tracked-pose-driver-component.png&quot;
+        srcset=&quot;/static/d8592cdc73501c2fc0d3317a4204ea12/72799/unity-add-tracked-pose-driver-component.png 320w,
+/static/d8592cdc73501c2fc0d3317a4204ea12/55fc0/unity-add-tracked-pose-driver-component.png 433w&quot;
+        sizes=&quot;(max-width: 433px) 100vw, 433px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Set the &lt;code class=&quot;language-text&quot;&gt;Tag&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;MainCamera&lt;/code&gt;:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 435px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/c4a8a9baa168a7637f70910a5b78d65e/330eb/unity-set-main-camera-tag.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 100.93749999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC/0lEQVQ4y6VTyY7bVhDkjwQ+ZUTtpCSSIilyxE0kRW0jyR7DhmcBfLB9ceCfycFnw/nLSldnKAwCx0iQQ+HxbfWquppGXm1Q705Y709IVg2GYwum2UGv10O32/0BerrX7nM0TROWZWE6ncJo1ms06xr+fI44jrBcLnWj3+9jPB4LRhiNnjAcCga6RwxlTniei9VqpTCyLENV1YiiWAiXKIoSWZbLIV/I7Atmsxn8MEYYZ2jETbM7IskrRV42Ot8ezjDm/hxRHCJNEwTBAnW9wZs374S4ElW2WJkJ4RSu62GZFkJQK+H2cFKibFWj3hxQsHSbPYxFFGFVpIgWC7HqiOwaZVljLGSjkaWkw6GFyWSq1gIR4DgzVex5HnzfR57n4i7G9XUMw3EcIajEdoWJPVHLdd3IwQUGfanRQCBj7ymMMAy1ngxiMBhIqSJdv7q60mAMvtI0G5T5Er3yA8LPf6D48g35l+8w777il9e/48Xbr7iaFeibv0pZQiXqdDo6LsQZA+JcCV3XRSrBhIGPvpsju/0NyfkT+vFLdONbdKJXMOPXGNhz2NYY87kv9ifaARyDIIBt26qaXEa8TJAfb9WKJ/aTaIGqyFCkS5RZAnvYx6hrwpGaUQ3PEfwmSLjZbLRlWEtVWJZslQyWPZOaJEjSlbwWaLqW7WAsSbMDWGfWm+dbcK3FdruVtpGGLoWdC2EYSRih9qPjeJqyZU0UjuOqmn8C02bSBmXf3NzgeDxiLX8N68KWYPoMjA4Ifv8MPEMug/XY7XaKw+Ggvx4PUPl/Ae9cCKluv99fpP8vQhLU9VpDoc1/Y++nloPAQ5VNtRWYEutItQyJj7WqfxQE73DknTRNVZSR5xk+fnqvtTudTpeAzuezfvMRPkCwzpxzPUmSSy9ynS1UFMVffRjH11qHvzct24Bz/q/P9zhva01Q5aWGbBH3qUVYQ25SDROnkru7O9zf3+Px8REPDw/qgvt0QVfOs7t8UBXytTattkFb8BJBi8TzPT7e3iEplf8JDiCrkPqOIS0AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity add tracked pose driver component&quot;
+        title=&quot;Unity add tracked pose driver component&quot;
+        src=&quot;/static/c4a8a9baa168a7637f70910a5b78d65e/330eb/unity-set-main-camera-tag.png&quot;
+        srcset=&quot;/static/c4a8a9baa168a7637f70910a5b78d65e/72799/unity-set-main-camera-tag.png 320w,
+/static/c4a8a9baa168a7637f70910a5b78d65e/330eb/unity-set-main-camera-tag.png 435w&quot;
+        sizes=&quot;(max-width: 435px) 100vw, 435px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;That’s all we need for now (this is just to get the scene running and visible; not pretty); we just need to wire things together. Select the &lt;code class=&quot;language-text&quot;&gt;XR&lt;/code&gt; object again. Then drag the child Camera object to &lt;code class=&quot;language-text&quot;&gt;Camera Game Object&lt;/code&gt; property on the &lt;code class=&quot;language-text&quot;&gt;XR Rig&lt;/code&gt; component. Drag the &lt;code class=&quot;language-text&quot;&gt;Camera Offset&lt;/code&gt; object to the &lt;code class=&quot;language-text&quot;&gt;Camera Floor Offset Object&lt;/code&gt; property.&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 434px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/acb792cd6fe511b4de7b1ecac28f93de/ade6e/unity-connect-xr-objects.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 87.1875%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAAAsTAAALEwEAmpwYAAACCUlEQVQ4y22U6Y7CMAyE8zTc900PytECLZeEQCD+oH3/h/D2s2QUVvtjlNhpJuNxUnc6nWS320kQBLJcLqXdbku9XpdWq/UF8jZvNpvSaDQ++clkIlmW6X6X50VJuJfFYiGHw0GKotADiEEcx5IkiYRhqIdGUSTb7fbrm/V6LcfjUfe6IAzKTZFkaaaJ2+0m1+tV0jT9AILNZqNzlFDV5XLRPDnIyRO7ZJmUyZXEYaQKOYmPZrOZzOdzxXQ6VZAD4/FYQY51CCkX9Y5knueatI0+ASV1u12p1WrqFwR4h4fErDPHd0bHJpQhF49MhRHiIQTValVHvvFj1iHiQEiVkBIxnTLomK8QAhSiptfrad6PWWcOOp2OuGybyfvnrQv3+13VUhZ+WGcZiS1nc4tpEhWuVquyy+UGSFmAiNjUMXIl2Mh8MBjIcDjU0UAMRqOR7teSaQigdK4Hc07DAkyHDJ/M/L/APy47firhfr//dJo595EYcrs6eEsVKKlUKtoUAzHEX4SQ2QuAEIUoQyHExP1+XxuC+T6sQdijhNxySE0pjWERNefzWV6v10ex/4L+Ql8KPlEKpKiAyPzDbFRxKEqsNAO+2c/C4OzeMQL8ghxQPgp5jrxd5lRh1lj37TEA5yeY8xH3ChIIns+nPB4PLZsRYlvDX0T8S+iPeGewe+bfN+xgNDL//f8CBZU9lFLTguAAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity connect XR objects and cameras&quot;
+        title=&quot;Unity connect XR objects and cameras&quot;
+        src=&quot;/static/acb792cd6fe511b4de7b1ecac28f93de/ade6e/unity-connect-xr-objects.png&quot;
+        srcset=&quot;/static/acb792cd6fe511b4de7b1ecac28f93de/72799/unity-connect-xr-objects.png 320w,
+/static/acb792cd6fe511b4de7b1ecac28f93de/ade6e/unity-connect-xr-objects.png 434w&quot;
+        sizes=&quot;(max-width: 434px) 100vw, 434px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;At this point we can remove the &lt;code class=&quot;language-text&quot;&gt;Main Camera&lt;/code&gt; game object, we’ll be using the &lt;code class=&quot;language-text&quot;&gt;XR&lt;/code&gt; camera instead.&lt;/p&gt;&lt;h3 id=&quot;creating-a-basic-world&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#creating-a-basic-world&quot; aria-label=&quot;creating a basic world permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Creating a basic world&lt;/h3&gt;&lt;p&gt;We’ve created enough for our player to put on their headset and be in the world - but we haven’t actually created anything for them to see. Let’s add a basic platform for them to stand on and a table.&lt;/p&gt;&lt;p&gt;Right click on the &lt;code class=&quot;language-text&quot;&gt;Game&lt;/code&gt; scene node in the Hierarchy panel, select &lt;code class=&quot;language-text&quot;&gt;GameObject&lt;/code&gt; then create a new &lt;code class=&quot;language-text&quot;&gt;3D Object&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;Cube&lt;/code&gt;:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 548px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/c570fdf2cf67f9eeaa5b7dbcd15ccb40/a58fe/unity-add-floor-object.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 126.5625%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAZCAYAAAAxFw7TAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD0klEQVQ4y5VVW3LbRhDUVVKOSJHE+7V4gwAIgARBWhSlJJaUWOVUDqAz6DufqRy3MzMSaCmxy/FH1wLY3d7umdnBWZ4XaLs18qKEaTs4P/8Rk8m5YMqYTmikb+9+wHx6Dm02QZLE6PseTdMgCALMZjMsFgvM53OcpcMtlsffUR8f4IUFLFvBdEJYBN1SWOgONFVBq2+glUfo1TW8KEcUKoRh+AZKKZzNvRRu3mFzdYuUxjRrkKQNTZZwaM6wQtiqQFANCMrtM8IEIW1W6pmEcSJczKbwHAvrtkFTrXDYXeKwPyBLMli6BZPgWjbCwCV4UJ6DwPdPBP8lJO+e5yOKIhRE0hFpXSyRhjFcw4a1MOBSbNWLrYA2cdy+QUgn0yLfdhH7tIFG17AEjm6SQucUJyb7f4R8suMJYRLQJD3bmiEQy99F6HuyKFERmrJGlS/R1Ss5wFroYvm7CH0KcuATYRhh07RC2rcdjRVcTsorQvUmhqHEVr0um5GQkUYxdpse3arBtttQYiKYcw0OWR6TIYcrJowEI6Hi538TlmmOw7DHJWFdN0gpBEvKfOSHVEY5irxERmtsSpLnugiohEL/MxSF7pQUPj1LUlHXke0izSQECaleZkvc3/6GX+8+YtvvUcQpgs0nRH/8jekvf+LdT4Tbv6C1nz4TcgxYpeu5ArFGh7g0F0cJjocblEUN26S1VAnxcof+9hFq/RGL5Apa/jMs1bwl/BIkg0GEod/BsT0YC4tIuV4jXG0HbFcr2LM5PE2HZ1p0l6lDfJ0wei4VUrQf3lPMQhgaFbtFqlWK/faAIqtg6y4ck9zRgWe6ros1vnpM7FKweRzhOI4QLotKlJm6LWNKHWfXv6fbFcAxKEwUCpcOOhsGikW/FWsXFxfU/6YyTiYTAb8zYdesEalECNk6E27XO7RVh2E9oK3X5IDKJs8U+q5AVdWikhWyqjzPBVmWYVW3WFUtWfJhG2zv2fLl7oBV2Ygyz3qxHPguhu0ad3d3uLm5QVEUp9tQVRWGYaCa81BTF8qzAiZ1IJOahu8GdAn2UC41Y82mRvJi2aXFSZqiLEusKGNxHJ/u69PTEx4fH6W92za1MsuSkR3E1GSHDVmuOyr8WBIjClMiOxwO2Gw2QjZedt7E36+vr2EYxilh/F2qgkqp77ZimZMiiWGFTPLw8ID7+3v58XAckySRzSPBCH5nhWPRP9/tQELiU5NmiMIPHz7geDyibVuxzrHjTSPJlwhft683PylWwwo5KV3XyWKeGBV+izB8+VG9IazrWpRxiYyTI9Fr0q8pfE34D66iQmMZkPlnAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity add floor object&quot;
+        title=&quot;Unity add floor object&quot;
+        src=&quot;/static/c570fdf2cf67f9eeaa5b7dbcd15ccb40/a58fe/unity-add-floor-object.png&quot;
+        srcset=&quot;/static/c570fdf2cf67f9eeaa5b7dbcd15ccb40/72799/unity-add-floor-object.png 320w,
+/static/c570fdf2cf67f9eeaa5b7dbcd15ccb40/a58fe/unity-add-floor-object.png 548w&quot;
+        sizes=&quot;(max-width: 548px) 100vw, 548px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Name it &lt;code class=&quot;language-text&quot;&gt;Floor&lt;/code&gt;. Set the scale to &lt;code class=&quot;language-text&quot;&gt;100, 1, 100&lt;/code&gt;:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 435px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/6cc4ab6a8f323add94a1375ee0a7eb99/330eb/unity-set-floor-scale.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 40.3125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAABMUlEQVQoz41R2Y6DMAzka6BQQIDaAuWKuI+2qPz/v8xmvErVl5X2YeTEdsaTsaX6GcO6Y9Sougl+GOF0cjRO/4Zt2wjDEFEUwVrmGdu6oLjfoVSDy+UC13Xh+/6f8DxPwHMQBLjdbuj7XmANw4B1XVFVFR6PB97HgXEcUde15IimaVCWJfI8lzvr0zRJD9G2LbZtk/dWmqWo6hJd1wnxoQkJM5EgASN7KOD5fGLfdzkzT3LGZVlgFXryMLQoi0IIX6+XFLMsE0V3bUWaph8wd71exRpz50CllPzEYnGaZsyanUX6wUYSMrKJPtF8elbowVwAfWaeFtBPx3F+l0IC/n/Wy6Eao4yRIGEcx0J4Pp+l53sACUn0IUySROSykd+g4m8YpWajzFEhyRlNnSqTOMEPqo0JrCXXGZoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity set floor scale&quot;
+        title=&quot;Unity set floor scale&quot;
+        src=&quot;/static/6cc4ab6a8f323add94a1375ee0a7eb99/330eb/unity-set-floor-scale.png&quot;
+        srcset=&quot;/static/6cc4ab6a8f323add94a1375ee0a7eb99/72799/unity-set-floor-scale.png 320w,
+/static/6cc4ab6a8f323add94a1375ee0a7eb99/330eb/unity-set-floor-scale.png 435w&quot;
+        sizes=&quot;(max-width: 435px) 100vw, 435px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Create another new &lt;code class=&quot;language-text&quot;&gt;3D Object&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;Cube&lt;/code&gt; and name it &lt;code class=&quot;language-text&quot;&gt;Table&lt;/code&gt;. Set the &lt;code class=&quot;language-text&quot;&gt;Z&lt;/code&gt; position to &lt;code class=&quot;language-text&quot;&gt;10&lt;/code&gt; (so it is 10 meters in front of the camera) and set the &lt;code class=&quot;language-text&quot;&gt;X&lt;/code&gt; scale to &lt;code class=&quot;language-text&quot;&gt;10&lt;/code&gt; so it appears like a long desk and set the &lt;code class=&quot;language-text&quot;&gt;Y&lt;/code&gt; position to &lt;code class=&quot;language-text&quot;&gt;1&lt;/code&gt; so it is sitting on the &lt;code class=&quot;language-text&quot;&gt;Floor&lt;/code&gt;.&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 435px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/f8ec032de3e342b32419abc79ac1f4fc/330eb/unity-set-table-scale.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 40%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAICAYAAAD5nd/tAAAACXBIWXMAAAsTAAALEwEAmpwYAAABNklEQVQoz42RR27DUAxEdRpXWZYBV9VA9Utygb3w/W8y0WMgI9llMWD55HDI731VTk3/UDM8lJdOfhBqsVhouVz+G7PZTEEQGLyucxr6XnEUKc9SRZeLVquVfN//g81mY8Bfr9eGKX84HFRVlYqikFfVtbquV5qmZt/vt5xzyvNcWZYZ8JMk0WUcRl3btoapBqLr9aphGOSdz2elWaKyLC3xer30fD5tIiDfNM3Hr0cBt9tN9/vdfHKQ42O9eJxc14XSJFY/rk4hzQxCUTSe4nQ66Xg8miXPivv93mJqGIha1Hs8tq0b1+3s8XcjlkKOzUdxM2q4G59BDEkYhprP5z+fAgHKkIsaiCZMhNvt1hr4CGogJIaQ25L/EKKQOzAJ8oloUhnHsa1HM8TkscQoQzFExLvdTt8xoAn3J/hSnwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity set table scale&quot;
+        title=&quot;Unity set table scale&quot;
+        src=&quot;/static/f8ec032de3e342b32419abc79ac1f4fc/330eb/unity-set-table-scale.png&quot;
+        srcset=&quot;/static/f8ec032de3e342b32419abc79ac1f4fc/72799/unity-set-table-scale.png 320w,
+/static/f8ec032de3e342b32419abc79ac1f4fc/330eb/unity-set-table-scale.png 435w&quot;
+        sizes=&quot;(max-width: 435px) 100vw, 435px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;We’ll need some materials for the objects (so we can see them). Select the &lt;code class=&quot;language-text&quot;&gt;Materials&lt;/code&gt; folder in your &lt;code class=&quot;language-text&quot;&gt;Assets&lt;/code&gt; and create a new material and name it &lt;code class=&quot;language-text&quot;&gt;Black&lt;/code&gt;. Set the &lt;code class=&quot;language-text&quot;&gt;Base Map&lt;/code&gt; color to black:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 435px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/9165b281da35c5f07207c1e600f36a40/330eb/unity-black-material.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 169.375%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAiCAYAAABfqvm9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFsklEQVRIx4VWSWxbVRS1OqQk6uSUtEntpImT2Blsfw//2/7+37MzJ44TJ2lDWpSmlKFqg1QKnUCi0KLSBWJLERUbWDAIlU1BDBIrNmXYFFWMQmxQVRawYXl457kvdUMKi6tn///euefec+9931EsFjE6OoqBgQFkMhn09/eju7sbXq8XPp/vX8bntcZn3B8IBBAKheDo6+uDx+PB+Pi4BB4aGgKd5HI5xGIxxONxaep3IpG4x/jMtm1MTEygUCjA4Xa74XQ6MTw8LMG47tu3D3Nzc9JmZ2flymczMzMYGRlZ2aeMRBYWFjA9PQ0HPaRSKaTTaRkyf+fz+RXLZrPS+Jus+Z6Mas2yrJU9DtM0Jd2xsTEZ9uTkpATXdR2GYSCZTEoQrjQeXsuIw30O5kZRZyg0HmR++K5SqWBpaUmuDI1O6Xy18Xm5XIaDLJiXwcFBaQybQATkO+ZlcXFRrurg/WwFkJ4JSmO4CpArc8P3Kkf3M+aXhFYAGSq9EJS5UOXC2opGo5LtfxlzzjxKlYnMGmL9scDJUgFKIcTG2rrjQZraU7vXwU0UhMwUQxWyLjxrogMeHyggLxzSKQ9xH3NKx6qsmHuWkINUuYkslcp8QY8MheDMEQ8nLcE2LcokbcJOJxFP6KLl+mXbBYNBuV/m0EpaElCJQ1ACqXYrlUrIFXJyX0rLwuzLIh4swr2rHw5HHerr69DQ0AC/P1AF5EGyUvWoRKEYjMBOi47QLdiCYey8D5PXduHpz5vw/OttmCjp0MLsnqQ841DqMKTVIRMwlogjE0/BmLJQ/70bLT+ux+Dbu3DwigtvXnfi9q2NePEpH8KGyKFlVhnWsmPITDJZR4WzYL8fdj6HTb/Oof3jHObHpjFnlzFlDGMikMVLj3nx97vrcLziRyCavCsKFVT5Y/mQdSSmI9rRA88by9jwzTM4Nn8YP336GW6+cgk3Dy3i90gQF5t8uLC3C78ceABhPVFlSBUpClfKT3A2fMTQEen0wvndh2i9cBwHS1O4evk1fLC8jPdF6XzU6cG5tlZkhfK3rAdRiYWrw4FALGiKQWZqOIRFDrtb3dh64wd4j5/AlNh3+sgRnBLT6aQg8lxzMw66XEiKtvs5msBS/E4OyYqiqLnIlYAR3UCg3YXGK9ex5+xl5ML9yCZs5Hp6kBNAxU31SLY0Y9rM4HZ9FiMhvZpDVj5Z8nft2NcNMfK1HvQsnEPdqT9gC7E62hrhampG246daNlSj0avE9d2L+PL7YfRE9eqvcycUVk1KNXdQZU1LYRMKobG0S/QFP0NZngeVkZHPBtB1i7iHdcV/LXhKmaMIYRE58heVn3MeVY7vliHwaCGdIpTOYn29vfQtf5PTG++gWe3fYVPNt7Ctw1fY2+4gkjKgBkz75YNy4VK38NQAGqaBjuVFrVqiVyHkDQqGPS9gP1dl7DfOAprIA2raKOYK1Q7RfayCJUs2cucyrWdwqYna9NMwhQq2smIcOBHwu5FqZzHgb2zmJmewWR5UpKQgDxQuDOeWNTMpxSFnSImybgok4ivF7Gtjahsa8bRzS0437Abb61rwqvOPdDEvoDfD0OvUZkjXA0KFTL/h8NhjI2OoS/ai53GdrjKTrgf3YrWs5vRerkOvpebYIRjIjVBRCKRKkPFavVXgS5V1lASDNs8Xmx0tmNLh4ltfRPYoS+iKXsGHfknoUfDMjXRqGBIQTgUmDuutZ8bzCGHJ3M7O/MQBgvzSCUehuE/hEDHYXicx6B1PCFHV0iUlxywZLH6W6VWZXqm+mfOnMbJUydw6JEDmKqMiCshjmCoHaalCfWz8jIjlgy5FmgtQJZULsfrsiAPx+Psd1u0qLhaRblwLwGZ/xWGCmQtQArGlPAqUENEfeOoTxGlwT2AqxkqUfh7rYudZSYvrzvfPP/LkOkgw97eXnR1daGzs1Ouaxk/Pun8H4Kon55Vs8S4AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity black material&quot;
+        title=&quot;Unity black material&quot;
+        src=&quot;/static/9165b281da35c5f07207c1e600f36a40/330eb/unity-black-material.png&quot;
+        srcset=&quot;/static/9165b281da35c5f07207c1e600f36a40/72799/unity-black-material.png 320w,
+/static/9165b281da35c5f07207c1e600f36a40/330eb/unity-black-material.png 435w&quot;
+        sizes=&quot;(max-width: 435px) 100vw, 435px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Make another material called &lt;code class=&quot;language-text&quot;&gt;Red&lt;/code&gt; and set the &lt;code class=&quot;language-text&quot;&gt;Base Map&lt;/code&gt; color to red:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 434px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/5289bf9c3c7f2228df858df54e1c5a7e/ade6e/unity-red-material.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 169.6875%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAiCAYAAABfqvm9AAAACXBIWXMAAAsTAAALEwEAmpwYAAAF+klEQVRIx41WW2xUVRQdDaBESqGlRaS209Ip7bQzc+/M3Hm/O49Op2+oQ9tUmrYkIIVAeUQiNWowMT7ik/hE/IJEZAzij4l+KF8aP0xUhB8TVBL5MBLxf7nXnZ46NET52Dn33nPuOmvvvfY+x5Lr70d+YACFQgHpdBpOpxPt7e2w2+3o6Oi4K+N6r9cLTdNgeay1FdONjUjm88j39CAvYy6XQywWQzAYRCgUMkf1XGnhcNj8nkgkMCCkkskkLENNTchu3oxMby96BIhMx8fHMTY2hmKxuPTMke+9XLe4MUe+85/JyUkMDw/D4o1EEJQd4sIoHo+bRnYR+R6NRk0WyvhtOUvlAee4xhKTh8HFGJL24OCgOWkYBnw+n+lOKpW6bZP/MgvRVdxomUwGgUDANAKOjo5ienradIfu9fX1mZsvt35Jbv9APyykzIXZbNY07uL3+28DnJqaMtnzx7sC5KLcYkIYQ7qrAPlO1hzp/v+Z6TIZUoMc6T5jZbIUo7bcojFuoszj8Zi6q/ymYm5hZsiOgGRCtxWgV4wepKOSXVmnMkq2SgFRJopZFuM/S4BkxziRIXfy02Vdx7gwKaaSiEum44uZ5jqud0lV2Ts7YZcNNBG1T1haiMpdKVICK4aGfA8L2JAwSctchFqMisXEQmHTxScWjuHN117F6wK6YLPBqblgYfAJSDAFSvfJUnO7ERTAgrAJCVjMLa46EohFYtAcXrzzdgk/fPs9rjQ3oVRXhzapa4vKJoWrtKhiqEtC/DLH+MX0CLQ5BwKX6jB9pQov/7QWb3y4HoW+LrQbCQQSMTNZSwyVPOgy4+pfzLAvINXijaLxVBCWm1VoO70OicM2bDtuwwdf1uOvn1fg6LQdHl9cVGGUAQmgJKO0aLrs0eHf6kLHM9tguVXE0KHtODq8B3PZR7DH34PZjjjem3fg1lv3opgx0OHQ/00KmRFQaTIoEtEkyIbuRdUvJ9GwsAOnn3oJf3z1Oa49/SR+HR3Bny1NeLTNiwvFenxWqEWLwygLmwAEpNIZP46hSBh6ewc6hwp44PevoeWzODK3F2eePYH3JyZwWtad3ViPIXsn5qNeXA00wSkyM10mAEEr25VfNtLabGgpDGDNj9fhzeYwPjKCeQHbLyHZLx39UHU1umWciyRwxRmCW1RhArI9EYzslAUI6HDAFQxh9dkbcO7YjYjWBcPugO/hRvhqahG+ZyW2Om14tzmLb9Zn0OyylwHZHJgI1qdZJRJXUzYeA1GPHQ/NnkPV7FU4u5phba6BtbEB1oZNWNdwP7o7g/h71fN43D6Ahi5bufQoF7IkKOtVtS9N02F4PVIdCVTFL+NB62WEXLsQj8j6cA/mHQu4ueo7lDadgCcuqnC6yoDMLjs1mSoNlgE1EauBWDSIcDCGLZtLcK+8gdn7fsPJ+67j0opreNH6HPSwxyxHXVsmm+7ubvP5dkCPxDcmlRRBPKkhEupFt3sGBe8UMpKwYF8YhbxIrTsNl2uxlummOsFoym0CsgmQtUf3IOiWEvVoSHrtyBhdmGHmB0YwJMcDw7YEyNhRNowjR76bgLKAAg9IorrWrkW+dj2mNtTgWH0tXtlYKw2hGnuTMThlXpe1vCSYgOxv1KLKssq0R3TlDQYwkcniorEFpVQNSpO1OH94Hc69UI2L51dj37wNnXZD/nWbNwizUhg7dVNQJ57qNm55npD5T+oEcI2G0oY+lDbuwkcNx/Fp0ynsc+xGm2sr3JobDtGthSJWxyNbF9kpUMaQPXFMKuTs3oM4s30G53I78XFwDBfs2/DFpkHsD4zAHZbjwu0p322UiJUpdktZFsDBoSEcOHgAB2Z2Yr44jEP5FI5I/R7XbRhNRaEbEkNdKwMqNpWuVjL0SpZzotNMOoO0ZDUQiULzy5zoTovGRfRxc1Oq4Y4MK83Fji2J6pfM90vieJhn5DkpKkjxisLTT0LG+PPmZQKqq9qdTGeWRf1piWtksRPx50pbHiKLGfhlpuLBBut0dqHF1gqrXPusViuaZKw0fqO1yj2Tl9R/ACXzssJz+GgaAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity red material&quot;
+        title=&quot;Unity red material&quot;
+        src=&quot;/static/5289bf9c3c7f2228df858df54e1c5a7e/ade6e/unity-red-material.png&quot;
+        srcset=&quot;/static/5289bf9c3c7f2228df858df54e1c5a7e/72799/unity-red-material.png 320w,
+/static/5289bf9c3c7f2228df858df54e1c5a7e/ade6e/unity-red-material.png 434w&quot;
+        sizes=&quot;(max-width: 434px) 100vw, 434px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Drag the &lt;code class=&quot;language-text&quot;&gt;Black&lt;/code&gt; material into your game view and drop it onto the &lt;code class=&quot;language-text&quot;&gt;Floor&lt;/code&gt; object. Drag the &lt;code class=&quot;language-text&quot;&gt;Red&lt;/code&gt; material into the game view and drop it onto the &lt;code class=&quot;language-text&quot;&gt;Table&lt;/code&gt; object.&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 996px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a79554f5b5e8e848e0cd2c56e04c85c5/5caea/unity-basic-scene.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 98.4375%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD7klEQVQ4y23U/U8bdRwH8OvD9e56vWuvvWvpIy0FCu3KSgUcmmHmkomoDMYYDMLmCJFosumIg7b8Ff4B/hf+4A/7URlljmQZccmAbQjTqIkLiDMxMW8/3+vjNn/45HvXNK/v56nl5hY+w+WPP8HUlQXMXlvE3MKnmKbn0clZnL80a56VmMHoxRmMT1/Bpbl58zsfjE9heHQCw2OTGLlwER9NTIN7+Bfw8LgSPx4BW4f/4v4f/2Dz979x79cXuPvLMTZ+/hMbz45QPjhE+dkhPVdiff+5+f7d9gG+2XxAz0fgNvcPcI/ih5/2sfF0D+XHT7G++wTlV2J95zHubO9i7dEOvn+0jbXtHfOz8pM9rG1t4fbdB7izuwduZXkFhUIBxUIRpaZYWV7Gl0tL+OLGDXx+/TqWbt7E8q1bKBWLWC2V6lEqllCkWF1dpbMI7urlKUxdGMP5kfdw7t13cHpwAH25LDJdnUgmYgi1GAgYXsQiQXQk48imU+jPn8TQ26cwfPYMxj8cwczkBK7OTGN+bhZcKKjDb2jweVV43DIUlwink4dTcsApOiBLAj0LEBx28HYrbFYOVgq7zULvFjgcNgiCHapLhu71ENjiQ0vAS1lo8Ose6D63iXs9Lng0F1weEZLKQ3FLcNFlLie7kF3CQxJ5iIQJhPK8FXarBVwkZIBlyVC/4YHBQE2B5iVMFxGM+9DWFYbo4yG7xWrGDhOrgSZaDS4W8cNEWab+Cqp7CdUVqB4J4bCOZEcYTtkBVx0UIFVRUWhkKTEwHgtSwwOvoSxTxRCQzLQiN5CFqNmh0AWsZNlZRanHomgniK9ghHLJRBiJ1tDrKPXT51XgD2kIxnSo1ENVcdLQCJUbKBucRKiNwDxDO9tjtB6RChptoAF/ZUisnx7VCY02wE2nWgOrqItQjkpfpDginOtOJcDQ9raX0WAVNdjka1NnaDVLhUCVyucIXSToN8GBr3gqOZtuR7orgVRHawONNKEGQyurpDWhbkI5QudlAS9oYAU7YRwHLteTQk/m/1A/wiEdwYDPXPz6OhGqqTLshF4j8Jh282sql2EWBvbl0+g92VVHaz1l048ytGlHdZ8KnVCRshxTJDxXZNymkiUGWTjIDB4c6EH/G5kGmqqhYUJbEA2zIenm5Fk/DSrdSegK9etbmxWd7NdBoEyrw4bFDb2Vh4nmM2Dls552p+L0RxBFWzyM1ugr/aTSPYRmaOLvV/vmoJMNSmZDOjPUD4aeIrSvN41cthMnupNN/QxW+vnSz1OFSjvqon6yATXvJ3fu7CAYenqwF2/2Z5HPdaPnREdTPynLeulslRql+9iAzP2UCZVM9D8gbYL9V195fAAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity basic scene&quot;
+        title=&quot;Unity basic scene&quot;
+        src=&quot;/static/a79554f5b5e8e848e0cd2c56e04c85c5/5caea/unity-basic-scene.png&quot;
+        srcset=&quot;/static/a79554f5b5e8e848e0cd2c56e04c85c5/72799/unity-basic-scene.png 320w,
+/static/a79554f5b5e8e848e0cd2c56e04c85c5/6af66/unity-basic-scene.png 640w,
+/static/a79554f5b5e8e848e0cd2c56e04c85c5/5caea/unity-basic-scene.png 996w&quot;
+        sizes=&quot;(max-width: 996px) 100vw, 996px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;h3 id=&quot;testing-out-what-we-have&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#testing-out-what-we-have&quot; aria-label=&quot;testing out what we have permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Testing out what we have&lt;/h3&gt;&lt;p&gt;At this point we could run our game by pressing the ▶️ button in Unity to see how it all works. By default the game will start (Unity will switch to the Game view) and we’ll see the red table in front of our first-person player. But we can’t move or look around. We could add controls to do this but we’re trying to build a game for VR so let’s focus on that.&lt;/p&gt;&lt;h3 id=&quot;building-and-deploying-the-application-to-your-oculus-quest&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#building-and-deploying-the-application-to-your-oculus-quest&quot; aria-label=&quot;building and deploying the application to your oculus quest permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Building and deploying the application to your Oculus Quest&lt;/h3&gt;&lt;p&gt;To utilize Oculus and Facebook features such as social integration and user avatars, you’ll need a Facebook account (starting with Oculus Quest 2) and an Oculus Developer account (free, but starting in February 2021, you need a &lt;a href=&quot;https://developer.oculus.com/faqs/?locale=en_US#faq_343265393702048&quot;&gt;Verified Developer Account&lt;/a&gt; which requires a payment method on file). Go to &lt;a href=&quot;https://developer.oculus.com&quot;&gt;https://developer.oculus.com&lt;/a&gt; and sign up using your Facebook account. You’ll also need to &lt;a href=&quot;https://developer.oculus.com/documentation/native/android/mobile-device-setup/&quot;&gt;setup your device for developer mode&lt;/a&gt;. To do this you’ll need to (again, follow &lt;a href=&quot;https://developer.oculus.com/documentation/native/android/mobile-device-setup/&quot;&gt;the instructions on the Oculus website&lt;/a&gt;):&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;Join or Create an Oculus Developer Organization (part of your Oculus account)&lt;/li&gt;
+&lt;li&gt;Enable Developer Mode on your headset&lt;/li&gt;
+&lt;li&gt;Plug in your USB cable and Allow USB Debugging&lt;label for=&quot;sd-the-usb-cable-that&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;sd-the-usb-cable-that&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;The USB cable that comes with the Oculus will work for development. An Oculus Link cable will also work. In general, any data-capable USB-C cable should work. If you are having trouble you might want to check the cable. Also, if you have an Oculus Elite Strap (or another external battery pack) make sure your USB cable is plugged into the headset itself, not the battery pack.&lt;/span&gt;&lt;/li&gt;
+&lt;li&gt;Install the Oculus ADB Drivers (Windows only)&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;Once your Quest is in developer mode and plugged in, you can configure your project.&lt;/p&gt;&lt;p&gt;In the &lt;code class=&quot;language-text&quot;&gt;File&lt;/code&gt; menu, choose  &lt;code class=&quot;language-text&quot;&gt;Build Settings...&lt;/code&gt; and click &lt;code class=&quot;language-text&quot;&gt;Add Open Scenes&lt;/code&gt;. Then click on the &lt;code class=&quot;language-text&quot;&gt;Android&lt;/code&gt; platform option and change the default texture compression to &lt;code class=&quot;language-text&quot;&gt;ATSC&lt;/code&gt;&lt;label for=&quot;sd-i-ve-skipped-most-of&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;sd-i-ve-skipped-most-of&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;I&apos;ve skipped most of the platform specific changes you can make but changed the texture compression. Why? Changing this later can be very slow. Because of that I tend to do it as early as possible in the process.&lt;/span&gt;. Then click &lt;code class=&quot;language-text&quot;&gt;Switch Platform&lt;/code&gt;:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/5896d5fc10c85f6a718eca703976c102/f058b/unity-build-settings.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 99.6875%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAACm0lEQVQ4y51UTXPTMBD1H2rS5tsfkp04jp3YcdJkaGkZOpRy49AjM3DizA+mXPTYp1jFDe1M4fAseSW93be7khdG6iFSGsPR2JydnaGN09NTDIdDBEEA3/ftnLbjfQLT6/Ug+OXN8yXyZWWyfGUXT05O0Ol0/gem2+3CCwLfrFZLrNeVmc/nCMMQk8nknzAej41SCgLjyQ/iJMF0On1CRvtr4PYzJUyNJRyNRhbtDa+FO0swx94x0UtRvBSh1hpxHFtQoedLmEEYYSSLQ3oZufEwp8N+v/9ERRur1QqbzUawBWvgZekMdVlgqoJHzHRokUQ+YhVJwdbQkvQoiv6KeCQyhw3o0Ksu3mPz4R56e4tk/wn6/CPi/R3i3R3UuYzLLa6vrqB0DB0nmEjySeQHIXxR9gfK2rz65jO29z+gb79jeP0NnTdf0L0QyNi5/IrB4lLaIUG6qBCnS4R6KtEMsN7s8PbdDVbVBmV9jvV2z36GRxnUns1TkRUh1uoJlNiybI4iz6Gi0JJRGtuE7RYxFbYH9aEorFKWZbYPHyvWjPxnw3I9yxaYy5g0PctC9fs964D5Gwz6h7aZzWaoqgocedgSNW1AQirgWpqm1sY9jMTZSU47VXK/R++sIkdnjFuEJMhFLsHDvA2MhOtlWaIoCuuMQXH09vs9rqSKJKTHY0JG4mS2rydfF8oeDA6SObeS6aGuaxudI3mOkM5oc33onjUHOmKhPH6al8ISHIMb3RoJ/aYPSUpVlLlYLKx0OvbkgGmiMe3o2veTUhmhi5IyOWflm1QYEguhsX1IA9kdgQPXXEQO/I+kH5NUipSV0LPcNnySlUbFUhRh/rnb7SDFMbzozz0A7aeKjrl/J8Ws5UGYSWR5XpiiWFLlw2+loK5M6+mNogAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity build settings&quot;
+        title=&quot;Unity build settings&quot;
+        src=&quot;/static/5896d5fc10c85f6a718eca703976c102/f058b/unity-build-settings.png&quot;
+        srcset=&quot;/static/5896d5fc10c85f6a718eca703976c102/72799/unity-build-settings.png 320w,
+/static/5896d5fc10c85f6a718eca703976c102/f058b/unity-build-settings.png 630w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Next, click on the &lt;code class=&quot;language-text&quot;&gt;Player Settings&lt;/code&gt; button. With the &lt;code class=&quot;language-text&quot;&gt;Player&lt;/code&gt; item selected in the left sidebar, find the &lt;code class=&quot;language-text&quot;&gt;Other Settings&lt;/code&gt; subpanel. Expand the panel and scroll down to &lt;code class=&quot;language-text&quot;&gt;Minimum API Level&lt;/code&gt;. Oculus requires that this be set to at least &lt;code class=&quot;language-text&quot;&gt;API level 23&lt;/code&gt; as a target:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 950px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/75831905f02aa64b1ec182e89a55ea36/906b5/unity-minimum-api-level-23.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 68.4375%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAACLUlEQVQ4y21TSZLaQBDUgywhQAihBYEWQLvENowPticmbIef4IN98MfTlc20gnH4kKFWd1VWVWa30RcJgjzGYuHBsixMJhOYpgnzg3n/tyZYLpcIggDO3BljLNO6xz1CcoxNkiHZpthstyrRcRxsZZ2mqfr3PA+u60rBhQLPCUUq5Bok5L5RHA7YbDYqcbVaqeQ4jnE6nXA+n1HXNfI8x263w3q9RhRGiKJIrR/BPeYZDGzbFkmSqI5IGIYhhmFQpF3XYb/fK8KyLHE8HtUZwTVzuV9VFQ7SnMEOiqIYK5GMHV8uF9Uhz9ghkWWZIn6HtzOueW6QnaTUzfd9NTaJr9crbrebImU3TdOofcawKE3SCBXue2pkGsAg6kjhNSFH7vt+HI1xHP9/4LjkMtgZx2Jl7eh6HSkSknECgsGM1aDm/P5rjiJkInXQhHSs7we0nRCK2CRjF74fwrZnmE7ngplcHVuuC+/k/cszQztI7bTLrHQ8P2E4XVCU1WhALsUHOi1FiCKRuyr3cWXb8AQ+76HWgM5SVH0PaQh1bMSwPfXJZMTmM7qvf9C//kL7+hvlp5+YFd9h7r7BPPzALP0IQzvGDt+P3I8OU+NdniHOWuyHFxTDF8ELtuUzZkElqAUNFoGYokd9fGYkpCl0me7SwTwXU6R4LVoXYkgne7HEO/LkOLYrz88TXUdCkhFcs2t2qMnoMrtM5c0PTY+h7dHVHbz5EgvbgTt11Hc5d/EXtETtiweC92QAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity choose minimum api level 23&quot;
+        title=&quot;Unity choose minimum api level 23&quot;
+        src=&quot;/static/75831905f02aa64b1ec182e89a55ea36/906b5/unity-minimum-api-level-23.png&quot;
+        srcset=&quot;/static/75831905f02aa64b1ec182e89a55ea36/72799/unity-minimum-api-level-23.png 320w,
+/static/75831905f02aa64b1ec182e89a55ea36/6af66/unity-minimum-api-level-23.png 640w,
+/static/75831905f02aa64b1ec182e89a55ea36/906b5/unity-minimum-api-level-23.png 950w&quot;
+        sizes=&quot;(max-width: 950px) 100vw, 950px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;After you have set the minimum API level, select the &lt;code class=&quot;language-text&quot;&gt;XR Plugin Management&lt;/code&gt; category in the left sidebar then click &lt;code class=&quot;language-text&quot;&gt;Install XR Plugin Management&lt;/code&gt;:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 951px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/0137708574d69549b63ba67c0623d07e/9b379/unity-install-xr-plugin-management.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 68.4375%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAABTElEQVQ4y62T3XKCMBCF80L+VvKDygQiARV0tPaiF72o7/8InZxmI3EYO70o9uLMbkL49uwGmC7MV6ZzcKncZDLBdDrFeDzGaDS6az6fI0mSEB/PUPRyXe5YXhQojHHaQ4UQWCwWKPyetRZlWaKqKhhjwjOCcs6DZrPZoxxFVleVy7WGlNIppQLwer3icrmgaRocj0ccDgfsdjvs9/uw17ZtyKlgV9h1uWPkgF7abDYEDU7yPA8uKUaRy7qusd1ugwikvZH+GVIARlgE9lvri/ZJ1MVvZxhVonayLAuwqFjgr2Jx+Ov1+u4wAoeAGc2BHKZp+sPhMKAf5Pl89i4tBEF6oEFAWxpUtoSS3hlPIL2eAprTB+q3T+j2Hdy+4sWcwFM/T2p9yKUItXQyXUEtV0746NfemRwOlLdLcELwG8THp1qmX65buP/4bL4Box/Why1dSHUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity install XR plugin management&quot;
+        title=&quot;Unity install XR plugin management&quot;
+        src=&quot;/static/0137708574d69549b63ba67c0623d07e/9b379/unity-install-xr-plugin-management.png&quot;
+        srcset=&quot;/static/0137708574d69549b63ba67c0623d07e/72799/unity-install-xr-plugin-management.png 320w,
+/static/0137708574d69549b63ba67c0623d07e/6af66/unity-install-xr-plugin-management.png 640w,
+/static/0137708574d69549b63ba67c0623d07e/9b379/unity-install-xr-plugin-management.png 951w&quot;
+        sizes=&quot;(max-width: 951px) 100vw, 951px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Once installed, check the &lt;code class=&quot;language-text&quot;&gt;Oculus&lt;/code&gt; box (this will install the &lt;a href=&quot;https://developer.oculus.com/downloads/package/oculus-openxr-mobile-sdk/&quot;&gt;Oculus OpenXR Mobile SDK&lt;/a&gt;):&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 951px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/1008cc388a0a13ba4535f0b400ddb311/9b379/unity-oculus-plugin.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 68.4375%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAABUElEQVQ4y6WTa26DMBCEfSISRcIGwsMPwBECIeX+R6m89WwwJZEitemPYTHGH7NjI7R1X602JIsynE4nOp/PlGXZky6XC+V5zvXNOyFVYawl61zQEaqU4oVaaxqGgZxzNI4j9X1PZVnynJSSK6CAH8SGxM37YCKgKFQoioKh1+uV2raluq65QmkOFc+bpmHZaCjWsI2D8N7Tuq7sIi3quo7HeBnwqqq4JiUYhI8dxwxMMAgtwcE8z2SM3R2+U4Kme4GMpmniB3DHLUdH3iM7x27fCVm/ioHYANARvFKSOm3JDTdy/cM9Ngc1xYAK4DHLvWVQ4RA5PRxKqmpNjb5R3Y0xs/opv6Ow5lUMvN/v7DLlqGT+oy2G30oAhLbRLjYkTST4XyWWZeFjA6gxhjfnkeVnUBGzCAg3QgJAxwP8CVRsLYbXLD4GxkvYBvuv9x/gNwGU13/lC++vAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity oculus plugin&quot;
+        title=&quot;Unity oculus plugin&quot;
+        src=&quot;/static/1008cc388a0a13ba4535f0b400ddb311/9b379/unity-oculus-plugin.png&quot;
+        srcset=&quot;/static/1008cc388a0a13ba4535f0b400ddb311/72799/unity-oculus-plugin.png 320w,
+/static/1008cc388a0a13ba4535f0b400ddb311/6af66/unity-oculus-plugin.png 640w,
+/static/1008cc388a0a13ba4535f0b400ddb311/9b379/unity-oculus-plugin.png 951w&quot;
+        sizes=&quot;(max-width: 951px) 100vw, 951px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;We won’t change any other settings for now - though we’ll want to change some settings later to increase the performance. Oculus has additional information about setting up your application in the documentation under &lt;a href=&quot;https://developer.oculus.com/documentation/unity/unity-conf-settings/&quot;&gt;Configure Unity Settings&lt;/a&gt;. It details specific quality configurations and rendering preferences which we’ll explore in the future.&lt;/p&gt;&lt;blockquote&gt;
+&lt;p&gt;You may see a warning about Vulkan support: “Vulkan is currently experimental on Oculus Quest. It has been removed from your list of Android graphics APIs.” Don’t worry, it is safe to ignore this for now.&lt;/p&gt;
+&lt;/blockquote&gt;&lt;p&gt;Click &lt;code class=&quot;language-text&quot;&gt;Build and Run&lt;/code&gt; in the &lt;code class=&quot;language-text&quot;&gt;Build Settings&lt;/code&gt; window, choose a name when saving the game and get ready (I’ve called my game &lt;code class=&quot;language-text&quot;&gt;Hide-and-seek&lt;/code&gt; even though there isn’t really any hiding or seeking):&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 329px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/eaadc536ecaf86a737197e8a132e5893/004a5/unity-build-hide-and-seek.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 58.4375%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsTAAALEwEAmpwYAAAB00lEQVQoz3VS227aUBD0l0QQMDZgG8cBYoKpuRUIARooos2tqhQVqVLUKBEQpL5U6m/0X6eePTWhbvMwPues1rMzu6s5jodS6Rg89+8nJ3W0Wm8RBE00Gi2EYUewn5uE65ahmaYF0yyCZz5vI5crIJMxYBgWCgVHYjH4TsaS0IrFUlTVg227yGbNSFUHs9l79PtnOD8fYTA4w2g0xng8Qa83EELLcv+BYRRFiEYLlYovVqiuGbYxny9wcTGLSN7Jyfdi8QHD4Vh+tu2jv+EciUMK0tJpXaQ6f4KxbVaMwbeKWUKQVEd3zBNCymRSrdaIyNQPqsnqfHl7r5AplTtCfg4Pczg4yEDX80KqBmVJEhWru/XfIew7EEImB0GIavVUVmX48xe+bH5gu97g6WmN1WqD7fY71utn3N5+xvX1J8Hl5Q2Wy6+YTKZRjz9GK9VGKpVVCtU6qIruaRuV2hvU/Lq0gUXKZR+eV93Z97xKtHPHMkgqZJwcO8vsIyH3VAbpdBYcFisyXq+H6Hb76HR6aDa7QuD7QRQbCLj87KesDUnYuyTinnBPae/h4TFqwQp3d0tp0XQ6x/39N2nL1dWNOKGIVwkZ3weTCaqIczhMutD1F47fW76BazM5u6IAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity save game as hide and seek&quot;
+        title=&quot;Unity save game as hide and seek&quot;
+        src=&quot;/static/eaadc536ecaf86a737197e8a132e5893/004a5/unity-build-hide-and-seek.png&quot;
+        srcset=&quot;/static/eaadc536ecaf86a737197e8a132e5893/72799/unity-build-hide-and-seek.png 320w,
+/static/eaadc536ecaf86a737197e8a132e5893/004a5/unity-build-hide-and-seek.png 329w&quot;
+        sizes=&quot;(max-width: 329px) 100vw, 329px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Once you save the game it should start compiling the application. This generally takes a few minutes to complete the first time (if you have a very complex scene with advanced shaders and lighting it can take much longer) but will be quicker on subsequent runs. Eventually the progress dialog will say &lt;code class=&quot;language-text&quot;&gt;Deploying player&lt;/code&gt;. At that point your Oculus Quest should pause what it is doing and switch to a screen that says &lt;code class=&quot;language-text&quot;&gt;Made with Unity&lt;/code&gt; then your game should start.&lt;/p&gt;&lt;p&gt;When the game starts on the headset, Unity will connect to the logs from the headset and display them in an &lt;code class=&quot;language-text&quot;&gt;Android Logcat&lt;/code&gt; window (because we installed the &lt;code class=&quot;language-text&quot;&gt;Android Logcat&lt;/code&gt; plugin into our project). The logging is almost constant but can be filtered. This is a cumbersome way to get debugging information from the headset as you play - but it is the only way to do it on MacOS. On Windows you can use the ▶️ button in Unity to start the application in development mode on the headset. This is not possible on MacOS because there are no Apple-compatible Oculus drivers and applications.&lt;/p&gt;&lt;p&gt;Our game is not very exciting (we don’t even have hands!), but from this point you should be able to make changes in Unity, then click the &lt;code class=&quot;language-text&quot;&gt;File&lt;/code&gt; menu and choose &lt;code class=&quot;language-text&quot;&gt;Build and run&lt;/code&gt;. Your new changes will be compiled and a new version of the game (the compiled &lt;code class=&quot;language-text&quot;&gt;APK&lt;/code&gt; file) will be deployed to the headset and the game will restart.&lt;/p&gt;&lt;h1 id=&quot;writing-a-script&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#writing-a-script&quot; aria-label=&quot;writing a script permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Writing a script&lt;/h1&gt;&lt;p&gt;So far we haven’t needed to write any code for our game. Eventually, though, we’ll want some customization and game logic. C# is the default coding language for Unity. You can use any coding editor to work on your scripts but most people use Visual Studio or VS Code because of their advanced auto completions.&lt;/p&gt;&lt;p&gt;I tend to use VS Code. If you don’t have it, download and install it from &lt;a href=&quot;https://code.visualstudio.com/download&quot;&gt;https://code.visualstudio.com/download&lt;/a&gt;. On MacOS you’ll need additional tools to support .Net and C#. Install &lt;code class=&quot;language-text&quot;&gt;mono&lt;/code&gt;:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;brew &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; mono&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then open VS Code (if you already have VS Code open, restart it). You’ll want to install the following plugins:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp&quot;&gt;https://marketplace.visualstudio.com/items?itemName=ms-dotnettools.csharp&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=Unity.unity-debug&quot;&gt;https://marketplace.visualstudio.com/items?itemName=Unity.unity-debug&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=Tobiah.unity-tools&quot;&gt;https://marketplace.visualstudio.com/items?itemName=Tobiah.unity-tools&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=kleber-swf.unity-code-snippets&quot;&gt;https://marketplace.visualstudio.com/items?itemName=kleber-swf.unity-code-snippets&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://marketplace.visualstudio.com/items?itemName=YclepticStudios.unity-snippets&quot;&gt;https://marketplace.visualstudio.com/items?itemName=YclepticStudios.unity-snippets&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;Edit the Extension Settings of the &lt;code class=&quot;language-text&quot;&gt;C#&lt;/code&gt; plugin (click on the gear icon) and set the &lt;code class=&quot;language-text&quot;&gt;Omnisharp: Use Global Mono&lt;/code&gt; setting to &lt;code class=&quot;language-text&quot;&gt;always&lt;/code&gt;:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 732px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/b780bfc553c35b707e7cd34cfce64020/d0cc0/vscode-use-global-mono.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 23.75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAFCAYAAABFA8wzAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAwklEQVQY04WQWQ6DMBBDuQUg9gICElaFIhDr/S/l1mlBfLUf1uRl8cRjZFkGKSVYi6JAXdeoqgppmiJJEsRxjDzPEUURLMvSMk0Ttm1fTJEdx4GhngPWdcU8z9i27RJ5HEdM06RZKYWyLNE0DYZh0I27rkPbtuj7XrPneTR86sd3w33fdZNlWXAch67nOQ1ofhqyAVkI8flh+o4jpYDv+5eCIEAYhnrNqKxk7jMaI9/jniNwXRfG4zsjuv8SL/8T770A4NaR8Zj+BT4AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;VS Code use global mono setting&quot;
+        title=&quot;VS Code use global mono setting&quot;
+        src=&quot;/static/b780bfc553c35b707e7cd34cfce64020/d0cc0/vscode-use-global-mono.png&quot;
+        srcset=&quot;/static/b780bfc553c35b707e7cd34cfce64020/72799/vscode-use-global-mono.png 320w,
+/static/b780bfc553c35b707e7cd34cfce64020/6af66/vscode-use-global-mono.png 640w,
+/static/b780bfc553c35b707e7cd34cfce64020/d0cc0/vscode-use-global-mono.png 732w&quot;
+        sizes=&quot;(max-width: 732px) 100vw, 732px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;More information and options are available at &lt;a href=&quot;https://code.visualstudio.com/docs/other/unity&quot;&gt;https://code.visualstudio.com/docs/other/unity&lt;/a&gt; (note, you should not need to install any additional language packs with the latest version of Mono).&lt;/p&gt;&lt;p&gt;Next, open the Unity Preferences and choose &lt;code class=&quot;language-text&quot;&gt;Visual Studio Code&lt;/code&gt; as the &lt;code class=&quot;language-text&quot;&gt;External Script Editor&lt;/code&gt;:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 752px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/5a64462e1716ca198519d3741dda6aa5/442cb/unity-preferences.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 98.125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAACM0lEQVQ4y3WVZ5ajQAyEuY8DGGPjADjinMM9fO55e4bW8mmtmbZn/aOeulF3qRSAYJAV0kn7LooiAWEYSrPZVLBOkkTSNJVWq6V+rK5/4CJ9FsPxJyjLhcuLkbTbbUWn05HBYCD9fl/BHgJ8rSSVWjP+h7At9R+4RpRIGHclGI1GXHK9Xk+VsN/tdrJerxXj8VjwQT4cZlJUwYvqTJ4X1X4InNoscyDY7/cymUxkOp1KlmV6aLPZyHa7VcueQN1utyIrZPd8Xpal3pnNZgoCE1QJcc7nc70E6e12k/v9LpfLRUkgRCV+SgBY89zAHgTX61XVQEoUFJE2AVBgCiE0ItafoApRwYZmYCGjflj/MB03QgtiMKXB6XRSJb58I0QpJEZEpz8RfiukZr6T9XK5lMPhIKi3BlF4iv6J6JvwnYxLi8VCSY7Ho5KvVitVjWLKAp4j87JWQl++EVICRonD1lXShpAgqGdWbToMNDV4LyyEOGgU1gYbUp7ZfNrsGRCA/xchlsM4SYMaA/b2KtrM2Sy+dNkn5ECe55oSaZOGvUWWkgUAlIR6n89nLcGvlKkTFx+PhzaC9BgfSxNL5yGxJvkB9NV7TxeVRCZF1GJtbXt7ewAZEIwg+P9bQw75sKKTOpfs64PlGekyXn5T3CdC0oKQi6zx+zNYKXPPGrrK7wIj88eG+vmg674qPrhxHKt9NtK9DLavkKgQ+N86v278Fur1ujQaDanVavpxJt3qnKsa8/UX8cypsaEiKCYAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity preferences&quot;
+        title=&quot;Unity preferences&quot;
+        src=&quot;/static/5a64462e1716ca198519d3741dda6aa5/442cb/unity-preferences.png&quot;
+        srcset=&quot;/static/5a64462e1716ca198519d3741dda6aa5/72799/unity-preferences.png 320w,
+/static/5a64462e1716ca198519d3741dda6aa5/6af66/unity-preferences.png 640w,
+/static/5a64462e1716ca198519d3741dda6aa5/442cb/unity-preferences.png 752w&quot;
+        sizes=&quot;(max-width: 752px) 100vw, 752px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;In order to get the most out of VS Code you have to adjust some settings. Let’s start by creating a script in Unity so we can try it out. In the Hierarchy, select the &lt;code class=&quot;language-text&quot;&gt;XR&lt;/code&gt; game object. In the inspector click &lt;code class=&quot;language-text&quot;&gt;Add component&lt;/code&gt;, type &lt;code class=&quot;language-text&quot;&gt;Logger&lt;/code&gt; then choose &lt;code class=&quot;language-text&quot;&gt;New script&lt;/code&gt;, name it &lt;code class=&quot;language-text&quot;&gt;Logger&lt;/code&gt; and click &lt;code class=&quot;language-text&quot;&gt;Create and Add&lt;/code&gt;.&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 435px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/b47564220e73c4eb6ec5d717b4123fde/330eb/unity-add-script.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 160.3125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAgCAYAAAASYli2AAAACXBIWXMAAAsTAAALEwEAmpwYAAADL0lEQVRIx92VWXMSQRDH+TK5DwJ7sgsJy7Ec4TIg8SGVMpo8WVrRssry07fza9JkjSTmVR/+zE5P97/PGUqDwUDG47GMRiNpt9tycnIi+/v7cnBwoOsmcGbntlarVfE8T0qQ9ft9ieNYms2mlMtlVTg6OnoWRmh7bHu9nnQ6HSnxk+c9OTs7k/Pzc5lOpxptq9WSLMsURH56eir1el31OAfF8+FwqCglSU3qjURaWUuVFouFzGaztbIZsOIEkBGlMqd8rwLLpdRwnvNuWxrOO4oApVqtJkmSKMIwlCAIdEXu+74iiiJJ01SJG42GZlBCOOgPlIhvM+Sb2pAqddrZ2ZHDw0MlZN3d3dWV8729Pdne3pbj4+MVIWQUFWVIgBHiGUMjJGIaYnuioolrQkioAaGjbIQGZIwE48SKzPaMCfbsK5WKZqZdvrm9kaSWyHw+106jhANzwkokJivuOaeZ8FBLTZlRoBZ4L6aNx1a7pYaBH2hKzCnRFWEy9EoYMj+kTS1pPXs84owaokOdqBn1owlF0CDkXIwSUdhcQcaQW5OYP4vaxoi6bW1taRMM7CEl03WXjQRS6sgsYgwpZ6TO7CGzOTQgIzAdbD4worAYki7feOOM/XK5lG63qzLSYt0EbQqDTDpERGMAdfNdE/BOsf1g1RDS2n94GAA1tQeCb0ZHCe2GgIS51Jr2ZeRSv3TRLd8u5N3lpcPSPR4TlY/HI3VuF8Cuoaa8HmQnrCWpdPojGYzeSHcwlnw4cetkvWadgZy2csnyoSRp3RGFmwnVkwPp1Zxi1skldmu5UnVO6hI7R1VXBg8E7rGIausHwuyZgkdCjdApxnVpTt5Lb34n+fxWuhd3Mrm6l9n1N8mmH+RsfKNoTj5KmGYShcFjhH8SukbErmPzezm//in9qx/Svvwu4eiTRONPkky/SDJzmH6W9OKrhPXcEfrPRPgQuu97EngV8R8Q+BWJQ08RBdXf4HlujeK/Ea7qsrrThngjntYwfY7wqayIqPBeckOeb8prCQsE/x5h+n+k/BJeTbgpsk14kbA4rPZn/xLQQbdYCn1tLEUjYc9D+RqYrdlzu34BJYUvI645gDsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity add script&quot;
+        title=&quot;Unity add script&quot;
+        src=&quot;/static/b47564220e73c4eb6ec5d717b4123fde/330eb/unity-add-script.png&quot;
+        srcset=&quot;/static/b47564220e73c4eb6ec5d717b4123fde/72799/unity-add-script.png 320w,
+/static/b47564220e73c4eb6ec5d717b4123fde/330eb/unity-add-script.png 435w&quot;
+        sizes=&quot;(max-width: 435px) 100vw, 435px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Once the component is created click on the three dots to the right and choose &lt;code class=&quot;language-text&quot;&gt;Edit Script&lt;/code&gt;:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 862px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/18122c3f3ea38797e6a1eabe56c4df0d/f0551/unity-edit-script.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 61.24999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAMCAYAAABiDJ37AAAACXBIWXMAAAsSAAALEgHS3X78AAABuElEQVQoz5WTXW+bMBSG80s27TLdCASMbSBg8+EIRlICi9qbbQm9arVN0/7PdtOqv/Od7TZrM6lSc/HoWMB5/Z4PJv3Q4+b7NYQscX5xhdWnr1hvdxallqiqCmVZWuy5KFHkBXKZQwpp6c47tB9bNHWDCeccQggkSQLGIw0HpRSUMYRhiExk4I/PHMeB7/loVIOEJZidzeC+dy2+48Of+ZiYD5lONlAtwDlDmqaWLMtQFIUlz7UjKRHzGCpXKIV2LKt/Z+IR+K7/4PCAETVCwzCg73tst1vs93vsdjuM44jxarRldW2HzXqDIisgEoE0Sh8cGsGDu9dgW0GoFcnTHJxwW7b3wUPgBgi84MmhSTjE5/z/jobU9rBWNVb1CutmjZjGmDvzY8HniS/BdH/DQA8qzo4wAzKwgB0LvihkLmJPgqZUQxRGiEhko3FJ5uQEwccY6h5K3b/KTFcq5HowMtWbICowfcnJgpQQFHGMpd7dpV6rapGg1Dus0gV4cLJDipAtUA3XqC9/IGlHTHmHs3iDaTzAZer1guYv4mEAkrXg3+6Q/rxHcHOLN5//4N2X33i7v8e0/YW/lNCavpGwqPoAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity edit script&quot;
+        title=&quot;Unity edit script&quot;
+        src=&quot;/static/18122c3f3ea38797e6a1eabe56c4df0d/f0551/unity-edit-script.png&quot;
+        srcset=&quot;/static/18122c3f3ea38797e6a1eabe56c4df0d/72799/unity-edit-script.png 320w,
+/static/18122c3f3ea38797e6a1eabe56c4df0d/6af66/unity-edit-script.png 640w,
+/static/18122c3f3ea38797e6a1eabe56c4df0d/f0551/unity-edit-script.png 862w&quot;
+        sizes=&quot;(max-width: 862px) 100vw, 862px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;The script should open in VS Code:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1024px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/5e59764fa9a02096b10f2f27bf8b5cd2/2bef9/vscode-logger.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB3klEQVQ4y5VUy27kIBDkL1bDw7wM9njG88hkdrWXveWQ//+aSBG13dhE3mgUZQ9lMNBFUd0g5nl+Tykh51y89wghVMQYkVLG5XrF8XzCeDygHzO64ODXNRsUikff9+9i7ZQrBVILKSWUUlDUOuvwO53wR094lj1+qoRZBzillzUbdF1XtNYQ9Cms8H6/15YneYKhCGcf8GIOeDUn/OpGHF1GtrHONTLmYAHGhSKImdlxuVzgnKsKFzIFow3CXtG4xkTKeuvxY8hQ+wOMtTDG1Fi9kmv6r4SWiJiQ/ZBSrQt0DXCdR3YJe1JlyQJPRK6zRGTp31YRjZBVCx5kUHJqK+WOJmVVypt552E2nslP3m1hmJCD0njAfH5CGvYI/YBICDHX3XmT6CMGFys5n6aNN6+bQrZIsBIfeiqPJzpyJB86mO2RyLdoAkbta0D16kGWGwR/XGfIwzOmaaq7B6pH3pW9ysFXL5VZPP0KfFrBSUhUrPfnG263G7geh2FYFpASvyr9LgTXD2f3SEnhxHBx73a7j6x9lYSHR26GspftlmzN/l8I8qyspOXRgm9u0GILE7JfpRr/QOm2/ajFdt//xXKX6YV5G8exvjZsantxuP9ZHc81uLUeObN8yrX/9hf8CpjhcsIPQgAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;VS Code logger script&quot;
+        title=&quot;VS Code logger script&quot;
+        src=&quot;/static/5e59764fa9a02096b10f2f27bf8b5cd2/2bef9/vscode-logger.png&quot;
+        srcset=&quot;/static/5e59764fa9a02096b10f2f27bf8b5cd2/72799/vscode-logger.png 320w,
+/static/5e59764fa9a02096b10f2f27bf8b5cd2/6af66/vscode-logger.png 640w,
+/static/5e59764fa9a02096b10f2f27bf8b5cd2/2bef9/vscode-logger.png 1024w&quot;
+        sizes=&quot;(max-width: 1024px) 100vw, 1024px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Let’s edit the script to add some debug logging into the &lt;code class=&quot;language-text&quot;&gt;Update&lt;/code&gt; method:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;csharp&quot;&gt;&lt;pre class=&quot;language-csharp&quot;&gt;&lt;code class=&quot;language-csharp&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;token namespace&quot;&gt;System&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Collections&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;token namespace&quot;&gt;System&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Collections&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;Generic&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;using&lt;/span&gt; &lt;span class=&quot;token namespace&quot;&gt;UnityEngine&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token keyword&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;token class-name&quot;&gt;Logger&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token type-list&quot;&gt;&lt;span class=&quot;token class-name&quot;&gt;MonoBehaviour&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token comment&quot;&gt;// Start is called before the first frame update&lt;/span&gt;
+    &lt;span class=&quot;token return-type class-name&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Start&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
+    &lt;span class=&quot;token comment&quot;&gt;// Update is called once per frame&lt;/span&gt;
+    &lt;span class=&quot;token return-type class-name&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;void&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;Update&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;token class-name&quot;&gt;Vector3&lt;/span&gt; pos &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; transform&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;position&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+        Debug&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;Log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Update: &quot;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;+&lt;/span&gt; pos&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;As you start to type you should see an auto-complete window:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 832px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/387634c452b113ed4645c8f11afaa9b9/ef6b9/vscode-autocomplete.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 29.6875%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAGCAYAAADDl76dAAAACXBIWXMAAAsTAAALEwEAmpwYAAABAUlEQVQY043Qy07DMBAFUH8ErWhtJ7Fjx46dvpvQTSQogjabdsOSBav+/x9cpgGkFlWCxdGd8UMam6VpCq01YhlglIZSqpdl2VdNKbiAFP/DzhdM7jBTHlNpIIQE55xSYDge4W58jwEfYUgGfzifYWVm4F2A8CWKEBCsw8SWmFL/HFfo7Ap7s8SrXWBnFn3dkf0vnV3ixczBTK6RqxScJpNSfo9OSVMeZy1O1RYn/4gP3+K9avHmNzj4BkdyuND3rgZLkqR/4hXBIcccm6rGU6yxjWvs3BqNmyA4j8TlSJ25khBbFGA//3WJn5PW5zpgoyIedESTR/rnAhWJyt40ob1PcZytKELtl8AAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;VS Code autocomplete&quot;
+        title=&quot;VS Code autocomplete&quot;
+        src=&quot;/static/387634c452b113ed4645c8f11afaa9b9/ef6b9/vscode-autocomplete.png&quot;
+        srcset=&quot;/static/387634c452b113ed4645c8f11afaa9b9/72799/vscode-autocomplete.png 320w,
+/static/387634c452b113ed4645c8f11afaa9b9/6af66/vscode-autocomplete.png 640w,
+/static/387634c452b113ed4645c8f11afaa9b9/ef6b9/vscode-autocomplete.png 832w&quot;
+        sizes=&quot;(max-width: 832px) 100vw, 832px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Once you’ve added the log message, save the file and return to Unity. You’ll notice there is a small delay as Unity recompiles the code when the Unity window regains focus. Once the code is recompiled you can &lt;code class=&quot;language-text&quot;&gt;Build and Run&lt;/code&gt;.&lt;/p&gt;&lt;h1 id=&quot;more-advanced-ways-of-connecting-to-your-headset&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#more-advanced-ways-of-connecting-to-your-headset&quot; aria-label=&quot;more advanced ways of connecting to your headset permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;More advanced ways of connecting to your headset&lt;/h1&gt;&lt;p&gt;Unity relies on the Android Platform Tools (Android SDK) to connect to the headset, deploy games and start them. The Android Debugging Bridge (or &lt;code class=&quot;language-text&quot;&gt;adb&lt;/code&gt;) gives you access to a number of additional tools including a command line interface to the Quest. It isn’t required, but I tend to use it.&lt;/p&gt;&lt;p&gt;If you are working on Windows there are some instructions available; read &lt;a href=&quot;https://developer.oculus.com/documentation/unity/unity-enable-device/&quot;&gt;Enable Device for Development and Testing&lt;/a&gt;. On a Mac, in a Terminal, run:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;brew &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; android-platform-tools&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Once installed, attach your Oculus via USB-C and run:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;adb connect&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;In some cases the version of &lt;code class=&quot;language-text&quot;&gt;adb&lt;/code&gt; you install is different than the version that is used in Unity. This can lead to unexplainable errors either in Unity or in the Terminal. In most cases it simply causes one of the two tools to repeatedly lose its connection to the Oculus Quest. To work around this, there are a few options, but the simplest is to copy the &lt;code class=&quot;language-text&quot;&gt;adb&lt;/code&gt; binary from the Unity installation to &lt;code class=&quot;language-text&quot;&gt;/usr/local/bin&lt;/code&gt;.&lt;/p&gt;&lt;p&gt;You can find the path in the Unity Preferences window (in the &lt;code class=&quot;language-text&quot;&gt;platform-tools&lt;/code&gt; folder inside of the Android SDK path):&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 752px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/5a64462e1716ca198519d3741dda6aa5/442cb/unity-preferences.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 98.125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAACM0lEQVQ4y3WVZ5ajQAyEuY8DGGPjADjinMM9fO55e4bW8mmtmbZn/aOeulF3qRSAYJAV0kn7LooiAWEYSrPZVLBOkkTSNJVWq6V+rK5/4CJ9FsPxJyjLhcuLkbTbbUWn05HBYCD9fl/BHgJ8rSSVWjP+h7At9R+4RpRIGHclGI1GXHK9Xk+VsN/tdrJerxXj8VjwQT4cZlJUwYvqTJ4X1X4InNoscyDY7/cymUxkOp1KlmV6aLPZyHa7VcueQN1utyIrZPd8Xpal3pnNZgoCE1QJcc7nc70E6e12k/v9LpfLRUkgRCV+SgBY89zAHgTX61XVQEoUFJE2AVBgCiE0ItafoApRwYZmYCGjflj/MB03QgtiMKXB6XRSJb58I0QpJEZEpz8RfiukZr6T9XK5lMPhIKi3BlF4iv6J6JvwnYxLi8VCSY7Ho5KvVitVjWLKAp4j87JWQl++EVICRonD1lXShpAgqGdWbToMNDV4LyyEOGgU1gYbUp7ZfNrsGRCA/xchlsM4SYMaA/b2KtrM2Sy+dNkn5ECe55oSaZOGvUWWkgUAlIR6n89nLcGvlKkTFx+PhzaC9BgfSxNL5yGxJvkB9NV7TxeVRCZF1GJtbXt7ewAZEIwg+P9bQw75sKKTOpfs64PlGekyXn5T3CdC0oKQi6zx+zNYKXPPGrrK7wIj88eG+vmg674qPrhxHKt9NtK9DLavkKgQ+N86v278Fur1ujQaDanVavpxJt3qnKsa8/UX8cypsaEiKCYAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity preferences&quot;
+        title=&quot;Unity preferences&quot;
+        src=&quot;/static/5a64462e1716ca198519d3741dda6aa5/442cb/unity-preferences.png&quot;
+        srcset=&quot;/static/5a64462e1716ca198519d3741dda6aa5/72799/unity-preferences.png 320w,
+/static/5a64462e1716ca198519d3741dda6aa5/6af66/unity-preferences.png 640w,
+/static/5a64462e1716ca198519d3741dda6aa5/442cb/unity-preferences.png 752w&quot;
+        sizes=&quot;(max-width: 752px) 100vw, 752px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Copy the path, then change to that folder (your path will probably be different):&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token builtin class-name&quot;&gt;cd&lt;/span&gt; /Applications/Unity/Hub/Editor/2020.2.1f1/PlaybackEngines/AndroidPlayer/SDK&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then copy the &lt;code class=&quot;language-text&quot;&gt;adb&lt;/code&gt; binary:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;cp&lt;/span&gt; platform-tools/adb /usr/local/bin/&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Re-connect:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;adb connect&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&quot;checking-the-logs&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#checking-the-logs&quot; aria-label=&quot;checking the logs permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Checking the logs&lt;/h3&gt;&lt;p&gt;We’ve been using the Android Logcat plugin in Unity to see the logs, but you can also view the logs from terminal. The logs are verbose so it is sometimes helpful to start by clearing them:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;adb logcat -c&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then check them:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;adb logcat -d&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Using &lt;code class=&quot;language-text&quot;&gt;System.Debug&lt;/code&gt; statements in your application will output information to the logs making it a useful way to see what is happening in your program.&lt;/p&gt;&lt;h3 id=&quot;connecting-via-wi-fi&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#connecting-via-wi-fi&quot; aria-label=&quot;connecting via wi fi permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Connecting via Wi-fi&lt;/h3&gt;&lt;p&gt;So far, all of our interaction with the Oculus Quest has required it to be plugged in via USB-C cable. Luckily, you can also connect via Wi-fi. First you’ll want to make sure that the device is connected via USB:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;adb devices&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should see something like:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;List of devices attached
+12345999M92373	device&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Once you’ve got the device connected you can check it’s local IP address:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;adb shell &lt;span class=&quot;token function&quot;&gt;ip&lt;/span&gt; route&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should see something like (the IP address at the end is what we are looking for):&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;192.168.86.0/24 dev wlan0 proto kernel scope link src 192.168.86.99&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Now setup &lt;code class=&quot;language-text&quot;&gt;tcpip&lt;/code&gt; for the connected device and tell it to listen on port &lt;code class=&quot;language-text&quot;&gt;5555&lt;/code&gt;:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;adb tcpip &lt;span class=&quot;token number&quot;&gt;5555&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Once you’ve done this the device is still connected to USB and your computer is communicating via
+USB but it is also listening for &lt;code class=&quot;language-text&quot;&gt;tcpip&lt;/code&gt; connections via Wi-Fi. Connect to it via Wi-Fi:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;adb connect &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;ipaddress&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;:5555&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;At this point you can unplug the USB cable and you should still be able to work with the Quest via
+&lt;code class=&quot;language-text&quot;&gt;adb&lt;/code&gt; over Wi-Fi. This includes compiling and deploying to the Oculus Quest from Unity. You can also continue to check logs over Wi-Fi. For example:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;adb logcat -d&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you want to explicitly connect to a particular Quest you can specify the server with &lt;code class=&quot;language-text&quot;&gt;-s&lt;/code&gt;:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;adb -s &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;ipaddress&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;:5555 logcat -d&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;To go back to using USB, plug in the cable again and connect:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;adb connect usb&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&quot;disconnecting&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#disconnecting&quot; aria-label=&quot;disconnecting permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Disconnecting&lt;/h3&gt;&lt;p&gt;If you get an error about the connection you can usually run:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;adb disconnect&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If that doesn’t work you can do the more extreme:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;adb kill-server&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And then run the &lt;code class=&quot;language-text&quot;&gt;adb connect&lt;/code&gt; commands again. In some cases (when using USB) it is helpful to disconnect the USB cable and reconnect.&lt;/p&gt;&lt;h3 id=&quot;seeing-what-the-player-sees&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#seeing-what-the-player-sees&quot; aria-label=&quot;seeing what the player sees permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Seeing what the player sees&lt;/h3&gt;&lt;p&gt;Though you could use the built in casting functionality for the Oculus Quest you might find it doesn’t always reflect what the player sees (especially if there are differences per-eye). Luckily the &lt;code class=&quot;language-text&quot;&gt;scrcpy&lt;/code&gt; program allows us to stream the player’s view. Install it:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;brew &lt;span class=&quot;token function&quot;&gt;install&lt;/span&gt; scrcpy&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then run:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;scrcpy -c &lt;span class=&quot;token number&quot;&gt;1440&lt;/span&gt;:1550:0:0&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 931px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/34a1b9fcd4f3c2d59ddcf2f38d72dd73/82b28/unity-scrcpy.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 109.375%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAWCAYAAADAQbwGAAAACXBIWXMAAAsSAAALEgHS3X78AAAEPklEQVQ4y22VaUwcZRjHZ3Z2lquAQLHUtPVq2oZEJWhMscZALA1ylyK0UClFlkMohaVccizHAt1ylGMXKIec3WBBoAesLlFQamtTMEUtSkwsn4wf/O7Hv887s7vdqW7yy+y88/x/7/POvLPLBQXtRWDg8/AP2A0/f3/4eO+Cj483dtPYvpcO4tDrbyPkneN4KzwGoe9FI+TYCQSHHsOLB4MRuGcvfH19sMvLE35+fuQIAEcfuBLwwis4cjQKYQlaRKSV4nhGJU6cr0GUth7RuY2IzmnEB9l6RGXV4P00Hd6MTMW+QyHgVYLDIYvY4LtJeYjW6hGXb0BMTj0Fa51EM7R1iM3RIz6vEScLW3Dq4hWklF5FevUAwmLPPRUeOBKKxAuXEZvbIIVYOIbEsSSNo7E4EsTnNyHhEwMSC5tx8kIryYxILmlDcnEbUkl6+lIXfAOCZGFEaiGSioxSgM0s04okmoSNs05YMLmkHSm6DuqqUxKcKetBeqWJ6MXHTWMICU8A579nPxW348MSKtR1SktgM6ZS4HRZN86U9yCtohdpUtCMs5/24aPqfmTUXkNm3SCyGoaR3fgZ8loncbayC1zw0Uhk6kco1EPFZrm4ZkAO6AeRWT+E8xTKahxBtmEU2pYx5LZOIN84hYI2C4o6plF89QZ0PbMo718AF5GSh1yjRQpom8eRQzPlGa8j/4oFBe3TKOz4HEUUuNg1gxIKXeqdQ7l5HhXmBVSRoHp4EXWjVtSPf4mmya/ApZd3QGe6ieLuOZTSsazvNioG7qDq2iKqB5dQO7QE/bAVDePLaLKswjD7PVpvPYTRton21cfosT7EkG0dU3d/xtyP2+DKTHOon1xBw8TXMEx8gxbLt7j8xX203dlA5/Iv6F77HaYHOxhY28aIbQMTC6uY6b+OpSoD1s7lYmV5BUtbW5iyLqLZ1A2ufe4+um+vw7z6G4Z++gujm39i6t42biyvY2F8Hja9EXcztNiIiMSvrx7GjrsXntDO2CQeEJnBhxH48gG4Cyp5H84/+gNrf/+De7bv8EOBDo/iT2HrtTfwxNsbO1Tw2B60En2EjkjkOYSQ4DnR+XZApHM3UQ1u+uYsxmy3MBEZjjW6MEN0EsVEMgXDqHA/FWpYsZq6EHgnKoJJGBq1IMGp7TO4E76iCJ7g2AVBGVYTIhOoqJZwo+8aqmES0X6UOlRRFxqaWSBUKk4KaQQWYEEmYOeyTGTXHTVUrxGUMqdQVAR4GecYdUfjjg7FZ7qSkWXuGrX8Lqvts6odYScuYodAEJxLdZV5uIl0nwVZKEhdPhW7SlxF/9eV1BnJPN1FCNSAJOTtj12JYF+a4CIRFPeLLdHDLvN0Uyt/YJn92aAS9X9EDC+S+XhqpIekEEqd8uzmK5+aq8S1Iyby9mBopDEXj/I/xYGK552739GNQ+RFy/PQ0O1gW43nFbl/Ac3n8Yl7vCglAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity scrcpy&quot;
+        title=&quot;Unity scrcpy&quot;
+        src=&quot;/static/34a1b9fcd4f3c2d59ddcf2f38d72dd73/82b28/unity-scrcpy.png&quot;
+        srcset=&quot;/static/34a1b9fcd4f3c2d59ddcf2f38d72dd73/72799/unity-scrcpy.png 320w,
+/static/34a1b9fcd4f3c2d59ddcf2f38d72dd73/6af66/unity-scrcpy.png 640w,
+/static/34a1b9fcd4f3c2d59ddcf2f38d72dd73/82b28/unity-scrcpy.png 931w&quot;
+        sizes=&quot;(max-width: 931px) 100vw, 931px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;This should attach a view for a single eye. Be careful! Sometimes what you see in the &lt;code class=&quot;language-text&quot;&gt;scrcpy&lt;/code&gt; window doesn’t always perfectly match what the player sees on the Oculus Quest. If you want to see both eyes you can just use &lt;code class=&quot;language-text&quot;&gt;scrcpy&lt;/code&gt; without any additional parameters&lt;label for=&quot;sd-less-than-code&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;sd-less-than-code&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;&lt;code&gt;scrcpy&lt;/code&gt; or Screen-Copy is part of Genymobile and can be found &lt;a href=&quot;https://github.com/Genymobile/scrcpy#mac-os&quot;&gt;https://github.com/Genymobile/scrcpy#mac-os&lt;/a&gt;. There are options for other platforms as well. See also: &lt;a href=&quot;https://note.mu/masaki_ponpoko/n/nc759f6499c79&quot;&gt;https://note.mu/masaki_ponpoko/n/nc759f6499c79&lt;/a&gt;&lt;/span&gt;.&lt;/p&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h2 id=&quot;more-learning&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#more-learning&quot; aria-label=&quot;more learning permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;More learning&lt;/h2&gt;&lt;p&gt;I’ve used other resources when learning. I’ll list some of them here:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.udemy.com/share/1000lMBkQac1dQRng=/&quot;&gt;The Ultimate Guide to Game Development with Unity 2019&lt;/a&gt;. This course costs between $10-12 if you catch it on sale. I highly recommend it if you are just getting started. It clearly explains how to move around the Unity interface, how to move quickly, and basic concepts of scripting.&lt;/li&gt;
+&lt;li&gt;Using the new Terrain Tools: &lt;a href=&quot;https://blogs.unity3d.com/2019/05/28/speed-up-your-work-with-the-new-terrain-tools-package/&quot;&gt;Speed up your work with the new Terrain Tools Package&lt;/a&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://wiki.unrealengine.com/GitHub_Desktop_to_manage_your_project&quot;&gt;Using GitHub Desktop to Manage your Project&lt;/a&gt; and &lt;a href=&quot;https://www.youtube.com/watch?v=qpXxcvS-g3g&quot;&gt;How to use GitHub with Unity&lt;/a&gt; (youtube).&lt;/li&gt;
+&lt;/ul&gt;&lt;/section&gt;</content:encoded></item><item><title><![CDATA[Exploring - Using Express and Amazon Web Services]]></title><description><![CDATA[🗺 Exploring - Work in progress Using Express to build out your API can be challenging; but integrating it with all of the products…]]></description><link>https://jeffrafter.com/express-and-aws/</link><guid isPermaLink="false">https://jeffrafter.com/express-and-aws/</guid><pubDate>Fri, 09 Oct 2020 00:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;figure class=&quot;fullwidth&quot;&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1280px; &quot;
     &gt;
@@ -439,8 +1533,13 @@ module&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;exports &lt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/section&gt;
 &lt;section&gt;&lt;h2 id=&quot;use-terraform-to-deploy-our-changes&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#use-terraform-to-deploy-our-changes&quot; aria-label=&quot;use terraform to deploy our changes permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Use terraform to deploy our changes&lt;/h2&gt;&lt;p&gt;Now that we have prepared the release we should be able to apply our changes using &lt;code class=&quot;language-text&quot;&gt;terraform&lt;/code&gt;. Check the plan:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;terraform plan&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should see the modified hash of the source code:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;...
  ~ source_code_hash = &amp;quot;PM7qAOa3MhcDW7/4fxKHxkSe5c6c3DyElx5iTGb8bPY=&amp;quot; -&amp;gt; &amp;quot;APdymEzpkA8Gm1BqKtSRnr/4O5Xl0gZBJHknkbA4LYE=&amp;quot;
-...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Apply the changes:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;terraform apply&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And answer &lt;code class=&quot;language-text&quot;&gt;yes&lt;/code&gt;. Once complete, open your API in a browser: &lt;a href=&quot;https://api.example.com/ok&quot;&gt;https://api.example.com/ok&lt;/a&gt; (replacing &lt;code class=&quot;language-text&quot;&gt;example&lt;/code&gt; with your domain name). You should see:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token property&quot;&gt;&quot;ok&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;ok&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/section&gt;
-&lt;section&gt;&lt;h2 id=&quot;invoking-the-function-directly&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#invoking-the-function-directly&quot; aria-label=&quot;invoking the function directly permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Invoking the function directly&lt;/h2&gt;&lt;p&gt;We could also invoke our function directly (without opening a browser and sending a request through the API Gateway). We can do this using the &lt;code class=&quot;language-text&quot;&gt;aws-cli&lt;/code&gt;. Run the following (changing the &lt;code class=&quot;language-text&quot;&gt;profile&lt;/code&gt; name &lt;code class=&quot;language-text&quot;&gt;example&lt;/code&gt; to the name of your &lt;code class=&quot;language-text&quot;&gt;aws-cli&lt;/code&gt; profile)&lt;label for=&quot;sd-it-s-easy-to-forget&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;sd-it-s-easy-to-forget&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;It&apos;s easy to forget to add the &lt;code&gt;cli-binary-format&lt;/code&gt; parameter. If you leave it off you&apos;ll see an error: &quot;An error occurred (InvalidRequestContentException) when calling the Invoke operation: Could not parse request body into json: Unexpected character (&apos;­&apos; (code 173)): expected a valid value (number, String, array, object, &apos;true&apos;, &apos;false&apos; or &apos;null&apos;)
+...&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Apply the changes:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;terraform apply&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And answer &lt;code class=&quot;language-text&quot;&gt;yes&lt;/code&gt;. Once complete, open your API in a browser: &lt;a href=&quot;https://api.example.com/ok&quot;&gt;https://api.example.com/ok&lt;/a&gt; (replacing &lt;code class=&quot;language-text&quot;&gt;example&lt;/code&gt; with your domain name). You should see:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token property&quot;&gt;&quot;ok&quot;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;ok&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;If you don’t see “ok” you might instead see:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;json&quot;&gt;&lt;pre class=&quot;language-json&quot;&gt;&lt;code class=&quot;language-json&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&apos;message&apos;&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;Missing Authentication Token&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;There are several reasons you might see this:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;You attempted to navigate to the root URL (which isn’t configured)&lt;/li&gt;
+&lt;li&gt;Your integration or options integration is configured incorrectly&lt;/li&gt;
+&lt;li&gt;The Lambda function is failing (and errors are configured incorrectly)&lt;/li&gt;
+&lt;li&gt;The integration is setup to require authorization and there is no authorized user.&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;In most cases the problem is required authorization. In fact, if you’ve followed the previous tutorial, you should see this error. Feel free to continue (we’ll setup user authorization in the next post). If you want to remove the user authorization requirement, revisit the &lt;a href=&quot;https://jeffrafter.com/terraform-and-aws/#create-an-api-gateway-that-proxies-to-the-function&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;site_api_method&lt;/code&gt;&lt;/a&gt; definition. Change &lt;code class=&quot;language-text&quot;&gt;AWS_IAM&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;NONE&lt;/code&gt; and apply the changes. After a few minutes you should be able to see &lt;code class=&quot;language-text&quot;&gt;&amp;quot;ok&amp;quot;&lt;/code&gt; response.&lt;/p&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h2 id=&quot;invoking-the-function-directly&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#invoking-the-function-directly&quot; aria-label=&quot;invoking the function directly permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Invoking the function directly&lt;/h2&gt;&lt;p&gt;We could also invoke our function directly (without opening a browser and sending a request through the API Gateway). We can do this using &lt;code class=&quot;language-text&quot;&gt;awscli&lt;/code&gt;. Run the following (changing the &lt;code class=&quot;language-text&quot;&gt;profile&lt;/code&gt; name &lt;code class=&quot;language-text&quot;&gt;example&lt;/code&gt; to the name of your &lt;code class=&quot;language-text&quot;&gt;awscli&lt;/code&gt; profile)&lt;label for=&quot;sd-it-s-easy-to-forget&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;sd-it-s-easy-to-forget&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;It&apos;s easy to forget to add the &lt;code&gt;cli-binary-format&lt;/code&gt; parameter. If you leave it off you&apos;ll see an error: &quot;An error occurred (InvalidRequestContentException) when calling the Invoke operation: Could not parse request body into json: Unexpected character (&apos;­&apos; (code 173)): expected a valid value (number, String, array, object, &apos;true&apos;, &apos;false&apos; or &apos;null&apos;)
 at [Source: (byte[])&quot;��(������/�j��Hm���Dۡܡy�^��(�ק�ܩy �i�&apos;�*&apos;�;(��Z�ǭQ1|&quot;; line: 1, column: 2]&quot;. You can make this parameter the default in your &lt;code&gt;~/.aws/config&lt;/code&gt;. For more information, see the &lt;a href=&quot;https://docs.aws.amazon.com/cli/latest/userguide/cliv2-migration.html#cliv2-migration-binaryparam&quot;&gt;AWS documentation&lt;/a&gt;.&lt;/span&gt;:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;aws lambda invoke \
   --profile example \
   --cli-binary-format raw-in-base64-out \
@@ -815,6 +1914,10 @@ terraform-database/
   default &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;us-east-1&quot;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
+variable &lt;span class=&quot;token string&quot;&gt;&quot;profile&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  default &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;example&quot;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+
 variable &lt;span class=&quot;token string&quot;&gt;&quot;domain&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
   default &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;example.com&quot;&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We’ll use these variables as we write our configuration. For more information, see the &lt;a href=&quot;https://www.terraform.io/docs/configuration/variables.html&quot;&gt;Terraform documentation on input variables&lt;/a&gt;.&lt;/p&gt;&lt;/section&gt;
@@ -825,7 +1928,8 @@ variable &lt;span class=&quot;token string&quot;&gt;&quot;domain&quot;&lt;/span&
 &lt;/ol&gt;&lt;p&gt;To start, we’ll set the provider. Again, for this post we’ll be using AWS, so we’ll configure that in Terraform, In the &lt;code class=&quot;language-text&quot;&gt;terraform&lt;/code&gt; folder, create a new file called &lt;code class=&quot;language-text&quot;&gt;aws.tf&lt;/code&gt;:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ruby&quot;&gt;&lt;pre class=&quot;language-ruby&quot;&gt;&lt;code class=&quot;language-ruby&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;# Setup the provider for this Terraform instance&lt;/span&gt;
 provider &lt;span class=&quot;token string&quot;&gt;&quot;aws&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
   region  &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; var&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;region
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Notice that the value for the region uses a &lt;em&gt;variable interpolation&lt;/em&gt;.&lt;/p&gt;&lt;blockquote&gt;
+  profile &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; var&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;profile
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Notice that the value for the region uses a &lt;em&gt;variable reference&lt;/em&gt;. We’ve also specified the profile with a variable. If you configured &lt;code class=&quot;language-text&quot;&gt;awscli&lt;/code&gt; with a default profile you don’t need to include the profile name here.&lt;/p&gt;&lt;blockquote&gt;
 &lt;p&gt;Even though we configured &lt;code class=&quot;language-text&quot;&gt;awscli&lt;/code&gt; with our chosen region &lt;code class=&quot;language-text&quot;&gt;us-east-1&lt;/code&gt;, we still need to set the &lt;code class=&quot;language-text&quot;&gt;region&lt;/code&gt; in the provider block. This should be unnecessary but because of how Terraform connects to providers we must include it again.&lt;/p&gt;
 &lt;/blockquote&gt;&lt;p&gt;We’ll need to create an S3 bucket that will hold the state. Because S3 bucket names are global you’ll need to choose a unique name. To make sure my bucket name is unique, I generally use my domain name (without the &lt;code class=&quot;language-text&quot;&gt;.com&lt;/code&gt;) as a prefix and add &lt;code class=&quot;language-text&quot;&gt;-state&lt;/code&gt;. For example: &lt;code class=&quot;language-text&quot;&gt;example-state&lt;/code&gt;. Create a new variable by adding the following to &lt;code class=&quot;language-text&quot;&gt;variables.tf&lt;/code&gt; (replacing &lt;code class=&quot;language-text&quot;&gt;example&lt;/code&gt; with your name):&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ruby&quot;&gt;&lt;pre class=&quot;language-ruby&quot;&gt;&lt;code class=&quot;language-ruby&quot;&gt;variable &lt;span class=&quot;token string&quot;&gt;&quot;state_bucket&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
   default &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;example-state&quot;&lt;/span&gt;
@@ -846,18 +1950,14 @@ resource &lt;span class=&quot;token string&quot;&gt;&quot;aws_s3_bucket&quot;&lt
 &lt;/blockquote&gt;&lt;p&gt;You should see:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Initializing the backend...
 
 Initializing provider plugins...
-- Checking for available provider plugins...
-- Downloading plugin for provider &amp;quot;aws&amp;quot; (hashicorp/aws) 3.7.0...
+- Finding latest version of hashicorp/aws...
+- Installing hashicorp/aws v3.24.1...
+- Installed hashicorp/aws v3.24.1 (signed by HashiCorp)
 
-The following providers do not have any version constraints in configuration,
-so the latest version was installed.
-
-To prevent automatic upgrades to new major versions that may contain breaking
-changes, it is recommended to add version = &amp;quot;...&amp;quot; constraints to the
-corresponding provider blocks in configuration, with the constraint strings
-suggested below.
-
-* provider.aws: version = &amp;quot;~&amp;gt; 3.7&amp;quot;
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run &amp;quot;terraform init&amp;quot; in the future.
 
 Terraform has been successfully initialized!
 
@@ -871,12 +1971,13 @@ commands will detect it and remind you to do so if necessary.&lt;/code&gt;&lt;/p
 terraform &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
   backend &lt;span class=&quot;token string&quot;&gt;&quot;s3&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
     region  &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;us-east-1&quot;&lt;/span&gt;
+    profile &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;example&quot;&lt;/span&gt;
     bucket  &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;example-state&quot;&lt;/span&gt;
     key     &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;terraform&quot;&lt;/span&gt;
     encrypt &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
   &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Again we’ll want to set the &lt;code class=&quot;language-text&quot;&gt;bucket&lt;/code&gt; value to the name of the bucket we’ve just created (replace &lt;code class=&quot;language-text&quot;&gt;example-state&lt;/code&gt; with your chosen name).&lt;/p&gt;&lt;blockquote&gt;
-&lt;p&gt;Wait - why aren’t we using &lt;code class=&quot;language-text&quot;&gt;var.region&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;var.state_bucket&lt;/code&gt; variables? Terraform reads the values for the &lt;code class=&quot;language-text&quot;&gt;backend&lt;/code&gt; resource very early in its lifecycle; because of this you cannot use variable interpolations and it cannot utilize the values in the &lt;code class=&quot;language-text&quot;&gt;provider&lt;/code&gt; node. All of the values need to be redeclared as shown.&lt;/p&gt;
+&lt;p&gt;Wait - why aren’t we using &lt;code class=&quot;language-text&quot;&gt;var.region&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;var.profile&lt;/code&gt;, and &lt;code class=&quot;language-text&quot;&gt;var.state_bucket&lt;/code&gt; variables? Terraform reads the values for the &lt;code class=&quot;language-text&quot;&gt;backend&lt;/code&gt; resource very early in its lifecycle; because of this you cannot use variable interpolations and it cannot utilize the values in the &lt;code class=&quot;language-text&quot;&gt;provider&lt;/code&gt; node. All of the values need to be redeclared as shown.&lt;/p&gt;
 &lt;/blockquote&gt;&lt;p&gt;With this new configuration in place we can check the plan:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;terraform plan&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should see:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Backend reinitialization required. Please run &amp;quot;terraform init&amp;quot;.
 Reason: Initial configuration of the requested backend &amp;quot;s3&amp;quot;
 
@@ -893,7 +1994,8 @@ If the change reason above is incorrect, please verify your configuration
 hasn&amp;#39;t changed and try again. At this point, no changes to your existing
 configuration or state have been made.
 
-Failed to load backend: Initialization required. Please see the error message above.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Terraform has detected that we want to change the location of our state. In this case we’ll do what it suggests:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;terraform init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should see:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Initializing the backend...
+
+Error: Initialization required. Please see the error message above.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Terraform has detected that we want to change the location of our state. In this case we’ll do what it suggests:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;terraform init&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;You should see:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Initializing the backend...
 Do you want to copy existing state to the new backend?
   Pre-existing state was found while migrating the previous &amp;quot;local&amp;quot; backend to the
   newly configured &amp;quot;s3&amp;quot; backend. No existing state was found in the newly
@@ -904,16 +2006,9 @@ Do you want to copy existing state to the new backend?
 use this backend unless the backend configuration changes.
 
 Initializing provider plugins...
-
-The following providers do not have any version constraints in configuration,
-so the latest version was installed.
-
-To prevent automatic upgrades to new major versions that may contain breaking
-changes, it is recommended to add version = &amp;quot;...&amp;quot; constraints to the
-corresponding provider blocks in configuration, with the constraint strings
-suggested below.
-
-* provider.aws: version = &amp;quot;~&amp;gt; 3.7&amp;quot;
+- Reusing previous version of hashicorp/aws from the dependency lock file
+- Installing hashicorp/aws v3.24.1...
+- Installed hashicorp/aws v3.24.1 (signed by HashiCorp)
 
 Terraform has been successfully initialized!
 

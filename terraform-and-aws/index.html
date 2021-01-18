@@ -345,6 +345,10 @@ terraform-database/
   default <span class="token operator">=</span> <span class="token string">"us-east-1"</span>
 <span class="token punctuation">}</span>
 
+variable <span class="token string">"profile"</span> <span class="token punctuation">{</span>
+  default <span class="token operator">=</span> <span class="token string">"example"</span>
+<span class="token punctuation">}</span>
+
 variable <span class="token string">"domain"</span> <span class="token punctuation">{</span>
   default <span class="token operator">=</span> <span class="token string">"example.com"</span>
 <span class="token punctuation">}</span></code></pre></div><p>We’ll use these variables as we write our configuration. For more information, see the <a href="https://www.terraform.io/docs/configuration/variables.html">Terraform documentation on input variables</a>.</p></section>
@@ -355,7 +359,8 @@ variable <span class="token string">"domain"</span> <span class="token punctuati
 </ol><p>To start, we’ll set the provider. Again, for this post we’ll be using AWS, so we’ll configure that in Terraform, In the <code class="language-text">terraform</code> folder, create a new file called <code class="language-text">aws.tf</code>:</p><div class="gatsby-highlight" data-language="ruby"><pre class="language-ruby"><code class="language-ruby"><span class="token comment"># Setup the provider for this Terraform instance</span>
 provider <span class="token string">"aws"</span> <span class="token punctuation">{</span>
   region  <span class="token operator">=</span> var<span class="token punctuation">.</span>region
-<span class="token punctuation">}</span></code></pre></div><p>Notice that the value for the region uses a <em>variable interpolation</em>.</p><blockquote>
+  profile <span class="token operator">=</span> var<span class="token punctuation">.</span>profile
+<span class="token punctuation">}</span></code></pre></div><p>Notice that the value for the region uses a <em>variable reference</em>. We’ve also specified the profile with a variable. If you configured <code class="language-text">awscli</code> with a default profile you don’t need to include the profile name here.</p><blockquote>
 <p>Even though we configured <code class="language-text">awscli</code> with our chosen region <code class="language-text">us-east-1</code>, we still need to set the <code class="language-text">region</code> in the provider block. This should be unnecessary but because of how Terraform connects to providers we must include it again.</p>
 </blockquote><p>We’ll need to create an S3 bucket that will hold the state. Because S3 bucket names are global you’ll need to choose a unique name. To make sure my bucket name is unique, I generally use my domain name (without the <code class="language-text">.com</code>) as a prefix and add <code class="language-text">-state</code>. For example: <code class="language-text">example-state</code>. Create a new variable by adding the following to <code class="language-text">variables.tf</code> (replacing <code class="language-text">example</code> with your name):</p><div class="gatsby-highlight" data-language="ruby"><pre class="language-ruby"><code class="language-ruby">variable <span class="token string">"state_bucket"</span> <span class="token punctuation">{</span>
   default <span class="token operator">=</span> <span class="token string">"example-state"</span>
@@ -376,18 +381,14 @@ resource <span class="token string">"aws_s3_bucket"</span> <span class="token st
 </blockquote><p>You should see:</p><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Initializing the backend...
 
 Initializing provider plugins...
-- Checking for available provider plugins...
-- Downloading plugin for provider &quot;aws&quot; (hashicorp/aws) 3.7.0...
+- Finding latest version of hashicorp/aws...
+- Installing hashicorp/aws v3.24.1...
+- Installed hashicorp/aws v3.24.1 (signed by HashiCorp)
 
-The following providers do not have any version constraints in configuration,
-so the latest version was installed.
-
-To prevent automatic upgrades to new major versions that may contain breaking
-changes, it is recommended to add version = &quot;...&quot; constraints to the
-corresponding provider blocks in configuration, with the constraint strings
-suggested below.
-
-* provider.aws: version = &quot;~&gt; 3.7&quot;
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run &quot;terraform init&quot; in the future.
 
 Terraform has been successfully initialized!
 
@@ -401,12 +402,13 @@ commands will detect it and remind you to do so if necessary.</code></pre></div>
 terraform <span class="token punctuation">{</span>
   backend <span class="token string">"s3"</span> <span class="token punctuation">{</span>
     region  <span class="token operator">=</span> <span class="token string">"us-east-1"</span>
+    profile <span class="token operator">=</span> <span class="token string">"example"</span>
     bucket  <span class="token operator">=</span> <span class="token string">"example-state"</span>
     key     <span class="token operator">=</span> <span class="token string">"terraform"</span>
     encrypt <span class="token operator">=</span> <span class="token boolean">true</span>
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span></code></pre></div><p>Again we’ll want to set the <code class="language-text">bucket</code> value to the name of the bucket we’ve just created (replace <code class="language-text">example-state</code> with your chosen name).</p><blockquote>
-<p>Wait - why aren’t we using <code class="language-text">var.region</code> and <code class="language-text">var.state_bucket</code> variables? Terraform reads the values for the <code class="language-text">backend</code> resource very early in its lifecycle; because of this you cannot use variable interpolations and it cannot utilize the values in the <code class="language-text">provider</code> node. All of the values need to be redeclared as shown.</p>
+<p>Wait - why aren’t we using <code class="language-text">var.region</code>, <code class="language-text">var.profile</code>, and <code class="language-text">var.state_bucket</code> variables? Terraform reads the values for the <code class="language-text">backend</code> resource very early in its lifecycle; because of this you cannot use variable interpolations and it cannot utilize the values in the <code class="language-text">provider</code> node. All of the values need to be redeclared as shown.</p>
 </blockquote><p>With this new configuration in place we can check the plan:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">terraform plan</code></pre></div><p>You should see:</p><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Backend reinitialization required. Please run &quot;terraform init&quot;.
 Reason: Initial configuration of the requested backend &quot;s3&quot;
 
@@ -423,7 +425,8 @@ If the change reason above is incorrect, please verify your configuration
 hasn&#39;t changed and try again. At this point, no changes to your existing
 configuration or state have been made.
 
-Failed to load backend: Initialization required. Please see the error message above.</code></pre></div><p>Terraform has detected that we want to change the location of our state. In this case we’ll do what it suggests:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">terraform init</code></pre></div><p>You should see:</p><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Initializing the backend...
+
+Error: Initialization required. Please see the error message above.</code></pre></div><p>Terraform has detected that we want to change the location of our state. In this case we’ll do what it suggests:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">terraform init</code></pre></div><p>You should see:</p><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">Initializing the backend...
 Do you want to copy existing state to the new backend?
   Pre-existing state was found while migrating the previous &quot;local&quot; backend to the
   newly configured &quot;s3&quot; backend. No existing state was found in the newly
@@ -434,16 +437,9 @@ Do you want to copy existing state to the new backend?
 use this backend unless the backend configuration changes.
 
 Initializing provider plugins...
-
-The following providers do not have any version constraints in configuration,
-so the latest version was installed.
-
-To prevent automatic upgrades to new major versions that may contain breaking
-changes, it is recommended to add version = &quot;...&quot; constraints to the
-corresponding provider blocks in configuration, with the constraint strings
-suggested below.
-
-* provider.aws: version = &quot;~&gt; 3.7&quot;
+- Reusing previous version of hashicorp/aws from the dependency lock file
+- Installing hashicorp/aws v3.24.1...
+- Installed hashicorp/aws v3.24.1 (signed by HashiCorp)
 
 Terraform has been successfully initialized!
 
@@ -1864,7 +1860,7 @@ should now work.
 
 If you ever set or change modules or backend configuration for Terraform,
 rerun this command to reinitialize your working directory. If you forget, other
-commands will detect it and remind you to do so if necessary.</code></pre></div></section></div><hr/><h2>Comments</h2><div class="sc-ifAKCX ddlDEo github"><div><p>Thanks for reading ❤️ – comment by replying to the <a href="https://github.com/jeffrafter/jeffrafter.github.io/issues/16">issue for this post</a>.<!-- --> <!-- -->There’s no comments yet; you could be the first.<br/></p></div><div class="sc-gzVnrw bOnSNx"><a href="https://github.com/jeffrafter/jeffrafter.github.io/issues/16#new_comment_field" target="_blank" rel="noreferrer noopener" class="button btn">Add a comment →</a></div></div><hr/><h2>There’s more to read</h2><div><p><em>Looking for more long-form posts? Here ya go...</em></p></div><ul class="sc-htoDjs gXLbcD"><li><a rel="prev" href="/unity-and-github/">← <!-- -->Working with Unity and GitHub</a></li><li><a rel="next" href="/express-and-aws/">Exploring - Using Express and Amazon Web Services<!-- --> →</a></li></ul></div></article></main><footer class="sc-bwzfXH aCPwf footer">© <!-- -->2020<!-- -->,<!-- --> <a href="https://jeffrafter.com">jeffrafter.com</a>. Built with<!-- --> <a href="https://www.gatsbyjs.org">Gatsby</a></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
+commands will detect it and remind you to do so if necessary.</code></pre></div></section></div><hr/><h2>Comments</h2><div class="sc-ifAKCX ddlDEo github"><div><p>Thanks for reading ❤️ – comment by replying to the <a href="https://github.com/jeffrafter/jeffrafter.github.io/issues/16">issue for this post</a>.<!-- --> <!-- -->There’s no comments yet; you could be the first.<br/></p></div><div class="sc-gzVnrw bOnSNx"><a href="https://github.com/jeffrafter/jeffrafter.github.io/issues/16#new_comment_field" target="_blank" rel="noreferrer noopener" class="button btn">Add a comment →</a></div></div><hr/><h2>There’s more to read</h2><div><p><em>Looking for more long-form posts? Here ya go...</em></p></div><ul class="sc-htoDjs gXLbcD"><li><a rel="prev" href="/unity-and-github/">← <!-- -->Working with Unity and GitHub</a></li><li><a rel="next" href="/express-and-aws/">Exploring - Using Express and Amazon Web Services<!-- --> →</a></li></ul></div></article></main><footer class="sc-bwzfXH aCPwf footer">© <!-- -->2021<!-- -->,<!-- --> <a href="https://jeffrafter.com">jeffrafter.com</a>. Built with<!-- --> <a href="https://www.gatsbyjs.org">Gatsby</a></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
   
   
   if(true) {
