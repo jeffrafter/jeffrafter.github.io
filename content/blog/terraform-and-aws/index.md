@@ -388,6 +388,10 @@ variable "region" {
   default = "us-east-1"
 }
 
+variable "profile" {
+  default = "example"
+}
+
 variable "domain" {
   default = "example.com"
 }
@@ -419,10 +423,11 @@ To start, we'll set the provider. Again, for this post we'll be using AWS, so we
 # Setup the provider for this Terraform instance
 provider "aws" {
   region  = var.region
+  profile = var.profile
 }
 ```
 
-Notice that the value for the region uses a _variable interpolation_.
+Notice that the value for the region uses a _variable reference_. We've also specified the profile with a variable. If you configured `awscli` with a default profile you don't need to include the profile name here.
 
 > Even though we configured `awscli` with our chosen region `us-east-1`, we still need to set the `region` in the provider block. This should be unnecessary but because of how Terraform connects to providers we must include it again.
 
@@ -466,18 +471,14 @@ You should see:
 Initializing the backend...
 
 Initializing provider plugins...
-- Checking for available provider plugins...
-- Downloading plugin for provider "aws" (hashicorp/aws) 3.7.0...
+- Finding latest version of hashicorp/aws...
+- Installing hashicorp/aws v3.24.1...
+- Installed hashicorp/aws v3.24.1 (signed by HashiCorp)
 
-The following providers do not have any version constraints in configuration,
-so the latest version was installed.
-
-To prevent automatic upgrades to new major versions that may contain breaking
-changes, it is recommended to add version = "..." constraints to the
-corresponding provider blocks in configuration, with the constraint strings
-suggested below.
-
-* provider.aws: version = "~> 3.7"
+Terraform has created a lock file .terraform.lock.hcl to record the provider
+selections it made above. Include this file in your version control repository
+so that Terraform can guarantee to make the same selections by default when
+you run "terraform init" in the future.
 
 Terraform has been successfully initialized!
 
@@ -517,6 +518,7 @@ Create a new file[^multiple] called `state.tf` in the `terraform` folder:
 terraform {
   backend "s3" {
     region  = "us-east-1"
+    profile = "example"
     bucket  = "example-state"
     key     = "terraform"
     encrypt = true
@@ -528,7 +530,7 @@ terraform {
 
 Again we'll want to set the `bucket` value to the name of the bucket we've just created (replace `example-state` with your chosen name).
 
-> Wait - why aren't we using `var.region` and `var.state_bucket` variables? Terraform reads the values for the `backend` resource very early in its lifecycle; because of this you cannot use variable interpolations and it cannot utilize the values in the `provider` node. All of the values need to be redeclared as shown.
+> Wait - why aren't we using `var.region`, `var.profile`, and `var.state_bucket` variables? Terraform reads the values for the `backend` resource very early in its lifecycle; because of this you cannot use variable interpolations and it cannot utilize the values in the `provider` node. All of the values need to be redeclared as shown.
 
 With this new configuration in place we can check the plan:
 
@@ -555,7 +557,8 @@ If the change reason above is incorrect, please verify your configuration
 hasn't changed and try again. At this point, no changes to your existing
 configuration or state have been made.
 
-Failed to load backend: Initialization required. Please see the error message above.
+
+Error: Initialization required. Please see the error message above.
 ```
 
 Terraform has detected that we want to change the location of our state. In this case we'll do what it suggests:
@@ -584,16 +587,9 @@ Successfully configured the backend "s3"! Terraform will automatically
 use this backend unless the backend configuration changes.
 
 Initializing provider plugins...
-
-The following providers do not have any version constraints in configuration,
-so the latest version was installed.
-
-To prevent automatic upgrades to new major versions that may contain breaking
-changes, it is recommended to add version = "..." constraints to the
-corresponding provider blocks in configuration, with the constraint strings
-suggested below.
-
-* provider.aws: version = "~> 3.7"
+- Reusing previous version of hashicorp/aws from the dependency lock file
+- Installing hashicorp/aws v3.24.1...
+- Installed hashicorp/aws v3.24.1 (signed by HashiCorp)
 
 Terraform has been successfully initialized!
 

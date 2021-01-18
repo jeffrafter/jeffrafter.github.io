@@ -701,9 +701,24 @@ And answer `yes`. Once complete, open your API in a browser: https://api.example
 {"ok": "ok"}
 ```
 
+If you don't see "ok" you might instead see:
+
+```json
+{'message':"Missing Authentication Token"}
+```
+
+There are several reasons you might see this:
+
+- You attempted to navigate to the root URL (which isn't configured)
+- Your integration or options integration is configured incorrectly
+- The Lambda function is failing (and errors are configured incorrectly)
+- The integration is setup to require authorization and there is no authorized user.
+
+In most cases the problem is required authorization. In fact, if you've followed the previous tutorial, you should see this error. Feel free to continue (we'll setup user authorization in the next post). If you want to remove the user authorization requirement, revisit the [`site_api_method`](https://jeffrafter.com/terraform-and-aws/#create-an-api-gateway-that-proxies-to-the-function) definition. Change `AWS_IAM` to `NONE` and apply the changes. After a few minutes you should be able to see `"ok"` response.
+
 ## Invoking the function directly
 
-We could also invoke our function directly (without opening a browser and sending a request through the API Gateway). We can do this using the `aws-cli`. Run the following (changing the `profile` name `example` to the name of your `aws-cli` profile)[^cli-binary-format]:
+We could also invoke our function directly (without opening a browser and sending a request through the API Gateway). We can do this using `awscli`. Run the following (changing the `profile` name `example` to the name of your `awscli` profile)[^cli-binary-format]:
 
 ```
 aws lambda invoke \
