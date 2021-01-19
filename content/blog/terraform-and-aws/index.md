@@ -2036,7 +2036,7 @@ With this our API and Lambda configuration should be fully usable.
 
 Before we move on, let's add one more thing: redeployment. Within `api.tf` find the `site_api_deployment` definition and add a redeployment trigger:
 
-```
+```tf
 resource "aws_api_gateway_deployment" "site_api_deployment" {
   rest_api_id = aws_api_gateway_rest_api.site_api.id
   stage_name  = "production"
