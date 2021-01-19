@@ -1011,7 +1011,7 @@ the sandbox so we can proceed to a beta. Thanks!</code></pre></div><p>You should
   <span class="token punctuation">}</span>
 
   global_secondary_index <span class="token punctuation">{</span>
-    name            <span class="token operator">=</span> <span class="token string">"gs1"</span>
+    name            <span class="token operator">=</span> <span class="token string">"gsi"</span>
     hash_key        <span class="token operator">=</span> <span class="token string">"sk"</span>
     range_key       <span class="token operator">=</span> <span class="token string">"data"</span>
     write_capacity  <span class="token operator">=</span> <span class="token number">5</span>
@@ -1316,7 +1316,8 @@ resource <span class="token string">"aws_iam_role"</span> <span class="token str
   <span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
 <span class="token constant">EOF</span>
-<span class="token punctuation">}</span></code></pre></div><p>We’ve declared a single Lambda function and attached an <code class="language-text">IAM</code> role to it. We’ll add permissions to this role soon. When we apply the Terraform configuration it will upload the <code class="language-text">api.zip</code> we created previously. When we invoke the function, it will use the Node version 10 runtime and will timeout after 60 seconds (though it should really only take a few milliseconds to run). We’ve included a custom environment variable called <code class="language-text">VERSION</code> as an example (it isn’t required).</p><p>Let’s check the plan:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">terraform plan</code></pre></div><p>And apply it:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">terraform apply</code></pre></div><p>With this in place we can invoke the function from our terminal:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">aws lambda invoke <span class="token punctuation">\</span>
+<span class="token punctuation">}</span></code></pre></div><p>We’ve declared a single Lambda function and attached an <code class="language-text">IAM</code> role to it. We’ll add permissions to this role soon. When we apply the Terraform configuration it will upload the <code class="language-text">api.zip</code> we created previously. When we invoke the function, it will use the Node version 10 runtime and will timeout after 60 seconds (though it should really only take a few milliseconds to run). We’ve included a custom environment variable called <code class="language-text">VERSION</code> as an example (it isn’t required).</p><p>Let’s check the plan:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">terraform plan</code></pre></div><p>And apply it:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">terraform apply</code></pre></div><p>With this in place we can invoke the function from our terminal (make sure to replace <code class="language-text">example</code> with your profile name):</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">aws lambda invoke <span class="token punctuation">\</span>
+    --profile example <span class="token punctuation">\</span>
     --function-name<span class="token operator">=</span>site_lambda_function <span class="token punctuation">\</span>
     --invocation-type<span class="token operator">=</span>RequestResponse <span class="token punctuation">\</span>
     response.json</code></pre></div><p>Running this should create a new <code class="language-text">response.json</code> file which will have show the logged context. There won’t be an <code class="language-text">event</code> object until we connect it to the API Gateway. Delete <code class="language-text">response.json</code>:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash"><span class="token function">rm</span> response.json</code></pre></div><h3 id="create-an-api-gateway-that-proxies-to-the-function" style="position:relative;"><a href="#create-an-api-gateway-that-proxies-to-the-function" aria-label="create an api gateway that proxies to the function permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Create an API Gateway that proxies to the function</h3><p>With the function created and uploaded we need to configure the API Gateway. Add the following to <code class="language-text">api.tf</code>:</p><div class="gatsby-highlight" data-language="ruby"><pre class="language-ruby"><code class="language-ruby">resource <span class="token string">"aws_api_gateway_rest_api"</span> <span class="token string">"site_api"</span> <span class="token punctuation">{</span>
@@ -1477,26 +1478,12 @@ resource <span class="token string">"aws_api_gateway_gateway_response"</span> <s
     aws_api_gateway_gateway_response<span class="token punctuation">.</span>default_5xx
   <span class="token punctuation">]</span>
 
-  triggers <span class="token operator">=</span> <span class="token punctuation">{</span>
-    redeployment <span class="token operator">=</span> sha1<span class="token punctuation">(</span>join<span class="token punctuation">(</span><span class="token string">","</span><span class="token punctuation">,</span> list<span class="token punctuation">(</span>
-      jsonencode<span class="token punctuation">(</span>aws_api_gateway_rest_api<span class="token punctuation">.</span>site_api<span class="token punctuation">)</span><span class="token punctuation">,</span>
-      jsonencode<span class="token punctuation">(</span>aws_api_gateway_integration<span class="token punctuation">.</span>site_api_integration<span class="token punctuation">)</span><span class="token punctuation">,</span>
-      jsonencode<span class="token punctuation">(</span>aws_api_gateway_resource<span class="token punctuation">.</span>site_api_resource<span class="token punctuation">)</span><span class="token punctuation">,</span>
-      jsonencode<span class="token punctuation">(</span>aws_api_gateway_method<span class="token punctuation">.</span>site_api_method<span class="token punctuation">)</span><span class="token punctuation">,</span>
-      jsonencode<span class="token punctuation">(</span>aws_api_gateway_method_response<span class="token punctuation">.</span>site_api_method_response<span class="token punctuation">)</span><span class="token punctuation">,</span>
-      jsonencode<span class="token punctuation">(</span>aws_api_gateway_method<span class="token punctuation">.</span>site_api_options_method<span class="token punctuation">)</span><span class="token punctuation">,</span>
-      jsonencode<span class="token punctuation">(</span>aws_api_gateway_integration<span class="token punctuation">.</span>site_api_options_integration<span class="token punctuation">)</span><span class="token punctuation">,</span>
-      jsonencode<span class="token punctuation">(</span>aws_api_gateway_method_response<span class="token punctuation">.</span>site_api_options_method_response<span class="token punctuation">)</span><span class="token punctuation">,</span>
-      jsonencode<span class="token punctuation">(</span>aws_api_gateway_integration_response<span class="token punctuation">.</span>site_api_options_integration_response<span class="token punctuation">)</span><span class="token punctuation">,</span>
-      jsonencode<span class="token punctuation">(</span>aws_api_gateway_gateway_response<span class="token punctuation">.</span>default_4xx<span class="token punctuation">)</span><span class="token punctuation">,</span>
-      jsonencode<span class="token punctuation">(</span>aws_api_gateway_gateway_response<span class="token punctuation">.</span>default_5xx<span class="token punctuation">)</span>
-    <span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-  <span class="token punctuation">}</span>
+  <span class="token comment"># Eventually we'll want to add a trigger for redeployment</span>
 
   lifecycle <span class="token punctuation">{</span>
     create_before_destroy <span class="token operator">=</span> <span class="token boolean">true</span>
   <span class="token punctuation">}</span>
-<span class="token punctuation">}</span></code></pre></div><p>We’ve set <code class="language-text">production</code> as our stage name. In theory, you could have multiple stages (possibly pointing to different Lambda functions) for <code class="language-text">staging</code>, <code class="language-text">development</code>, etc. Alternatively, you could use stages to deploy multiple versions of your API simultaneously (again, each pointing to a different Lambda function). We’ve configured a redeployment trigger to make sure our API is redeployed when there is a change to any part of the setup. This is required even though Terraform is managing the changes because any updates will not be pushed to our production stage until they are <em>deployed</em>.</p><p>By default, Amazon generates a unique domain for our API. Even though it isn’t directly visible to users (unless they are using the developer console), it’s ugly. Luckily, we can specify a custom domain name that points to a particular deployment stage. Add the following to <code class="language-text">api.tf</code>:</p><div class="gatsby-highlight" data-language="ruby"><pre class="language-ruby"><code class="language-ruby">resource <span class="token string">"aws_api_gateway_domain_name"</span> <span class="token string">"site_api_domain_name"</span> <span class="token punctuation">{</span>
+<span class="token punctuation">}</span></code></pre></div><p>We’ve set <code class="language-text">production</code> as our stage name. In theory, you could have multiple stages (possibly pointing to different Lambda functions) for <code class="language-text">staging</code>, <code class="language-text">development</code>, etc. Alternatively, you could use stages to deploy multiple versions of your API simultaneously (again, each pointing to a different Lambda function). We’ve left a note about adding a redeployment trigger later (which we’ll do below).</p><p>By default, Amazon generates a unique domain for our API. Even though it isn’t directly visible to users (unless they are using the developer console), it’s ugly. Luckily, we can specify a custom domain name that points to a particular deployment stage. Add the following to <code class="language-text">api.tf</code>:</p><div class="gatsby-highlight" data-language="ruby"><pre class="language-ruby"><code class="language-ruby">resource <span class="token string">"aws_api_gateway_domain_name"</span> <span class="token string">"site_api_domain_name"</span> <span class="token punctuation">{</span>
   certificate_arn <span class="token operator">=</span> aws_acm_certificate_validation<span class="token punctuation">.</span>cert_validation<span class="token punctuation">.</span>certificate_arn
   domain_name     <span class="token operator">=</span> <span class="token string">"api.${var.domain}"</span>
 <span class="token punctuation">}</span>
@@ -1578,7 +1565,44 @@ resource <span class="token string">"aws_iam_role_policy_attachment"</span> <spa
 resource <span class="token string">"aws_iam_role_policy_attachment"</span> <span class="token string">"site_lambda_function_ses_policy_attachment"</span> <span class="token punctuation">{</span>
   role       <span class="token operator">=</span> aws_iam_role<span class="token punctuation">.</span>site_lambda_function_role<span class="token punctuation">.</span>name
   policy_arn <span class="token operator">=</span> aws_iam_policy<span class="token punctuation">.</span>lambda_ses_policy<span class="token punctuation">.</span>arn
-<span class="token punctuation">}</span></code></pre></div><p>For more information see <a href="https://aws.amazon.com/premiumsupport/knowledge-center/lambda-send-email-ses/">https://aws.amazon.com/premiumsupport/knowledge-center/lambda-send-email-ses/</a>.</p><p>We’re finally ready to push our configuration. Let’s check the plan:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">terraform plan</code></pre></div><p>And apply it:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">terraform apply</code></pre></div><p>With this our API and Lambda configuration should be fully usable.</p><p>Some helpful links:</p><ul>
+<span class="token punctuation">}</span></code></pre></div><p>For more information see <a href="https://aws.amazon.com/premiumsupport/knowledge-center/lambda-send-email-ses/">https://aws.amazon.com/premiumsupport/knowledge-center/lambda-send-email-ses/</a>.</p><p>We’re finally ready to push our configuration. Let’s check the plan:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">terraform plan</code></pre></div><p>And apply it:</p><div class="gatsby-highlight" data-language="bash"><pre class="language-bash"><code class="language-bash">terraform apply</code></pre></div><p>With this our API and Lambda configuration should be fully usable.</p><p>Before we move on, let’s add one more thing: redeployment. Within <code class="language-text">api.tf</code> find the <code class="language-text">site_api_deployment</code> definition and add a redeployment trigger:</p><div class="gatsby-highlight" data-language="text"><pre class="language-text"><code class="language-text">resource &quot;aws_api_gateway_deployment&quot; &quot;site_api_deployment&quot; {
+  rest_api_id = aws_api_gateway_rest_api.site_api.id
+  stage_name  = &quot;production&quot;
+
+  depends_on = [
+    aws_api_gateway_rest_api.site_api,
+    aws_api_gateway_integration.site_api_integration,
+    aws_api_gateway_resource.site_api_resource,
+    aws_api_gateway_method.site_api_method,
+    aws_api_gateway_method_response.site_api_method_response,
+    aws_api_gateway_method.site_api_options_method,
+    aws_api_gateway_integration.site_api_options_integration,
+    aws_api_gateway_method_response.site_api_options_method_response,
+    aws_api_gateway_integration_response.site_api_options_integration_response,
+    aws_api_gateway_gateway_response.default_4xx,
+    aws_api_gateway_gateway_response.default_5xx
+  ]
+
+  triggers = {
+    redeployment = sha1(join(&quot;,&quot;, list(
+      jsonencode(aws_api_gateway_rest_api.site_api),
+      jsonencode(aws_api_gateway_integration.site_api_integration),
+      jsonencode(aws_api_gateway_resource.site_api_resource),
+      jsonencode(aws_api_gateway_method.site_api_method),
+      jsonencode(aws_api_gateway_method_response.site_api_method_response),
+      jsonencode(aws_api_gateway_method.site_api_options_method),
+      jsonencode(aws_api_gateway_integration.site_api_options_integration),
+      jsonencode(aws_api_gateway_method_response.site_api_options_method_response),
+      jsonencode(aws_api_gateway_integration_response.site_api_options_integration_response),
+      jsonencode(aws_api_gateway_gateway_response.default_4xx),
+      jsonencode(aws_api_gateway_gateway_response.default_5xx)
+    )))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}</code></pre></div><p>We need to configure a redeployment trigger to make sure our API is redeployed when there is a change to any part of the setup. This is required even though Terraform is managing the changes because any updates will not be pushed to our production stage until they are <em>deployed</em>. Adding this trigger before the first deployment causes an error; so it must be added after you have run <code class="language-text">terraform apply</code> for the initial deployment.</p><p>Some helpful links:</p><ul>
 <li><a href="https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html">https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html</a></li>
 <li><a href="https://seanmcgary.com/posts/how-to-deploy-an-aws-lambda-with-terraform/">https://seanmcgary.com/posts/how-to-deploy-an-aws-lambda-with-terraform/</a></li>
 </ul></section>
@@ -1860,7 +1884,7 @@ should now work.
 
 If you ever set or change modules or backend configuration for Terraform,
 rerun this command to reinitialize your working directory. If you forget, other
-commands will detect it and remind you to do so if necessary.</code></pre></div></section></div><hr/><h2>Comments</h2><div class="sc-ifAKCX ddlDEo github"><div><p>Thanks for reading ❤️ – comment by replying to the <a href="https://github.com/jeffrafter/jeffrafter.github.io/issues/16">issue for this post</a>.<!-- --> <!-- -->There’s no comments yet; you could be the first.<br/></p></div><div class="sc-gzVnrw bOnSNx"><a href="https://github.com/jeffrafter/jeffrafter.github.io/issues/16#new_comment_field" target="_blank" rel="noreferrer noopener" class="button btn">Add a comment →</a></div></div><hr/><h2>There’s more to read</h2><div><p><em>Looking for more long-form posts? Here ya go...</em></p></div><ul class="sc-htoDjs gXLbcD"><li><a rel="prev" href="/unity-and-github/">← <!-- -->Working with Unity and GitHub</a></li><li><a rel="next" href="/express-and-aws/">Exploring - Using Express and Amazon Web Services<!-- --> →</a></li></ul></div></article></main><footer class="sc-bwzfXH aCPwf footer">© <!-- -->2021<!-- -->,<!-- --> <a href="https://jeffrafter.com">jeffrafter.com</a>. Built with<!-- --> <a href="https://www.gatsbyjs.org">Gatsby</a></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
+commands will detect it and remind you to do so if necessary.</code></pre></div></section></div><hr/><h2>Comments</h2><div class="sc-ifAKCX ddlDEo github"><div><p>Thanks for reading ❤️ – comment by replying to the <a href="https://github.com/jeffrafter/jeffrafter.github.io/issues/16">issue for this post</a>.<!-- --> <!-- -->There’s no comments yet; you could be the first.<br/></p></div><div class="sc-gzVnrw bOnSNx"><a href="https://github.com/jeffrafter/jeffrafter.github.io/issues/16#new_comment_field" target="_blank" rel="noreferrer noopener" class="button btn">Add a comment →</a></div></div><hr/><h2>There’s more to read</h2><div><p><em>Looking for more long-form posts? Here ya go...</em></p></div><ul class="sc-htoDjs gXLbcD"><li><a rel="prev" href="/express-and-aws/">← <!-- -->Exploring - Using Express and Amazon Web Services</a></li><li><a rel="next" href="/getting-started-with-unity-and-vr/">Getting Started With Unity and Virtual Reality<!-- --> →</a></li></ul></div></article></main><footer class="sc-bwzfXH aCPwf footer">© <!-- -->2021<!-- -->,<!-- --> <a href="https://jeffrafter.com">jeffrafter.com</a>. Built with<!-- --> <a href="https://www.gatsbyjs.org">Gatsby</a></footer></div><div id="gatsby-announcer" style="position:absolute;top:0;width:1px;height:1px;padding:0;overflow:hidden;clip:rect(0, 0, 0, 0);white-space:nowrap;border:0" aria-live="assertive" aria-atomic="true"></div></div><script>
   
   
   if(true) {
