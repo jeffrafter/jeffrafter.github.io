@@ -1241,7 +1241,7 @@ resource "aws_dynamodb_table" "database" {
   }
 
   global_secondary_index {
-    name            = "gs1"
+    name            = "gsi"
     hash_key        = "sk"
     range_key       = "data"
     write_capacity  = 5
@@ -1673,10 +1673,11 @@ And apply it:
 terraform apply
 ```
 
-With this in place we can invoke the function from our terminal:
+With this in place we can invoke the function from our terminal (make sure to replace `example` with your profile name):
 
 ```bash
 aws lambda invoke \
+    --profile example \
     --function-name=site_lambda_function \
     --invocation-type=RequestResponse \
     response.json
@@ -1895,21 +1896,7 @@ resource "aws_api_gateway_deployment" "site_api_deployment" {
     aws_api_gateway_gateway_response.default_5xx
   ]
 
-  triggers = {
-    redeployment = sha1(join(",", list(
-      jsonencode(aws_api_gateway_rest_api.site_api),
-      jsonencode(aws_api_gateway_integration.site_api_integration),
-      jsonencode(aws_api_gateway_resource.site_api_resource),
-      jsonencode(aws_api_gateway_method.site_api_method),
-      jsonencode(aws_api_gateway_method_response.site_api_method_response),
-      jsonencode(aws_api_gateway_method.site_api_options_method),
-      jsonencode(aws_api_gateway_integration.site_api_options_integration),
-      jsonencode(aws_api_gateway_method_response.site_api_options_method_response),
-      jsonencode(aws_api_gateway_integration_response.site_api_options_integration_response),
-      jsonencode(aws_api_gateway_gateway_response.default_4xx),
-      jsonencode(aws_api_gateway_gateway_response.default_5xx)
-    )))
-  }
+  # Eventually we'll want to add a trigger for redeployment
 
   lifecycle {
     create_before_destroy = true
@@ -1917,7 +1904,7 @@ resource "aws_api_gateway_deployment" "site_api_deployment" {
 }
 ```
 
-We've set `production` as our stage name. In theory, you could have multiple stages (possibly pointing to different Lambda functions) for `staging`, `development`, etc. Alternatively, you could use stages to deploy multiple versions of your API simultaneously (again, each pointing to a different Lambda function). We've configured a redeployment trigger to make sure our API is redeployed when there is a change to any part of the setup. This is required even though Terraform is managing the changes because any updates will not be pushed to our production stage until they are _deployed_.
+We've set `production` as our stage name. In theory, you could have multiple stages (possibly pointing to different Lambda functions) for `staging`, `development`, etc. Alternatively, you could use stages to deploy multiple versions of your API simultaneously (again, each pointing to a different Lambda function). We've left a note about adding a redeployment trigger later (which we'll do below).
 
 By default, Amazon generates a unique domain for our API. Even though it isn't directly visible to users (unless they are using the developer console), it's ugly. Luckily, we can specify a custom domain name that points to a particular deployment stage. Add the following to `api.tf`:
 
@@ -2046,6 +2033,51 @@ terraform apply
 ```
 
 With this our API and Lambda configuration should be fully usable.
+
+Before we move on, let's add one more thing: redeployment. Within `api.tf` find the `site_api_deployment` definition and add a redeployment trigger:
+
+```
+resource "aws_api_gateway_deployment" "site_api_deployment" {
+  rest_api_id = aws_api_gateway_rest_api.site_api.id
+  stage_name  = "production"
+
+  depends_on = [
+    aws_api_gateway_rest_api.site_api,
+    aws_api_gateway_integration.site_api_integration,
+    aws_api_gateway_resource.site_api_resource,
+    aws_api_gateway_method.site_api_method,
+    aws_api_gateway_method_response.site_api_method_response,
+    aws_api_gateway_method.site_api_options_method,
+    aws_api_gateway_integration.site_api_options_integration,
+    aws_api_gateway_method_response.site_api_options_method_response,
+    aws_api_gateway_integration_response.site_api_options_integration_response,
+    aws_api_gateway_gateway_response.default_4xx,
+    aws_api_gateway_gateway_response.default_5xx
+  ]
+
+  triggers = {
+    redeployment = sha1(join(",", list(
+      jsonencode(aws_api_gateway_rest_api.site_api),
+      jsonencode(aws_api_gateway_integration.site_api_integration),
+      jsonencode(aws_api_gateway_resource.site_api_resource),
+      jsonencode(aws_api_gateway_method.site_api_method),
+      jsonencode(aws_api_gateway_method_response.site_api_method_response),
+      jsonencode(aws_api_gateway_method.site_api_options_method),
+      jsonencode(aws_api_gateway_integration.site_api_options_integration),
+      jsonencode(aws_api_gateway_method_response.site_api_options_method_response),
+      jsonencode(aws_api_gateway_integration_response.site_api_options_integration_response),
+      jsonencode(aws_api_gateway_gateway_response.default_4xx),
+      jsonencode(aws_api_gateway_gateway_response.default_5xx)
+    )))
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+```
+
+We need to configure a redeployment trigger to make sure our API is redeployed when there is a change to any part of the setup. This is required even though Terraform is managing the changes because any updates will not be pushed to our production stage until they are _deployed_. Adding this trigger before the first deployment causes an error; so it must be added after you have run `terraform apply` for the initial deployment.
 
 Some helpful links:
 
