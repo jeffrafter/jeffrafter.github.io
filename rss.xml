@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeff Rafter]]></title><description><![CDATA[How to.]]></description><link>https://jeffrafter.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 19 Jan 2021 21:20:45 GMT</lastBuildDate><item><title><![CDATA[Getting Started With Unity and Virtual Reality]]></title><description><![CDATA[Virtual reality is incredibly immersive and a blast to play with. The Oculus Quest 2 has made it more accessible than ever before. Of course…]]></description><link>https://jeffrafter.com/getting-started-with-unity-and-vr/</link><guid isPermaLink="false">https://jeffrafter.com/getting-started-with-unity-and-vr/</guid><pubDate>Sat, 16 Jan 2021 00:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;figure class=&quot;fullwidth&quot;&gt;&lt;span
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeff Rafter]]></title><description><![CDATA[How to.]]></description><link>https://jeffrafter.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 19 Jan 2021 21:20:59 GMT</lastBuildDate><item><title><![CDATA[Getting Started With Unity and Virtual Reality]]></title><description><![CDATA[Virtual reality is incredibly immersive and a blast to play with. The Oculus Quest 2 has made it more accessible than ever before. Of course…]]></description><link>https://jeffrafter.com/getting-started-with-unity-and-vr/</link><guid isPermaLink="false">https://jeffrafter.com/getting-started-with-unity-and-vr/</guid><pubDate>Sat, 16 Jan 2021 00:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;figure class=&quot;fullwidth&quot;&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1280px; &quot;
     &gt;
@@ -2597,44 +2597,44 @@ resource &lt;span class=&quot;token string&quot;&gt;&quot;aws_iam_role_policy_at
 resource &lt;span class=&quot;token string&quot;&gt;&quot;aws_iam_role_policy_attachment&quot;&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;site_lambda_function_ses_policy_attachment&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
   role       &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; aws_iam_role&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_lambda_function_role&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;name
   policy_arn &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; aws_iam_policy&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;lambda_ses_policy&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;arn
-&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For more information see &lt;a href=&quot;https://aws.amazon.com/premiumsupport/knowledge-center/lambda-send-email-ses/&quot;&gt;https://aws.amazon.com/premiumsupport/knowledge-center/lambda-send-email-ses/&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;We’re finally ready to push our configuration. Let’s check the plan:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;terraform plan&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And apply it:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;terraform apply&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With this our API and Lambda configuration should be fully usable.&lt;/p&gt;&lt;p&gt;Before we move on, let’s add one more thing: redeployment. Within &lt;code class=&quot;language-text&quot;&gt;api.tf&lt;/code&gt; find the &lt;code class=&quot;language-text&quot;&gt;site_api_deployment&lt;/code&gt; definition and add a redeployment trigger:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;resource &amp;quot;aws_api_gateway_deployment&amp;quot; &amp;quot;site_api_deployment&amp;quot; {
-  rest_api_id = aws_api_gateway_rest_api.site_api.id
-  stage_name  = &amp;quot;production&amp;quot;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For more information see &lt;a href=&quot;https://aws.amazon.com/premiumsupport/knowledge-center/lambda-send-email-ses/&quot;&gt;https://aws.amazon.com/premiumsupport/knowledge-center/lambda-send-email-ses/&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;We’re finally ready to push our configuration. Let’s check the plan:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;terraform plan&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;And apply it:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;terraform apply&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With this our API and Lambda configuration should be fully usable.&lt;/p&gt;&lt;p&gt;Before we move on, let’s add one more thing: redeployment. Within &lt;code class=&quot;language-text&quot;&gt;api.tf&lt;/code&gt; find the &lt;code class=&quot;language-text&quot;&gt;site_api_deployment&lt;/code&gt; definition and add a redeployment trigger:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;ruby&quot;&gt;&lt;pre class=&quot;language-ruby&quot;&gt;&lt;code class=&quot;language-ruby&quot;&gt;resource &lt;span class=&quot;token string&quot;&gt;&quot;aws_api_gateway_deployment&quot;&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;site_api_deployment&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  rest_api_id &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; aws_api_gateway_rest_api&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_api&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;id
+  stage_name  &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;production&quot;&lt;/span&gt;
 
-  depends_on = [
-    aws_api_gateway_rest_api.site_api,
-    aws_api_gateway_integration.site_api_integration,
-    aws_api_gateway_resource.site_api_resource,
-    aws_api_gateway_method.site_api_method,
-    aws_api_gateway_method_response.site_api_method_response,
-    aws_api_gateway_method.site_api_options_method,
-    aws_api_gateway_integration.site_api_options_integration,
-    aws_api_gateway_method_response.site_api_options_method_response,
-    aws_api_gateway_integration_response.site_api_options_integration_response,
-    aws_api_gateway_gateway_response.default_4xx,
-    aws_api_gateway_gateway_response.default_5xx
-  ]
+  depends_on &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;
+    aws_api_gateway_rest_api&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_api&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    aws_api_gateway_integration&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_api_integration&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    aws_api_gateway_resource&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_api_resource&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    aws_api_gateway_method&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_api_method&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    aws_api_gateway_method_response&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_api_method_response&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    aws_api_gateway_method&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_api_options_method&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    aws_api_gateway_integration&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_api_options_integration&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    aws_api_gateway_method_response&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_api_options_method_response&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    aws_api_gateway_integration_response&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_api_options_integration_response&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    aws_api_gateway_gateway_response&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;default_4xx&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+    aws_api_gateway_gateway_response&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;default_5xx
+  &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
 
-  triggers = {
-    redeployment = sha1(join(&amp;quot;,&amp;quot;, list(
-      jsonencode(aws_api_gateway_rest_api.site_api),
-      jsonencode(aws_api_gateway_integration.site_api_integration),
-      jsonencode(aws_api_gateway_resource.site_api_resource),
-      jsonencode(aws_api_gateway_method.site_api_method),
-      jsonencode(aws_api_gateway_method_response.site_api_method_response),
-      jsonencode(aws_api_gateway_method.site_api_options_method),
-      jsonencode(aws_api_gateway_integration.site_api_options_integration),
-      jsonencode(aws_api_gateway_method_response.site_api_options_method_response),
-      jsonencode(aws_api_gateway_integration_response.site_api_options_integration_response),
-      jsonencode(aws_api_gateway_gateway_response.default_4xx),
-      jsonencode(aws_api_gateway_gateway_response.default_5xx)
-    )))
-  }
+  triggers &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    redeployment &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; sha1&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;join&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&quot;,&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; list&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;
+      jsonencode&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;aws_api_gateway_rest_api&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_api&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      jsonencode&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;aws_api_gateway_integration&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_api_integration&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      jsonencode&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;aws_api_gateway_resource&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_api_resource&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      jsonencode&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;aws_api_gateway_method&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_api_method&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      jsonencode&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;aws_api_gateway_method_response&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_api_method_response&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      jsonencode&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;aws_api_gateway_method&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_api_options_method&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      jsonencode&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;aws_api_gateway_integration&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_api_options_integration&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      jsonencode&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;aws_api_gateway_method_response&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_api_options_method_response&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      jsonencode&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;aws_api_gateway_integration_response&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;site_api_options_integration_response&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      jsonencode&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;aws_api_gateway_gateway_response&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;default_4xx&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+      jsonencode&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;aws_api_gateway_gateway_response&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;default_5xx&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 
-  lifecycle {
-    create_before_destroy = true
-  }
-}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We need to configure a redeployment trigger to make sure our API is redeployed when there is a change to any part of the setup. This is required even though Terraform is managing the changes because any updates will not be pushed to our production stage until they are &lt;em&gt;deployed&lt;/em&gt;. Adding this trigger before the first deployment causes an error; so it must be added after you have run &lt;code class=&quot;language-text&quot;&gt;terraform apply&lt;/code&gt; for the initial deployment.&lt;/p&gt;&lt;p&gt;Some helpful links:&lt;/p&gt;&lt;ul&gt;
+  lifecycle &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    create_before_destroy &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;We need to configure a redeployment trigger to make sure our API is redeployed when there is a change to any part of the setup. This is required even though Terraform is managing the changes because any updates will not be pushed to our production stage until they are &lt;em&gt;deployed&lt;/em&gt;. Adding this trigger before the first deployment causes an error; so it must be added after you have run &lt;code class=&quot;language-text&quot;&gt;terraform apply&lt;/code&gt; for the initial deployment.&lt;/p&gt;&lt;p&gt;Some helpful links:&lt;/p&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html&quot;&gt;https://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-create-api-as-simple-proxy-for-lambda.html&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://seanmcgary.com/posts/how-to-deploy-an-aws-lambda-with-terraform/&quot;&gt;https://seanmcgary.com/posts/how-to-deploy-an-aws-lambda-with-terraform/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/section&gt;
