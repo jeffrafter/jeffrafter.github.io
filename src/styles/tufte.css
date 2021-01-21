@@ -197,7 +197,7 @@ section > table {
 /* 50 + 5 == 55, to be the same width as paragraph */
 section > ol,
 section > ul {
-  width: 50%;
+  width: 55%;
   -webkit-padding-start: 5%;
 }
 
@@ -241,7 +241,7 @@ a:visited {
   color: inherit;
 }
 
-a:link {
+/* a:link {
   text-decoration: none;
   background: -webkit-linear-gradient(#fffff8, #fffff8), -webkit-linear-gradient(#fffff8, #fffff8),
     -webkit-linear-gradient(#333, #333);
@@ -251,6 +251,19 @@ a:link {
   background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
   background-repeat: no-repeat, no-repeat, repeat-x;
   background-position: 0% 101%, 101% 101%, 0% 101%;
+} */
+a:link {
+  text-decoration: none;
+  border-bottom: 1px solid black;
+  padding-bottom: 0.05em;
+  margin-bottom: 0.05em;
+  word-break: break-word;
+}
+a.anchor:link,
+nav.navigation a {
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 0) {
@@ -273,7 +286,7 @@ img {
   float: right;
   clear: right;
   margin-right: -75%;
-  width: 50%;
+  width: 45%;
   margin-top: 0;
   margin-bottom: 0;
   margin-left: 5%;
