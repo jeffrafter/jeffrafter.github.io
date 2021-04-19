@@ -59,7 +59,9 @@ For our API we'll use a single function. This is almost always the simplest and 
 
 ### Why Express?
 
-Because we're using a single function we'll need to enable that function to handle routing for us (like a traditional web server). There are numerous frameworks that make it easy. [Express](https://expressjs.com/) is a "Fast, unopinionated, minimalist web framework for Node.js". That sounds like what we want. We could choose a smaller framework like Micro from Vercel (used as part of Next.js) - but it is not typically used in serverless environments. We could also choose [Sails.js](https://sailsjs.com/), a much richer MVC framework written in JavaScript. In many cases this is the right choice, but for our purposes we'll use Express as it is easier to explain what is happening.
+Because we're using a single function we'll need to enable that function to handle routing for us (like a traditional web server). There are numerous frameworks that make it easy. [Express](https://expressjs.com/) is a "Fast, unopinionated, minimalist web framework for Node.js". That sounds like what we want. We could choose a smaller framework like Micro from Vercel (used as part of Next.js) - but it is not typically used in serverless environments. We could also choose [Sails.js](https://sailsjs.com/), a much richer MVC framework written in JavaScript. In many cases this is the right choice, but for our purposes we'll use Express as it is _closer to the metal_ which makes it easier to follow the logic.
+
+Because we are building an API there are a few other options available to us.
 
 # Getting started
 
@@ -96,7 +98,7 @@ cd api
 
 We'll use `npm` to install and manage the packages for our API. Let's set that up now:
 
-```
+```sh
 npm init -y
 ```
 
@@ -119,180 +121,466 @@ This will generate a default `package.json`:
 
 Next, we'll install express:
 
-```
+```sh
 npm install --save express
 ```
 
 We'll need a few more packages right away:
 
-```
-npm install --save cors body-parser cookie-parser http-errors
+```sh
+npm install --save cors helmet body-parser cookie-parser http-errors
 ```
 
 We'll also need some AWS-specific packages:
 
-```
+```sh
 npm install --save aws-sdk aws-serverless-express
 ```
 
-## Main application
+### TypeScript
 
-Even though it is not required, it is common to put the main application logic in a file called `app.js`. Create `app.js` and copy the following:
+I usually choose to use TypeScript for my projects. Though it isn't required it makes some things easier (and some things much harder). It can be a tough trade-off.
 
-```js
-'use strict'
-const express = require('express')
-const cookieParser = require('cookie-parser')
-const cors = require('cors')
-const createError = require('http-errors')
-const awsServerlessExpressMiddleware = require('aws-serverless-express/middleware')
+```sh
+npm install --save-dev typescript
+```
+
+We only need TypeScript support while developing. We'll convert the application to JavaScript when deploying. Intall the following TypeScript dependencies:
+
+```sh
+npm install --save-dev ts-node-dev ts-jest ts-loader
+```
+
+We'll need to setup our TypeScript configuration; create a new file called `tsconfig.json`:
+
+```json
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "esnext",
+    "lib": ["es2015", "es2017"],
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": true,
+    "removeComments": false,
+    "preserveConstEnums": true
+  },
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
+}
+```
+
+Next we'll want to download type definitions for our dependencies:
+
+```sh
+npm install --save-dev \
+  @types/node \
+  @types/cors \
+  @types/cookie-parser \
+  @types/http-errors \
+  @types/jest \
+  @types/aws-serverless-express
+```
+
+We'll want to add a few `scripts` to `package.json` to utilize these dependencies. The only scripts we need at the moment are `build` which will convert our TypeScript to JavaScript and `test` which will run our tests. While we're developing our action we'll need access to all of our project's dependencies; but when we release our action we don't want to include the testing, linting and TypeScript dependencies. Because of this, the difference between `dependencies` and `devDependencies` is important (as well as `--save` versus `--save-dev`).
+
+Add the following scripts to `package.json`
+
+```json
+{
+  "scripts": {
+    "build": "tsc --noEmit",
+    "test": "tsc --noEmit && jest"
+  },
+}
+```
+
+## Keep it clean (optional)
+
+> Note: this section is not required to complete this tutorial; if you want to skip it feel free.
+
+Everyone has different preferences when they edit code. Some prefer tabs over spaces. Some want two spaces instead of four. Some prefer semicolons and some don't. It shouldn't matter right? But it does. If editors are auto-formatting code based on user preferences it is important to make sure everyone has chosen the same set of defaults for that auto-formatting. This makes it easy to tell what changed between versions – even when different developers (with different preferences) have made changes.
+
+For this reason we'll setup a linter and code formatter for our code. Install [eslint](https://eslint.org/) and [prettier](https://prettier.io/):
+
+```sh
+npm install --save-dev \
+  eslint \
+  @typescript-eslint/eslint-plugin \
+  @typescript-eslint/parser \
+  eslint-config-prettier \
+  eslint-plugin-prettier \
+  prettier
+```
+
+Now that we have the packages we'll need to configure them in `.eslintrc.json`:
+
+```json
+{
+  "parser": "@typescript-eslint/parser",
+  "plugins": ["@typescript-eslint", "prettier"],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "trailingComma": "all",
+        "bracketSpacing": true,
+        "printWidth": 120,
+        "tabWidth": 2,
+        "semi": false
+      }
+    ]
+  },
+  "env": {
+    "node": true,
+    "jest": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  }
+}
+```
+
+I won't go into too much detail here; there are [better explanations](https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project) to be found. This configuration does a few things:
+
+- Relies on the TypeScript ESlint parser with the prettier plugin - I've found this works very well in VS Code.
+- The expected environment should include `node` and `jest` - this will help `eslint` ignore missing declarations for things like `describe`, `process`, `module`, etc.
+
+If you need to ignore specific files when linting you can add them to `.eslintignore`. Because our setup doesn't work well for JavaScript we'll ignore all JavaScript files in `.eslintignore`:
+
+```
+*.js
+```
+
+If you are using VS Code, you can install the [ESLint extension](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) so you can see lint warnings in your editor. Additionally, we can add a `lint` item to the `scripts` node in `package.json` so that we can check for lint warnings when building and deploying:
+
+```json
+  "scripts": {
+    "build": "tsc --noEmit",
+    "test": "tsc --noEmit && jest",
+    "lint": "eslint . --ext .ts"
+  },
+```
+
+With this in place we can run:
+
+```sh
+npm run lint
+```
+
+Wait, there's an error:
+
+```
+Oops! Something went wrong! :(
+
+ESLint: 7.24.0
+
+No files matching the pattern "." were found.
+Please check for typing mistakes in the pattern.
+```
+
+We haven't written any TypeScript to lint yet.
+
+### Prettier & `.prettierrc`
+
+Prettier works to auto-format your code based on a shared configuration. If you are using VSCode you can install the [prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and it will auto-format your code every time you save. The configuration is setup in the `.prettierrc` file. I tend to use the following `.prettierrc` setup:
+
+```json
+{
+  "endOfLine": "lf",
+  "semi": false,
+  "singleQuote": true,
+  "tabWidth": 2,
+  "trailingComma": "all",
+  "bracketSpacing": false,
+  "jsxBracketSameLine": true,
+  "printWidth": 120
+}
+```
+
+You might have different preferences in your project. That's fine, so long as all of the developers working on the code agree. For more information on the available options, view the [Prettier docs](https://prettier.io/docs/en/options.html).
+
+There are some files in our project that we shouldn't (or don't want to) prettify. The reasons we might not want to run Prettier vary but include: different formatting preferences, external libraries, generated files, frequency of change, or speed. Luckily we can tell Prettier to ignore files. Add a `.prettierignore` file:
+
+```
+package.json
+package-lock.json
+node_modules
+```
+
+Time to stop configuring and start writing code.
+
+## Building the Express API
+
+Express applications can be very simple - all of the logic can be contained in a single file. As your project becomes more complex this can become very confusing. Because of this, we'll use files and folders that help us keep the project organized:
+
+```
+api/
+  |- src/
+  |  |- app.ts
+  |  |- env.ts
+  |  |- lambda.ts
+  |  |- local.ts
+  |  |- middleware/
+  |  |  |- error.ts
+  |  |  |- not-found.ts
+  |  |- routes/
+  |  |  |- index.ts
+  |  |  |- ok.ts
+```
+
+### Main Application
+
+Even though it is not required, it is common to put the main application logic in a file called `app.ts` (or `app.js` if you are not using TypeScript). That's the name the [Express application generator](https://expressjs.com/en/starter/generator.html) chooses (which we are not using). In our case we'll want to store all of the code for our application in a `src` folder to keep things organized. Create `src/app.ts` and copy the following:
+
+```typescript
+import express from 'express'
+import cookieParser from 'cookie-parser'
+import cors from 'cors'
+import helmet from 'helmet'
+import router from './routes'
+
+import awsServerlessExpressMiddleware from 'aws-serverless-express/middleware'
+import { errorMiddleware } from './middleware/error'
+import { notFoundMiddleware } from './middleware/not-found'
+
+// Create the Express app
 const app = express()
-const router = express.Router()
 
 // Setup middleware for our API
 app.use(express.json())
-app.use(express.urlencoded({extended: true}))
+app.use(express.urlencoded({ extended: true }))
 app.use(cookieParser())
-app.use(cors({credentials: true}))
+app.use(helmet())
+app.use(cors({ credentials: true }))
 
 const isDevelopment = process.env.NODE_ENV === 'development'
 if (!isDevelopment) {
+  // Convert AWS Lambda event parameters to the request object
   app.use(awsServerlessExpressMiddleware.eventContext())
 }
-
-// Add a single route
-router.get('/ok', (req, res) => {
-  res.json({
-    ok: 'ok',
-  })
-})
 
 // The aws-serverless-express library creates a server and listens on a Unix
 // Domain Socket for you, so you don't need the usual call to app.listen.
 app.use('/', router)
 
-// Setup 404 and error handler (after middleware)
-app.use((_req, _res, next) => {
-  next(createError(404))
-})
+// Error handling middleware should be loaded after the loading the routes
+app.use(errorMiddleware)
 
-// Error handler (must have all four parameters)
-app.use((err, _req, res, _next) => {
-  res.locals.message = err.message
-  res.locals.error = isDevelopment ? err : {}
-
-  // render the error
-  res.status(err.status || 500)
-  res.json({error: err.message})
-})
+// If the user tries to access any path which doesn't exist, and there was no error, return a 404
+app.use(notFoundMiddleware)
 
 // Export your express server so it can be reused depending on how the server is run.
-module.exports = app
+export default app
 ```
 
-Much of this is boilerplate and looks very similar to the [Express application generator](https://expressjs.com/en/starter/generator.html). There are a few notable differences: for example we are using an AWS specific middleware for reading the event context. Again, the default handler for an AWS Lambda function includes a context associated with the event that triggered it (in our case a request sent to the API Gateway). This context includes useful information like the route, the request headers and AWS specific information such as the currently authenticated AWS Cognito user.
+[^boilerplate]: Much of this `app.ts` matches boilerplate application that is generated by the [Express application generator](https://expressjs.com/en/starter/generator.html). We're not using that generator, but it is helpful to know the default project structure for an Express application.
 
-For now we've included a single route that returns a JSON `ok`. We'll be adding more routes soon.[^ping]
+After creating the default `express` application we begin using specific _middleware_. Express applications receive a request (containing `params` and other information) and return a response (in our case, containing JSON). The [middleware pattern](https://expressjs.com/en/guide/using-middleware.html) allows us to treat this request-response cycle as a pipeline using specific functions:
 
-[^ping]: Why didn't we use the root route `/` to test things? Unfortunately the way we've setup our API Gateway as a proxy the root route `/` won't work. If you open that route in a browser you'll see `{'message':"Missing Authentication Token"}` regardless of how your Express server is setup. We might have also chosen `/ping` which is commonly used for health checks. Unfortunately this route is also managed by API Gateway and returns the health status of the gateway itself.
+```js
+const customMiddleware = (request: Request, response: Response, next: NextFunction) {
+  console.log('Time:', Date.now())
+  next()
+})
+```
+
+The `customMiddleware` function receives the `request` and `response` objects and can modify them before allowing the middleware pipeline to move to the next middleware function.
+
+When setting up our application we've specified that our application should `use` a common set of middleware:
+
+- `express.json()`: allows our application to handle JSON requests
+- `express.urlencoded({ extended: true })`: allows our application to handle URL encoded parameters
+- `cookieParser()`: parses any cookie headers sent to our application
+- `helmet()`: introduces a set of security-related middleware including default content security policies
+- `cors({ credentials: true })`: allows our API to be called from other domains by returning correct Cross-Origin Resource Sharing responses
+
+We are also using an AWS specific middleware for reading the event context. The default handler for an AWS Lambda function includes a context associated with the event that triggered it (in our case a request sent to the API Gateway). This context includes useful information like the route, the request headers and AWS specific information such as the currently authenticated AWS Cognito user. The `awsServerlessExpressMiddleware` reads that context and assigns the corresponding `express` properties. We won't need this while in development mode.
+
+The routes - or paths - that your API handles can also be treated as middleware. We'll store those in a separate folder so that we can keep the logic separate. For now, we've included them in our application in the correct order. We want to process all of our routes _after_ our security middleware and serverless middleware and _before_ any of our error handling middleware.
+
+Our error handling middleware comes last so that we can catch any errors that happen within our routes (or security middleware). We haven't written our `notFoundMiddleware` or `errorMiddleware` yet.
+
+Finally, we export the application. This isn't strictly necessary; but it will simplify our tests later.
+
+### Middleware
+
+We haven't written any middleware yet - let's do that now. Create a new folder in the `src` directory called `middleware`. Then create a new file called `src/middleware/not-found.ts`:
+
+```typescript
+import { Request, Response, NextFunction } from 'express'
+import createError from 'http-errors'
+
+export const notFoundMiddleware = (_request: Request, _response: Response, next: NextFunction): void => {
+  next(createError(404))
+}
+```
+
+This is a very simple function that creates a `404` not found error if no response has been returned by a previous route middleware.[^underscores]
+
+[^underscores]: Why do the `_request` and `_response` parameters start with an underscore (`_`)? One of our linter rules states that there can be `no-unused-vars`. Unfortunately we need to include them so that we can access the third parameter: `next`. By adding an `_` to the beginning of the parameter name it indicates that we won't use that parameter and the linter can safely ignore it.
+
+Next, create a new file called `src/middleware/error.ts`:
+
+```typescript
+import { HttpError } from 'http-errors'
+import { Request, Response, NextFunction } from 'express'
+
+// Error handler (must have all four parameters)
+export const errorMiddleware = (
+  error: HttpError,
+  _request: Request,
+  response: Response,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  _next: NextFunction,
+): void => {
+  const message = (error.expose ? error.message : undefined) || 'Internal Server Error'
+  response.status(error.statusCode || 500)
+  response.json({ error: message, statusCode: error.statusCode || 500 })
+}
+```
+
+This middleware is slightly different - when creating an error middleware you must include all four parameters in the function signature for Express to use it. We have to include the fourth parameter even though we won't use it. Because of this we have to disable the `no-unused-vars` linter warning for the last parameter (even though it starts with an underscore).
+
+In the handler we attempt to respond with information about the error that occurred. If there is an exception within one of our routes, Express will catch the exception and funnel it through the `errorMiddleware`.
+
+### Routes
+
+We haven't written any route-handling code for our Express application. Like our middleware, we'll organize our route logic in separate files within a `src/routes` folder. We'll create a default `src/routes/index.ts` to manage all of the routes. Create `src/routes/index.ts`:
+
+```typescript
+import { Router } from 'express'
+import okRoutes from './ok'
+
+const router = Router()
+
+router.use('/ok', okRoutes)
+
+export default router
+```
+
+To start, we create and export a basic express router. For now we've included a single route handler that responds to `/ok`. We'll be adding more routes soon.[^ping]
+
+[^ping]: Why did we choose to make an API endpoint for `/ok` instead of the root route `/` to test things? Because we've setup our API Gateway as a proxy for `/{proxy+}`, the root route `/` won't ever be passed to our Express server (it must have an additional path part of the route). If you attempt to fetch the root route (for example, in a browser) you'll see `{'message':"Missing Authentication Token"}` regardless of how your Express server is setup. We might have also chosen `/ping` which is commonly used for health checks. Unfortunately this route is reserved by API Gateway and returns the health status of the gateway itself and will also never be passed to the Express server.
+
+Next, we need to create the `ok` route handler. Create `src/routes/ok.ts`:
+
+```typescript
+import { Router } from 'express'
+
+const router = Router()
+
+router.get('/', (request, response) => {
+  console.log('GET ok')
+  console.log('API Gateway: ' + JSON.stringify(request.apiGateway))
+
+  response.json({
+    ok: 'ok',
+  })
+})
+
+export default router
+```
+
+Our `ok` router handles a `GET` request and returns a simple JSON response. We also log some information about the request. In general, you wouldn't want to use this in a production application as you might accidentally log private information. For now, it will help us see how the server is working.
 
 ## Setting up the Lambda handler function
 
-Notice that we aren't calling `app.listen` in `app.js` as we normally would. When our server is running within AWS lambda, we don't want to listen on a port to receive requests; instead we'll build a custom AWS handler function and pass the request to our Express server directly.
+Notice that we aren't calling `app.listen` in `app.ts` as we normally would in an Express application. When our server is running within AWS lambda, we don't want to listen on a port to receive requests; instead we'll build a custom AWS handler function and pass the request to our Express server directly.
 
-Create a new file called `lambda.js`:
+Create a new file called `lambda.ts`:
 
-```js
-'use strict'
-const awsServerlessExpress = require('aws-serverless-express')
-const app = require('./app')
+```typescript
+import awsServerlessExpress from 'aws-serverless-express'
+import app from './app'
+import http from 'http'
+import lambda from 'aws-lambda'
 
 // If you are returning non-JSON data such as images, fonts, or PDFs
 // add the associated mime types to this list
 const binaryMimeTypes = ['application/octet-stream']
 
-const server = awsServerlessExpress.createServer(app, null, binaryMimeTypes)
+const server = awsServerlessExpress.createServer(app, undefined, binaryMimeTypes)
 
-exports.handler = (event, context) => {
+export const handler = (event: lambda.APIGatewayProxyEvent, context: lambda.Context): http.Server => {
   return awsServerlessExpress.proxy(server, event, context)
 }
 ```
 
 We'll configure our AWS Lambda function to call this handler which will then pass the request to our Express application. Even if we add more routes to our Express application, we won't need to change this simple handler.
 
-# Setting up a local server for development
+## Setting up a local server for development
 
-We've setup our Express app and added a Lambda handler wrapper for it, but it is still difficult for us to test our application locally. We'll need another wrapper for running our application in development mode. Add the following dependencies:
+We've setup our Express app and added a Lambda handler wrapper for it for production, but it is still difficult for us to test our application locally. Create a file called `local.ts`:
 
-```
-npm install --save-dev dotenv nodemon
-```
+```typescript
+import './env'
+import app from './app'
 
-Notice that we're saving these are development dependencies. We won't need these for our Lambda function and we want to keep it as small as possible.
-
-Create a file called `local.js`:
-
-```js
-'use strict'
-process.env['NODE_ENV'] = 'development'
-require('dotenv').config()
-
-const app = require('./app')
 const port = process.env['PORT'] || 4000
 
 app.listen(port)
 console.log(`Listening on http://localhost:${port}`)
 ```
 
-Like `lambda.js`, this wrapper is very simple. It loads our configuration from a `.env` file (if it exists) and sets the application to listen on a port (by default, port `4000`).
+Like `lambda.ts`, this wrapper is very simple. It loads our configuration and sets the application to listen on a  port (by default, port `4000`). When running in development mode we'll need to manage our environment variables manually. Add the following dependency:
 
-To use this wrapper, we'll change `package.json` so that the `start` script loads it (and we'll remove the `main` entry and set `private` to `true` even though this isn't necessary at this point):
+```sh
+npm install --save-dev dotenv
+```
+
+Notice that we're saving this are development dependencies. We won't need these for our Lambda function and we want to keep it as small as possible. Next create a new file called `env.ts`:
+
+```typescript
+import dotenv from 'dotenv'
+
+dotenv.config()
+
+export default dotenv
+```
+
+This will automatically load a file called `.env` where we can keep local environment variables. For now, the only local environment variable we want to set is the `NODE_ENV`. Create a file called `.env`:
+
+```
+NODE_ENV=development
+```
+
+We'll add more variables to our environment later, but for now this is all we need.
+
+To use `local.ts`, we'll change `package.json` so that the `start` script loads it when starting in development mode:
 
 ```json
 {
-  "name": "api",
-  "version": "1.0.0",
-  "description": "",
-  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon local.js"
+    // ...
+    "start": "ts-node-dev --respawn --pretty --transpile-only src/local.ts",
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "aws-sdk": "^2.766.0",
-    "aws-serverless-express": "^3.3.8",
-    "body-parser": "^1.19.0",
-    "cookie-parser": "^1.4.5",
-    "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "http-errors": "^1.8.0"
-  },
-  "devDependencies": {
-    "dotenv": "^8.2.0",
-    "nodemon": "^2.0.4"
-  }
 }
 ```
 
-Notice that we execute `local.js` using `nodemon`. [Nodemon](https://nodemon.io/) will watch our project folder for changes and reload and restart our server automatically.
+Notice that we execute `local.ts` using `ts-node-dev`. This will watch our project folder for changes and reload and restart our server automatically while recompiling our TypeScript.
 
 You can start the server by running:
 
-```
+```sh
 npm start
 ```
 
-You should see:
+You should see (your version numbers might be different):
 
 ```
-[nodemon] 2.0.4
-[nodemon] to restart at any time, enter `rs`
-[nodemon] watching path(s): *.*
-[nodemon] watching extensions: js,mjs,json
-[nodemon] starting `node local.js`
+[INFO] 07:53:57 ts-node-dev ver. 1.1.6 (using ts-node ver. 9.1.1, typescript ver. 4.2.4)
 Listening on http://localhost:4000
 ```
 
@@ -308,7 +596,7 @@ Not very exciting content, but this is our first JSON API response!
 
 We'll want to use version control to keep track of our changes. We'll use `git`:
 
-```
+```sh
 git init
 ```
 
@@ -439,9 +727,9 @@ $RECYCLE.BIN/
 
 ## Commit
 
-To add all of the files and commit them to the repository we'll use GitHub Desktop:
+To add all of the files and commit them to the repository we'll use [GitHub Desktop](https://desktop.github.com):
 
-![Create a commit titled 'Initial commit'](../assets/../../assets/express-initial-commit.png)
+![Create a commit titled 'Initial commit'](../assets/../../assets/express-github-desktop.png)
 
 # Deploying
 
@@ -457,7 +745,7 @@ While working locally, we've been using some development packages. These aren't 
 
 Next, let's prune the dependencies to only production packages:
 
-```
+```sh
 npm prune --production
 ```
 
@@ -470,8 +758,6 @@ Add the `zip` script to your `package.json`:
 ```json
   ...
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon local.js",
     "zip": "zip -r ../terraform/api.zip *.js package* node_modules"
   },
   ...
@@ -481,19 +767,19 @@ This creates a file called `api.zip` in the terraform folder. If you've named yo
 
 Run the command:
 
-```
+```sh
 npm run zip
 ```
 
 The zip file is created but it is very large: `8.0M`. We'll want to make this smaller. Re-install your development dependencies:
 
-```
+```sh
 npm install
 ```
 
 Instead of including everything, we should build our release using a tool like [Webpack](https://webpack.js.org/). Webpack allows you to transpile and minify your source code into a single JavaScript file; bundling all of the dependencies in the most efficient way. It will also save the hassle of pruning and re-installing dependencies. Let's install it:
 
-```
+```sh
 npm install --save-dev webpack webpack-cli
 ```
 
@@ -523,9 +809,6 @@ To run `webpack` we need to add another script to our `package.json`:
 ```json{6}
   ...
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon local.js",
-    "zip": "zip -r ../terraform/api.zip *.js package* node_modules",
     "build": "webpack"
   },
   ...
@@ -842,3 +1125,41 @@ More coming...
 # Working locally
 
 # Testing
+
+
+
+# References
+
+https://auth0.com/blog/node-js-and-typescript-tutorial-build-a-crud-api/
+
+
+
+
+```
+api/
+  |
+  |- .env
+  |- .env.sample
+  |- .eslintignore
+  |- .eslintrc.json
+  |- .gitignore
+  |- .node-version
+  |- .prettierrc
+  |- package-lock.json
+  |- package.json
+  |- tsconfig.json
+  |- webpack.config.json
+  |- src/
+  |  |- data/
+  |  |- lib/
+  |  |  |- http-exception.ts
+  |  |- mailers/
+  |  |- middleware/
+  |  |  |- error.ts
+  |  |  |- not-found.ts
+  |  |- routes/
+  |  |  |- index.ts
+  |  |  |- ok.ts
+  |  |- views/
+  |  |  |- (empty)
+```

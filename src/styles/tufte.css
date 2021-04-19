@@ -493,3 +493,7 @@ label.margin-toggle:not(.sidenote-number) {
 .gatsby-highlight {
   clear: both;
 }
+
+h4 {
+  font-size: 1.3em;
+}
