@@ -1092,7 +1092,7 @@ We'll also want to add the TypeScript support:
 
 
 ```sh
-npm install --save-dev ts-jest @types/jest
+npm install --save-dev ts-jest @types/jest @types/supertest
 ```
 
 Now that we have the packages we'll need to add `jest` to the `env` in `.eslintrc.json`:
