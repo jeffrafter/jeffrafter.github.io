@@ -1082,10 +1082,10 @@ You should see Terraform run. Go to your `ok` route in a browser again; wait a f
 
 With all of our setup, deploying is fairly quick and easy. However, we'll move much faster if we can test all of our code before deploying. We can do this manually using our local development server but it is very good to also have automated tests. Let's setup [Jest](https://jestjs.io). As with all of the other choices we've had to make, there are lots of choices for our testing framework. I tend to use Jest because I've always used it and it is easy for me to understand.
 
-Let's install the `jest` package:
+Let's install the `jest` and `supertest` packages:
 
 ```sh
-npm install --save-dev jest
+npm install --save-dev jest supertest
 ```
 
 We'll also want to add the TypeScript support:
@@ -1102,7 +1102,7 @@ Now that we have the packages we'll need to add `jest` to the `env` in `.eslintr
   "env": {
     "node": true,
     "jest": true,
-    "es6": true,
+    "es6": true
   },
   ...
 }
