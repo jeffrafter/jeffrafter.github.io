@@ -211,7 +211,7 @@ npm install --save-dev \
   prettier
 ```
 
-Now that we have the packages we'll need to configure them in `.eslintrc.json`:
+Now that we have the packages we'll need to configure them in `.eslintrc.json`. Create that file in your project root folder:
 
 ```json
 {
@@ -251,7 +251,7 @@ I won't go into too much detail here; there are [better explanations](https://ww
 - Relies on the TypeScript ESlint parser with the prettier plugin - I've found this works very well in VS Code.
 - The expected environment should include `node` - this will help `eslint` ignore missing declarations for things like `process`, `module`, etc.
 
-If you need to ignore specific files when linting you can add them to `.eslintignore`. Because our setup doesn't work well for JavaScript we'll ignore all JavaScript files in `.eslintignore`:
+If you need to ignore specific files when linting you can add them to `.eslintignore`. Because our setup doesn't work well for JavaScript we'll ignore all JavaScript files. Create `.eslintignore` in the project root folder:
 
 ```
 *.js
@@ -287,7 +287,7 @@ We haven't written any TypeScript to lint yet.
 
 ### Prettier & `.prettierrc`
 
-Prettier works to auto-format your code based on a shared configuration. If you are using VSCode you can install the [prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and it will auto-format your code every time you save. The configuration is setup in the `.prettierrc` file. I tend to use the following `.prettierrc` setup:
+Prettier works to auto-format your code based on a shared configuration. If you are using VSCode you can install the [prettier extension](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode) and it will auto-format your code every time you save. The configuration is setup in the `.prettierrc` file. Create `.prettierrc`. I tend to use the following setup:
 
 ```json
 {
@@ -320,6 +320,7 @@ Express applications can be very simple - all of the logic can be contained in a
 
 ```
 api/
+  |- .env
   |- src/
   |  |- app.ts
   |  |- env.ts
@@ -488,7 +489,7 @@ Our `ok` router handles a `GET` request and returns a simple JSON response. We a
 
 Notice that we aren't calling `app.listen` in `app.ts` as we normally would in an Express application. When our server is running within AWS lambda, we don't want to listen on a port to receive requests; instead we'll build a custom AWS handler function and pass the request to our Express server directly.
 
-Create a new file called `lambda.ts`:
+Create a new file called `src/lambda.ts`:
 
 ```typescript
 import serverlessExpress from '@vendia/serverless-express'
@@ -501,7 +502,7 @@ We'll configure our AWS Lambda function to call this handler which will then pas
 
 ## Setting up a local server for development
 
-We've setup our Express app and added a Lambda handler wrapper for it for production, but it is still difficult for us to test our application locally. Create a file called `local.ts`:
+We've setup our Express app and added a Lambda handler wrapper for it for production, but it is still difficult for us to test our application locally. Create a file called `src/local.ts`:
 
 ```typescript
 import './env'
@@ -519,7 +520,7 @@ Like `lambda.ts`, this wrapper is very simple. It loads our configuration and se
 npm install --save-dev dotenv
 ```
 
-Notice that we're saving this are development dependencies. We won't need these for our Lambda function and we want to keep it as small as possible. Next create a new file called `env.ts`:
+Notice that we're saving this as a development dependency. We won't need these for our Lambda function and we want to keep it as small as possible. Next create a new file called `env.ts`:
 
 ```typescript
 import dotenv from 'dotenv'
@@ -529,7 +530,7 @@ dotenv.config()
 export default dotenv
 ```
 
-This will automatically load a file called `.env` where we can keep local environment variables. For now, the only local environment variable we want to set is the `NODE_ENV`. Create a file called `.env`:
+This will automatically load a file called `.env` where we can keep local environment variables. For now, the only local environment variable we want to set is the `NODE_ENV`. Create a file called `.env` in the project root folder:
 
 ```
 NODE_ENV=development
@@ -543,7 +544,7 @@ To use `local.ts`, we'll change `package.json` so that the `start` script loads 
 {
   "scripts": {
     // ...
-    "start": "ts-node-dev --respawn --pretty --transpile-only src/local.ts",
+    "start": "ts-node-dev --respawn --pretty --transpile-only src/local.ts"
   },
 }
 ```
@@ -581,7 +582,7 @@ git init
 
 ## Ignore some things
 
-Let's make sure to ignore our environment variables (which may include sensitive secrets) and some of the files we've generated. Create a `.gitignore` file:
+Let's make sure to ignore our environment variables (which may include sensitive secrets) and some of the files we've generated. Create a `.gitignore` file in the project root folder:
 
 ```gitignore
 # Ignore built releases
@@ -762,7 +763,7 @@ Instead of including everything, we should build our release using a tool like [
 npm install --save-dev webpack webpack-cli
 ```
 
-Next, we'll want to create a configuration for Webpack. For now, we'll focus only on the production build that we plan to upload to AWS. Create a file called `webpack.config.js`:
+Next, we'll want to create a configuration for Webpack. For now, we'll focus only on the production build that we plan to upload to AWS. Create a file called `webpack.config.js` in the project root folder:
 
 ```js
 const path = require('path')
