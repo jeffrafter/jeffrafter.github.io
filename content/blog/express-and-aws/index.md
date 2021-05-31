@@ -21,8 +21,6 @@ excerpt: Using Express to build out your API can be challenging; but integrating
 
 Using Express to build out your API can be challenging; but integrating it with all of the products available from Amazon Web Services can feel impossible. This post focuses less on best practices for your API and more on reusable patterns to tie all of those products together. This is the second part in a series on building out a scalable website on AWS. In the [first part](/terraform-and-aws) we setup all of the infrastructure we'll need using Terraform.
 
-Our API will be built in JavaScript and will run on AWS Lambda as a function. You might prefer TypeScript (as I do) but for the purposes of this post we'll keep things a little simpler.
-
 ## Choosing a framework
 
 Before we even get started we need to decide what framework we'll use to write our AWS Lambda function - if any. Out of the box AWS gives you a `handler` pattern that you can use to receive an incoming web request, perform some actions and return a response. For a web server this is really all we need. In fact, using this simple pattern is actually the recommended best practice.
@@ -131,10 +129,10 @@ We'll need a few more packages right away:
 npm install --save cors helmet body-parser cookie-parser http-errors
 ```
 
-We'll also need some AWS-specific packages:
+We'll also need some AWS and serverless specific packages:
 
 ```sh
-npm install --save aws-sdk aws-serverless-express
+npm install --save aws-sdk @vendia/serverless-express
 ```
 
 ### TypeScript
@@ -145,10 +143,10 @@ I usually choose to use TypeScript for my projects. Though it isn't required it 
 npm install --save-dev typescript
 ```
 
-We only need TypeScript support while developing. We'll convert the application to JavaScript when deploying. Intall the following TypeScript dependencies:
+We only need TypeScript support while developing. We'll convert the application to JavaScript when deploying. Install the following TypeScript dependencies:
 
 ```sh
-npm install --save-dev ts-node-dev ts-jest ts-loader
+npm install --save-dev ts-node-dev ts-loader
 ```
 
 We'll need to setup our TypeScript configuration; create a new file called `tsconfig.json`:
@@ -181,11 +179,9 @@ npm install --save-dev \
   @types/cors \
   @types/cookie-parser \
   @types/http-errors \
-  @types/jest \
-  @types/aws-serverless-express
 ```
 
-We'll want to add a few `scripts` to `package.json` to utilize these dependencies. The only scripts we need at the moment are `build` which will convert our TypeScript to JavaScript and `test` which will run our tests. While we're developing our action we'll need access to all of our project's dependencies; but when we release our action we don't want to include the testing, linting and TypeScript dependencies. Because of this, the difference between `dependencies` and `devDependencies` is important (as well as `--save` versus `--save-dev`).
+We'll want to add a few `scripts` to `package.json` to utilize these dependencies. The only script we need at the moment is `build` which will convert our TypeScript to JavaScript. We can remove the placeholder `test` script for now. While we're developing our action we'll need access to all of our project's dependencies; but when we release our action we don't want to include the testing, linting and TypeScript dependencies. Because of this, the difference between `dependencies` and `devDependencies` is important (as well as `--save` versus `--save-dev`).
 
 Add the following scripts to `package.json`
 
@@ -193,7 +189,6 @@ Add the following scripts to `package.json`
 {
   "scripts": {
     "build": "tsc --noEmit",
-    "test": "tsc --noEmit && jest"
   },
 }
 ```
@@ -242,7 +237,6 @@ Now that we have the packages we'll need to configure them in `.eslintrc.json`:
   },
   "env": {
     "node": true,
-    "jest": true,
     "es6": true
   },
   "parserOptions": {
@@ -255,7 +249,7 @@ Now that we have the packages we'll need to configure them in `.eslintrc.json`:
 I won't go into too much detail here; there are [better explanations](https://www.robertcooper.me/using-eslint-and-prettier-in-a-typescript-project) to be found. This configuration does a few things:
 
 - Relies on the TypeScript ESlint parser with the prettier plugin - I've found this works very well in VS Code.
-- The expected environment should include `node` and `jest` - this will help `eslint` ignore missing declarations for things like `describe`, `process`, `module`, etc.
+- The expected environment should include `node` - this will help `eslint` ignore missing declarations for things like `process`, `module`, etc.
 
 If you need to ignore specific files when linting you can add them to `.eslintignore`. Because our setup doesn't work well for JavaScript we'll ignore all JavaScript files in `.eslintignore`:
 
@@ -268,7 +262,6 @@ If you are using VS Code, you can install the [ESLint extension](https://marketp
 ```json
   "scripts": {
     "build": "tsc --noEmit",
-    "test": "tsc --noEmit && jest",
     "lint": "eslint . --ext .ts"
   },
 ```
@@ -351,7 +344,6 @@ import cors from 'cors'
 import helmet from 'helmet'
 import router from './routes'
 
-import awsServerlessExpressMiddleware from 'aws-serverless-express/middleware'
 import { errorMiddleware } from './middleware/error'
 import { notFoundMiddleware } from './middleware/not-found'
 
@@ -365,21 +357,15 @@ app.use(cookieParser())
 app.use(helmet())
 app.use(cors({ credentials: true }))
 
-const isDevelopment = process.env.NODE_ENV === 'development'
-if (!isDevelopment) {
-  // Convert AWS Lambda event parameters to the request object
-  app.use(awsServerlessExpressMiddleware.eventContext())
-}
-
 // The aws-serverless-express library creates a server and listens on a Unix
 // Domain Socket for you, so you don't need the usual call to app.listen.
 app.use('/', router)
 
-// Error handling middleware should be loaded after the loading the routes
-app.use(errorMiddleware)
-
 // If the user tries to access any path which doesn't exist, and there was no error, return a 404
 app.use(notFoundMiddleware)
+
+// Error handling middleware should be loaded after the loading the routes
+app.use(errorMiddleware)
 
 // Export your express server so it can be reused depending on how the server is run.
 export default app
@@ -405,8 +391,6 @@ When setting up our application we've specified that our application should `use
 - `cookieParser()`: parses any cookie headers sent to our application
 - `helmet()`: introduces a set of security-related middleware including default content security policies
 - `cors({ credentials: true })`: allows our API to be called from other domains by returning correct Cross-Origin Resource Sharing responses
-
-We are also using an AWS specific middleware for reading the event context. The default handler for an AWS Lambda function includes a context associated with the event that triggered it (in our case a request sent to the API Gateway). This context includes useful information like the route, the request headers and AWS specific information such as the currently authenticated AWS Cognito user. The `awsServerlessExpressMiddleware` reads that context and assigns the corresponding `express` properties. We won't need this while in development mode.
 
 The routes - or paths - that your API handles can also be treated as middleware. We'll store those in a separate folder so that we can keep the logic separate. For now, we've included them in our application in the correct order. We want to process all of our routes _after_ our security middleware and serverless middleware and _before_ any of our error handling middleware.
 
@@ -478,12 +462,17 @@ Next, we need to create the `ok` route handler. Create `src/routes/ok.ts`:
 
 ```typescript
 import { Router } from 'express'
+import { getCurrentInvoke } from '@vendia/serverless-express'
 
 const router = Router()
 
 router.get('/', (request, response) => {
+
   console.log('GET ok')
-  console.log('API Gateway: ' + JSON.stringify(request.apiGateway))
+
+  const { event, context } = getCurrentInvoke()
+  console.log('Serverless Event: ' + JSON.stringify(event))
+  console.log('Serverless Context: ' + JSON.stringify(context))
 
   response.json({
     ok: 'ok',
@@ -502,20 +491,10 @@ Notice that we aren't calling `app.listen` in `app.ts` as we normally would in a
 Create a new file called `lambda.ts`:
 
 ```typescript
-import awsServerlessExpress from 'aws-serverless-express'
+import serverlessExpress from '@vendia/serverless-express'
 import app from './app'
-import http from 'http'
-import lambda from 'aws-lambda'
 
-// If you are returning non-JSON data such as images, fonts, or PDFs
-// add the associated mime types to this list
-const binaryMimeTypes = ['application/octet-stream']
-
-const server = awsServerlessExpress.createServer(app, undefined, binaryMimeTypes)
-
-export const handler = (event: lambda.APIGatewayProxyEvent, context: lambda.Context): http.Server => {
-  return awsServerlessExpress.proxy(server, event, context)
-}
+exports.handler = serverlessExpress({ app })
 ```
 
 We'll configure our AWS Lambda function to call this handler which will then pass the request to our Express application. Even if we add more routes to our Express application, we won't need to change this simple handler.
@@ -789,74 +768,87 @@ Next, we'll want to create a configuration for Webpack. For now, we'll focus onl
 const path = require('path')
 
 module.exports = {
-  entry: './lambda.js',
+  entry: './src/lambda.ts',
   output: {
     library: 'api',
     libraryTarget: 'umd',
     umdNamedDefine: true,
     path: path.resolve(__dirname, 'dist'),
-    filename: 'api.js',
+    filename: 'api.js'
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+    modules: [
+      'node_modules'
+    ]
   },
   target: 'node',
   mode: 'production',
+  module: {
+    rules: [{
+      // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
+      test: /\.tsx?$/,
+      use: [{
+        loader: 'ts-loader',
+      }]
+    }]
+  }
 }
 ```
 
-This configuration tells Webpack to start with `lambda.js` and export a bundled release called `dist/api.js` which will be used as an API and has a _Universal Module Declaration_ (our exported `handler` function). We've set our target to `node` meaning we plan to run the generated file using Node (we don't plan to run it in a browser).
+This configuration tells Webpack to start with `./src/lambda.ts` and export a bundled release called `dist/api.js` which will be used as an API and has a _Universal Module Declaration_ (our exported `handler` function). We've set our target to `node` meaning we plan to run the generated file using Node (we don't plan to run it in a browser).
 
 To run `webpack` we need to add another script to our `package.json`:
 
 ```json{6}
   ...
   "scripts": {
-    "build": "webpack"
+    "build": "tsc --noEmit && webpack"
   },
   ...
 ```
 
 Run it:
 
-```
+```sh
 npm run build
 ```
 
 You should see:
 
 ```
-Hash: a7e54e4024a114c3a6fd
-Version: webpack 4.44.2
-Time: 559ms
-Built at: 10/07/2020 5:05:04 PM
- Asset     Size  Chunks             Chunk Names
-api.js  581 KiB       0  [emitted]  main
-Entrypoint main = api.js
-  [2] external "path" 42 bytes {0} [built]
-  [7] external "fs" 42 bytes {0} [built]
-  [9] external "buffer" 42 bytes {0} [built]
- [10] external "http" 42 bytes {0} [built]
- [12] external "util" 42 bytes {0} [built]
- [13] external "stream" 42 bytes {0} [built]
- [23] external "url" 42 bytes {0} [built]
- [32] external "events" 42 bytes {0} [built]
- [35] external "net" 42 bytes {0} [built]
- [42] external "querystring" 42 bytes {0} [built]
- [49] external "crypto" 42 bytes {0} [built]
- [56] ./lambda.js 455 bytes {0} [built]
- [63] ./app.js 1.33 KiB {0} [built]
- [75] external "tty" 42 bytes {0} [built]
-[109] ./node_modules/express/lib sync 160 bytes {0} [built]
-    + 123 hidden modules
+asset api.js 587 KiB [compared for emit] [minimized] (name: main) 1 related asset
+runtime modules 211 bytes 2 modules
+modules by path ./node_modules/ 769 KiB
+  javascript modules 510 KiB 85 modules
+  json modules 258 KiB
+    modules by path ./node_modules/iconv-lite/encodings/tables/*.json 86.7 KiB 8 modules
+    3 modules
+modules by path ./src/ 4.18 KiB
+  modules by path ./src/*.ts 2.45 KiB 2 modules
+  modules by path ./src/routes/*.ts 760 bytes
+    ./src/routes/index.ts 395 bytes [built] [code generated]
+    ./src/routes/ok.ts 365 bytes [built] [code generated]
+  modules by path ./src/middleware/*.ts 1010 bytes
+    ./src/middleware/error.ts 546 bytes [built] [code generated]
+    ./src/middleware/not-found.ts 466 bytes [built] [code generated]
+14 modules
 
 WARNING in ./node_modules/express/lib/view.js 81:13-25
 Critical dependency: the request of a dependency is an expression
- @ ./node_modules/express/lib/application.js
- @ ./node_modules/express/lib/express.js
- @ ./node_modules/express/index.js
- @ ./app.js
- @ ./lambda.js
+ @ ./node_modules/express/lib/application.js 22:11-28
+ @ ./node_modules/express/lib/express.js 18:12-36
+ @ ./node_modules/express/index.js 11:0-41
+ @ ./src/app.ts 6:34-52
+ @ ./src/lambda.ts 8:30-46
+
+1 warning has detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.
+
+webpack 5.34.0 compiled with 1 warning in 4393 ms
 ```
 
-The compiled size is now `581 KiB`! That is much smaller than `8 MB`. Unfortunately, you may also see a `Critical Dependency` warning[^critical-dependency]. Why are we getting this warning? Express loads its view engines using a dynamic require:
+The compiled size is now `769 KiB`! That is much smaller than `8 MB`. Unfortunately, you may also see a `Critical Dependency` warning[^critical-dependency]. Why are we getting this warning? Express loads its view engines using a dynamic require:
 
 ```
 var fn = require(mod).__express
@@ -876,41 +868,50 @@ The first option makes the build incredibly small (less than `1 Kib`), but unfor
 const path = require('path')
 
 module.exports = {
-  entry: './lambda.js',
+  entry: './src/lambda.ts',
   output: {
     library: 'api',
     libraryTarget: 'umd',
     umdNamedDefine: true,
     path: path.resolve(__dirname, 'dist'),
-    filename: 'api.js',
+    filename: 'api.js'
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+    modules: [
+      'node_modules'
+    ]
   },
   target: 'node',
   mode: 'production',
-  stats: {
-    warningsFilter: warning => {
-      return RegExp('node_modules/express/lib/view.js').test(warning)
-    },
-  },
+  ignoreWarnings: [/^(?!CriticalDependenciesWarning$)/],
+  module: {
+    rules: [{
+      // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
+      test: /\.tsx?$/,
+      use: [{
+        loader: 'ts-loader',
+      }]
+    }]
+  }
 }
 ```
 
 Let's change our `zip` script in `package.json` to use this new file. Also, we'll add a new `release` script that combines the `build` and `zip` scripts:
 
-```
-  ...
+```json
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon local.js",
+    ...
     "zip": "cd dist; zip -r ../../terraform/api.zip api.js",
-    "build": "webpack",
     "release": "npm run build && npm run zip"
+    ...
   },
   ...
 ```
 
 Run the `release`:
 
-```
+```sh
 npm run release
 ```
 
@@ -925,20 +926,31 @@ const path = require('path')
 const TerserPlugin = require("terser-webpack-plugin")
 
 module.exports = {
-  entry: './lambda.js',
+  entry: './src/lambda.ts',
   output: {
     library: 'api',
     libraryTarget: 'umd',
     umdNamedDefine: true,
     path: path.resolve(__dirname, 'dist'),
-    filename: 'api.js',
+    filename: 'api.js'
+  },
+  resolve: {
+    extensions: ['.ts', '.tsx', '.js'],
+    modules: [
+      'node_modules'
+    ]
   },
   target: 'node',
   mode: 'production',
-  stats: {
-    warningsFilter: warning => {
-      return RegExp('node_modules/express/lib/view.js').test(warning)
-    },
+  ignoreWarnings: [/^(?!CriticalDependenciesWarning$)/],
+  module: {
+    rules: [{
+      // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
+      test: /\.tsx?$/,
+      use: [{
+        loader: 'ts-loader',
+      }]
+    }]
   },
   optimization: {
     minimize: true,
@@ -952,7 +964,7 @@ module.exports = {
         extractComments: false,
       }),
     ],
-  },
+  }
 }
 ```
 
@@ -960,13 +972,13 @@ module.exports = {
 
 Now that we have prepared the release we should be able to apply our changes using `terraform`. Check the plan:
 
-```
+```sh
 terraform plan
 ```
 
 You should see the modified hash of the source code:
 
-```
+```sh
 ...
  ~ source_code_hash = "PM7qAOa3MhcDW7/4fxKHxkSe5c6c3DyElx5iTGb8bPY=" -> "APdymEzpkA8Gm1BqKtSRnr/4O5Xl0gZBJHknkbA4LYE="
 ...
@@ -974,7 +986,7 @@ You should see the modified hash of the source code:
 
 Apply the changes:
 
-```
+```sh
 terraform apply
 ```
 
@@ -1033,22 +1045,11 @@ This is really helpful when debugging API Gateway configuration and request payl
   It's easy to forget to add the `cli-binary-format` parameter. If you leave it off you'll see an error: "An error occurred (InvalidRequestContentException) when calling the Invoke operation: Could not parse request body into json: Unexpected character ('­' (code 173)): expected a valid value (number, String, array, object, 'true', 'false' or 'null')
   at [Source: (byte[])"��(������/�j��Hm���Dۡܡy�^��(�ק�ܩy �i�'�\*'�;(��Z�ǭQ1|"; line: 1, column: 2]". You can make this parameter the default in your `~/.aws/config`. For more information, see the [AWS documentation](https://docs.aws.amazon.com/cli/latest/userguide/cliv2-migration.html#cliv2-migration-binaryparam).
 
-If you want to view the Lambda function on AWS itself, you should be able to log in and go to https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/site_lambda_function?tab=configuration. From here you can quickly get to the CloudWatch logs to see any information you've logged. Let's change our `ok` route and have it log some information:
-
-```js
-router.get('/ok', (req, res) => {
-  console.log('GET ok')
-  console.log('API Gateway: ' + JSON.stringify(req.apiGateway))
-
-  res.json({
-    ok: 'ok',
-  })
-})
-```
+If you want to view the Lambda function on AWS itself, you should be able to log in and go to https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/site_lambda_function?tab=configuration. From here you can quickly get to the CloudWatch logs to see any information you've logged.
 
 Save the change and create a new release:
 
-```
+```sh
 npm run release
 ```
 
@@ -1056,10 +1057,10 @@ Next, we'll need to deploy the change using Terraform. Let's add a `deploy` scri
 
 ```
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon local.js",
+    "build": "tsc --noEmit && webpack",
+    "lint": "eslint . --ext .ts",
+    "start": "ts-node-dev --respawn --pretty --transpile-only src/local.ts",
     "zip": "cd dist; zip -r ../../terraform/api.zip api.js",
-    "build": "webpack",
     "release": "npm run build && npm run zip",
     "deploy": "cd ../terraform; terraform apply --auto-approve"
   },
@@ -1067,13 +1068,139 @@ Next, we'll need to deploy the change using Terraform. Let's add a `deploy` scri
 
 Now run:
 
-```
+```sh
 npm run deploy
 ```
 
 You should see Terraform run. Go to your `ok` route in a browser again; wait a few seconds and then open the CloudWatch logs by clicking the `View logs in CloudWatch` button (or, if you've closely followed my setup: [here](https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups/log-group/$252Faws$252Flambda$252Fsite_lambda_function)).
 
 ![CloudWatch logs showing the API invocation](../assets/../../assets/express-cloudwatch.png)
+
+
+# Testing
+
+With all of our setup, deploying is fairly quick and easy. However, we'll move much faster if we can test all of our code before deploying. We can do this manually using our local development server but it is very good to also have automated tests. Let's setup [Jest](https://jestjs.io). As with all of the other choices we've had to make, there are lots of choices for our testing framework. I tend to use Jest because I've always used it and it is easy for me to understand.
+
+Let's install the `jest` package:
+
+```sh
+npm install --save-dev jest
+```
+
+We'll also want to add the TypeScript support:
+
+
+```sh
+npm install --save-dev ts-jest @types/jest
+```
+
+Now that we have the packages we'll need to add `jest` to the `env` in `.eslintrc.json`:
+
+```json
+  ...
+  "env": {
+    "node": true,
+    "jest": true,
+    "es6": true,
+  },
+  ...
+}
+```
+
+We'll also need to add a `test` script in our `package.json`:
+
+```json
+  "scripts": {
+    "build": "tsc --noEmit && webpack",
+    "lint": "eslint . --ext .ts",
+    "start": "ts-node-dev --respawn --pretty --transpile-only src/local.ts",
+    "zip": "cd dist; zip -r ../../terraform/api.zip api.js",
+    "release": "npm run build && npm run zip",
+    "deploy": "cd ../terraform; terraform apply --auto-approve",
+    "test": "tsc --noEmit && jest"
+  },
+```
+
+The `test` script will compile our TypeScript (which will check the types) and then run `jest` to run all of our tests. For this to work we'll have to add another configuration file to the root of our project. Create `jest.config.js`:
+
+```js
+module.exports = {
+  clearMocks: true,
+  moduleFileExtensions: ['js', 'ts'],
+  testEnvironment: 'node',
+  testMatch: ['**/*.test.ts'],
+  transform: {
+    '^.+\\.ts$': 'ts-jest',
+  },
+  verbose: true,
+}
+```
+
+This configuration is pretty simple and will allow us to find any tests in our project and run them. Let's try it:
+
+```sh
+npm test
+```
+
+Whoops, we have an error! We haven't written any tests:
+
+```
+No tests found, exiting with code 1
+```
+
+Let's add a test. There are a few ways that you can organize your tests. I prefer to keep my tests alongside the code they are testing. Create a new file called `src/routes/ok.test.ts`:
+
+```ts
+import request from 'supertest'
+import app from '../app'
+
+describe('GET /ok', () => {
+  it('returns ok as json', async () => {
+    const response = await request(app).get('/ok')
+    expect(response.statusCode).toBe(200)
+    expect(response.headers['content-type']).toBe('application/json; charset=utf-8')
+    expect(response.body.ok).toBe('ok')
+  })
+})
+```
+
+This is a very simple test: it uses `supertest` to generate a request (and uses `await` to wait for the `async` call) and sets expectations on the response. Let's run this:
+
+```sh
+npm test
+```
+
+You should see:
+
+```jest
+ PASS  src/routes/ok.test.ts
+  GET /ok
+    ✓ returns ok as json (43 ms)
+
+  console.log
+    GET ok
+
+      at src/routes/ok.ts:7:11
+
+  console.log
+    Serverless Event: undefined
+
+      at src/routes/ok.ts:10:11
+
+  console.log
+    Serverless Context: undefined
+
+      at src/routes/ok.ts:11:11
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        0.862 s, estimated 1 s
+Ran all test suites.
+```
+
+The test passed! There are a couple of extraneous logs in the output. Also, there is no `event` or `context` available within our test environment so they are `undefined`. For now, that's fine we can mock those later.
+
 
 # Working with authenticated requests
 
@@ -1114,11 +1241,78 @@ Looking closely at the logs you might have noticed the `requestContext` node in 
         ...
 ```
 
-The `requestContext` has a lot of useful information but most importantly it has an `identity` node representing the user's AWS Cognito identity. In this case everything is `null`. That's because we didn't include any information about our identity pool when making the request.
-
-More coming...
+The `requestContext` has a lot of useful information but most importantly it has an `identity` node representing the user's AWS Cognito identity. In this case everything is `null`. That's because we didn't include any information about our identity pool when making the request. We'll learn more about this when we begin building the front end.
 
 # Storing and retrieving items from the database
+
+As we've seen with the other parts of our server there are lots of choices available for storing and retrieving data. When [setting up our database using Terraform](/terraform-and-aws/#database) we chose DynamoDB mostly because of cost. Working with DynamoDB is very different from working in a traditional relational database like MySQL or Postgres. We've made some strong choices about how the data should be arranged in our DynamoDB instance - these choices will give us decent flexibility while allowing us to keep our costs (read unit capacity) very low. In many cases - if you aren't optimizing for cost and scale - there are simpler configurations. For me, I rely on this pattern regardless of scale to keep from having to make new decisions.
+
+For context, the [Dynamo Paper](http://www.cs.cornell.edu/courses/cs5414/2017fa/papers/dynamo.pdf) from 2007 lays out the fundamental aspects of Amazon's highly available key-value store. You don't need to read the paper to use DynamoDB but if you are looking to better understand its origin and foundation the paper can be a good read. There are also two fantastic resources about the data access patterns I use:
+
+* https://www.trek10.com/blog/dynamodb-single-table-relational-modeling/
+* https://www.youtube.com/watch?v=HaEPXoXVf2k
+
+Again, you don't need to read these but they offer deeper insight than I cover. For me, these took multiple tries to fully comprehend.
+
+## Localstack
+
+Although it is possible to setup a temporary DynamoDB on AWS for testing purposes, it is very cumbersome. Luckily, it is possible to run a local DynamoDB for development using [Localstack](https://localstack.cloud/). Localstack utilizes Docker to create watered-down versions of many AWS products. For our purposes, the Community Edition (free and Open Source) should work fine.
+
+To install `localstack` you need use `pip` (the package installer for Python) and run:
+
+```sh
+pip install localstack
+```
+
+If you get a permission error you can try:
+
+```sh
+pip install --user localstack
+```
+
+If you don't have the `pip` command, try `pip3` (the Python 3 version) instead.
+
+Normally you would start Localstack using `localstack start` to run the default stack. You can configure which services run and where the data is stored using environment variables. We'll use the following services:
+
+* S3
+* DynamoDB
+* SES
+* Lambda
+
+We'll want to persist our data in between `localstack` restarts. To do this we actually need to point our data directory to the our computer's `/tmp` directory. Why? Localstack relies on docker which mounts a shared folder in the `/tmp` directory by default. We'll need to store our data within that mounted folder.
+
+We'll also need to set directory for Localstack's temporary storage. We'll use a directory called `.localstack` in our project's root folder.
+
+This can be a lot to remember; let's add another script to our `package.json`:
+
+```json
+  scripts: {
+    ...
+    "localstack": "SERVICES=s3,dynamodb,ses,lambda DEBUG=1 DATA_DIR=/tmp/localstack/data TMPDIR=.localstack localstack start"
+    ...
+  }
+```
+
+Notice that we also set `localstack` to run in debug mode for better output.
+
+Before we can run the command we'll want setup which ports each of the services will use. To do this add the following your `.env` file:
+
+```
+LOCALSTACK_HOSTNAME=0.0.0.0
+AWS_DYNAMODB_ENDPOINT=http://$LOCALSTACK_HOSTNAME:4566
+AWS_ACCESS_KEY_ID=test
+AWS_SECRET_ACCESS_KEY=test
+AWS_REGION=us-east-1
+```
+
+
+With this in place you should be able to run:
+
+```sh
+npm run localstack
+```
+
+
 
 # Sending email
 

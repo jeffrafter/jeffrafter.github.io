@@ -1,8 +1,8 @@
 ---
-title: More Than You Ever Wanted to Know About Furbies
-date: '2019-06-28T00:01:00'
+title: Making GitHub Actions Easy
+date: '2021-04-06T00:01:00'
 published: false
-slug: furbies
+slug: making-github-actions-easy
 image: ../../assets/Great-Gatsby-Covers.jpg
 layout: post
 tags: ['furbies', 'hacks']

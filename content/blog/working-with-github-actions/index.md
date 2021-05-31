@@ -346,7 +346,6 @@ Now that we have the packages we'll need to configure them in `.eslintrc.json`:
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "prettier/@typescript-eslint",
     "plugin:prettier/recommended"
   ],
   "rules": {

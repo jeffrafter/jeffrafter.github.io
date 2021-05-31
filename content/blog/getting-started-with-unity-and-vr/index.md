@@ -98,6 +98,31 @@ We're ready to create our scene. In the `Scenes` folder in `Assets`, create a ne
 
 Double click to open it.
 
+###
+
+1. Edit | Project Settings | XR Plugin Management | Install XR Plugin Management
+2. Edit | Project Settings | Packages | Enable Preview Packages
+3. Window Package Manager | Unity filter
+   1. Open XR
+   2. XR Interaction Toolkit
+      1. Install samples
+         1. Default Input Actions
+         2. XR Device Simulator
+4. Edit | Project Settings | XR Plugin Management
+   1. Select Open XR (Preview)
+   2. Click the red !
+      1. Fix All (restart)
+   3. Go to the Open XR Features submenu, then choose Oculus Touch (it will have a giant black screen)
+
+5. (If you have a bug) - uncheck OpenXR and check Oculus
+
+6. Go to Assets | Samples | XR Interaction Toolkit - Install all of the items
+7. Edit | Project Settings | Preset Manager
+   1. ActionBasedController: type Right and Left
+
+8. Right click | XR | Room-Scale XR Rig (Action based)
+9. Select the XR Rig object and add Input Action Manager. Add 1 Action Assets element and set it to XRI Default Input Actions
+10. Right click | XR | Locomotion System
 ### Setting up XR
 
 To get started, we'll want to setup our scene so that our headset is tracked and is used as the primary camera. In general this is the way VR works: think about your eyes as cameras that are filming the world. As your head moves around your eyes move as well. In Unity we'll create a camera that tracks your head position and update the rendered view accordingly.
