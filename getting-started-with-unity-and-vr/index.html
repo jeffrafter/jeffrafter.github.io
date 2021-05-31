@@ -402,7 +402,47 @@ Image credit: <a href="https://oculus.com">Oculus Quest</a>
         loading="lazy"
       />
   </a>
-    </span></p><p>Double click to open it.</p><h3 id="setting-up-xr" style="position:relative;"><a href="#setting-up-xr" aria-label="setting up xr permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Setting up XR</h3><p>To get started, we’ll want to setup our scene so that our headset is tracked and is used as the primary camera. In general this is the way VR works: think about your eyes as cameras that are filming the world. As your head moves around your eyes move as well. In Unity we’ll create a camera that tracks your head position and update the rendered view accordingly.</p><p>In the Hierarchy tab create a new empty object called <code class="language-text">XR</code> (to do this, right click on the <code class="language-text">Game</code> node, select <code class="language-text">GameObject</code> from the menu and choose <code class="language-text">Create Empty</code>; then name the newly created object <code class="language-text">XR</code>):</p><p><span
+    </span></p><p>Double click to open it.</p><h3 id="" style="position:relative;"><a href="#" aria-label=" permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a></h3><ol>
+<li>Edit | Project Settings | XR Plugin Management | Install XR Plugin Management</li>
+<li>Edit | Project Settings | Packages | Enable Preview Packages</li>
+<li>
+<p>Window Package Manager | Unity filter</p>
+<ol>
+<li>Open XR</li>
+<li>XR Interaction Toolkit</li>
+<li>
+<p>Install samples</p>
+<ol>
+<li>Default Input Actions</li>
+<li>XR Device Simulator</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>
+<p>Edit | Project Settings | XR Plugin Management</p>
+<ol>
+<li>Select Open XR (Preview)</li>
+<li>Click the red !</li>
+<li>Fix All (restart)</li>
+<li>Go to the Open XR Features submenu, then choose Oculus Touch (it will have a giant black screen)</li>
+</ol>
+</li>
+<li>(If you have a bug) - uncheck OpenXR and check Oculus</li>
+<li>Go to Assets | Samples | XR Interaction Toolkit - Install all of the items</li>
+<li>
+<p>Edit | Project Settings | Preset Manager</p>
+<ol>
+<li>ActionBasedController: type Right and Left</li>
+</ol>
+</li>
+<li>Right click | XR | Room-Scale XR Rig (Action based)</li>
+<li>Select the XR Rig object and add Input Action Manager. Add 1 Action Assets element and set it to XRI Default Input Actions</li>
+<li>
+<p>Right click | XR | Locomotion System</p>
+<h3 id="setting-up-xr" style="position:relative;"><a href="#setting-up-xr" aria-label="setting up xr permalink" class="anchor before"><svg aria-hidden="true" focusable="false" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Setting up XR</h3>
+</li>
+</ol><p>To get started, we’ll want to setup our scene so that our headset is tracked and is used as the primary camera. In general this is the way VR works: think about your eyes as cameras that are filming the world. As your head moves around your eyes move as well. In Unity we’ll create a camera that tracks your head position and update the rendered view accordingly.</p><p>In the Hierarchy tab create a new empty object called <code class="language-text">XR</code> (to do this, right click on the <code class="language-text">Game</code> node, select <code class="language-text">GameObject</code> from the menu and choose <code class="language-text">Create Empty</code>; then name the newly created object <code class="language-text">XR</code>):</p><p><span
       class="gatsby-resp-image-wrapper"
       style="position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 358px; "
     >
