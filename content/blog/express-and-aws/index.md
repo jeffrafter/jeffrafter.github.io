@@ -467,7 +467,7 @@ import { getCurrentInvoke } from '@vendia/serverless-express'
 
 const router = Router()
 
-router.get('/', (request, response) => {
+router.get('/', (_request, response) => {
 
   console.log('GET ok')
 
