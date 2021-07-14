@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeff Rafter]]></title><description><![CDATA[How to.]]></description><link>https://jeffrafter.com</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 01 Jun 2021 15:34:48 GMT</lastBuildDate><item><title><![CDATA[Making GitHub Actions Easy]]></title><description><![CDATA[Furby is probably the most advanced, well designed, impossibly elegant child’s toy that exists and could be the key to unlocking the emotion…]]></description><link>https://jeffrafter.com/making-github-actions-easy/</link><guid isPermaLink="false">https://jeffrafter.com/making-github-actions-easy/</guid><pubDate>Tue, 06 Apr 2021 00:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;p&gt;Furby is probably the most advanced, well designed, impossibly elegant child’s toy that exists and could be the key to unlocking the emotion of pair-programming. It might seem like the stuff of nightmares: these small talking robots dancing and singing and clamoring for your attention, but as a developer or user experience designer it is an almost perfect medium.&lt;/p&gt;&lt;/section&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeff Rafter]]></title><description><![CDATA[How to.]]></description><link>https://jeffrafter.com</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 14 Jul 2021 18:46:21 GMT</lastBuildDate><item><title><![CDATA[Making GitHub Actions Easy]]></title><description><![CDATA[Furby is probably the most advanced, well designed, impossibly elegant child’s toy that exists and could be the key to unlocking the emotion…]]></description><link>https://jeffrafter.com/making-github-actions-easy/</link><guid isPermaLink="false">https://jeffrafter.com/making-github-actions-easy/</guid><pubDate>Tue, 06 Apr 2021 00:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;p&gt;Furby is probably the most advanced, well designed, impossibly elegant child’s toy that exists and could be the key to unlocking the emotion of pair-programming. It might seem like the stuff of nightmares: these small talking robots dancing and singing and clamoring for your attention, but as a developer or user experience designer it is an almost perfect medium.&lt;/p&gt;&lt;/section&gt;
 &lt;section&gt;&lt;h2 id=&quot;the-original-furby&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#the-original-furby&quot; aria-label=&quot;the original furby permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;The Original Furby&lt;/h2&gt;&lt;p&gt;The Furby was originally released in ____. That Christmas, it was the toy to have and inspired the movie Jingle All the Way with Arnold Schwarzeneggar and Sinbad. Not many toys can claim that. The original Furby was a marvel.&lt;/p&gt;&lt;ul&gt;
 &lt;li&gt;The source code&lt;/li&gt;
 &lt;li&gt;The furby organ&lt;/li&gt;
@@ -195,7 +195,34 @@ Image credit: &lt;a href=&quot;https://oculus.com&quot;&gt;Oculus Quest&lt;/a&gt
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Assets/ExampleAssets&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Assets/TutorialInfo&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Assets/Settings/SampleSceneProfile&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;Before we can build our game for the Oculus Quest, we’ll need to add some packages. Some of the packages we’ll need are very new. In current versions of Unity, you’ll need to show the preview packages. To do this we’ll need to enable preview packages in the Project Settings. Open the &lt;code class=&quot;language-text&quot;&gt;Edit&lt;/code&gt; menu and choose &lt;code class=&quot;language-text&quot;&gt;Project Settings...&lt;/code&gt;. Select &lt;code class=&quot;language-text&quot;&gt;Package Manager&lt;/code&gt; on the left then check the &lt;code class=&quot;language-text&quot;&gt;Enable Preview Packages&lt;/code&gt; checkbox:&lt;/p&gt;&lt;p&gt;&lt;span
+&lt;/ul&gt;&lt;p&gt;We’re ready to create our scene. In the &lt;code class=&quot;language-text&quot;&gt;Scenes&lt;/code&gt; folder in &lt;code class=&quot;language-text&quot;&gt;Assets&lt;/code&gt;, create a new scene called Game (select the folder, then right-click in the blank panel and select &lt;code class=&quot;language-text&quot;&gt;Create&lt;/code&gt; and then click &lt;code class=&quot;language-text&quot;&gt;Scene&lt;/code&gt;):&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 355px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/04f4531ba3bf951dc5d97256efa3c786/526ee/unity-scene-game.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 155.9375%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAfCAYAAADnTu3OAAAACXBIWXMAAAsTAAALEwEAmpwYAAACfUlEQVRIx+2WS2/aQBSF+TGBQAgPQ2xjwNjY5o2Dy6MQSFHVDVJElUWzibrIopuqf/p0zi1GpKFNX1I3WRzNWOP55tyHNU5Er5foRzN43RB+bwTdaiCdTj+rk5MTJJNJEef5fF6UmM1miKIJXMdBxTSQPcvg9PQUmUzmEYAbU6mUiGudTgeNRgOu68I0TQRBgG63i0Sr08N4YKIVeHAcF82mB13X5bRSqQRN0+S52WwKoF6vy+arqyv0ej2Zc41jq9VCoukrsqchHPYxnc6wWCwQhqEsWpaFSqWCarWKfr8vrmpVSznpqOeBHBCv810q4Sq6blgCGAwGuLy8xGQyge/7Ego3XFxcIJs9Q6FQwGL1DnXbwfl5VtzHUXCkFNBTm0y0220FHIq76XSqwnckVJ6qaUV4QRsf7j/h/uELpvNrFFRKeFC5XH4kFbIPa2f70DpFhxxLykHD8XDz/g4fHz5jMlsin8sJMHa2dxgoZ/P5XMREs1JxqLF03VCOctDMGl69uUHNdlEsFp64E4e2SiyTu9lspGrj8VhGQg3DENGJVsyjMXoL//oOWsVGWaXhKLCtKhcOh9hutxiNRlgul+KSOWSPsSW+5VElXkGoMsMjQI1PgF3VDkMFvL29FXer1UpahFVmb7FYtVpNgIcbS0dgAqyrcFkMhszWiaJInLHCDJehx8kX0E57l98DWRQWY71eS//RIXNIYFyUR8AfONsDfflkAikM80WXDPGw0r8F5JfClxgeXXEz5wQdfim/DvQ8mDvAoQj7Y6BxBPhXDl+AL8AX4L8GPqf/B+QVcEzx9RnPfwqkuMYLi5c/fwJi8R7iXwbvHYpXh23b+AouRwhgxq8oewAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity Game Scene&quot;
+        title=&quot;Unity Game Scene&quot;
+        src=&quot;/static/04f4531ba3bf951dc5d97256efa3c786/526ee/unity-scene-game.png&quot;
+        srcset=&quot;/static/04f4531ba3bf951dc5d97256efa3c786/72799/unity-scene-game.png 320w,
+/static/04f4531ba3bf951dc5d97256efa3c786/526ee/unity-scene-game.png 355w&quot;
+        sizes=&quot;(max-width: 355px) 100vw, 355px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Double click to open it.&lt;/p&gt;&lt;h3 id=&quot;installing-packages&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#installing-packages&quot; aria-label=&quot;installing packages permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Installing packages&lt;/h3&gt;&lt;p&gt;Before we can build our game for the Oculus Quest, we’ll need to add some packages. Some of the packages we’ll need are very new. In current versions of Unity, you’ll need to show the preview packages. To do this we’ll need to enable preview packages in the Project Settings. Open the &lt;code class=&quot;language-text&quot;&gt;Edit&lt;/code&gt; menu and choose &lt;code class=&quot;language-text&quot;&gt;Project Settings...&lt;/code&gt;. Select &lt;code class=&quot;language-text&quot;&gt;Package Manager&lt;/code&gt; on the left then check the &lt;code class=&quot;language-text&quot;&gt;Enable Preview Packages&lt;/code&gt; checkbox:&lt;/p&gt;&lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1280px; &quot;
     &gt;
@@ -282,24 +309,80 @@ Image credit: &lt;a href=&quot;https://oculus.com&quot;&gt;Oculus Quest&lt;/a&gt
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/3a770a15d356a2aa856dc5ff18ae18b9/29007/unity-xr-interaction-toolkit.png&quot;
+    href=&quot;/static/0472e0a8d3eac21fa7f983d0f99c7bca/92bb4/unity-xr-interaction-toolkit.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAPCAYAAADkmO9VAAAACXBIWXMAAAsSAAALEgHS3X78AAABrklEQVQ4y5WT626bQBCFeZ9GYAzshcvCLmAMvlAprp02fypVfv8HSMTpsMZtotix8+PTzK6GM7Ojg6OL4iVNEsRxPETBHDP3G3z3geIDPNdD4PtgUYSI8Cl3XReeR8xmhI8ZRWLwPG+ML071+BvL/Z+hfToi3z6DLx6RdgfE7Q/IVCBMFCIuwTknBIQgpESWSkg+R0iNwjAcG1lRhzf7Idv8QrL6OYj2CWx5QLZ5RkooHSM2FVbb7zjsd9gTXddivV5jWScolYdY2iaDbUTREdEcPJyg/O2ZMZqKJlDFArruYRY9ct1AmTWKagtdbZDkLbiIIaYXOEJIvIW/Owv7VJVrFLqiaJCpfIoaShXUrLQrYCyytc406lXGImM06rqC0RpZlpJQhlwpy5inaUokkCR8UzAIAhyPR+x2O7u7vu/Rtu0HutUG2pT3TVgUhZ1inIDsdbFOJtrifCZ0zkcPnmxzjbGeWW4Knj+69ZIzXxK8R/iuHX5V8J/L79nnFf7/KYwxMiUbpvhh4ZfuLnHWcIwxr3VdoyzLgbD2yLKTWUe7jB47GfdThq7r0DTN61/poPler28I0wAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 78.125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAAClUlEQVQ4y6WU227TQBBAC0LwUv6gr3HSXHz3+m7Hia9xnEKoaGgFEhLwyOdAXvgZnlB45WdQ7R1mnKSNIiQqEeloN7Pas7M7k5yc4CfRzjuGfW53BIGJksRUTW/RNI0xQ2PTOGZpmjLf99uYYRhMVUSmDDtMHnSYJg+ZoWtsNOifku/pIg6+F9UE/CC8NTStkUYDZNiMhqNGFJXGNFljWVajKGozHGJ8NGokWWtk3Wlkw21ERb+VZAWEbq8i4fO4evXz9duPcHnzvimXbyAuX0J1eQPzqoA4kiGKU0iTGPI8gzie4jyBJHYhzC/Ay6/BDNLGMG0QeoMVCU/l6eXGW34Aq3pXK/kNV7Jr7i0/8WR5xSepz8Psgi8WL3i1WPIkzXmSzbjv2dw2dW4yhui14zjQFYSrVqhIo41lqGCocs10BZi2wzDAMEywLAe8MAM3SMELpuCPi3buBhRLOMpqz/Og2+1uM9R0feO6Hm60awTusQCrAlE0gaqqYDbLYT4voSwLZAZzBEeOa3VRFCAIwk6oaRtK2TTNGoE9JMSCgOMGMI4wM98H27YPcAiO89p1nb8LSbIVbYW6rsNiUcFqtQLKoixLyLLsEJ7nRY1v+zAh9hxMp1O8btlmGIYhuK4L9Gb03fc87gdRHU5y6PZ6/xbux/l8Dgm2C0koMxLTGl6X43p75fuiPEAYRdFddnsxY4zWOO1r2+ZYSCfthYfsi0SC46KRkPbthNs+VFX1x7ZF2G+k3lW7Bd+wPo4dcUv76ABh39go+0XXGI/HLUEQ3EEFOY4dQlen56B37ff7NyR8NhgMPkuS9A1/9F8xuO50Oms8rR0VRVkfxo6huCiKa8zyy9nZmXiC5SfpY/rXIfl/8AR59Acb8rt4mg5fUwAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
         alt=&quot;Unity XR Interaction Toolkit&quot;
         title=&quot;Unity XR Interaction Toolkit&quot;
-        src=&quot;/static/3a770a15d356a2aa856dc5ff18ae18b9/21b4d/unity-xr-interaction-toolkit.png&quot;
-        srcset=&quot;/static/3a770a15d356a2aa856dc5ff18ae18b9/72799/unity-xr-interaction-toolkit.png 320w,
-/static/3a770a15d356a2aa856dc5ff18ae18b9/6af66/unity-xr-interaction-toolkit.png 640w,
-/static/3a770a15d356a2aa856dc5ff18ae18b9/21b4d/unity-xr-interaction-toolkit.png 1280w,
-/static/3a770a15d356a2aa856dc5ff18ae18b9/29007/unity-xr-interaction-toolkit.png 1600w&quot;
+        src=&quot;/static/0472e0a8d3eac21fa7f983d0f99c7bca/21b4d/unity-xr-interaction-toolkit.png&quot;
+        srcset=&quot;/static/0472e0a8d3eac21fa7f983d0f99c7bca/72799/unity-xr-interaction-toolkit.png 320w,
+/static/0472e0a8d3eac21fa7f983d0f99c7bca/6af66/unity-xr-interaction-toolkit.png 640w,
+/static/0472e0a8d3eac21fa7f983d0f99c7bca/21b4d/unity-xr-interaction-toolkit.png 1280w,
+/static/0472e0a8d3eac21fa7f983d0f99c7bca/92bb4/unity-xr-interaction-toolkit.png 1824w&quot;
+        sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;You might see a warning about the “new input system package”:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 372px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/48bd53611d8f92ded6f3e882e95053f1/98b6e/unity-new-input-system.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 122.81250000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAZCAYAAAAxFw7TAAAACXBIWXMAAAsSAAALEgHS3X78AAAEnUlEQVQ4y51VW08bRxg12MSJbWwEGIhTqpJQwqVEXOIkgA0BhZBIhDy0EG628WV9IzgOxoAxjm/YYBuwoX2qVFVpkaJWJUrVH9D3/oa+tE+hvKSWiqUEz9dvBpyGQKO0Kx3N7O43Z8+cMzvD4x1eSuUV3v+9zp+v5pWXl//z4Ny5D/Kwya+s/FDW2HjpbG1t3dm6unoFxcWLtYrq6mpFTU2N4sKFakXuOdYoGho+oXVyHFuAyJNKpTzezZu3KFleRUVF2eio5hedzvBCq9Xv6HT6XWx38X7XYOB2JyaMu3q96fAZwx+IHVqPHANUWH//AJ/X1dVNCQWosgmL9ywWO5hMFgaz2Q6jo+OgVneCSqUGrAX6njNZgeOsrGZy0gG9vX2zyMHv67st4DU3t1LC06Wlparxcd0LExaioiwFDs7i17NDQ4NZm82WrayszJrNtmzuvcHIvaIfUKu7fMghUak6BbymppZ8vDlTUlJyHQnT3AEhQYDVOgk9PTegvr4O1XVBeXkFqrYBEh3UGLl9WoPqQ8ghbWvrKECFB4TFxSXdRwhxEO0PDQ3DtWvtoFRepVMDE2cBo9F8WGNmhB0d6jByyBhhTuGbhDiAUH8oqd0+BbOzHgaH4yEjo+9ojfEkwpMUYppEbzABhgRTU06IRmOwtBQFn88PmCrQd5g6teXdCjUaXZp6h2qIzxeAYDAM8/NeBtr3eh9BIBCCRST2+0MEA9mnoWAYxxXK5WXdIyPjaY9nEVKpTRKPr0IytQnr6ylYXo7B6uo6tnFYWYlDPLGGNZ8Tvz94SHiCQrlczgjn5jwQi62SxCFBKBTB6S6zPp16JLqC5En6jBFynO3fFQ4Pj6UXF/2wtpYk6+sbkEAl1DvaJpMbTB2qx/4m9hMkEllGD++/9rC9/Q1CXIcYijbN/gTOSjAYmJ52U6+Yb16vj6mlPmIgrMZsth4hPDJlSjg2pk3T1BwOJ6FL5OH0DEvZ6ZwGt3seXC43+8ghiM12/12h5DxcoAEQ6lksloB4fI0Fs7HxBfMxcRAIqwmHI8c9fDsU6mE0ukLW0TMaTCAQpn4x+ANLmHASVtdSEAovk6XIyr4dN4f2dtVxhTkPqT8azQRBsIWNNsCDB9PgmXUDp9cCZ9CBSa+jfcJNaPZtFgt0nDTloqKibiT4k4bgfxTMhsIREgwu4dIIE6/HQ+46NkiP6ym55f6e9M//QHpd35GemaevRpxx6GxThl4TtrS0MkKZTNaN/+be1tYTePx4C579+BNsbz+Db759Al9/9SVcX/gZquaew6XF3+F2agcaFn6Dqvnn5M7CNtzoaInQ3QbTLuDhFk73wzNisfjq4OC9X5H0pdHA7eEvmKHA+4xBb8x8prVnBvQzmYEJV+aOzpW5i+2A3v3XPZ31pbK1xYkchZcvXxGwM0UgEJzGpkoikXwqlcrmxGKJH/sBCuxjWxgolooC8sJTAblUyFBaKAyUSYXeEpmEwxOkmSrk8/n5uXOKn5+fL8P2I0QjovU90YT4GIEHVd6pt09DvkgkxqlLJCKRSPp+EBfiLESojJ16QqHwxGM27z/iyPU3i7O0x9R+TosAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity new input system&quot;
+        title=&quot;Unity new input system&quot;
+        src=&quot;/static/48bd53611d8f92ded6f3e882e95053f1/98b6e/unity-new-input-system.png&quot;
+        srcset=&quot;/static/48bd53611d8f92ded6f3e882e95053f1/72799/unity-new-input-system.png 320w,
+/static/48bd53611d8f92ded6f3e882e95053f1/98b6e/unity-new-input-system.png 372w&quot;
+        sizes=&quot;(max-width: 372px) 100vw, 372px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Click “Yes” (which will restart Unity).&lt;/p&gt;&lt;p&gt;Re-open the Package Manager and find the XR Interaction Toolkit package again. Open the “Samples” and install the Default Input Actions and the XR Device Simulator.&lt;/p&gt;&lt;p&gt;Find the &lt;code class=&quot;language-text&quot;&gt;OpenXR Plugin&lt;/code&gt; package, select it, and click install:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1280px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/3f46db8b650e9dc22b5ecab5d1ebdf6e/92bb4/unity-install-open-xr.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 78.125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAQCAYAAAAWGF8bAAAACXBIWXMAABYlAAAWJQFJUiTwAAACQElEQVQ4y6WUzW6bQBDH3apqL+kb+OgPxTZgWFg+DBjMp23AaRo1VZtIOfTcx2l96cv0VLnXvkxlYDoL2LVIWkUK0k8zDOx/ZphdOh28AnLeV/RzvdcfUJ7nqURkKkoELaEKpdTzfRqGIbVtmxJSx0VRpJIkUUVRjuDaM6b3MvPt76t0Afbc2SsyKQRuXEx5ruC5Cfpcoam0UDWtQJFiMsEYLxTT6bQQBAHvORbbow+DwSBlgq/95O3Pq5tPsLm+LeLNOwiSSwizK/BXGSyiGBwvgCgMYLVcgrtwQTZVmJkzwEQgilNgiWRZhl6v954JnvHu5U5J7kCMPuRIyaDJXWm/uSm1VVrOo02ZZRflOr0oo+WqNBy3pJpRarpZo2m5YRgwHA6vK0FJ4HY6JUCJmKuyyCyosgSqIqOVQdMMMOcxzOwQLNuvfNMO8B6xvNLQ9XxmmkywrpDI8s6YmbhQzxFmQW0szgQcx4UsTSFZr2qSNaRIliaQpglWn+VxHEO/328ECdmxklVVzRE4gK1Ugpbt4rcLwDTNKlYn1Q7+sWUcyn3Bw4sHwdqqoOt/4y1Ktq75ho8TbFfd4nQojxds+yfvPU2wXeF/BdmDB1r6V6sPtdzsQ0n60Uz0N5I3067AM5q3Yy32bB1LilOuBVHsVxAEuN+cCvwJHPE8717sFMuywHVdiKIIRqPRRyb4ajwef8bD/Y3juK8Y3OIG3WK2yuI53Z7G2rA4rttiJ1+63S7fwc3KRJ+zvw4TfwIvkGd/AF4atiAQ/xXrAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity OpenXR Plugin&quot;
+        title=&quot;Unity OpenXR Plugin&quot;
+        src=&quot;/static/3f46db8b650e9dc22b5ecab5d1ebdf6e/21b4d/unity-install-open-xr.png&quot;
+        srcset=&quot;/static/3f46db8b650e9dc22b5ecab5d1ebdf6e/72799/unity-install-open-xr.png 320w,
+/static/3f46db8b650e9dc22b5ecab5d1ebdf6e/6af66/unity-install-open-xr.png 640w,
+/static/3f46db8b650e9dc22b5ecab5d1ebdf6e/21b4d/unity-install-open-xr.png 1280w,
+/static/3f46db8b650e9dc22b5ecab5d1ebdf6e/92bb4/unity-install-open-xr.png 1824w&quot;
         sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
@@ -334,263 +417,289 @@ Image credit: &lt;a href=&quot;https://oculus.com&quot;&gt;Oculus Quest&lt;/a&gt
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;We’re ready to create our scene. In the &lt;code class=&quot;language-text&quot;&gt;Scenes&lt;/code&gt; folder in &lt;code class=&quot;language-text&quot;&gt;Assets&lt;/code&gt;, create a new scene called Game (select the folder, then right-click in the blank panel and select &lt;code class=&quot;language-text&quot;&gt;Create&lt;/code&gt; and then click &lt;code class=&quot;language-text&quot;&gt;Scene&lt;/code&gt;):&lt;/p&gt;&lt;p&gt;&lt;span
+    &lt;/span&gt;&lt;/p&gt;&lt;h3 id=&quot;setting-up-the-xr-plugins&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#setting-up-the-xr-plugins&quot; aria-label=&quot;setting up the xr plugins permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Setting up the XR Plugins&lt;/h3&gt;&lt;p&gt;Open the &lt;code class=&quot;language-text&quot;&gt;Edit&lt;/code&gt; menu and choose &lt;code class=&quot;language-text&quot;&gt;Project Settings...&lt;/code&gt;. Select &lt;code class=&quot;language-text&quot;&gt;XR Plugin Management&lt;/code&gt; on the left.&lt;/p&gt;&lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 355px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 951px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/04f4531ba3bf951dc5d97256efa3c786/526ee/unity-scene-game.png&quot;
+    href=&quot;/static/0137708574d69549b63ba67c0623d07e/9b379/unity-install-xr-plugin-management.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 155.9375%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAfCAYAAADnTu3OAAAACXBIWXMAAAsTAAALEwEAmpwYAAACfUlEQVRIx+2WS2/aQBSF+TGBQAgPQ2xjwNjY5o2Dy6MQSFHVDVJElUWzibrIopuqf/p0zi1GpKFNX1I3WRzNWOP55tyHNU5Er5foRzN43RB+bwTdaiCdTj+rk5MTJJNJEef5fF6UmM1miKIJXMdBxTSQPcvg9PQUmUzmEYAbU6mUiGudTgeNRgOu68I0TQRBgG63i0Sr08N4YKIVeHAcF82mB13X5bRSqQRN0+S52WwKoF6vy+arqyv0ej2Zc41jq9VCoukrsqchHPYxnc6wWCwQhqEsWpaFSqWCarWKfr8vrmpVSznpqOeBHBCv810q4Sq6blgCGAwGuLy8xGQyge/7Ego3XFxcIJs9Q6FQwGL1DnXbwfl5VtzHUXCkFNBTm0y0220FHIq76XSqwnckVJ6qaUV4QRsf7j/h/uELpvNrFFRKeFC5XH4kFbIPa2f70DpFhxxLykHD8XDz/g4fHz5jMlsin8sJMHa2dxgoZ/P5XMREs1JxqLF03VCOctDMGl69uUHNdlEsFp64E4e2SiyTu9lspGrj8VhGQg3DENGJVsyjMXoL//oOWsVGWaXhKLCtKhcOh9hutxiNRlgul+KSOWSPsSW+5VElXkGoMsMjQI1PgF3VDkMFvL29FXer1UpahFVmb7FYtVpNgIcbS0dgAqyrcFkMhszWiaJInLHCDJehx8kX0E57l98DWRQWY71eS//RIXNIYFyUR8AfONsDfflkAikM80WXDPGw0r8F5JfClxgeXXEz5wQdfim/DvQ8mDvAoQj7Y6BxBPhXDl+AL8AX4L8GPqf/B+QVcEzx9RnPfwqkuMYLi5c/fwJi8R7iXwbvHYpXh23b+AouRwhgxq8oewAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 68.4375%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAOCAYAAAAvxDzwAAAACXBIWXMAAAsTAAALEwEAmpwYAAABTElEQVQ4y62T3XKCMBCF80L+VvKDygQiARV0tPaiF72o7/8InZxmI3EYO70o9uLMbkL49uwGmC7MV6ZzcKncZDLBdDrFeDzGaDS6az6fI0mSEB/PUPRyXe5YXhQojHHaQ4UQWCwWKPyetRZlWaKqKhhjwjOCcs6DZrPZoxxFVleVy7WGlNIppQLwer3icrmgaRocj0ccDgfsdjvs9/uw17ZtyKlgV9h1uWPkgF7abDYEDU7yPA8uKUaRy7qusd1ugwikvZH+GVIARlgE9lvri/ZJ1MVvZxhVonayLAuwqFjgr2Jx+Ov1+u4wAoeAGc2BHKZp+sPhMKAf5Pl89i4tBEF6oEFAWxpUtoSS3hlPIL2eAprTB+q3T+j2Hdy+4sWcwFM/T2p9yKUItXQyXUEtV0746NfemRwOlLdLcELwG8THp1qmX65buP/4bL4Box/Why1dSHUAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Unity Game Scene&quot;
-        title=&quot;Unity Game Scene&quot;
-        src=&quot;/static/04f4531ba3bf951dc5d97256efa3c786/526ee/unity-scene-game.png&quot;
-        srcset=&quot;/static/04f4531ba3bf951dc5d97256efa3c786/72799/unity-scene-game.png 320w,
-/static/04f4531ba3bf951dc5d97256efa3c786/526ee/unity-scene-game.png 355w&quot;
-        sizes=&quot;(max-width: 355px) 100vw, 355px&quot;
+        alt=&quot;Unity Install XR Plugin Management&quot;
+        title=&quot;Unity Install XR Plugin Management&quot;
+        src=&quot;/static/0137708574d69549b63ba67c0623d07e/9b379/unity-install-xr-plugin-management.png&quot;
+        srcset=&quot;/static/0137708574d69549b63ba67c0623d07e/72799/unity-install-xr-plugin-management.png 320w,
+/static/0137708574d69549b63ba67c0623d07e/6af66/unity-install-xr-plugin-management.png 640w,
+/static/0137708574d69549b63ba67c0623d07e/9b379/unity-install-xr-plugin-management.png 951w&quot;
+        sizes=&quot;(max-width: 951px) 100vw, 951px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Double click to open it.&lt;/p&gt;&lt;h3 id=&quot;&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#&quot; aria-label=&quot; permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ol&gt;
-&lt;li&gt;Edit | Project Settings | XR Plugin Management | Install XR Plugin Management&lt;/li&gt;
-&lt;li&gt;Edit | Project Settings | Packages | Enable Preview Packages&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Window Package Manager | Unity filter&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Open XR&lt;/li&gt;
-&lt;li&gt;XR Interaction Toolkit&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Install samples&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Default Input Actions&lt;/li&gt;
-&lt;li&gt;XR Device Simulator&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Edit | Project Settings | XR Plugin Management&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Select Open XR (Preview)&lt;/li&gt;
-&lt;li&gt;Click the red !&lt;/li&gt;
-&lt;li&gt;Fix All (restart)&lt;/li&gt;
-&lt;li&gt;Go to the Open XR Features submenu, then choose Oculus Touch (it will have a giant black screen)&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;(If you have a bug) - uncheck OpenXR and check Oculus&lt;/li&gt;
-&lt;li&gt;Go to Assets | Samples | XR Interaction Toolkit - Install all of the items&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Edit | Project Settings | Preset Manager&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;ActionBasedController: type Right and Left&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/li&gt;
-&lt;li&gt;Right click | XR | Room-Scale XR Rig (Action based)&lt;/li&gt;
-&lt;li&gt;Select the XR Rig object and add Input Action Manager. Add 1 Action Assets element and set it to XRI Default Input Actions&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;Right click | XR | Locomotion System&lt;/p&gt;
-&lt;h3 id=&quot;setting-up-xr&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#setting-up-xr&quot; aria-label=&quot;setting up xr permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Setting up XR&lt;/h3&gt;
-&lt;/li&gt;
-&lt;/ol&gt;&lt;p&gt;To get started, we’ll want to setup our scene so that our headset is tracked and is used as the primary camera. In general this is the way VR works: think about your eyes as cameras that are filming the world. As your head moves around your eyes move as well. In Unity we’ll create a camera that tracks your head position and update the rendered view accordingly.&lt;/p&gt;&lt;p&gt;In the Hierarchy tab create a new empty object called &lt;code class=&quot;language-text&quot;&gt;XR&lt;/code&gt; (to do this, right click on the &lt;code class=&quot;language-text&quot;&gt;Game&lt;/code&gt; node, select &lt;code class=&quot;language-text&quot;&gt;GameObject&lt;/code&gt; from the menu and choose &lt;code class=&quot;language-text&quot;&gt;Create Empty&lt;/code&gt;; then name the newly created object &lt;code class=&quot;language-text&quot;&gt;XR&lt;/code&gt;):&lt;/p&gt;&lt;p&gt;&lt;span
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Click, &lt;code class=&quot;language-text&quot;&gt;Install XR Plugin Management&lt;/code&gt;.&lt;/p&gt;&lt;p&gt;Once loaded, you’ll see a list of plugins. Check the &lt;code class=&quot;language-text&quot;&gt;Open XR&lt;/code&gt; box. You should see a red warning icon next to the name of the plugin. Click it:&lt;/p&gt;&lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 358px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1280px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/1c89428a333d2d37b3ad94477751fe82/39185/unity-create-empty-xr.png&quot;
+    href=&quot;/static/5cc7b3c2f58b1157210827f144bcfcec/5f78c/unity-xr-plugin-management-red-x.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 120.93750000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAYCAYAAAD6S912AAAACXBIWXMAAAsTAAALEwEAmpwYAAABUElEQVQ4y+3Sy26CQBgF4HmYioIICMKMVrmpIAiK9dJdbXdNu2ujq6arvvfpAPaywjZNumLx5Z+Bk5PJZEjfHsMPU0ziDFPOnsSQVR2NxgWEZhOCIJzV5DnDMCDLMkgYTDGPI9ijEQZ9Br2r8UAZarVaxTwnz0mSBFEUQeJ4jiiKkaYLbHc7ZKsVkiSB53lwHAeu68Lz/WJfJc8FQQBi9npg1MJ47GO9vsJ+f4PtZsNPHSPLlpjNQn76Idy83LErOLzYBZFkBR21C8OkmIYR0uWqMF9kxUz49CcBTNqHyQbVeIbos3voySOU9RPcuxekD29wbl+hbQ/QdwcY10fonLp5PkvjSEczoRoM1tADG5WsSxcm9zGLNf//E6TdFqF0ZH6PJqhVytf5vX7h+8/v1Uj+dhRFBWUM7IT+walQKYsoLbBv5b9VF9aFdWFd+D+F7+/LHfnZKMjbAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 88.75%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAABYlAAAWJQFJUiTwAAACoElEQVQ4y51Uy27aQBSl7QYUFESlBDaNI7GKFCANMOZhjHkZQwkEUBCLfkU3Vfsp/Qar/9I/CO0ntPIijuf23MHgUDVNVEtHM57xnHvuuXcci+H58DaXcia50zc57SR/dqaVSiWtXC4r1Ot1bbFYaMvlUuv1emqvUqns9oETvJ9iPRPbPjPL/DKcWCQM82e5IrxiseAVCgXv/Pzcu7i48Gq1mgdi7/Ly0svn82rvAX4BEviWTqdfK0JRq3+17SF1u11pNJuEaGQYBrVaLWo0Gjvouk7FYpFAqgASNfIagv9IpVKaItSFcOfzGQ0GgzvHcWSz2ZSmacrhcCht25ZYl+PxWPIe1EqolQggEUBWq9V7DgYRtztCLLqj0YgV+KwC74SDZEIhyNV8u86H4aUCZwEE7Xab4OP64OBgQ4gD7s3NDUGFz5tCCIJCgkKCKurbNkHVLnWec5BwHjAxAkaEeHGvr6+p3+/77BurqeGQMxxRH0raVossy3oMQafTYeJ1PB6PFM7nc07PZ3W6LqhhmGSPpjS/GpPT6+Jgm1j9XxCgmKw2ItwqhI+RwlqVOh0Lle8oJewl28DjH/OA9yFqnUgkIsLpdMoHff6IFVrtHtnOFXXtd/BwADs2hYAtCqyKR6wpQhQs8hDN604mE24bnyvJhPWGRYY1IKPlkNG0kFJ9rycfQBUFVq2TyWREiAoT0vbZYE5ZiArpohxCqLVHEHDFcQXXh4eHG0Kwu7PZTHnI3mw/ZrVPgQm5jfYIubE5ZZD5fBMYfAueia3C2x0hfHBXqxWnfIdm5s4PEOS5uA8VRoS43G5o7J4/YUpPgglxl7+jKCfM9+Lo6KiXzWY/HR8ff8xkMgoP5/9C+N1n4D24kjGkuf0tvgReheP/QD2/AVvQ4v5B+50OAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Unity Create Empty XR&quot;
-        title=&quot;Unity Create Empty XR&quot;
-        src=&quot;/static/1c89428a333d2d37b3ad94477751fe82/39185/unity-create-empty-xr.png&quot;
-        srcset=&quot;/static/1c89428a333d2d37b3ad94477751fe82/72799/unity-create-empty-xr.png 320w,
-/static/1c89428a333d2d37b3ad94477751fe82/39185/unity-create-empty-xr.png 358w&quot;
-        sizes=&quot;(max-width: 358px) 100vw, 358px&quot;
+        alt=&quot;Unity XR Plugin Management Warning&quot;
+        title=&quot;Unity XR Plugin Management Warning&quot;
+        src=&quot;/static/5cc7b3c2f58b1157210827f144bcfcec/21b4d/unity-xr-plugin-management-red-x.png&quot;
+        srcset=&quot;/static/5cc7b3c2f58b1157210827f144bcfcec/72799/unity-xr-plugin-management-red-x.png 320w,
+/static/5cc7b3c2f58b1157210827f144bcfcec/6af66/unity-xr-plugin-management-red-x.png 640w,
+/static/5cc7b3c2f58b1157210827f144bcfcec/21b4d/unity-xr-plugin-management-red-x.png 1280w,
+/static/5cc7b3c2f58b1157210827f144bcfcec/5f78c/unity-xr-plugin-management-red-x.png 1606w&quot;
+        sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Select the object, set the &lt;code class=&quot;language-text&quot;&gt;Y&lt;/code&gt; position to &lt;code class=&quot;language-text&quot;&gt;1&lt;/code&gt;&lt;label for=&quot;sd-why-did-we-set-the&quot; class=&quot;margin-toggle sidenote-number&quot;&gt;&lt;/label&gt;&lt;input type=&quot;checkbox&quot; id=&quot;sd-why-did-we-set-the&quot; class=&quot;margin-toggle&quot; /&gt;&lt;span class=&quot;sidenote&quot;&gt;Why did we set the &lt;code&gt;Y&lt;/code&gt; to &lt;code&gt;1&lt;/code&gt;? We&apos;ll be adding a one-meter tall &quot;floor&quot; for us to stand on. The actual height of the camera from the &quot;floor&quot; will be controlled by how the headset position is tracked in the &lt;code&gt;Tracking Origin Mode&lt;/code&gt; (which we&apos;ve set to the default: &lt;code&gt;Device&lt;/code&gt;).&lt;/span&gt; and add an &lt;code class=&quot;language-text&quot;&gt;XR Rig&lt;/code&gt; component.&lt;/p&gt;&lt;p&gt;&lt;span
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;On the popup, click &lt;code class=&quot;language-text&quot;&gt;Fix All&lt;/code&gt;:&lt;/p&gt;&lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 432px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1224px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/51a41dee225df4b8d845be2a3a6b4ba8/0e0c3/unity-add-xr-rig-component.png&quot;
+    href=&quot;/static/f7148c40215ede040f5e2658f9d24ca2/d9b5d/unity-fix-all.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 131.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAaCAYAAAC3g3x9AAAACXBIWXMAABYlAAAWJQFJUiTwAAACdUlEQVRIx+1USXfSUBjNv6EMZQpJyEQCISEkTAmCbXWjqx7d2no8rlx6/NHXd199GFEUdOvi9us33W96QUvTFPP5XCIIAlxfX6Ner1+EWq2GXq+HVqsFbb1eYzabwXVdhGEojY1GQ8oqWIhQ/majefBZloUkSTAej6HlWS6V0WiExWKBLMtkAXZLG8FCLOg4DjzPA6eqxkRRJHNp1zzPhee7mE6nWC6X2O/3KMtSBimw4GQykTFxHGO1WklQp5/kjKFPC8ehMIbwPV92RzCZYzi2A9u2YZqm1InhcIjBYCBBnX41LifQ+IetEgw4TuaInU4HV1dXcoeMbzab8hjU6adOP6XG3eT50x5ZjSQK1H3fR7vdPhAynoeo6oqQx9KYyD3QobozDEPAlOBoTwl1IVsyhpK2brcri3ICFqXUGMAkSoLEaRIjEXudpzMUxUZiKw5VloWwpRKZeLccl8XVigitOqI8hNhRvrnB6vYeSV5gXWyxWJfYlDuJOM0RxSmS+QKuOKRlmT+sSfvO/mToixfvTLeYvvgAw4vR7unQTRu9gYVO35CSMIYuBt+6U80cOlRG0zTEmwyQFbcIZwWCdIcwu0H58g2Ku3tMFncI5nuB5wiyWxi26FDknCC0xS51REmG149fsHv7GdmrT3CfvYddvINdPsDZPsIVcLYPcPcfYfjiqRm6zP2JUHXJj5x7jKIJkniKYOTDNAYYclcWRzRkV/bQOhzk5MiU1YszwVS+yuIVdF0/TVj9rNT/h+sfESm9GnsW4bGsPq9/IjzGf8LLCE/hrwj/hLMJq7/av8NZD5tfR7/fPwuMPX6v2q+WfSmqhF8BahtlncL1mBMAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 116.56249999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAXCAYAAAALHW+jAAAACXBIWXMAABYlAAAWJQFJUiTwAAACKElEQVQ4y+2UW4vaQBSAQwtKf4HQongP2wercfGu62qyxtwUbxhN/KvLpr+nsPsoJnP2nCFas1KwvhU68HEmkzNfzkyGEQRsD98rJXfYeG5Pql7p/v5FkqpeuSJ5g+HQU1XVUxTFk2XZ0zTNGwwGXqVS8SRJ4rFcLr9g/CmK4g/h2Gp34mqpyvBk6aCoGgyUETypOnQfHgGTASdzqtUqfy6VShyUncbT6fTqJMxl0/ZIkcE0TF+RZb/T6fi9Xtdvt9t+s9m8oNVq+Y1Gw8eq/fl8fhiNRiTcnISFQs5ezg3Y7XZss9mw7XYLtm3D1nHAOQPfgeu6sF6vwTAMsCyLYT+YTqdQLBbPhPm8bekaLBZzZpomAefgRE4o4XE8HgPuKdN1PcAYFd4V8rYzNcB1HKqOnVf0Eap8uVwCiniF2A/oIxFhHis0DJ2SKYGtVis+aTKZAC3nIySgqlBKqwlIHhGKRdzDmQYbFJKUKqF9XCwWgJsOs9mMx+MzSY97SBXShyPCbDZrd7td6Pf7LIT60Ov1AP840Ls/wJCA8nK5XFRYq9UAYSFwJZQb4BGCTCYTFdIgwkLgSig3wLN5KazX6zwB49XCMPe/8J8SIkEIuxLK9S+EeMq3NHgreG8CFuWchKlUysKb9xfyhryG8Roo9xVv7LdkMjkRztrXeDxuIm4sFnP+BpqDWOj4xk2JRILCJySOfLkRmvsZV/q7xMPhIADATez3+5PnHSx5fJmGEupvAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Unity add XR Rig component&quot;
-        title=&quot;Unity add XR Rig component&quot;
-        src=&quot;/static/51a41dee225df4b8d845be2a3a6b4ba8/0e0c3/unity-add-xr-rig-component.png&quot;
-        srcset=&quot;/static/51a41dee225df4b8d845be2a3a6b4ba8/72799/unity-add-xr-rig-component.png 320w,
-/static/51a41dee225df4b8d845be2a3a6b4ba8/0e0c3/unity-add-xr-rig-component.png 432w&quot;
-        sizes=&quot;(max-width: 432px) 100vw, 432px&quot;
+        alt=&quot;Unity Fix All&quot;
+        title=&quot;Unity Fix All&quot;
+        src=&quot;/static/f7148c40215ede040f5e2658f9d24ca2/d9b5d/unity-fix-all.png&quot;
+        srcset=&quot;/static/f7148c40215ede040f5e2658f9d24ca2/72799/unity-fix-all.png 320w,
+/static/f7148c40215ede040f5e2658f9d24ca2/6af66/unity-fix-all.png 640w,
+/static/f7148c40215ede040f5e2658f9d24ca2/d9b5d/unity-fix-all.png 1224w&quot;
+        sizes=&quot;(max-width: 1224px) 100vw, 1224px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Within the &lt;code class=&quot;language-text&quot;&gt;XR&lt;/code&gt; object create a new empty object:&lt;/p&gt;&lt;p&gt;&lt;span
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;If there are remaining warnings, that’s okay, as long as the errors are fixed.&lt;/p&gt;&lt;p&gt;Click the OpenXR sub-item on the left. Under &lt;code class=&quot;language-text&quot;&gt;Interaction Profiles&lt;/code&gt;, click the &lt;code class=&quot;language-text&quot;&gt;+&lt;/code&gt; icon and add the &lt;code class=&quot;language-text&quot;&gt;Oculus Touch Controller Profile&lt;/code&gt; item:&lt;/p&gt;&lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 363px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 865px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/c458d5ea028e3cfd67751cb1b8ee7e32/4e786/unity-add-camera-offset-game-object.png&quot;
+    href=&quot;/static/40c0e977ecdb60bc46af7a5d0da3cb47/79e48/unity-xr-oculus-touch-controller-profile.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 191.875%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAmCAYAAADEO7urAAAACXBIWXMAABYlAAAWJQFJUiTwAAAE90lEQVRIx5VW2W7bVhTkT7RAkS4OGsuRLYo7RVKSrZ3aN+8OUti1kQIG+ligQNGH/lTQp6IL+l3TM0eiQjlx4j4M7hWpO5yzX8O2bYRhiEqlgiiK4Loudnd3sbOzg+fPn38QhRdfYe/Fl4rCt8+w//IbOOUCioWvYfR6PUynU6RpimaziTiOUSwWsbe39ygKBeKlYlf2xeIBypatqzEejzEajUDi4XCIdruNRqOBJEmUnGu1Wn2AJIeq/oc4PDyEkW0mkwlev36Nu7s7XF1d6UcWiwX6/T5arRY6nc5HQUGEQRMODg7gOI6aTfOplB8gKUEVvu8jCIJHwfeEQb+Rudvt4uLiAtfX11guF2J2E42jJlrNNiphBN/joXC1rveerElc3ahThYwqI1yv1zUoBPc81E+HqNcOYZYsOLYH23K3UXb1f7VaTc8QBiNqmqamDhEEq9VzfXQ7KYaD8YbgQ6Su46nJFMVzBv1nWZbm4DtUJB89RBWJXlxThaWDsiJPZpUdJcxymNgQ5h9y73m+BGeMyXiGTlv80+2rC0iSBwnDSrg59x5hpbJ6QYVURx9yPTpsKmg24Tr+evXU1EcJtxSK/6aTmahL1Vya/jAon1S4IVwHZTScYDyaIo6qKJv2xne29UST8wrH46nk5IkqDPzKmsj9fz7MXvCPrVZHAxMG0XsRzqfNE4Piqyrfk9YWxqhVV8FhdWSBsa0nBGWbUPZhIiQsuYokcKwkZdMRQl/BaD8tylKSg650kVYTI2kaS2kWw14XUzaO4QChvLfkrCtNJdyI+ZBCfRHCDaqotJcImgvEnWPE3VOEso/kWSS/7eoQZjyAE9TEiuBjhDEi30apdwv/53+Q/vY3ar/8icavf8H56Q98dvsWn9+9xbMffscXP/6L/f49Is+Uc8knFIZ1HI6/w/TqHu35DQZnb9Bdfo/hxT16J29g1aYoRiPYQf1xhUq6XumbnnTquYyIyWCA9tGR+i2Rw7F0F7tUQug4Kx+GOR+W5AUnX77bZHnY6w0luWfSvReSi7F0duk6JVthSqSTpK7ZsBXlQqGgIyBr8ZlSll4/HWgtM7H3i6WtKmEZsr15a8LMZQbnSJr2dBBx2rGDs+mWSqYoXLUsNgUSEHlC1rdZKmN/f19nElfj9PQMi+WZEvIrq5lckFIzlWw8mqgykmZkmdKqmMzZEscRBuJnHQGtZh2zYSKEbRyJ4/mQPjXNsjaF6WSuZZYRvSs7V02Oo0TFkJCDzqgmISZpKDN4ifPzc5ydnSHtp1qC7VZXari+IWKZZeAzVegFm2DyYmD4vozC6pF+gbN4Op3pgGcqNBtt9RODQhLPDTaw7RUhs4H+o+8Jg5Gt12s60Ek4m80U/CMb7GJ+rEpJmHUfJVyb7AgxCT3PUxiUyrma3Vsom2CbSiVteJgR5epr13lHyHaWJ1SFDALvNPTfycmJTn8llPxKewPMZwtVmjc58yHbGEeB4+YIyc77DC9J9CP9x3x0nJUCIoqSLf9lE2/VtR8QUiFvW/f39zg+Psbl5eUqJ+U+w6l3vDzFcnGCQX+0zj93ndjOJtHdPCH9R3NJuFwuNW1IGMcJmAGEZfGgtVofgDlLog0hH/DSeXt7q3fB+Xyuwcnqk2uWEo8hi7ASsjpubm7w6tUrDQrV0of5DpIdeAxbCnmIpFzpT7ogI8oTPkUl1/8ALVr04LqQEpsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 84.375%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAAAsSAAALEgHS3X78AAACp0lEQVQ4y6WUy1ITURCGI8SgVVQCLFwohKCwklwmJpnJ5H4hNxNIYUgVW8tX8DmEKn0W18SVz+BO4s4XEM5M+/8nOSHC0qn668x0Tn/zd/eZBAK4Wq/3o25x/83Lg1fJZDyeSiaTKcuytNLpdKpWq6UajUYqm82meDF2T2nsPVhfX39E3kq/Vv36dtgUt1z9Y1lplUgkVDweV4eHhwr5Kp/PK9d1FfJ07J5usFew/tja2npG4FPHLXxrt3vSaDS9YrEocCL1el1arZY4jiOZTGYhuBe8UK9z+XAngP7a3NyMEfikUChc9ft9qVQqtyjPhyMfQL/b7frlctkH1IdDH/v0Wq1W/VKppOOIKeTQxPXGxsauBuLHCYEsCzCxbVs6nY6cnp7KYDCQdrsN9w05Pz+X8XisdXJyIsyBvOFwKEdHR9ehUGjXOJyMRiMmKziSXC6nSyaUIgzudQtMjPfcA3nNZlPQqimGMgPiYUInWBV7RqABcDNK1MnsLytAJcvy5iamkUjkrmSWgEQNZMnGIaGmZPaKcIr3c3kol+BpOBz+F4gkhXvtkG8ljJvp0jyfnZ1psSIMTXq9nnd8fMx1urq6OgNiQrpkJC0cEsKYgZqVMYru6RzyAOP+6dra2gyIAzvhRPEmxT7RIQYldGvEOPtqZEqHPLaHJS96iEZP5qPnF6EdUgQb8Zmgpd6ZnnrsLwzc9dBMuTSbsu/Ytg+APrjLAtDnwefBXpIBXi+ATt69ejcaS6fbuylXqsrOuwrABwKQX4XiaeA6v79lyQD+XACT5d731viD2O2xZKFcayRuoXj/vOkS6WZZhHFYAP4GUH/LwZ0Xz99Ht7e/RHe2P0EX0GU0Gn2gWCx2ube3p9clXSD2GevHYDAYCWSsBKH8H3v8n1oh6C/XddQsdt0W+AAAAABJRU5ErkJggg==&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Unity add empty object to the XR game object&quot;
-        title=&quot;Unity add empty object to the XR game object&quot;
-        src=&quot;/static/c458d5ea028e3cfd67751cb1b8ee7e32/4e786/unity-add-camera-offset-game-object.png&quot;
-        srcset=&quot;/static/c458d5ea028e3cfd67751cb1b8ee7e32/72799/unity-add-camera-offset-game-object.png 320w,
-/static/c458d5ea028e3cfd67751cb1b8ee7e32/4e786/unity-add-camera-offset-game-object.png 363w&quot;
-        sizes=&quot;(max-width: 363px) 100vw, 363px&quot;
+        alt=&quot;Unity Add Oculus Touch Controller Profile&quot;
+        title=&quot;Unity Add Oculus Touch Controller Profile&quot;
+        src=&quot;/static/40c0e977ecdb60bc46af7a5d0da3cb47/79e48/unity-xr-oculus-touch-controller-profile.png&quot;
+        srcset=&quot;/static/40c0e977ecdb60bc46af7a5d0da3cb47/72799/unity-xr-oculus-touch-controller-profile.png 320w,
+/static/40c0e977ecdb60bc46af7a5d0da3cb47/6af66/unity-xr-oculus-touch-controller-profile.png 640w,
+/static/40c0e977ecdb60bc46af7a5d0da3cb47/79e48/unity-xr-oculus-touch-controller-profile.png 865w&quot;
+        sizes=&quot;(max-width: 865px) 100vw, 865px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Name it &lt;code class=&quot;language-text&quot;&gt;Camera Offset&lt;/code&gt;. Within the &lt;code class=&quot;language-text&quot;&gt;Camera Offset&lt;/code&gt; add a new Camera object:&lt;/p&gt;&lt;p&gt;&lt;span
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Switch to the Android tab. You’ll see a list of plugins. Check the &lt;code class=&quot;language-text&quot;&gt;Oculus&lt;/code&gt; box:&lt;/p&gt;&lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 362px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 790px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/ec658b468e1cb23dfcde1de0c7c01ab4/10600/unity-add-camera.png&quot;
+    href=&quot;/static/68080790f8d2f7efb515632f8b18adb6/2e237/unity-xr-plugin-management-android-oculus.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 120.625%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAYCAYAAAD6S912AAAACXBIWXMAAAsTAAALEwEAmpwYAAABZUlEQVQ4y+2UW2+CQBCF98d455IqV0FABZVrEDD64v//G6c7k9ikaRpstUkffPiyDLucPWcSRljLAElWI61a7MsGYZJB1ecYDAYYjUYYDoe9jMdjWJaF2WwGkSQxqrJAGKywdB1YpoHJZMJMp1PmVn8HnVEUhVeR5QWyLEN9POJ0OqGT0PN6vUYYhrxuNptettstkiSB8FcBbGmXXnZdh+v1isvlgqqquKbLoijq5XaxWBgmVGnXMAykaYqmaViMhIqiQFmWfJB6ZNt2L8KQB1VV4SLPc9R1jTiO4XkeEwQBfN/nfcdxehFLz4exWGAlPyQn5JCiUj/btuVnuoiE70FEMjs52O/32O12OBwOOJ/PLEa9pNjUbNq/B/E2n8vI6ifbFI96Zprm3VE/Iuu6Dk3TuHBd92G+CD4qLAW1JwtqfyKovwRfgv9AUPvRAOgZDhrof37GYGCHNK0VReVRdRtZtP6WdxAzHOQ0by1TAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 92.1875%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAACXBIWXMAAAsSAAALEgHS3X78AAACcElEQVQ4y52USY7TQBSG0xwAaKQAEiSNQEmUuTM6g504jjOLDB1llStwBnbcgS1bIhYIxIYbADvESUCKaBsX//8yEdKtbrD0q8quqv9971W5fD48z2L3bxrW3ZPje3cCjx4+CITD4UAkEpE2m80GBoOBqFgsBkKhkIz9pRPolm/zjE3jZfepqYq68T1f0JbpdFqUSCSWmUxmWalUluVyWfqpVGo7vtaP09NThbmvtoaFUvlNu9NTtt36VavVVS6XUzBR9XpdVatVpeu6SNM0BUMuVslkUvpoPRpGo9EPsDpaGRYKi7OziWq1WueQZxiGBzMPaXq2bXudTkf6bEHqIYiHgB4CeKVSyWFQkL6H1Q0xxMBiOBySyiEZhYUKxiIsEjq2JEVQ1Ww2hR7jrmVZCpQ7QxJOJhPV7XYdGqD4yjRN1ev1VL/f53cJQDOabIKu+26tVlPYvH3C2WzGxQ6jkYYGSFHqyAUMwP4Fckmbz+d3hiCSlEHnkI4iwXg8FkIuaDQal8llCZDlPuF0OmWKDqOSsFIpY7KpLKshdKS8RFLDA0LWEAMOJ9HQbFiq1Qad3cVxakP2nki97rskxVHbGWLLF+vUJGVNQ8q6qQyzJ9KNhmxAtapvz+XqXXS4KTRkvbAxDutBQo3GxcJKWnH17WK5rPfesYH7YjQaybFh9BXl6txdQy5J9wy5KSTEhjibQ70xvMqYhAeGMHk9n88VKH/i7LHILiNz8jV0vk753dYQL29ZO/4lpPvzT7hKnMdNwU30cXs54I57HovFvuHG+IT2yz/qczwe/4q784UQBoNBut6GHkNP/lNce+z3+49+AxYf5VFBdIUkAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Unity add camera&quot;
-        title=&quot;Unity add camera&quot;
-        src=&quot;/static/ec658b468e1cb23dfcde1de0c7c01ab4/10600/unity-add-camera.png&quot;
-        srcset=&quot;/static/ec658b468e1cb23dfcde1de0c7c01ab4/72799/unity-add-camera.png 320w,
-/static/ec658b468e1cb23dfcde1de0c7c01ab4/10600/unity-add-camera.png 362w&quot;
-        sizes=&quot;(max-width: 362px) 100vw, 362px&quot;
+        alt=&quot;Unity XR Plugin Management Oculus&quot;
+        title=&quot;Unity XR Plugin Management Oculus&quot;
+        src=&quot;/static/68080790f8d2f7efb515632f8b18adb6/2e237/unity-xr-plugin-management-android-oculus.png&quot;
+        srcset=&quot;/static/68080790f8d2f7efb515632f8b18adb6/72799/unity-xr-plugin-management-android-oculus.png 320w,
+/static/68080790f8d2f7efb515632f8b18adb6/6af66/unity-xr-plugin-management-android-oculus.png 640w,
+/static/68080790f8d2f7efb515632f8b18adb6/2e237/unity-xr-plugin-management-android-oculus.png 790w&quot;
+        sizes=&quot;(max-width: 790px) 100vw, 790px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Add a &lt;code class=&quot;language-text&quot;&gt;Tracked Pose Driver&lt;/code&gt; component to the Camera object:&lt;/p&gt;&lt;p&gt;&lt;span
+    &lt;/span&gt;&lt;/p&gt;&lt;h3 id=&quot;setting-up-the-presets&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#setting-up-the-presets&quot; aria-label=&quot;setting up the presets permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Setting up the presets&lt;/h3&gt;&lt;p&gt;Now that we have all of the plugins installed we want to setup the controls. Luckily, there are defaults for all of the action based inputs we would want to map. Back in the project &lt;code class=&quot;language-text&quot;&gt;Assets&lt;/code&gt;, open the &lt;code class=&quot;language-text&quot;&gt;Samples&lt;/code&gt; folder, &lt;code class=&quot;language-text&quot;&gt;XR Interaction Toolkit&lt;/code&gt; folder and within the specific version folder, find the &lt;code class=&quot;language-text&quot;&gt;Default Input Actions&lt;/code&gt; folder.&lt;/p&gt;&lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 433px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 716px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/d8592cdc73501c2fc0d3317a4204ea12/55fc0/unity-add-tracked-pose-driver-component.png&quot;
+    href=&quot;/static/8536adfa2b3dcd521559d731a82ff308/6bbf7/unity-xr-default-input-actions.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 173.125%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAjCAYAAACU9ioYAAAACXBIWXMAAAsTAAALEwEAmpwYAAADhklEQVRIx91VyXLTQBDV3ySOHTtxvGmzNku2LNvxhg0hUFAsFy5cqIKiqGK58s+Pfp1MylYREpYTh1ejafW86e7Xaln5aITxeIxxniOOYtSPj1E5rKB6VMXR0dFPUVVUb54PDw/RqDdwcnICazabYSSkjuOg3+/D8319Ua1WURPyWq12heMajq/3fEcyY282mxikKeI4hsXohsMhfCEqigKbzQbT6VTJDYIggOd5sG1b18FgoGfCMNT3URTpWXJZrudKVK46TSYTrFYrRSo30kZkWaZrkiT6zMPz+VxJaeNKO2EFUSjOITzXw1gc6czDvV5PIyK63a6CNqLT6aDdbt/YzMWu68Lq9WzkIsgoH+lL42RWpnR6eopKpaK14yHujUD+dc0pDPcWxSiKiYZNZxOFIeSBer2Og4MDPUB/7knAS1jTRqNxs7d4cJDEStZqtdC5TsUQ0s4IqDAPsgRcuScxL+CeinNvRYMM0WwNWw6z0FSYUdFxN2LuSbZbW9p4MbMznSIqexhJyrFIb1rBHGLxecF6vVYFzcEyqAGhbcNbMmkRHmAL7NaPhOxBNixvvw2so3m2qOJisdDe421shzIpbVzvA4sR8PNjaiTmLeXW+R1cRzjXr4T12xXiT2Ax//liqTVkwzI9A9M+d8H4a8quYyMOzrQFWEN+QvyOKVA59d3VtA1XimaEs4bDFK9ebNGXzXa71TqyTTh1TCuYtuB3zlHHlQTMjiViuaiBji/WcDI7h2M7El2iEXIcMUI+s6505Ep7GEaaAYlMxBSWPIzYYu4ckMz/7OxMHNj50sTayBmWEjFFWy2XiolER3tRjBHJJbs11xqar8KoZDsuslxSK2bIJ+eYrzc4Xz7AfLXRfZLlCJNUV68fKsmeyrtqMboWG1tI+3K7L6k4no+QBQ9CnEoGTRkgRLt75WsIDYdVVq/TdRCOt0hmTxBPLxWLyzfYPH8rtqfw80fo5xcIiifo+qlMp9ZeB+wRtuVlEGV49u47zl9+weL1N8X81VdMX3xG8vgjwocfEG7fI7z4BDvdoNNqgkP6p4QM3/M9XFw+FFFS+bXKvyIV1cMAUdBHmkQyOw3423D2Ut4jNAYq3u10tW20WaUdrhTkF9G5AfdNqemdhOXJ8qsBoRP+LsJdp/L/pbz/bcLbxthfE5bxnxPehr9S+Z9EeNfYvzehmY/3AQnLrfUD64GhoOdn4vsAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 105.62500000000001%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAVCAYAAABG1c6oAAAACXBIWXMAABYlAAAWJQFJUiTwAAAECklEQVQ4y3VU605jZRTtq6jcoZS2pz1tT1t6o9B7aSm0p8AMoRTKTdRxjBnGGYbqMFwURv3hvIGZmGhi/Gt8AF7A+M8HWe61D8WJiT++7Hafb699WWt/rvR8HvOlGhLZApLzRfjNCMbHxzExMfG/Z2RkBKOjo/eWvpmZGY1zVSsV1GoNZNIpWJEwJifG9dLY2Ni9ZeDw8LDaoaEhzM7OwrIsRKNRGIaBcDiMXC6HQCAAV0I+VgsxpJIJWHKBF71eL6anp9UycygUQjweRyQS0eB6vY5qtYp8Pq+nWCphaWkJc3NzcIVDJio5A4uLFTSbLayurmq2VCqlQKZpIp1Oo1AoKGhSEmcyGQVigmQyqXcJxt+uoJQZNC1ks/MoFosCvCgjqOmlYDCooG6pNpFIoNVqodmyNeHU1BQKAqq+pq33JycnBTAYkEzODEpSOgFZPltndWzRLcHt9iquX3+Hr15dYWdnR4InsHdwiG9uvhXfJWwBJjku0wxqEAccvZshLX0DQFbTXl3DxfX3OHnRR6+3o8H7h0c4u3qNF6d92LaNcQJGo5b+YVXLy8vSevZ+drQ8JKhcLuHjTx5hb/8QK3LP7Xajbbfw0Z2vJONiYpdh+HWgbIPM8bD9dwF9Pp9WHo/FkJRZBoOm+pyuLMRiUfj9fng8HrionYWFBWxtbSmTlERMAqkvksLD4IHeeN8UH4PJKtkeKICduBgQnxUG7ba03RCG66KrMhIqhzTSIhEKut/v4/b2Fj++fYuffv4F3hkPeru7+Pr6Bv2zS2F6xSElZHhh+jxIxS08aK+gmBP55LKoFIV1selEDB+8/x5+ePMGf//1Jy5+/R1Xv/2BBfF3e/s4u7y+I+WOZW9hA97aIabLPUTXPod9dIpS9xjl3nPkt54i8+Ax3L6gzLaC9soy8msdGMU6PCKbhxsPcfzsBI8+/Uw6W3R0aCRL8M/V4c/U4I6XsHHwGMudD1Fd30XB7qo1zLDOjSTMCgGhgAGvzJViT6WS8g6kddYOKdJuUtpdbzeRy6bRqC8iIf8jpgErFNDjk5121iyhRFhWVPeczPOh4HtANSgg2ePge7t7qFSqqIhs+EhQGqbKJqyao0ZfnV/gpH+Gzc1Nba/b7YrvHM9OX6LRaDgzpH6YdXt7W8Rb1n1+d4+dTZmE3V4TAm50U3T1JHj34EhXkaS0BqvHIGqP2bjLTkvWv8IOOxVyO16eX+HJ0+fo3FW4vd3FlyKZJ8df6HcFpMq5ehQ3AVl6QrcheL8pnA1nRQGzA/7mO8kNc3wFnbEjbFE+2yYAt2CwIQMwfSDE8kVyqna2hTHO99D9BjGJi3KgYwDw3xOQBJ2dHtY7W6jJ08YOeJrNppBY0W44MnZInH8AnlQE6Ye8ldIAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Unity add tracked pose driver component&quot;
-        title=&quot;Unity add tracked pose driver component&quot;
-        src=&quot;/static/d8592cdc73501c2fc0d3317a4204ea12/55fc0/unity-add-tracked-pose-driver-component.png&quot;
-        srcset=&quot;/static/d8592cdc73501c2fc0d3317a4204ea12/72799/unity-add-tracked-pose-driver-component.png 320w,
-/static/d8592cdc73501c2fc0d3317a4204ea12/55fc0/unity-add-tracked-pose-driver-component.png 433w&quot;
-        sizes=&quot;(max-width: 433px) 100vw, 433px&quot;
+        alt=&quot;Unity XR Default Input Actions&quot;
+        title=&quot;Unity XR Default Input Actions&quot;
+        src=&quot;/static/8536adfa2b3dcd521559d731a82ff308/6bbf7/unity-xr-default-input-actions.png&quot;
+        srcset=&quot;/static/8536adfa2b3dcd521559d731a82ff308/72799/unity-xr-default-input-actions.png 320w,
+/static/8536adfa2b3dcd521559d731a82ff308/6af66/unity-xr-default-input-actions.png 640w,
+/static/8536adfa2b3dcd521559d731a82ff308/6bbf7/unity-xr-default-input-actions.png 716w&quot;
+        sizes=&quot;(max-width: 716px) 100vw, 716px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Set the &lt;code class=&quot;language-text&quot;&gt;Tag&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;MainCamera&lt;/code&gt;:&lt;/p&gt;&lt;p&gt;&lt;span
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Click on each item in the folder and click the &lt;code class=&quot;language-text&quot;&gt;Add to...&lt;/code&gt; button at the top of the inspector (if there is one):&lt;/p&gt;&lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 435px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 542px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/c4a8a9baa168a7637f70910a5b78d65e/330eb/unity-set-main-camera-tag.png&quot;
+    href=&quot;/static/9fe0fa4131fb45128760926cf2c58923/c0388/unity-xr-add-to-action-based.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 100.93749999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAAsTAAALEwEAmpwYAAAC/0lEQVQ4y6VTyY7bVhDkjwQ+ZUTtpCSSIilyxE0kRW0jyR7DhmcBfLB9ceCfycFnw/nLSldnKAwCx0iQQ+HxbfWquppGXm1Q705Y709IVg2GYwum2UGv10O32/0BerrX7nM0TROWZWE6ncJo1ms06xr+fI44jrBcLnWj3+9jPB4LRhiNnjAcCga6RwxlTniei9VqpTCyLENV1YiiWAiXKIoSWZbLIV/I7Atmsxn8MEYYZ2jETbM7IskrRV42Ot8ezjDm/hxRHCJNEwTBAnW9wZs374S4ElW2WJkJ4RSu62GZFkJQK+H2cFKibFWj3hxQsHSbPYxFFGFVpIgWC7HqiOwaZVljLGSjkaWkw6GFyWSq1gIR4DgzVex5HnzfR57n4i7G9XUMw3EcIajEdoWJPVHLdd3IwQUGfanRQCBj7ymMMAy1ngxiMBhIqSJdv7q60mAMvtI0G5T5Er3yA8LPf6D48g35l+8w777il9e/48Xbr7iaFeibv0pZQiXqdDo6LsQZA+JcCV3XRSrBhIGPvpsju/0NyfkT+vFLdONbdKJXMOPXGNhz2NYY87kv9ifaARyDIIBt26qaXEa8TJAfb9WKJ/aTaIGqyFCkS5RZAnvYx6hrwpGaUQ3PEfwmSLjZbLRlWEtVWJZslQyWPZOaJEjSlbwWaLqW7WAsSbMDWGfWm+dbcK3FdruVtpGGLoWdC2EYSRih9qPjeJqyZU0UjuOqmn8C02bSBmXf3NzgeDxiLX8N68KWYPoMjA4Ifv8MPEMug/XY7XaKw+Ggvx4PUPl/Ae9cCKluv99fpP8vQhLU9VpDoc1/Y++nloPAQ5VNtRWYEutItQyJj7WqfxQE73DknTRNVZSR5xk+fnqvtTudTpeAzuezfvMRPkCwzpxzPUmSSy9ynS1UFMVffRjH11qHvzct24Bz/q/P9zhva01Q5aWGbBH3qUVYQ25SDROnkru7O9zf3+Px8REPDw/qgvt0QVfOs7t8UBXytTattkFb8BJBi8TzPT7e3iEplf8JDiCrkPqOIS0AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 255.31249999999997%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAzCAYAAACXICiDAAAACXBIWXMAABYlAAAWJQFJUiTwAAAELElEQVRYw+2X204bSRCG5zkACS1nuLDBHs/YxjYHm6M5HwwYacUF4ozYu1WkPEKkXOSBK/NV+CfDKCQk2qsVF+Xq7un+u+qv6up2sL6+bru7u9Zut21tbc1WV1dtcXHRSqWSjY2N2ejoqOvXZGRkxAqFgs3OztrMzIwFGxsbtpcAbm5u2t7enu3s7Djw/Py8zc3NOXBWsxDRWLFYtGq16vMrlYoFWPfvh4/WPz93KwFkE8a3tra83e12vS3RGAZgyMLCgl1cXNjKyooF5wnQp89f7Pb2NgVkMotYTHt7e9sXohlTH9F8xpBgaWnJBzudjh0dHdnT05Pd3NzY5eWl64eHB3t8fLS7uzu7v7+3q6sr19fX197mG8aoHzSbTfe/0WgYbQRO4jh2iaLI6vW6tVotdw2tufS1Bgx00O60rbvZtfUkEFi7v79vtVrNyVYgiDrRx0XcIzPwCA1vCiQ6qFVrdveYuPPPvRULRV/U6/Xs5OTEKTg4OHA5OzvzQDFGMOjDGfMAYwM2Duq1uvVOe9b/+9yiSuSBEcEKggKCRSwmYPSxjjY04C46gCOshAN2CMPQyuVyKvRxu7XYss5Kx8Jy+IJj2gg0oR0Q7tgNnthFkzSRhQSGIFTj7+MKphKb7w6I/8q95eVlz/gsKHMAxQMAAMtGHjDGHJDFWAeggCEfrgCSe2EltKmpKZuYmLDJyUnXWdGYW0ggIF6EI7RloQMmXL5FHBA3sUxWChi3BJjl9GeSBgULCYoOPouJMt/ZGWpUYfLCPL57tZGFAAEo93Ua6Ou89/t9T/rT01PXJDdtEl9UpYCAMADI7nN9FJdK4OPjYz8pgKB1kpiPMXiWuswCrJJlTAAId3WuSRsVDFJGJwR6mMO6FJDzyXFC68xm6yEuMy8bHIKmE6IUS9OGBbiJC4BSdVRI+cYYiQvxAsmfKAfkh0lkuw4/lknjhs50nGyOAeWkregrA6RTQNzBInGJ1S/zMLZSUo3ipDotJNwxxhoVVwKLBHzQAHzprsBCzq0KQKMxb9V6UgAoU4AkYwBCA8J6L1+YCkfcIfCGkGPKN7ijiJKDR4eH7qoEz/LtQBEiJbLFkzaW4jpeqIxVc3Uwe96RQB3MzR4/clBlPXoGipJaWI6+5WH0nI8KDjhwnloIB8pFuARYC75ZETvYUrJBp73sG5IFeJB9xgQyP37FlWy18bSphGkhYDzPY5AvTwLOb/DaZnkJfjU5C5zf7EcSvGXX35F3wHfAd8D/CeBbKsjvyH9vYfYWU9VVNf4jC/V3AM39q3tWl3z+2ZF90+S1Pzi54bh/D5M7l0uKP5P09TBiclZYxEuMb9K69dzCwcFBkwwNDb1o54Xx4eFhfxhMT0/7o4CHPLfe+Ph48qQrvAT8lQwMDDggzz2AuHp5+TcbTfsr+ecflqr2FbrFzNXdU7lIAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Unity add tracked pose driver component&quot;
-        title=&quot;Unity add tracked pose driver component&quot;
-        src=&quot;/static/c4a8a9baa168a7637f70910a5b78d65e/330eb/unity-set-main-camera-tag.png&quot;
-        srcset=&quot;/static/c4a8a9baa168a7637f70910a5b78d65e/72799/unity-set-main-camera-tag.png 320w,
-/static/c4a8a9baa168a7637f70910a5b78d65e/330eb/unity-set-main-camera-tag.png 435w&quot;
-        sizes=&quot;(max-width: 435px) 100vw, 435px&quot;
+        alt=&quot;Unity XR Add to Action Based Continuous Move&quot;
+        title=&quot;Unity XR Add to Action Based Continuous Move&quot;
+        src=&quot;/static/9fe0fa4131fb45128760926cf2c58923/c0388/unity-xr-add-to-action-based.png&quot;
+        srcset=&quot;/static/9fe0fa4131fb45128760926cf2c58923/72799/unity-xr-add-to-action-based.png 320w,
+/static/9fe0fa4131fb45128760926cf2c58923/c0388/unity-xr-add-to-action-based.png 542w&quot;
+        sizes=&quot;(max-width: 542px) 100vw, 542px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;That’s all we need for now (this is just to get the scene running and visible; not pretty); we just need to wire things together. Select the &lt;code class=&quot;language-text&quot;&gt;XR&lt;/code&gt; object again. Then drag the child Camera object to &lt;code class=&quot;language-text&quot;&gt;Camera Game Object&lt;/code&gt; property on the &lt;code class=&quot;language-text&quot;&gt;XR Rig&lt;/code&gt; component. Drag the &lt;code class=&quot;language-text&quot;&gt;Camera Offset&lt;/code&gt; object to the &lt;code class=&quot;language-text&quot;&gt;Camera Floor Offset Object&lt;/code&gt; property.&lt;/p&gt;&lt;p&gt;&lt;span
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Once you’ve added all of the defaults, open the &lt;code class=&quot;language-text&quot;&gt;Project Settings&lt;/code&gt; again and choose &lt;code class=&quot;language-text&quot;&gt;Preset Manager&lt;/code&gt;. Find the &lt;code class=&quot;language-text&quot;&gt;ActionBasedController&lt;/code&gt; section and next to &lt;code class=&quot;language-text&quot;&gt;XRI Default Right Controller&lt;/code&gt; type the word &lt;code class=&quot;language-text&quot;&gt;Right&lt;/code&gt;. Next to the &lt;code class=&quot;language-text&quot;&gt;XRI Default Left Controller&lt;/code&gt; type the word &lt;code class=&quot;language-text&quot;&gt;Left&lt;/code&gt;.&lt;/p&gt;&lt;h3 id=&quot;setting-up-xr&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#setting-up-xr&quot; aria-label=&quot;setting up xr permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Setting up XR&lt;/h3&gt;&lt;p&gt;To get started, we’ll want to setup our scene so that our headset is tracked and is used as the primary camera. In general this is the way VR works: think about your eyes as cameras that are filming the world. As your head moves around your eyes move as well. In Unity we’ll create a camera that tracks your head position and update the rendered view accordingly.&lt;/p&gt;&lt;p&gt;In the Hierarchy tab create a new empty object called &lt;code class=&quot;language-text&quot;&gt;Controller&lt;/code&gt; (to do this, right click on the &lt;code class=&quot;language-text&quot;&gt;Game&lt;/code&gt; node, select &lt;code class=&quot;language-text&quot;&gt;GameObject&lt;/code&gt; from the menu and choose &lt;code class=&quot;language-text&quot;&gt;Create Empty&lt;/code&gt;; then name the newly created object &lt;code class=&quot;language-text&quot;&gt;Controller&lt;/code&gt;):&lt;/p&gt;&lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
-      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 434px; &quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1280px; &quot;
     &gt;
       &lt;a
     class=&quot;gatsby-resp-image-link&quot;
-    href=&quot;/static/acb792cd6fe511b4de7b1ecac28f93de/ade6e/unity-connect-xr-objects.png&quot;
+    href=&quot;/static/74418bda022983ef4b26852c008eaa2e/de91b/unity-create-empty-controller.png&quot;
     style=&quot;display: block&quot;
     target=&quot;_blank&quot;
     rel=&quot;noopener&quot;
   &gt;
     &lt;span
     class=&quot;gatsby-resp-image-background-image&quot;
-    style=&quot;padding-bottom: 87.1875%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAARCAYAAADdRIy+AAAACXBIWXMAAAsTAAALEwEAmpwYAAACCUlEQVQ4y22U6Y7CMAyE8zTc900PytECLZeEQCD+oH3/h/D2s2QUVvtjlNhpJuNxUnc6nWS320kQBLJcLqXdbku9XpdWq/UF8jZvNpvSaDQ++clkIlmW6X6X50VJuJfFYiGHw0GKotADiEEcx5IkiYRhqIdGUSTb7fbrm/V6LcfjUfe6IAzKTZFkaaaJ2+0m1+tV0jT9AILNZqNzlFDV5XLRPDnIyRO7ZJmUyZXEYaQKOYmPZrOZzOdzxXQ6VZAD4/FYQY51CCkX9Y5knueatI0+ASV1u12p1WrqFwR4h4fErDPHd0bHJpQhF49MhRHiIQTValVHvvFj1iHiQEiVkBIxnTLomK8QAhSiptfrad6PWWcOOp2OuGybyfvnrQv3+13VUhZ+WGcZiS1nc4tpEhWuVquyy+UGSFmAiNjUMXIl2Mh8MBjIcDjU0UAMRqOR7teSaQigdK4Hc07DAkyHDJ/M/L/APy47firhfr//dJo595EYcrs6eEsVKKlUKtoUAzHEX4SQ2QuAEIUoQyHExP1+XxuC+T6sQdijhNxySE0pjWERNefzWV6v10ex/4L+Ql8KPlEKpKiAyPzDbFRxKEqsNAO+2c/C4OzeMQL8ghxQPgp5jrxd5lRh1lj37TEA5yeY8xH3ChIIns+nPB4PLZsRYlvDX0T8S+iPeGewe+bfN+xgNDL//f8CBZU9lFLTguAAAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
+    style=&quot;padding-bottom: 64.99999999999999%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAANCAYAAACpUE5eAAAACXBIWXMAABYlAAAWJQFJUiTwAAAC8ElEQVQ4y6WSS28TVxiGZ1l1xyIXRyaUgBPfcBzfxvfL+ELisRPFNnXsjC/jSxwbUNVp/0BjJwuW7Oim/4ENEpUKUqWuQGorUVEWRWIfb1ihYc7b70yoVFR2HenROxedR+985wiby5eWvO7VrxeXl75ZXlrULMuLmn3dptmurWmrl63adUqXw0F5VVu3XdE21r/Q3C6n5nC6NIvFoq2srGhWq5XntwsLC1bBu7mZLe/uIpXJIpFMI52RIGVziMWT8AdCcN3wICCG4fNvISp64LZfwQ3nOoIBP5KJBEKhELxeL4LBIGw2W1m49/0P0tOXr42fX73Rn/zxWv/pxV/6j7+/0h//+lJ//Nuf+qPnL/SHvzzTv7v/QM/JVb1UU/TkzT09ktnW8/mCLsuyHovF3hUKBS6VhVa7JZ3Mpjg9O8V0NmUn05OPmJ7O2NlsxtT+EdsKRVgkmWFiPMOCkQRLp9MsGo0yEhmBQABra2uycFNKSX3lAMNWA4NWgw14Kua9Cf827rWwX96B37eFSDiMsBiCGAoiEY8jl8sxwkilUnA4HLJQLGSlca+NyaCDSb/Nxr0O7tzu4PawjXH/gjtDFV/u78HvDxB+BGhefGaiKHIYYUQiEbhcLhLmM9JIPaQWCo57Cht3DzEZHmJE4mOV3tG3Sb8FpV6hNllEYzFIkmTCheFwmBGm0Ol0ysIOCY9IwhePVIVNOg1MOocYdHv8GaPuhbBR20c+n0e5vIt2p4v6QQN8bv8V5qhht/lPG8bbco7VptnOFFL75q0KisUiarUaesMR9isVOjqfFKalYbtBC5vGpzgiaBxGvbpnbG/vGJVq1agrLaNSqfKdNbiMfv095YWwWJCyfAPuHnWJzof8Nx18Neqiq9RBZw6lUgmqqqLRaJozpDMI3o4nbUpZyPq9sXImMS+mTc5lSk7pQ+bT8Xk+k5xHxeB8Y2NjTi3mtHDudrvndrvdxOPxnPt8vrd0DnMCXZ8RDsL9P3ESn/8NhWiuztGNLv0AAAAASUVORK5CYII=&apos;); background-size: cover; display: block;&quot;
   &gt;&lt;/span&gt;
   &lt;img
         class=&quot;gatsby-resp-image-image&quot;
-        alt=&quot;Unity connect XR objects and cameras&quot;
-        title=&quot;Unity connect XR objects and cameras&quot;
-        src=&quot;/static/acb792cd6fe511b4de7b1ecac28f93de/ade6e/unity-connect-xr-objects.png&quot;
-        srcset=&quot;/static/acb792cd6fe511b4de7b1ecac28f93de/72799/unity-connect-xr-objects.png 320w,
-/static/acb792cd6fe511b4de7b1ecac28f93de/ade6e/unity-connect-xr-objects.png 434w&quot;
-        sizes=&quot;(max-width: 434px) 100vw, 434px&quot;
+        alt=&quot;Unity Create Empty Controller&quot;
+        title=&quot;Unity Create Empty Controller&quot;
+        src=&quot;/static/74418bda022983ef4b26852c008eaa2e/21b4d/unity-create-empty-controller.png&quot;
+        srcset=&quot;/static/74418bda022983ef4b26852c008eaa2e/72799/unity-create-empty-controller.png 320w,
+/static/74418bda022983ef4b26852c008eaa2e/6af66/unity-create-empty-controller.png 640w,
+/static/74418bda022983ef4b26852c008eaa2e/21b4d/unity-create-empty-controller.png 1280w,
+/static/74418bda022983ef4b26852c008eaa2e/29114/unity-create-empty-controller.png 1920w,
+/static/74418bda022983ef4b26852c008eaa2e/c2d13/unity-create-empty-controller.png 2560w,
+/static/74418bda022983ef4b26852c008eaa2e/de91b/unity-create-empty-controller.png 2636w&quot;
+        sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
         style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
         loading=&quot;lazy&quot;
       /&gt;
   &lt;/a&gt;
-    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;At this point we can remove the &lt;code class=&quot;language-text&quot;&gt;Main Camera&lt;/code&gt; game object; we’ll be using the &lt;code class=&quot;language-text&quot;&gt;XR&lt;/code&gt; camera instead.&lt;/p&gt;&lt;h3 id=&quot;creating-a-basic-world&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#creating-a-basic-world&quot; aria-label=&quot;creating a basic world permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Creating a basic world&lt;/h3&gt;&lt;p&gt;We’ve created enough for our player to put on their headset and be in the world - but we haven’t actually created anything for them to see. Let’s add a basic platform for them to stand on and a table.&lt;/p&gt;&lt;p&gt;Right click on the &lt;code class=&quot;language-text&quot;&gt;Game&lt;/code&gt; scene node in the Hierarchy panel, select &lt;code class=&quot;language-text&quot;&gt;GameObject&lt;/code&gt; then create a new &lt;code class=&quot;language-text&quot;&gt;3D Object&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;Cube&lt;/code&gt;:&lt;/p&gt;&lt;p&gt;&lt;span
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Within that object, right click and create a new &lt;code class=&quot;language-text&quot;&gt;XR Rig (Action Based)&lt;/code&gt; object.&lt;/p&gt;&lt;p&gt;Set the &lt;code class=&quot;language-text&quot;&gt;Tracking Origin Mode&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;Device&lt;/code&gt;. Then click &lt;code class=&quot;language-text&quot;&gt;Add Component&lt;/code&gt; and select &lt;code class=&quot;language-text&quot;&gt;Input Action Manager&lt;/code&gt;:&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 560px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/ebd6a79e6d7b7f2cdac19034c8f5c821/b06ae/unity-xr-add-input-action-manager.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 236.5625%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAvCAYAAADjNOpjAAAACXBIWXMAABYlAAAWJQFJUiTwAAAGNklEQVRIx32XV09cVxDH98OYtga23+1sg+19MbDUSGAQCGxARLFlpUiJnMhS7IdITuzHfNHJ+c0yN9e4PMyec0/5T585GyoUCtLr9aTRaEi325VmsynlclkSiYSsrKxILBb7KsXjcYlGo5JOpyWVSuk8VKlUZHt7W0E8z1Oq1WrKZGNjQ8LhsNLjx48/IZitrq7qmdFoJK1WS+chLu/t7TmAruRyOaX19XU9AMEA7hASQUjHeiaTUeadTkfq9bqsra1JiINMisWitNttGQ6HKvHJyYlcXFzI5eWl7O/vy3g8FrRhH4kg9k9PT2V3d1eePHmiZgvBKZ/PSTafdWNeSqWSgsOkWq3qN+smPTZnnzl7mIpv1rPZrITyubzU2y3p92qSSWek0WzIdDpVrgcHB7K5uakXuWBgMAMQabe2ttQ0OFNVTiaT7kJZapWqqmTcmDOyb54MfmNHAFgzuxIZIX4QG8MSNhgZMwAIyNLSkszPz4udi0QisrCwoOsmKVHA2vLysoRAxlY4BFDExxZfAkT1ICDfQUBCKYS4BoiX4GqAgHCRw6iKObi0uLjoA6INgKwpIBLCBQBiCRAIz8KMQwQygDBCQlSDuMcZ5pwh0NWGw9FQdg92dcEClagHFBALGeb2TVCjGeewLdJq2HgpTw6/O5SbFzeSSqY05XZ2djRksCegZnyIb4u5fr8vk8lEMwtBWFcbskk8chHVWENysgjHsFatVaVcKeslpOMMGkGYweqAAiIuHOBkcchoQQzDtdKakpkB21qBwH5mEnUKQIhPHEJWylgjG8gCJAUce+FAvEo4zc3NKVnK+hJaHOJpCyFsCCiGD9oPQOaMOAYJLWsUEK4AAIa0SAQIa4BjDuxm5jC1WYMR0tqeD8jFoLqWNZQpCyEYQoAgmSUCQW5Vx1eZTVPTQJHWTEFNpPYdHx/L2dmZ0vn5uVYjQod9mCkgomMPwLgMIGoTkwDCHQlZgxCAkCJMgpXGrzZ4MKgSNkMVVAUAFS2XLX+D/cVSj3hUCa1vcClI1tmMu3U79hDiIYGhPQXOO66PTKc7SvSUQ5d6N9fX2jcuLs7l6upK+wvj0dGhO7OlKQpxHgzNFDhnMllZ36j7tFF3Dmq2ZDAcSX8wlF5/4Lw99r+brbZ/TsnN8cM9oDNqPCFecUMq9Y6jrsS8gswvx2RhOS5z4ag8Ckfk0VJE56wvriRkcTWhYziSlESuInF8YYBa/9bKUq7VlYqlqvuuSK7oek3dBXmz48aWVNYbujbbq/hz7oLhF4eZB10lKbrkLxR1LK5R3gvS7fVl/wCbTVX1otsruxAjlGZUcRFR+h8wFo1IurAuP/71r2zefpDhs39k5Ghy/cHRR9m8+ei+/3bjB+ldvpf8wZ9KBRsP30pu/40kshXxUi4O47GoeNmivHr9TjZPXsrg6HvpO5ocv5TO3o00tp9Ja/pcRkd30th5JrnuqeR7Z0q53qmjM8l2TiTu5ZyEqXuVU0n39Hgqg67LhI2q1Gsl6Xcaks+mJLYalmRsVaIrYYlHlyUVX3XfK0rppNMu6QRKREQF89L3Xk6kJBwvqPuxWculW7vd0TDhu9Ptubo4UhtOXO6OxhPdy2ZzGnLp9KyC+05B1Oe3Vy7GBtJ2+Uz6WXGwcmXVxKo4ROxZ/D0A9OTXN7/JeDKWVnP2Thk4cEDIJLv0kEi3zwDJTTb+ePu7AgIWfM1Sse35RpEwEOiLgExSzinXP7yQwf1L1FQGMNibrQgY2NcBXWBf3t5JBwfc9xMrrNgw2JOD0n0V0HN2un31k/QCTgEMosgiLVUZia10fVtlFz+Nbl8a96oamElq/YY15kgdtOVngHBtT4+k3R+qyjjCLlufsZbAHlX7m4CJhKvO/amUXFXp8jx2qtsD1N7RhBHgjJjE/gWY6j7grLTHZb2Jik2VioA2te0FgXQ4hjCzvxnWqKxdBMImJXcv7hQgGIeAWwihNozYs7cQRH+GAJ0BOum8tCc/v/7F5e3sov1VAzxoR8B569QDzuMMo//6skx59/6dS/yJL6H1ZEYDsW5o6ppU1hF9G+pzxL39zJuoYv8IyBIrEOaEh/SJU+yBmXSexvj8kWHk/x8Mgj34YYZ8KbD/A4TGbplCPkcpAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity Add Input Action Manager&quot;
+        title=&quot;Unity Add Input Action Manager&quot;
+        src=&quot;/static/ebd6a79e6d7b7f2cdac19034c8f5c821/b06ae/unity-xr-add-input-action-manager.png&quot;
+        srcset=&quot;/static/ebd6a79e6d7b7f2cdac19034c8f5c821/72799/unity-xr-add-input-action-manager.png 320w,
+/static/ebd6a79e6d7b7f2cdac19034c8f5c821/b06ae/unity-xr-add-input-action-manager.png 560w&quot;
+        sizes=&quot;(max-width: 560px) 100vw, 560px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Back in the &lt;code class=&quot;language-text&quot;&gt;Samples&lt;/code&gt; folder, drag the &lt;code class=&quot;language-text&quot;&gt;XRI Default Input Actions&lt;/code&gt; object onto the &lt;code class=&quot;language-text&quot;&gt;Input Action Manager&lt;/code&gt; object’s &lt;code class=&quot;language-text&quot;&gt;Action Assets&lt;/code&gt; list (drop it onto the &lt;code class=&quot;language-text&quot;&gt;Action Assets&lt;/code&gt; title).&lt;/p&gt;&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 694px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/3750de0d9db175181657b4b37556b1fc/31198/unity-xr-xri-default-input-actions.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 146.875%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAdCAYAAACqhkzFAAAACXBIWXMAABYlAAAWJQFJUiTwAAADjUlEQVRIx4WVyVLjQBBE9TMYDDY73m1ZXmTLeMMbBHsQfMEchsv8e41eOVIhmMMcKnpRd3ZW1qIgma9tstxastjYOJ23+2MrlspWODiww8PD/9pBeu74+NguLy+tWCxaMIpjG49ii7phZvV6zc7Pz+3s7Owfy+8zB6jZbFqn00nv1S1Yrde2u7+3arVq1VrNkmRit7e3dnV1ZScnJ3Z6emrlcjkz9hhLpZKPAE6nU5vP59br9SxotVo+GQ6HDrRarez5+dk+Pj7s7u7OxuOxLRYLG41G1u/3/TL29vbmxjxOvWTkjAO22k1jHPQHvgkw1u12rd1uWxiGPnKGOe5BIooiGwwGbszZD8JuZMlkYM1GzRnAEJvNZpkuWKPRcK0Yta5UKjaZTL49HtRS3eJh7B945ebmxg9ifGPv4uLCjo6OXE8YEgzWjDzKPhFG14DXcBNAqAMi4xsvc5EUIQgAEmHWAPGdNQ8QsD3geA8IZYERdQFysVAoOCCMGFmzjwcw4wEH5GI37LrIuCuX2QcY3UgN5RyPIAGsSC3Wykks6EU9+/X1y5qtpqfIy8uLBwQgolqv1bM5pjneAMbZ5XLpAUWOgGhNZ9MsojoMQ5hGvchB+CYPZNfX15k8ksijjE4kNqACZA+gXr+X5SGaUbdoJkM31TLkPChJknhQGHGbOdURpzXOd4AxtAOEFCGqMgKEnu4yDGEHCCUEoNakkWTgMAzYYwQEYIw5DL1SAFS5KR+ZU+wAc5kMUEchTZTYgOEuKYOe3xjCDhMoI2x3u509PT3ZOu1KekzyyDgHAUbPw0a94YfoGIBziAMwgiFrmJHQBAZTT9Qa8zyEoaKojsGcvAKMB9UUEF6GZgQpv8YC9Pn958tanZa7eZ82W7rNZrOx7XbrLmMkL3sPDw/umroO+/TNLLFhADNYVar7DkNCqz0N431+KnU4pzl3YYnpjjdY6UZK8BKjWlgY7iso34HUDwHEXbQk2oxeerig1k5tMqp2K5VqVloqR5n2AFXzcJdhSGWgD4Z2M/4R6UPttBNFaRlSirBX+1cQVabozzqQGzBVm1dU98Kn33Nn8iNGuuEhj0EuyLtAtiv8uCHB85b/zihCjHSgIK8NruQrQalCGpEaGAmvZqKfE0DCCBQ9FpQelwFCU0ru/f3dXl9f7fPz0//Vj4+P/k35h/76oTmgGKpR/pQgXx0Yez8jnSf1Fw3n3m7m6Ek2AAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Unity Default Input Actions&quot;
+        title=&quot;Unity Default Input Actions&quot;
+        src=&quot;/static/3750de0d9db175181657b4b37556b1fc/31198/unity-xr-xri-default-input-actions.png&quot;
+        srcset=&quot;/static/3750de0d9db175181657b4b37556b1fc/72799/unity-xr-xri-default-input-actions.png 320w,
+/static/3750de0d9db175181657b4b37556b1fc/6af66/unity-xr-xri-default-input-actions.png 640w,
+/static/3750de0d9db175181657b4b37556b1fc/31198/unity-xr-xri-default-input-actions.png 694w&quot;
+        sizes=&quot;(max-width: 694px) 100vw, 694px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;&lt;h3 id=&quot;creating-a-basic-world&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#creating-a-basic-world&quot; aria-label=&quot;creating a basic world permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Creating a basic world&lt;/h3&gt;&lt;p&gt;We’ve created enough for our player to put on their headset and be in the world - but we haven’t actually created anything for them to see. Let’s add a basic platform for them to stand on and a table.&lt;/p&gt;&lt;p&gt;Right click on the &lt;code class=&quot;language-text&quot;&gt;Game&lt;/code&gt; scene node in the Hierarchy panel, select &lt;code class=&quot;language-text&quot;&gt;GameObject&lt;/code&gt; then create a new &lt;code class=&quot;language-text&quot;&gt;3D Object&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;Plane&lt;/code&gt;:&lt;/p&gt;&lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 548px; &quot;
     &gt;
