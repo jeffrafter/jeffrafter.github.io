@@ -70,6 +70,14 @@ Delete the following:
 - `Assets/TutorialInfo`
 - `Assets/Settings/SampleSceneProfile`
 
+We're ready to create our scene. In the `Scenes` folder in `Assets`, create a new scene called Game (select the folder, then right-click in the blank panel and select `Create` and then click `Scene`):
+
+![Unity Game Scene](../../assets/unity-scene-game.png)
+
+Double click to open it.
+
+### Installing packages
+
 Before we can build our game for the Oculus Quest, we'll need to add some packages. Some of the packages we'll need are very new. In current versions of Unity, you'll need to show the preview packages. To do this we'll need to enable preview packages in the Project Settings. Open the `Edit` menu and choose `Project Settings...`. Select `Package Manager` on the left then check the `Enable Preview Packages` checkbox:
 
 ![Unity package manager project settings](../../assets/unity-vr-project-settings-package-manager.png)
@@ -88,82 +96,83 @@ Find the `XR Interaction Toolkit`[^xr] package, select it, and click install:
 
 ![Unity XR Interaction Toolkit](../../assets/unity-xr-interaction-toolkit.png)
 
+You might see a warning about the "new input system package":
+
+![Unity new input system](../../assets/unity-new-input-system.png)
+
+Click "Yes" (which will restart Unity).
+
+Re-open the Package Manager and find the XR Interaction Toolkit package again. Open the "Samples" and install the Default Input Actions and the XR Device Simulator.
+
+Find the `OpenXR Plugin` package, select it, and click install:
+
+![Unity OpenXR Plugin](../../assets/unity-install-open-xr.png)
+
 Install the `Android Logcat` plugin as well:
 
 ![Unity Android Logcat](../../assets/unity-android-logcat.png)
 
-We're ready to create our scene. In the `Scenes` folder in `Assets`, create a new scene called Game (select the folder, then right-click in the blank panel and select `Create` and then click `Scene`):
+### Setting up the XR Plugins
 
-![Unity Game Scene](../../assets/unity-scene-game.png)
+Open the `Edit` menu and choose `Project Settings...`. Select `XR Plugin Management` on the left.
 
-Double click to open it.
+![Unity Install XR Plugin Management](../../assets/unity-install-xr-plugin-management.png)
 
-###
+Click, `Install XR Plugin Management`.
 
-1. Edit | Project Settings | XR Plugin Management | Install XR Plugin Management
-2. Edit | Project Settings | Packages | Enable Preview Packages
-3. Window Package Manager | Unity filter
-   1. Open XR
-   2. XR Interaction Toolkit
-      1. Install samples
-         1. Default Input Actions
-         2. XR Device Simulator
-4. Edit | Project Settings | XR Plugin Management
-   1. Select Open XR (Preview)
-   2. Click the red !
-      1. Fix All (restart)
-   3. Go to the Open XR Features submenu, then choose Oculus Touch (it will have a giant black screen)
+Once loaded, you'll see a list of plugins. Check the `Open XR` box. You should see a red warning icon next to the name of the plugin. Click it:
 
-5. (If you have a bug) - uncheck OpenXR and check Oculus
+![Unity XR Plugin Management Warning](../../assets/unity-xr-plugin-management-red-x.png)
 
-6. Go to Assets | Samples | XR Interaction Toolkit - Install all of the items
-7. Edit | Project Settings | Preset Manager
-   1. ActionBasedController: type Right and Left
+On the popup, click `Fix All`:
 
-8. Right click | XR | Room-Scale XR Rig (Action based)
-9. Select the XR Rig object and add Input Action Manager. Add 1 Action Assets element and set it to XRI Default Input Actions
-10. Right click | XR | Locomotion System
+![Unity Fix All](../../assets/unity-fix-all.png)
+
+If there are remaining warnings, that's okay, as long as the errors are fixed.
+
+Click the OpenXR sub-item on the left. Under `Interaction Profiles`, click the `+` icon and add the `Oculus Touch Controller Profile` item:
+
+![Unity Add Oculus Touch Controller Profile](../../assets/unity-xr-oculus-touch-controller-profile.png)
+
+Switch to the Android tab. You'll see a list of plugins. Check the `Oculus` box:
+
+![Unity XR Plugin Management Oculus](../../assets/unity-xr-plugin-management-android-oculus.png)
+
+### Setting up the presets
+
+Now that we have all of the plugins installed we want to setup the controls. Luckily, there are defaults for all of the action based inputs we would want to map. Back in the project `Assets`, open the `Samples` folder, `XR Interaction Toolkit` folder and within the specific version folder, find the `Default Input Actions` folder.
+
+![Unity XR Default Input Actions](../../assets/unity-xr-default-input-actions.png)
+
+Click on each item in the folder and click the `Add to...` button at the top of the inspector (if there is one):
+
+![Unity XR Add to Action Based Continuous Move](../../assets/unity-xr-add-to-action-based.png)
+
+Once you've added all of the defaults, open the `Project Settings` again and choose `Preset Manager`. Find the `ActionBasedController` section and next to `XRI Default Right Controller` type the word `Right`. Next to the `XRI Default Left Controller` type the word `Left`.
+
 ### Setting up XR
 
 To get started, we'll want to setup our scene so that our headset is tracked and is used as the primary camera. In general this is the way VR works: think about your eyes as cameras that are filming the world. As your head moves around your eyes move as well. In Unity we'll create a camera that tracks your head position and update the rendered view accordingly.
 
-In the Hierarchy tab create a new empty object called `XR` (to do this, right click on the `Game` node, select `GameObject` from the menu and choose `Create Empty`; then name the newly created object `XR`):
+In the Hierarchy tab create a new empty object called `Controller` (to do this, right click on the `Game` node, select `GameObject` from the menu and choose `Create Empty`; then name the newly created object `Controller`):
 
-![Unity Create Empty XR](../../assets/unity-create-empty-xr.png)
+![Unity Create Empty Controller](../../assets/unity-create-empty-controller.png)
 
-Select the object, set the `Y` position to `1`[^y-1] and add an `XR Rig` component.
+Within that object, right click and create a new `XR Rig (Action Based)` object.
 
-[^y-1]: Why did we set the `Y` to `1`? We'll be adding a one-meter tall "floor" for us to stand on. The actual height of the camera from the "floor" will be controlled by how the headset position is tracked in the `Tracking Origin Mode` (which we've set to the default: `Device`).
+Set the `Tracking Origin Mode` to `Device`. Then click `Add Component` and select `Input Action Manager`:
 
-![Unity add XR Rig component](../../assets/unity-add-xr-rig-component.png)
+![Unity Add Input Action Manager](../../assets/unity-xr-add-input-action-manager.png)
 
-Within the `XR` object create a new empty object:
+Back in the `Samples` folder, drag the `XRI Default Input Actions` object onto the `Input Action Manager` object's `Action Assets` list (drop it onto the `Action Assets` title).
 
-![Unity add empty object to the XR game object](../../assets/unity-add-camera-offset-game-object.png)
-
-Name it `Camera Offset`. Within the `Camera Offset` add a new Camera object:
-
-![Unity add camera](../../assets/unity-add-camera.png)
-
-Add a `Tracked Pose Driver` component to the Camera object:
-
-![Unity add tracked pose driver component](../../assets/unity-add-tracked-pose-driver-component.png)
-
-Set the `Tag` to `MainCamera`:
-
-![Unity add tracked pose driver component](../../assets/unity-set-main-camera-tag.png)
-
-That's all we need for now (this is just to get the scene running and visible; not pretty); we just need to wire things together. Select the `XR` object again. Then drag the child Camera object to `Camera Game Object` property on the `XR Rig` component. Drag the `Camera Offset` object to the `Camera Floor Offset Object` property.
-
-![Unity connect XR objects and cameras](../../assets/unity-connect-xr-objects.png)
-
-At this point we can remove the `Main Camera` game object; we'll be using the `XR` camera instead.
+![Unity Default Input Actions](../../assets/unity-xr-xri-default-input-actions.png)
 
 ### Creating a basic world
 
 We've created enough for our player to put on their headset and be in the world - but we haven't actually created anything for them to see. Let's add a basic platform for them to stand on and a table.
 
-Right click on the `Game` scene node in the Hierarchy panel, select `GameObject` then create a new `3D Object`, `Cube`:
+Right click on the `Game` scene node in the Hierarchy panel, select `GameObject` then create a new `3D Object`, `Plane`:
 
 ![Unity add floor object](../../assets/unity-add-floor-object.png)
 
