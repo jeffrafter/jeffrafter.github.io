@@ -56,7 +56,7 @@ In Unity Hub, click on Projects on the left, then click on the New button. Creat
 
 ![Create a new project in Unity](../../assets/unity-hide-and-seek.png)
 
-The project should open and have a default scene in it. For our purposes, we don't care about this scene and want to start with a blank canvas.[^layout]
+The project should open and have a default scene in it.[^layout] If you want to use this default construction scene that is okay (and in some cases more interesting) - it simply takes longer to build the scene and recompile. For our purposes, we don't care about this scene and want to start with a blank canvas.
 
 [^layout]: In many of the screenshots you'll notice I am using the `Tall` layout. I tend to prefer this layout but you can choose whatever layout you want. To change the layout click on the `Window` menu, click `Layouts` then choose `Tall`.
 
@@ -102,7 +102,9 @@ You might see a warning about the "new input system package":
 
 Click "Yes" (which will restart Unity).
 
-Re-open the Package Manager and find the XR Interaction Toolkit package again. Open the "Samples" and install the Default Input Actions and the XR Device Simulator.
+Re-open the Package Manager and find the `XR Interaction Toolkit` package again. Open the `Samples` sub-menu in the package and import the `Default Input Actions` and the `XR Device Simulator`.
+
+![Unity XR Interaction Toolkit Samples](../../assets/unity-xr-interaction-toolkit-samples-import.png)
 
 Find the `OpenXR Plugin` package, select it, and click install:
 
@@ -118,9 +120,15 @@ Open the `Edit` menu and choose `Project Settings...`. Select `XR Plugin Managem
 
 ![Unity Install XR Plugin Management](../../assets/unity-install-xr-plugin-management.png)
 
-Click, `Install XR Plugin Management`.
+Click, `Install XR Plugin Management` (note: depending on your version of Unity this step might already be completed and you can skip it).
 
-Once loaded, you'll see a list of plugins. Check the `Open XR` box. You should see a red warning icon next to the name of the plugin. Click it:
+Once loaded, you'll see a list of tabs including a desktop tab and an Android tab (the small robot icon). Select the Android tab:
+
+![Unity Install XR Plugin Android Tab](../../assets/unity-install-xr-plugin-android-tab.png)
+
+_This is where things get a little weird._
+
+Check the `Open XR` box. You should see a red warning icon next to the name of the plugin. Click it:
 
 ![Unity XR Plugin Management Warning](../../assets/unity-xr-plugin-management-red-x.png)
 
@@ -128,51 +136,74 @@ On the popup, click `Fix All`:
 
 ![Unity Fix All](../../assets/unity-fix-all.png)
 
-If there are remaining warnings, that's okay, as long as the errors are fixed.
+If you are working on a Mac you should still see an error and at least one warning:
 
-Click the OpenXR sub-item on the left. Under `Interaction Profiles`, click the `+` icon and add the `Oculus Touch Controller Profile` item:
+![Unity Fix All More Errors](../../assets/unity-fix-all-more-errors.png)
+
+Perhaps you are reading this at a time where this error has been solved, but for now it is blocking. Even if we could get this to work we would run into another OpenXR problem when running our game on the Oculus Quest[^openxr-quest-bug]
+
+[^openxr-quest-bug]: At the time of this writing if you you attempt to run an OpenXR game on the Oculus Quest it won't look right. The game will be running in a small window on the Quest (and in some cases will appear completely black). This is because of problems with how the `android-manifest.xml` is constructed. More information can be found [here](https://developer.oculus.com/downloads/package/oculus-openxr-mobile-sdk/).
+
+Uncheck the `OpenXR` box and check the `Oculus` box:
+
+![Unity XR Oculus Plugin](../../assets/unity-xr-oculus-plugin.png)
+
+You might be wondering why we ever checked the `OpenXR` box at all? Eventually this will help us setup interaction profiles for our controllers which is a good practice going forward.
+
+Let's do that now.
+
+Click the `OpenXR` sub-item on the left.
+
+![Unity OpenXR Settings](../../assets/unity-open-xr-settings.png)
+
+Under `Interaction Profiles`, click the `+` icon and add the `Oculus Touch Controller Profile` item:
 
 ![Unity Add Oculus Touch Controller Profile](../../assets/unity-xr-oculus-touch-controller-profile.png)
 
-Switch to the Android tab. You'll see a list of plugins. Check the `Oculus` box:
-
-![Unity XR Plugin Management Oculus](../../assets/unity-xr-plugin-management-android-oculus.png)
-
 ### Setting up the presets
 
-Now that we have all of the plugins installed we want to setup the controls. Luckily, there are defaults for all of the action based inputs we would want to map. Back in the project `Assets`, open the `Samples` folder, `XR Interaction Toolkit` folder and within the specific version folder, find the `Default Input Actions` folder.
+Now that we have all of the plugins installed, we want to setup the controls. Luckily, there are defaults for all of the action based inputs we would want to map. Back in the project `Assets`, open the `Samples` folder, `XR Interaction Toolkit` folder and within the specific version folder, find the `Default Input Actions` folder.
 
 ![Unity XR Default Input Actions](../../assets/unity-xr-default-input-actions.png)
 
-Click on each item in the folder and click the `Add to...` button at the top of the inspector (if there is one):
+Click on each item in the folder and click the `Add to...` button at the top of the inspector if there is one (the `XRI Default Input Actions` item will not have an add button):
 
 ![Unity XR Add to Action Based Continuous Move](../../assets/unity-xr-add-to-action-based.png)
 
-Once you've added all of the defaults, open the `Project Settings` again and choose `Preset Manager`. Find the `ActionBasedController` section and next to `XRI Default Right Controller` type the word `Right`. Next to the `XRI Default Left Controller` type the word `Left`.
+Once you've added all of the defaults, open the `Project Settings` again and choose `Preset Manager`. Find the `ActionBasedController` section and next to `XRI Default Right Controller` type the word `Right`. Next to the `XRI Default Left Controller` type the word `Left`:
 
-### Setting up XR
+![Unity XR Action Based Controller Presets](../../assets/unity-xr-action-based-controller-right-left.png)
 
-To get started, we'll want to setup our scene so that our headset is tracked and is used as the primary camera. In general this is the way VR works: think about your eyes as cameras that are filming the world. As your head moves around your eyes move as well. In Unity we'll create a camera that tracks your head position and update the rendered view accordingly.
+## Building the scene
 
-In the Hierarchy tab create a new empty object called `Controller` (to do this, right click on the `Game` node, select `GameObject` from the menu and choose `Create Empty`; then name the newly created object `Controller`):
+To get started, we'll want to setup our scene so that our headset is tracked and is used as the primary camera. In general, this is the way VR works: think about your eyes as cameras that are filming the world. As your head moves around your eyes move as well. In Unity we'll create a camera that tracks your head position and update the rendered view accordingly.
+
+In the `Hierarchy` tab create a new empty object called `Controller` (to do this, right click on the `Game` node, select `GameObject` from the menu and choose `Create Empty`; then name the newly created object `Controller`):
 
 ![Unity Create Empty Controller](../../assets/unity-create-empty-controller.png)
 
 Within that object, right click and create a new `XR Rig (Action Based)` object.
 
-Set the `Tracking Origin Mode` to `Device`. Then click `Add Component` and select `Input Action Manager`:
+![Unity XR Rig Action Based](../../assets/unity-xr-rig-action-based.png)
+
+When you do this it will automatically remove the `Main Camera` object from the `Hierarchy`. The `XR Rig` contains prebuilt objects for tracking the position and direction of the VR headset (attached to the new sub-object called `Main Camera`). It also contains objects that track the positions of the left and right controllers. This `XR Rig` components contain everything we need to enter into virtual-reality as a player.
+
+Select the main `XR Rig` object and then set the `Tracking Origin Mode` to `Device` in the `Inspector`.
+
+
+Then click `Add Component` and select `Input Action Manager`:
 
 ![Unity Add Input Action Manager](../../assets/unity-xr-add-input-action-manager.png)
 
 Back in the `Samples` folder, drag the `XRI Default Input Actions` object onto the `Input Action Manager` object's `Action Assets` list (drop it onto the `Action Assets` title).
 
-![Unity Default Input Actions](../../assets/unity-xr-xri-default-input-actions.png)
+![Unity Default Input Actions](../../assets/unity-default-input-action-manager.gif)
 
 ### Creating a basic world
 
 We've created enough for our player to put on their headset and be in the world - but we haven't actually created anything for them to see. Let's add a basic platform for them to stand on and a table.
 
-Right click on the `Game` scene node in the Hierarchy panel, select `GameObject` then create a new `3D Object`, `Plane`:
+Right click on the `Game` scene node in the Hierarchy panel, select `GameObject` then create a new `3D Object`, `Cube`:
 
 ![Unity add floor object](../../assets/unity-add-floor-object.png)
 
@@ -211,7 +242,7 @@ To utilize Oculus and Facebook features such as social integration and user avat
 
 [^usb-cable]: The USB cable that comes with the Oculus will work for development. An Oculus Link cable will also work. In general, any data-capable USB-C cable should work. If you are having trouble you might want to check the cable. Also, if you have an Oculus Elite Strap (or another external battery pack) make sure your USB cable is plugged into the headset itself, not the battery pack.
 
- The [instructions on the Oculus website](https://developer.oculus.com/documentation/native/android/mobile-device-setup/) explain how to do each of these steps.
+The [instructions on the Oculus website](https://developer.oculus.com/documentation/native/android/mobile-device-setup/) explain how to do each of these steps.
 
 Once your Quest is in developer mode and plugged in, you can configure your project.
 
@@ -221,21 +252,9 @@ In the `File` menu, choose  `Build Settings...` and click `Add Open Scenes`. The
 
 ![Unity build settings](../../assets/unity-build-settings.png)
 
-Next, click on the `Player Settings` button. With the `Player` item selected in the left sidebar, find the `Other Settings` subpanel. Expand the panel and scroll down to `Minimum API Level`. Oculus requires that this be set to at least `API level 23` as a target:
+Next, click on the `Player Settings` button. With the `Player` item selected in the left sidebar, find the `Other Settings` sub-panel. Expand the panel and scroll down to `Minimum API Level`. Oculus requires that this be set to at least `API level 23` as a target:
 
 ![Unity choose minimum api level 23](../../assets/unity-minimum-api-level-23.png)
-
-After you have set the minimum API level, select the `XR Plugin Management` category in the left sidebar then click `Install XR Plugin Management`:
-
-![Unity install XR plugin management](../../assets/unity-install-xr-plugin-management.png)
-
-Once installed, check the `Oculus` box (this will install the [Oculus OpenXR Mobile SDK](https://developer.oculus.com/downloads/package/oculus-openxr-mobile-sdk/)):
-
-![Unity oculus plugin](../../assets/unity-oculus-plugin.png)
-
-We won't change any other settings for now - though we'll want to change some settings later to increase the performance. Oculus has additional information about setting up your application in the documentation under [Configure Unity Settings](https://developer.oculus.com/documentation/unity/unity-conf-settings/). It details specific quality configurations and rendering preferences which we'll explore in the future.
-
-> You may see a warning about Vulkan support: "Vulkan is currently experimental on Oculus Quest. It has been removed from your list of Android graphics APIs." Don't worry, it is safe to ignore this for now.
 
 Click `Build and Run` in the `Build Settings` window, choose a name when saving the game and get ready (I've called my game `Hide-and-seek` even though there isn't really any hiding or seeking):
 
@@ -251,11 +270,7 @@ Our game is not very exciting (we don't even have hands!), but from this point y
 
 So far we haven't needed to write any code for our game. Eventually, though, we'll want some customization and game logic. C# is the default coding language for Unity. You can use any coding editor to work on your scripts but most people use Visual Studio or VS Code because of their advanced auto completions.
 
-I tend to use VS Code. If you don't have it, download and install it from https://code.visualstudio.com/download. On MacOS you'll need additional tools to support .Net and C#. Install `mono`:
-
-```bash
-brew install mono
-```
+I tend to use VS Code. If you don't have it, download and install it from https://code.visualstudio.com/download. On MacOS you'll need additional tools to support .Net and C#. Install `mono` from the [mono-project](https://www.mono-project.com/download/stable/#download-mac) website.
 
 Then open VS Code (if you already have VS Code open, restart it). You'll want to install the following plugins:
 
@@ -269,13 +284,25 @@ Edit the Extension Settings of the `C#` plugin (click on the gear icon) and set 
 
 ![VS Code use global mono setting](../../assets/vscode-use-global-mono.png)
 
+In addition to the `Omnisharp: Use Global Mono` setting, you may need to set an explicit path to the `mono` binary. Doing this will avoid any discrepancies with your global `PATH` setup. You can do this directly in the `settings.json` (to find this, you can search for the `Omnisharp: Mono Path` setting):
+
+![VS Code mono path setting](../../assets/vscode-mono-path-setting.png)
+
+Because I downloaded the `pkg` installer and installed Mono globally, I used `/Library/Frameworks/Mono.framework/Versions/Current/bin/mono` (you can find this by running `which mono` in a terminal). After saving the settings, reload the editor. With these settings you should be able to see code completions and compilation errors but you won't be able to use the debugger and may see the following warning:
+
+![VS Code .Net Core SDK warning](../../assets/vscode-dotnet-core-sdk-warning.png)
+
+For now, choose to ignore this warning and do not install the SDK.[^m1-mac]
+
+[^m1-mac]: What if you click on `Get the .NET Core SDK` and download and install it? At the time of this writing the current major version if `v5.0.302`. If you are using an M1, Apple Silicon MacBook the SDK will install but you may not be able to debug properly. This is fixed in the upcoming `6.0` version of the SDK. For now, I completely removed the SDK (and then restarted).
+
 More information and options are available at https://code.visualstudio.com/docs/other/unity (note, you should not need to install any additional language packs with the latest version of Mono).
 
 Next, open the Unity Preferences and choose `Visual Studio Code` as the `External Script Editor`:
 
 ![Unity preferences](../../assets/unity-preferences.png)
 
-In order to get the most out of VS Code you have to adjust some settings. Let's start by creating a script in Unity so we can try it out. In the Hierarchy, select the `XR` game object. In the inspector click `Add component`, type `Logger` then choose `New script`, name it `Logger` and click `Create and Add`.
+Let's start by creating a script in Unity so we can try it out. In the Hierarchy, select the `XR` game object. In the inspector click `Add component`, type `Logger` then choose `New script`, name it `Logger` and click `Create and Add`.
 
 ![Unity add script](../../assets/unity-add-script.png)
 
