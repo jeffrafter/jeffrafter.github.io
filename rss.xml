@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeff Rafter]]></title><description><![CDATA[How to.]]></description><link>https://jeffrafter.com</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 26 Jul 2021 09:10:09 GMT</lastBuildDate><item><title><![CDATA[Making GitHub Actions Easy]]></title><description><![CDATA[Furby is probably the most advanced, well designed, impossibly elegant child’s toy that exists and could be the key to unlocking the emotion…]]></description><link>https://jeffrafter.com/making-github-actions-easy/</link><guid isPermaLink="false">https://jeffrafter.com/making-github-actions-easy/</guid><pubDate>Tue, 06 Apr 2021 00:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;p&gt;Furby is probably the most advanced, well designed, impossibly elegant child’s toy that exists and could be the key to unlocking the emotion of pair-programming. It might seem like the stuff of nightmares: these small talking robots dancing and singing and clamoring for your attention, but as a developer or user experience designer it is an almost perfect medium.&lt;/p&gt;&lt;/section&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Jeff Rafter]]></title><description><![CDATA[How to.]]></description><link>https://jeffrafter.com</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 12 Sep 2021 20:29:14 GMT</lastBuildDate><item><title><![CDATA[Making GitHub Actions Easy]]></title><description><![CDATA[Furby is probably the most advanced, well designed, impossibly elegant child’s toy that exists and could be the key to unlocking the emotion…]]></description><link>https://jeffrafter.com/making-github-actions-easy/</link><guid isPermaLink="false">https://jeffrafter.com/making-github-actions-easy/</guid><pubDate>Tue, 06 Apr 2021 00:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;p&gt;Furby is probably the most advanced, well designed, impossibly elegant child’s toy that exists and could be the key to unlocking the emotion of pair-programming. It might seem like the stuff of nightmares: these small talking robots dancing and singing and clamoring for your attention, but as a developer or user experience designer it is an almost perfect medium.&lt;/p&gt;&lt;/section&gt;
 &lt;section&gt;&lt;h2 id=&quot;the-original-furby&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#the-original-furby&quot; aria-label=&quot;the original furby permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;The Original Furby&lt;/h2&gt;&lt;p&gt;The Furby was originally released in ____. That Christmas, it was the toy to have and inspired the movie Jingle All the Way with Arnold Schwarzeneggar and Sinbad. Not many toys can claim that. The original Furby was a marvel.&lt;/p&gt;&lt;ul&gt;
 &lt;li&gt;The source code&lt;/li&gt;
 &lt;li&gt;The furby organ&lt;/li&gt;
@@ -1412,7 +1412,7 @@ Image credit: &lt;a href=&quot;https://oculus.com&quot;&gt;Oculus Quest&lt;/a&gt
 &lt;section&gt;&lt;h2 id=&quot;choosing-a-multiplayer-package&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#choosing-a-multiplayer-package&quot; aria-label=&quot;choosing a multiplayer package permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Choosing a multiplayer package&lt;/h2&gt;&lt;p&gt;There are a number of different approaches for building multiplayer games in Unity, some of the most common are:&lt;/p&gt;&lt;ul&gt;
 &lt;li&gt;Mirror (Unity multiplayer networking) &lt;a href=&quot;https://github.com/vis2k/Mirror&quot;&gt;https://github.com/vis2k/Mirror&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;Normcore (Unity multiplayer service) &lt;a href=&quot;https://normcore.io&quot;&gt;https://normcore.io&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Photon (Unity multiplayer servuce) &lt;a href=&quot;https://www.photonengine.com/&quot;&gt;https://www.photonengine.com/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Photon (Unity multiplayer service) &lt;a href=&quot;https://www.photonengine.com/&quot;&gt;https://www.photonengine.com/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;p&gt;Mirror is open source and fantastic for peer to peer multiplayer. It requires that you (or a player) host the server which requires more work at scale. If you are looking to use Mirror I highly recommend the excellent YouTube series &lt;a href=&quot;https://www.youtube.com/watch?v=5LhA4Tk_uvI&amp;#x26;list=PLS6sInD7ThM1aUDj8lZrF4b4lpvejB2uB&quot;&gt;How To Make A Multiplayer Game In Unity - Client-Server - Mirror Networking&lt;/a&gt; by DapperDino.&lt;/p&gt;&lt;p&gt;Photon and Normcore are hosted services but both have free plans. Photon tends to charge based on the number of concurrently connected users and Normcore based on the hours spent in shared “rooms”. I tend to use Normcore because the kinds of games I want to make work better with their plans and I find it the simplest solution. Depending on your use case you might choose another option.&lt;/p&gt;&lt;p&gt;Check out the pricing:&lt;/p&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://normcore.io/pricing&quot;&gt;https://normcore.io/pricing&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.photonengine.com/en-US/PUN/Pricing&quot;&gt;https://www.photonengine.com/en-US/PUN/Pricing&lt;/a&gt;&lt;/li&gt;
@@ -1423,7 +1423,7 @@ Image credit: &lt;a href=&quot;https://oculus.com&quot;&gt;Oculus Quest&lt;/a&gt
 &lt;li&gt;VR controllers can represent hands and teleport&lt;/li&gt;
 &lt;li&gt;Avatars are rigged with inverse kinematics&lt;/li&gt;
 &lt;li&gt;Networked objects should be sharable between players&lt;/li&gt;
-&lt;/ul&gt;&lt;h3 id=&quot;user-controls&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#user-controls&quot; aria-label=&quot;user controls permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;User controls&lt;/h3&gt;&lt;p&gt;Within our basic example we were able to control the player’s view (what is displayed on the each lens) by moving the camera when the headset moved. In this way, the locomotion of our headset is our main “controller.” But what about our friends that don’t have an Oculus Quest? It would be great if they could also join our multiplayer game. To support this we will create three sets of controls:&lt;/p&gt;&lt;ul&gt;
+&lt;/ul&gt;&lt;h3 id=&quot;user-control&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#user-control&quot; aria-label=&quot;user control permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;User control&lt;/h3&gt;&lt;p&gt;Within our basic example we were able to control the player’s view (what is displayed on the each lens) by moving the camera when the headset moved. In this way, the locomotion of our headset is our main “controller.” But what about our friends that don’t have an Oculus Quest? It would be great if they could also join our multiplayer game. To support this we will create three sets of controls:&lt;/p&gt;&lt;ul&gt;
 &lt;li&gt;Virtual reality - the headset and the two VR controllers&lt;/li&gt;
 &lt;li&gt;Augmented reality - using a phone as an AR controller&lt;/li&gt;
 &lt;li&gt;Computer - using a keyboard and mouse to control the player&lt;/li&gt;
@@ -1435,7 +1435,181 @@ Image credit: &lt;a href=&quot;https://oculus.com&quot;&gt;Oculus Quest&lt;/a&gt
 &lt;a href=&quot;https://www.youtube.com/watch?v=1VC3ZOxn2Lo&quot;&gt;https://www.youtube.com/watch?v=1VC3ZOxn2Lo&lt;/a&gt;&lt;/p&gt;&lt;/section&gt;
 &lt;section&gt;&lt;h2 id=&quot;setting-up-the-controllers&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#setting-up-the-controllers&quot; aria-label=&quot;setting up the controllers permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Setting up the controllers&lt;/h2&gt;&lt;p&gt;Because we’ll have multiple controllers available in our game, we’ll need to move some pieces around. In the scene hierarchy, create a new empty game object and call it &lt;code class=&quot;language-text&quot;&gt;Controllers&lt;/code&gt;. Then drag the &lt;code class=&quot;language-text&quot;&gt;XR&lt;/code&gt; node into it as a child.&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;/1a64639db57f46c789bf7dd70b4557d7/unity-xr-controllers.gif&quot;&gt;&lt;/p&gt;&lt;p&gt;Expand all of the nodes of the &lt;code class=&quot;language-text&quot;&gt;XR&lt;/code&gt; game object. Under &lt;code class=&quot;language-text&quot;&gt;Camera Offset&lt;/code&gt; create a new empty game object and call it &lt;code class=&quot;language-text&quot;&gt;Left Controller&lt;/code&gt;:&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://rpl.cat/uploads/kNx7gYIGQyIQ4iBTFyGRLVElvSO58-sUGNASO_XjBPs/public.png&quot;&gt;&lt;/p&gt;&lt;p&gt;Active Input Handling &lt;a href=&quot;https://rpl.cat/uploads/XWHRxxQ13t1jR5BkfwUDSLWpPANd-F3Mkbi6njUEers/public.png&quot;&gt;https://rpl.cat/uploads/XWHRxxQ13t1jR5BkfwUDSLWpPANd-F3Mkbi6njUEers/public.png&lt;/a&gt;&lt;/p&gt;&lt;p&gt;References:&lt;/p&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=d2gEEQeu1b4&quot;&gt;How to Setup XR Toolkit’s Action-Based Input in Unity&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/section&gt;</content:encoded></item><item><title><![CDATA[Exploring - Using Express and Amazon Web Services]]></title><description><![CDATA[🗺 Exploring - Work in progress Using Express to build out your API can be challenging; but integrating it with all of the products…]]></description><link>https://jeffrafter.com/express-and-aws/</link><guid isPermaLink="false">https://jeffrafter.com/express-and-aws/</guid><pubDate>Fri, 09 Oct 2020 00:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;figure class=&quot;fullwidth&quot;&gt;&lt;span
+&lt;/ul&gt;&lt;/section&gt;</content:encoded></item><item><title><![CDATA[Unity VR Patterns]]></title><description><![CDATA[Keys Duplicate: ctrl+d  Importing assets and fixing the materials  Adding input via a script From https://www.youtube.com/watch?v=u6Rlr…]]></description><link>https://jeffrafter.com/unity-vr-patterns/</link><guid isPermaLink="false">https://jeffrafter.com/unity-vr-patterns/</guid><pubDate>Sat, 16 Jan 2021 00:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;figure class=&quot;fullwidth&quot;&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1280px; &quot;
+    &gt;
+      &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 56.25%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAALABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAMEBf/EABUBAQEAAAAAAAAAAAAAAAAAAAEA/9oADAMBAAIQAxAAAAHUXUtpxgn/xAAYEAACAwAAAAAAAAAAAAAAAAAAAQIRIP/aAAgBAQABBQJlRWGf/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPwE//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPwE//8QAGRAAAQUAAAAAAAAAAAAAAAAAAAERIDGB/9oACAEBAAY/AmLXY//EABsQAAIDAAMAAAAAAAAAAAAAAAABESExEFFh/9oACAEBAAE/IYNSlT0WGqdsN+cPTR//2gAMAwEAAgADAAAAEGMf/8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAwEBPxA//8QAFBEBAAAAAAAAAAAAAAAAAAAAEP/aAAgBAgEBPxA//8QAGRABAQEBAQEAAAAAAAAAAAAAAREAgSEx/9oACAEBAAE/EApGF9I8dCpBUoncq0WhfmoUXrcbb67/2Q==&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;Oculus Quest with Controllers&quot;
+        title=&quot;Oculus Quest with Controllers&quot;
+        src=&quot;/static/29432bc29d931b884eea7ab75c8fb59e/eea4a/oculus-quest-2.jpg&quot;
+        srcset=&quot;/static/29432bc29d931b884eea7ab75c8fb59e/cb69c/oculus-quest-2.jpg 320w,
+/static/29432bc29d931b884eea7ab75c8fb59e/c08c5/oculus-quest-2.jpg 640w,
+/static/29432bc29d931b884eea7ab75c8fb59e/eea4a/oculus-quest-2.jpg 1280w&quot;
+        sizes=&quot;(max-width: 1280px) 100vw, 1280px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+    &lt;/span&gt;&lt;/figure&gt;&lt;figcaption class=&quot;fullwidth&quot;&gt;
+Image credit: &lt;a href=&quot;https://oculus.com&quot;&gt;Oculus Quest&lt;/a&gt;
+&lt;/figcaption&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h2 id=&quot;keys&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#keys&quot; aria-label=&quot;keys permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Keys&lt;/h2&gt;&lt;p&gt;Duplicate: ctrl+d&lt;/p&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h2 id=&quot;importing-assets-and-fixing-the-materials&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#importing-assets-and-fixing-the-materials&quot; aria-label=&quot;importing assets and fixing the materials permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Importing assets and fixing the materials&lt;/h2&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h2 id=&quot;adding-input-via-a-script&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#adding-input-via-a-script&quot; aria-label=&quot;adding input via a script permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Adding input via a script&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;From &lt;a href=&quot;https://www.youtube.com/watch?v=u6Rlr2021vw&quot;&gt;https://www.youtube.com/watch?v=u6Rlr2021vw&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;&lt;p&gt;Go to the controller you want to add the action to and add a new script called &lt;code class=&quot;language-text&quot;&gt;TestActionController&lt;/code&gt;&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;// Add at the top:
+using UnityEngine.XR.Interaction.Toolkit&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Add this code:&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;// Add in the class
+private ActionBasedController controller;
+
+void Start() {
+  controller = GetComponent&amp;lt;ActionBasedController&amp;gt;();
+  controller.selectAction.action.performed += Action_performed;
+}
+
+void Update() {
+  // You can check inside of update
+  bool isPressed = controller.selectAction.action.ReadValue&amp;lt;bool&amp;gt;();
+  Debug.Log(&amp;quot;Select is pressed in update&amp;quot;)
+}
+
+private void Action_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
+  // throw new System.NotImplementedException();
+  Debug.Log(&amp;quot;Select button is pressed&amp;quot;);
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h2 id=&quot;add-a-ball&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#add-a-ball&quot; aria-label=&quot;add a ball permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Add a ball&lt;/h2&gt;&lt;p&gt;From &lt;a href=&quot;https://www.youtube.com/watch?v=gGYtahQjmWQ&quot;&gt;https://www.youtube.com/watch?v=gGYtahQjmWQ&lt;/a&gt;&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;Create a new sphere object.&lt;/li&gt;
+&lt;li&gt;Add a RigidBody to the sphere.&lt;/li&gt;
+&lt;li&gt;Add an &lt;code class=&quot;language-text&quot;&gt;XR Grab Interactable&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Add an &lt;code class=&quot;language-text&quot;&gt;XR Direct Interactor&lt;/code&gt; onto both controller objects&lt;/li&gt;
+&lt;li&gt;Add a Sphere Collider onto both controllers&lt;/li&gt;
+&lt;li&gt;set the &lt;code class=&quot;language-text&quot;&gt;Radius&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;0.2&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;check the &lt;code class=&quot;language-text&quot;&gt;Is Trigger&lt;/code&gt; checkbox&lt;/li&gt;
+&lt;li&gt;Change the XR Rig Main Camera clipping planes &lt;code class=&quot;language-text&quot;&gt;Near&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;0.1&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;If you don’t want interactors to work with it change the Layer of the ball to a new layer called &lt;code class=&quot;language-text&quot;&gt;Grab&lt;/code&gt;. Then go to the ray interactor and change the &lt;code class=&quot;language-text&quot;&gt;Raycast Mask&lt;/code&gt; from &lt;code class=&quot;language-text&quot;&gt;Everything&lt;/code&gt; to exclude the &lt;code class=&quot;language-text&quot;&gt;Grab&lt;/code&gt; layer.&lt;/p&gt;&lt;p&gt;Create a new layer called &lt;code class=&quot;language-text&quot;&gt;Player&lt;/code&gt; and set the &lt;code class=&quot;language-text&quot;&gt;XR Rig&lt;/code&gt; (and children) to this layer.&lt;/p&gt;&lt;p&gt;Go to &lt;code class=&quot;language-text&quot;&gt;Edit&lt;/code&gt; | &lt;code class=&quot;language-text&quot;&gt;Project Settings&lt;/code&gt; | &lt;code class=&quot;language-text&quot;&gt;Physics&lt;/code&gt; and go to the Layer Collision Matrix. Uncheck the box that is the intersection between &lt;code class=&quot;language-text&quot;&gt;Body&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;Grab&lt;/code&gt;.&lt;/p&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h2 id=&quot;teleportation&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#teleportation&quot; aria-label=&quot;teleportation permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Teleportation&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=fZXKGJYri1Y&quot;&gt;https://www.youtube.com/watch?v=fZXKGJYri1Y&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Change the ray interactor’s &lt;code class=&quot;language-text&quot;&gt;Select Action Trigger&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;State&lt;/code&gt; (not &lt;code class=&quot;language-text&quot;&gt;State Change&lt;/code&gt;).&lt;/p&gt;&lt;p&gt;Change the Line Type to &lt;code class=&quot;language-text&quot;&gt;Projectile Curve&lt;/code&gt; and &lt;code class=&quot;language-text&quot;&gt;Velocity&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;8&lt;/code&gt;.&lt;/p&gt;&lt;p&gt;Haptics:&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Play Haptics On Select Enter&lt;/code&gt;: &lt;code class=&quot;language-text&quot;&gt;0.3&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;0.1&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code class=&quot;language-text&quot;&gt;Play Haptics On Hover Enter&lt;/code&gt;: &lt;code class=&quot;language-text&quot;&gt;0.1&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;0.1&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;You can add a &lt;code class=&quot;language-text&quot;&gt;Reticle&lt;/code&gt; to the &lt;code class=&quot;language-text&quot;&gt;XR Interactor Line Visual&lt;/code&gt;.&lt;/p&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h2 id=&quot;continuous-movement&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#continuous-movement&quot; aria-label=&quot;continuous movement permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Continuous movement&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://www.youtube.com/watch?v=5NRTT8Tbmoc&quot;&gt;https://www.youtube.com/watch?v=5NRTT8Tbmoc&lt;/a&gt;&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Add a &lt;code class=&quot;language-text&quot;&gt;Character Controller&lt;/code&gt; component to the XR Rig.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Set the Radius to &lt;code class=&quot;language-text&quot;&gt;0.15&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Set the Center to &lt;code class=&quot;language-text&quot;&gt;0&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;1&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;0&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;Create a new script called &lt;code class=&quot;language-text&quot;&gt;ContinuousMovement&lt;/code&gt; on the controller&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit;
+
+public XRNode inputSource; // Set this to left hand
+public float speed = 1;
+public float gravity = -9.81f;
+public LayerMask groundLayer;
+public float additionalHeight = 0.2f;
+
+private float fallingSpeed;
+private XRRig rig;
+private Vector2 inputAxis;
+private CharacterController character;
+
+void Start() {
+  character  = GetComponent&amp;lt;CharacterController&amp;gt;();
+  rig = GetComponent&amp;lt;XRRig&amp;gt;();
+}
+
+void Update() {
+  InputDevice device = InputDevice.GetDeviceAtXRNode(inputSource);
+  device.TryGetFeatureValue(CommonUsages.primary2DAxis, out inputAxis);
+}
+
+void FixedUpdate() {
+  CapsuleFollowHeadset();
+
+  Quaternion headYaw = Quaternion.Euler(0, rig.cameraGameObject.transform.eulerAngles.y, 0);
+  Vector3 direction = headYaw * new Vector3(inputAxis.x, 0, inputAxis.y);
+
+  character.Move(direction * Time.fixedDeltaTime * speed);
+
+  bool isGrounded = CheckIfGrounded();
+  if (isGrounded) {
+    fallingSpeed = 0;
+  } else {
+    fallingSpeed += gravity * Time.fixedDeltaTime;
+    character.Move(Vector3.up * fallingSpeed * Time.fixedDeltaTime);
+  }
+}
+
+void CapsuleFollowHeadset() {
+  character.height = rig.cameraInRigSpaceHeight + additionalHeight;
+  Vector3 capsuleCenter = transform.InverseTransformPoint(rig.cameraGameObject.transform.position);
+  character.center = new Vector3(capsuleCenter.x, character.height / 2 + character.skinWidth, capsuleCenter.z);
+}
+
+bool CheckIfGrounded() {
+  Vector3 rayStart = transform.TransformPoint(character.center);
+  float rayLength = character.center.y + 0.01f;
+  bool hasHit = Physics.SphereCast(rayStart, character.radius, Vector3.down, out RaycastHit hitInfo, rayLength, groundLayer);
+  return hasHit;
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Is it Jittery?&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;Edit | Project Settings | Time | set the &lt;code class=&quot;language-text&quot;&gt;Fixed Timestep&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;1/90&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;Add a &lt;code class=&quot;language-text&quot;&gt;Snap Turn Provider&lt;/code&gt; component to the &lt;code class=&quot;language-text&quot;&gt;XR Rig&lt;/code&gt;&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;Set the &lt;code class=&quot;language-text&quot;&gt;Turn Input Source&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;Primary 2D Axis&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Add a controller and set it to &lt;code class=&quot;language-text&quot;&gt;Right Hand&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Reduce the &lt;code class=&quot;language-text&quot;&gt;Activation Timeout&lt;/code&gt; to &lt;code class=&quot;language-text&quot;&gt;0.2&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h2 id=&quot;more-advanced-grabbing&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#more-advanced-grabbing&quot; aria-label=&quot;more advanced grabbing permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;More advanced grabbing&lt;/h2&gt;&lt;p&gt;From here: &lt;a href=&quot;https://www.youtube.com/watch?v=FMu7hKUX3Oo&quot;&gt;https://www.youtube.com/watch?v=FMu7hKUX3Oo&lt;/a&gt;&lt;/p&gt;&lt;p&gt;If you put the colliders on a child-object (not the object with the XR Grab Interactable) then you should link the XR Grab Interactable colliders with those.&lt;/p&gt;&lt;p&gt;For attach transforms: create a new empty child object called “Pivot”. When adjusting make sure you’ve set to &lt;code class=&quot;language-text&quot;&gt;Pivot&lt;/code&gt; and not &lt;code class=&quot;language-text&quot;&gt;Center&lt;/code&gt;&lt;/p&gt;&lt;p&gt;&lt;img src=&quot;https://rpl.cat/uploads/LGPIQEw8wvd9sNi1fv7s6uBrhQeSQEf-nOkEXd3K_uE/public.png&quot;&gt;&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;Blue axis is forward&lt;/li&gt;
+&lt;li&gt;Green axis is controller handle&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;Move the pivot to the center of the handle. Then drag the Pivot object to the &lt;code class=&quot;language-text&quot;&gt;Attach Transform&lt;/code&gt; property of the &lt;code class=&quot;language-text&quot;&gt;XR Grab Interactable&lt;/code&gt; component.&lt;/p&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h2 id=&quot;fire-a-gun&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#fire-a-gun&quot; aria-label=&quot;fire a gun permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Fire a gun&lt;/h2&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;using UnityEngine;
+
+public class Gun : MonoBehaviour {
+
+  public float speed = 40;
+  public GameObject bullet;
+  public Transform barrel;
+  public AudioSource audioSource;
+  public AudioClip audioClip;
+
+  public void Fire() {
+    GameObject spawnedBullet = Instantiate(bullet, barrel.position, barrel.rotation);
+    RigidBody rb = spawnedBullet.GetComponent&amp;lt;RigidBody&amp;gt;();
+    rb.velocity = speed * barrel.forward;
+    audioSource.PlayOneShot(audioClip);
+    Destroy(spawnedBullet, 2);
+  }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Go the the &lt;code class=&quot;language-text&quot;&gt;XR Grab Interactable&lt;/code&gt; on the gun, find the &lt;code class=&quot;language-text&quot;&gt;On Activate&lt;/code&gt; Interactable Event, drag in the Gun and then and then set the function to the &lt;code class=&quot;language-text&quot;&gt;Fire&lt;/code&gt; function.&lt;/p&gt;&lt;p&gt;The activation trigger is controlled on the Controller object &lt;code class=&quot;language-text&quot;&gt;Activate Usage&lt;/code&gt; (and defaults to Trigger).&lt;/p&gt;&lt;h1 id=&quot;user-interface&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#user-interface&quot; aria-label=&quot;user interface permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;User interface&lt;/h1&gt;&lt;p&gt;Ray Interaction: &lt;a href=&quot;https://www.youtube.com/watch?v=4tW7XpAiuDg&quot;&gt;https://www.youtube.com/watch?v=4tW7XpAiuDg&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Create a new UI Canvas.&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;Set Render Mode to &lt;code class=&quot;language-text&quot;&gt;World Space&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Set the Event Camera to the &lt;code class=&quot;language-text&quot;&gt;Main Camera&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;Reduce to the canvas scale to &lt;code class=&quot;language-text&quot;&gt;0.001&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;0.001&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;0.001&lt;/code&gt;&lt;/p&gt;&lt;p&gt;Add a &lt;code class=&quot;language-text&quot;&gt;Tracked Device Graphic Raycaster&lt;/code&gt; component to the canvas&lt;/p&gt;&lt;p&gt;On the &lt;code class=&quot;language-text&quot;&gt;Event System&lt;/code&gt; object&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;Remove the &lt;code class=&quot;language-text&quot;&gt;Standalone Input System&lt;/code&gt; component&lt;/li&gt;
+&lt;li&gt;Add an &lt;code class=&quot;language-text&quot;&gt;XRUI Input Module&lt;/code&gt; component&lt;/li&gt;
+&lt;/ul&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h2 id=&quot;inverse-kinematics&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#inverse-kinematics&quot; aria-label=&quot;inverse kinematics permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Inverse Kinematics&lt;/h2&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h2 id=&quot;level-of-detail&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#level-of-detail&quot; aria-label=&quot;level of detail permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Level of detail&lt;/h2&gt;&lt;p&gt;Adding an input&lt;/p&gt;&lt;p&gt;Add a script TestActionController Script&lt;/p&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;// Add at the top:
+using UnityEngine.XR.Interaction.Toolkit&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;// Add in the class
+private ActionBasedController controller;
+
+void Start() {
+  controller = GetComponent&amp;lt;ActionBasedController&amp;gt;();
+  controller.selectAction.action.performed += Action_performed;
+}
+
+void Update() {
+  // You can check inside of update
+  bool isPressed = controller.selectAction.action.ReadValue&amp;lt;bool&amp;gt;();
+  Debug.Log(&amp;quot;Select is pressed in update&amp;quot;)
+}
+
+private void Action_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj) {
+  // throw new System.NotImplementedException();
+  Debug.Log(&amp;quot;Select button is pressed&amp;quot;);
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/section&gt;</content:encoded></item><item><title><![CDATA[Exploring - Using Express and Amazon Web Services]]></title><description><![CDATA[🗺 Exploring - Work in progress Using Express to build out your API can be challenging; but integrating it with all of the products…]]></description><link>https://jeffrafter.com/express-and-aws/</link><guid isPermaLink="false">https://jeffrafter.com/express-and-aws/</guid><pubDate>Fri, 09 Oct 2020 00:01:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;figure class=&quot;fullwidth&quot;&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1280px; &quot;
     &gt;
