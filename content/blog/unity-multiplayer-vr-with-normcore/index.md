@@ -25,7 +25,7 @@ There are a number of different approaches for building multiplayer games in Uni
 
 * Mirror (Unity multiplayer networking) https://github.com/vis2k/Mirror
 * Normcore (Unity multiplayer service) https://normcore.io
-* Photon (Unity multiplayer servuce) https://www.photonengine.com/
+* Photon (Unity multiplayer service) https://www.photonengine.com/
 
 Mirror is open source and fantastic for peer to peer multiplayer. It requires that you (or a player) host the server which requires more work at scale. If you are looking to use Mirror I highly recommend the excellent YouTube series [How To Make A Multiplayer Game In Unity - Client-Server - Mirror Networking](https://www.youtube.com/watch?v=5LhA4Tk_uvI&list=PLS6sInD7ThM1aUDj8lZrF4b4lpvejB2uB) by DapperDino.
 
@@ -46,7 +46,7 @@ Before we start building our scene it is important to outline our goals:
 * Avatars are rigged with inverse kinematics
 * Networked objects should be sharable between players
 
-### User controls
+### User control
 
 Within our basic example we were able to control the player's view (what is displayed on the each lens) by moving the camera when the headset moved. In this way, the locomotion of our headset is our main "controller." But what about our friends that don't have an Oculus Quest? It would be great if they could also join our multiplayer game. To support this we will create three sets of controls:
 
