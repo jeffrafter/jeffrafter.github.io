@@ -1,15 +1,16 @@
 ---
 title: Unity Multiplayer Virtual Reality with Normcore
-date: '2021-01-16T00:01:00'
-published: false
+date: '2021-10-16T00:01:00'
+published: true
 slug: unity-multiplayer-vr-with-normcore
-comments: https://github.com/jeffrafter/jeffrafter.github.io/issues/19
+comments: https://github.com/jeffrafter/jeffrafter.github.io/issues/42
 image: ../../assets/oculus-quest-2.jpg
 layout: post
 tags: ['oculus', 'quest', 'unity', 'development', 'vr', 'virtual-reality', 'multiplayer']
 category: development
 excerpt: What's better than Virtual Reality? Virtual Reality with friends. Even the most basic games become more fun when played together. Learn how to quickly setup a multiplayer VR game with Normcore and Unity.
 ---
+
 <figure class="fullwidth">
 ![Oculus Quest with Controllers](../../assets/oculus-quest-2.jpg)
 </figure>
@@ -23,9 +24,9 @@ What's better than Virtual Reality? Virtual Reality with friends. Even the most 
 
 There are a number of different approaches for building multiplayer games in Unity, some of the most common are:
 
-* Mirror (Unity multiplayer networking) https://github.com/vis2k/Mirror
-* Normcore (Unity multiplayer service) https://normcore.io
-* Photon (Unity multiplayer service) https://www.photonengine.com/
+- Mirror (Unity multiplayer networking) https://github.com/vis2k/Mirror
+- Normcore (Unity multiplayer service) https://normcore.io
+- Photon (Unity multiplayer service) https://www.photonengine.com/
 
 Mirror is open source and fantastic for peer to peer multiplayer. It requires that you (or a player) host the server which requires more work at scale. If you are looking to use Mirror I highly recommend the excellent YouTube series [How To Make A Multiplayer Game In Unity - Client-Server - Mirror Networking](https://www.youtube.com/watch?v=5LhA4Tk_uvI&list=PLS6sInD7ThM1aUDj8lZrF4b4lpvejB2uB) by DapperDino.
 
@@ -33,36 +34,36 @@ Photon and Normcore are hosted services but both have free plans. Photon tends t
 
 Check out the pricing:
 
-* https://normcore.io/pricing
-* https://www.photonengine.com/en-US/PUN/Pricing
+- https://normcore.io/pricing
+- https://www.photonengine.com/en-US/PUN/Pricing
 
 ## Planning out the scene
 
 Before we start building our scene it is important to outline our goals:
 
-* Users should be able to view and control their player with a VR headset, Keyboard and AR
-* Each player will be represented by an avatar within the game
-* VR controllers can represent hands and teleport
-* Avatars are rigged with inverse kinematics
-* Networked objects should be sharable between players
+- Users should be able to view and control their player with a VR headset, Keyboard and AR
+- Each player will be represented by an avatar within the game
+- VR controllers can represent hands and teleport
+- Avatars are rigged with inverse kinematics
+- Networked objects should be sharable between players
 
 ### User control
 
 Within our basic example we were able to control the player's view (what is displayed on the each lens) by moving the camera when the headset moved. In this way, the locomotion of our headset is our main "controller." But what about our friends that don't have an Oculus Quest? It would be great if they could also join our multiplayer game. To support this we will create three sets of controls:
 
-* Virtual reality - the headset and the two VR controllers
-* Augmented reality - using a phone as an AR controller
-* Computer - using a keyboard and mouse to control the player
+- Virtual reality - the headset and the two VR controllers
+- Augmented reality - using a phone as an AR controller
+- Computer - using a keyboard and mouse to control the player
 
 This adds some complexity but it means our game will be more accessible. Additionally, it makes it much easier to test out the multiplayer functionality (without needing multiple headsets). We can run the game in the Unity editor and our device to test various aspects of our game.
 
 #### Avatars
 
-Game designers often categorize their games as first-person or third-person. In a first-person game you view the game from the player's perspective. Games like Quake or Counter-strike (or Superhot for VR) are "first-person shooters."  In a third-person game you control the player but not from the player's perspective. Games like Super Mario 3D World (or Moss for VR) let you control Mario without seeing through Mario's eyes. We'll probably end up using multiple perspectives, but we'll start with first-person as that will be more immersive in VR.
+Game designers often categorize their games as first-person or third-person. In a first-person game you view the game from the player's perspective. Games like Quake or Counter-strike (or Superhot for VR) are "first-person shooters." In a third-person game you control the player but not from the player's perspective. Games like Super Mario 3D World (or Moss for VR) let you control Mario without seeing through Mario's eyes. We'll probably end up using multiple perspectives, but we'll start with first-person as that will be more immersive in VR.
 
 Regardless of the perspective, we'll need to be able to show the player in the scene. Often in first-person VR games you don't see yourself (you might see only your hands). Because our game is multiplayer we'll need to be able to see the other players in the scene. These are called player avatars[^avatar]; and they are what we'll be controlling.
 
-[^avatar]: Why are they called "avatars"? According to [wikipedia](https://en.wikipedia.org/wiki/Avatar_(computing)), "The word avatar originates in Hinduism, where it stands for the 'descent' of a deity in a terrestrial form." It goes on to say, "The use of the term avatar for the on-screen representation of the user was coined in 1985 by Richard Garriott for the computer game Ultima IV: Quest of the Avatar. In this game, Garriott desired the player's character to be his earth self manifested into the virtual world."
+[^avatar]: Why are they called "avatars"? According to [wikipedia](<https://en.wikipedia.org/wiki/Avatar_(computing)>), "The word avatar originates in Hinduism, where it stands for the 'descent' of a deity in a terrestrial form." It goes on to say, "The use of the term avatar for the on-screen representation of the user was coined in 1985 by Richard Garriott for the computer game Ultima IV: Quest of the Avatar. In this game, Garriott desired the player's character to be his earth self manifested into the virtual world."
 
 When a player joins the multiplayer version of our game we'll create a local player avatar for them. As they control their character and move it around the scene, we'll update our local copy of the avatar. To do this we'll separate out how the player is controlled from how the player object is updated and displayed - even for our own local player object.
 
@@ -72,9 +73,9 @@ In the previous post we were able to look around our scene - but we didn't have 
 
 Tracking the headset's position means that walking around in reality will translate to player movement in virtual reality. That's great, but a given player's play-space size might be very small. Because we'll be using the controllers, we could easily utilize the thumb-sticks to control player locomotion. Generally there are three kinds of controller based locomotion:
 
-* Teleporting
-* Snap-turns
-* Thumbstick movement
+- Teleporting
+- Snap-turns
+- Thumbstick movement
 
 We'll implement all three of these controls. Unfortunately, though, thumbstick based movement can induce discomfort as the player's visual position changes without a corresponding physical change. For this reason, many games do not enable thumbstick based movement, so we'll make it optional.
 
@@ -90,91 +91,466 @@ One thing we're not covering in this post is anti-cheating. Because we are relyi
 
 # Create a new project
 
-We'll need to create a new Unity project for our multiplayer scene. We'll assume you are starting with the project from the previous post. If you followed that post you can continue to use the same project you've already started. Otherwise you can use the template to start a new project.
+We'll need to create a new Unity project for our multiplayer scene. We'll assume you are starting with the project from the previous post. If you followed that post you can continue to use the same project you've already started.
 
-First use the template on GitHub to create a new repository. Go to https://github.com/jeffrafter/unity-basic-xr-template and click the `Use this template` button. Fill out the repository information and click `Create repository from template`:
+## Getting started with Normcore
 
-![Create repository from template](https://rpl.cat/uploads/hticPBADLJ81718j2wN1Nu5qLf1T9Cq_-bG_ZWYkL-c/public.png)
+https://normcore.io/documentation/essentials/getting-started.html
 
-Clone the repository locally:
+Sign up for an account.
 
-```sh
-git clone https://github.com/jeffrafter/hide-and-seek-multiplayer Hide\ and\ Seek\ Multiplayer
+Download the package.
+
+Open the package.
+
+Import the package ![](https://rpl.cat/uploads/8E-WEWIob3jKUXnQKRYTW4FOYneniX3PZ-VAxP4yKEo/public.png)
+
+Create a new Game Object called `Realtime`
+
+Add a `Realtime` component and set the `App Key` (you may need to create an application first: https://normcore.io/dashboard/app/applications). For now you can leave the room as `Test Room`.
+
+Add a `Realtime Avatar Manager` component.
+
+![](https://rpl.cat/uploads/y0NhpxJbD243Msrpnw2V-dlHNxsNAib3QFOxx1-TLrk/public.png)
+
+## Creating a Custom Avatar
+
+https://normcore.io/documentation/guides/xr-avatars-and-voice-chat.html#creating-custom-avatars
+
+Create a new empty game object and call it `Avatar`
+
+Add a `Realtime Avatar` component to the object. Notice that it added a `Realtime View` automatically for you. This will help track and broadcast the position of this object across players. Click `Create Avatar Prefab`. This will add a `Realtime Transform` and three new child objects: `Head`, `Left Hand`, `Right Hand`. Each of these objects have `Realtime View` and `Realtime Transform` components and will be tracked accordingly. The `Head` object also has components for syncing the voice and changing the scale of the head proportionally.
+
+We need to turn this into a prefab. Create a new folder in your `Assets` called `Resources` (it must be called `Resources` for the object to be instantiated at runtime). Drag the `Avatar` object into the `Resources` folder. Next, delete the object from the scene hierarchy.
+
+Select the `Realtime` game object. Drag the `Avatar` prefab from the `Assets/Resources` into the `Local Avatar Prefab` property.
+
+You should be able to run the game and all of the players that join will have their own avatar (made out of cubes).
+
+## Keyboard controller
+
+Adding the ability to control things with the keyboard will make it easier to test and debug the game. Also, it will make it easier to get multiple players in the game.
+
+Add a new empty game object called `Keyboard` to the `Controller` game object. Then add a `Camera` object to the `Keyboard` object. Change the tag to `MainCamera`. Then add a `Simple Camera Controller` component to the `Camera` object:
+
+![](https://rpl.cat/uploads/WCXLFh7UfDbevVn7uW7L3cyO6Ej0yAaDgBmh3N7x5T4/public.png)
+
+You may want to adjust the sensitivity of the camera controller:
+
+![](https://rpl.cat/uploads/cr1BKq8OC_cL4L5MesXjRaXYjTWzxBFPmBY6n_xfYrs/public.png)
+
+Also, you can check the `Invert Y` checkbox.
+
+Uncheck the `Keyboard` object in the hierarchy so that it is not active when the game starts.
+
+![](https://rpl.cat/uploads/wQhwTBTNLfzgoitMiN77MymW-XFiajz5osWJ1bcu2cM/public.png)
+
+We now have two controllers in the scene: the keyboard and the XR rig. We'll want to make it so that the game auto-switches to the keyboard controller when the XR rig is not available. In the `Controller` object create a new script called `ControllerSwitcher`.
+
+```cs
+#if !(UNITY_EDITOR_WIN || UNITY_STANDALONE_WIN || (UNITY_ANDROID && !UNITY_EDITOR))
+#define OVRPLUGIN_UNSUPPORTED_PLATFORM
+#endif
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Normal.Realtime;
+
+public class ControllerSwitcher : MonoBehaviour
+{
+  public GameObject keyboardController;
+  public Transform keyboardHead;
+  public GameObject XRRig;
+  public Transform XRHead;
+  public Transform XRLeftHand;
+  public Transform XRRightHand;
+  public Transform realtime;
+
+  private RealtimeAvatarManager realtimeAvatarManager;
+
+  void Start()
+  {
+    realtimeAvatarManager = realtime.GetComponent<RealtimeAvatarManager>();
+    realtimeAvatarManager.avatarCreated += OnAvatarCreated;
+
+#if OVRPLUGIN_UNSUPPORTED_PLATFORM
+    XRRig.SetActive(false);
+    keyboardController.SetActive(true);
+#else
+    XRRig.SetActive(true);
+#endif
+  }
+
+  void Update()
+  {
+  }
+
+  public void OnAvatarCreated(RealtimeAvatarManager avatarManager, RealtimeAvatar avatar, bool isLocalAvatar)
+  {
+    if (!isLocalAvatar) return;
+
+#if OVRPLUGIN_UNSUPPORTED_PLATFORM
+    avatar.localPlayer.head = keyboardHead;
+#else
+    avatar.localPlayer.root = XRRig.transform;
+    avatar.localPlayer.head = XRHead;
+    avatar.localPlayer.leftHand = XRLeftHand;
+    avatar.localPlayer.rightHand = XRRightHand;
+#endif
+  }
+}
 ```
 
-Then within Unity Hub click `Add` and find the newly created folder, then click `Open`. Once the project is added to Unity Hub open it. Unity will open to a blank scene. Under Assets, in the Scenes folder, open the `Game` scene.
+![](https://rpl.cat/uploads/ESJ4FZWK6_k8ZgadmInOKwa5uCp4EJiflqUpSB7mEuQ/public.png)
 
-![](https://rpl.cat/uploads/gVJo-xivfzGYtOVsXeon0024guUAHfV0FS4vjM5-Od4/public.png)
+If you are running on a Mac M1, you may encounter an error when Normcore attempts to connect to your Microphone. To fix this, you can try the following: open the Avatar prefab (double-click), open the `Head` object and uncheck the `Realtime Avatar Voice` component. This completely disables voices, but will allow the game to run without crashing.
 
-We're ready to get started.
+You'll notice that you head moves with the keyboard controller, but your hands are stuck in the ground. We'll need to fix this later when we setup our inverse kinematics.
 
-# Building the project
+## Locomotion
 
+Now that we have bodies and hands we can start implementing the locomotion controls. In the scene hierarchy, add a new `Locomotion System (Action Based)`. By default this will give you a `Locomotion System` component, a `Teleportation Provider` component, and a `Snap Turn Provider` component. Connect the `XR Rig` to the `XR Rig` property. This should allow you to snap turn using the thumbsticks.
 
+![](https://rpl.cat/uploads/F-MA3KQHMu9u8zfHDMHXePCOzPAwtMIdgGXnxXB8eXs/public.png)
 
+## Teleporting around
 
+Let's make it so you can teleport around. In order to teleport, we'll need to have a place we can teleport to. Click on the `Floor` object in the `Environment` object. Add a `Teleportation Area` component:
 
-How To MAKE A VR GAME: Beginner's guide to Virtual Reality & Unity XR Plugin
-https://www.youtube.com/watch?v=1VC3ZOxn2Lo
+![](https://rpl.cat/uploads/9V7Kjcgjzywt09UGC7Qa6s2djdGwpFsIXFAvMPnjKpc/public.png)
 
+Run the game. You should be able to use the grip buttons to teleport.
 
+This is pretty simple teleportation. Let's improve it by using the thumbsticks to teleport instead. We'll also add a "reticle" that allows us to see where we're going.
 
+### Reticles
 
+We'll make a basic reticle. Create a new Cylinder in the environment and name it `Reticle`. Remove the collider, reset the transform and scale the X and Z down to 0.6 and scale the Y down to 0.1:
 
+![](https://rpl.cat/uploads/EsTVD4jdyH1-YjSq34LruleKPK4Bbgjez4fAp6TxGZ8/public.png)
 
+Make a new material for the reticle and call it `Reticle`. Set the base color to blue, the opactity to 0.5, change the `Surface Type` to `Transparent`:
 
+![](https://rpl.cat/uploads/n3QtnCVCF4X79u1kl6J4C15X7K44xFuLGCTPAxKeJ6k/public.png)
 
+Drag the material onto the `Reticle` object.
 
+Within the `RightHand Controller` object, change the `XR Ray Interactor`'s `Line Type` to `Projectile Curve` and change the `Velocity` to `8`. Set the `Select Action Trigger` property to `State Change`. Uncheck `Enable Interaction with UI GameObjects` and set the `Haptic Events` as follows:
 
+- `On Select Enter`: Haptic Intensity: `0.3`, Duration: `0.1`
+- `On Hover Enter`: Haptic Intensity: `0.1`, Duration: `0.1`
 
+![](https://rpl.cat/uploads/FD-REpbi7XqXpL2g2poM0Hr-7N-y0YBfl4hOBD6lN4s/public.png)
 
+Then drag the `Reticle` object from the hierarchy to the `XR Interactor Line Visual`'s `Reticle` property:
 
+![](https://rpl.cat/uploads/k8VyJ7cw26eXvwI4d7v6WbexU-G5ztdT8En7LHUqbrM/public.png)
 
+https://www.youtube.com/watch?v=siFRhXNVIcY
 
+## Adding a ball to throw
 
+Create a new sphere object.
 
+![](https://rpl.cat/uploads/MisQlp5KkPmYXRpcDgRhkrGGcJAlM7_Fo5evyGf0-yE/public.png)
 
+Position it above the table. You can set the transform as follows:
 
+![](https://rpl.cat/uploads/sLSuKU8M7daKXkezRlnes-KlExQFpHbaBRifqxSNKRo/public.png)
 
+Add a RigidBody to the sphere and add an `XR Grab Interactable`. Set the `XR Grab Interactable` movement type to `Velocity Tracking` and check the `Force Gravity on Detach` checkbox. At this point you should be able to run the game and grab the sphere. You can even throw it! Unfortunately you'll find it hard to get any momentum from the throw. Run the game and try to throw the sphere.
 
+The reason you can't throw it well is because the ball is colliding with your hands. When you let go of the grip button, the ball will start to collide and immediately fall down. If you don't want interactors to work with it change the Layer of the ball to a new layer called `Grab`.
 
+![](https://rpl.cat/uploads/KnkPfTbU3gOzTVukP-gE68L_5PxBF_KkfD0-X4A4nKQ/public.png)
 
+We'll also create a new layer called `Avatar`. Open the `Avatar` prefab and change the layer of the `Avatar` object to `Avatar` (including all of the children).
 
+![](https://rpl.cat/uploads/afw9XuGnV_BYh5Hh5fIYLX-qtXxeTKw3yYkAUkIJeiI/public.png)
 
+Go to `Edit` | `Project Settings` | `Physics` and go to the Layer Collision Matrix. Uncheck the box that is the intersection between `Avatar` and `Grab`.
 
+![](https://rpl.cat/uploads/FlrMZIhG-X00H6wYCrtXjardpPL3dSM2_qcVoIj2aUE/public.png)
 
+Unfortunately the ball is not shared between all of the players. Each player sees the ball only for themselves.
 
+To fix this we'll need to add a `Realtime Transform` component to the ball. This will automatically add a `Realtime View` component to it as well. In order manage the ownership of these objects we'll need each player to request ownership of the ball when it is grabbed. Create a new script component on the ball called `Grabbable`. Use the following code:
 
+```cs
+using Normal.Realtime;
+using UnityEngine;
+using UnityEngine.XR.Interaction.Toolkit;
 
+public class Grabbable : MonoBehaviour
+{
+  private RealtimeTransform realtimeTransform;
+  private XRGrabInteractable interactable;
 
+  void Awake()
+  {
+    realtimeTransform = GetComponent<RealtimeTransform>();
+  }
 
+  void Update()
+  {
+    // Check to see if we think we're holding it, but no longer the owner of it.
+    if (interactable.isSelected && !realtimeTransform.isOwnedLocallySelf)
+    {
+      // Drop it like it's hot!
+      interactable.interactionManager.CancelInteractableSelection(interactable);
+    }
+  }
 
+  protected void OnEnable()
+  {
+    interactable = GetComponent<XRGrabInteractable>();
+    if (interactable != null)
+    {
+      interactable.selectEntered.AddListener(OnSelectEntered);
+    }
+  }
 
+  protected void OnDisable()
+  {
+    if (interactable != null)
+    {
+      interactable.selectEntered.RemoveListener(OnSelectEntered);
+    }
+  }
 
+  public void OnSelectEntered(SelectEnterEventArgs args)
+  {
+    // Once we grab it, we're the owner of it - this will force everyone else to drop it.
+    realtimeTransform.RequestOwnership();
+  }
 
+}
+```
 
+### Ownership, physics, and gravity
 
+It might feel like we are doing a lot of work to figure out the "ownership" of the ball. An object can only have one owner at a time. The owner is responsible for the physics and gravity of the object. If you don't own the ball, you can't move it. This tends to be a problem when you have multiple players trying to grab the ball.
 
+A common bug happens when one player is holding the ball and another grabs it out of their hand. According to the `XRGrabInteractable` both players think they are holding the ball and controlling the movement. This results in the ball's position being out of sync. When the player releases the ball, the ball should fall down, but instead loses its gravity because no owner is simulating its physics.
 
+The above code fixes this by repeatedly checking if the ball is owned by the player during `Update`. If it is not owned by the player but is being "held" according the `XRGrabInteractable` then the ball should be immediately dropped.
 
+> For more information, see https://www.youtube.com/watch?v=j2ldiEUxegs (but note that we are accomplishing a lot of the tasks differently).
 
+## Shooting a gun
 
+Add a new empty game object called `Gun`. Reset the transform. Add a `RigidBody` component and an `XR Grab Interactable` component to the `Gun`. Set the `XR Grab Interactable` movement type to `Velocity Tracking` and check the `Force Gravity on Detach` checkbox. We'll also want to add the `Grabbable` script from earlier to the `Gun`.
 
+Add two child cubes. Make the first cube scale x: 0.1, y: 0.2, z: 0.1
 
-## Setting up the controllers
+![](https://rpl.cat/uploads/mI_OgLcqVXXuJSj_mbenY3Ni5bqnytQiN29ka2mTc14/public.png)
 
-Because we'll have multiple controllers available in our game, we'll need to move some pieces around. In the scene hierarchy, create a new empty game object and call it `Controllers`. Then drag the `XR` node into it as a child.
+Make the cube scale x: 0.1, y: 0.1, z: 0.4 and position: x: 0, y: 0.1, z: 0.15.
 
-![](../../assets/unity-xr-controllers.gif)
+![](https://rpl.cat/uploads/laLPiKogTP1uV9qaaCoQ3OPLMrIbTZt7lGTwXO6rJT0/public.png)
 
-Expand all of the nodes of the `XR` game object. Under `Camera Offset` create a new empty game object and call it `Left Controller`:
+Add another empty game object called `Fire point` as a child of the `Gun` object. Reset the transform. Set the position to x: 0, y: 0.1, z: 0.5.
 
-![](https://rpl.cat/uploads/kNx7gYIGQyIQ4iBTFyGRLVElvSO58-sUGNASO_XjBPs/public.png)
+### Making the gun shoot
 
+Add a new script component to the `Gun` object called `Fire` with the code:
 
-Active Input Handling https://rpl.cat/uploads/XWHRxxQ13t1jR5BkfwUDSLWpPANd-F3Mkbi6njUEers/public.png
+```cs
+using Normal.Realtime;
+using UnityEngine;
 
+public class Fire : MonoBehaviour
+{
+  public Transform firePoint;
+  public string bulletPrefab;
+  public float firePower = 1000f;
 
-References:
+  public void FireBullet()
+  {
+    GameObject bullet = Realtime.Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+    bullet.GetComponent<Rigidbody>().AddForce(firePoint.forward * firePower);
+  }
+}
+```
 
-* [How to Setup XR Toolkit's Action-Based Input in Unity](https://www.youtube.com/watch?v=d2gEEQeu1b4)
+Notice that we are instantiating the bullet by name, not by reference. Additionally, we are using the `Realtime` instance to control the instantiation. This is because we want to make sure that the bullet is instantiated on all of the clients even though it is owned by the player who is shooting it. The player who is shooting the bullet will be in charge of simulating the physics (including gravity) of the bullet. Because of this, the controlling player can immediately add force to the bullet.
+
+In Unity, drag the `Fire Point` object onto the `Fire Point` field in the `Fire` script component. Set the `Bullet Prefab` field to `Bullet`:
+
+![](https://rpl.cat/uploads/KIg9jmE8aUR_I--FpQF3LAMiDLBn1Srgu1-U2QEpa0I/public.png)
+
+On the `Gun` object, create a new `Activate` event on the `XR Grab Interactable` component. Drag the `Fire` script component onto the `Activate` field. Then set the method to `Fire.FireBullet`.
+
+![](https://rpl.cat/uploads/xaZrk0X21chzE-MqfM_qaSaq0ZbJ-aM37QjK0MT1-IY/public.png)
+
+Move the gun above the table and then duplicate it so that there is one for you and your friend.
+
+> You may have noticed that you can't throw the gun, just like the ball. This is because the gun is colliding with your hands. Select both of the `Gun` objects and change the layer to `Grab`. Apply this to all of the children of the `Gun` objects as well.
+>
+> ![](https://rpl.cat/uploads/ZYY0t6zTizMk6u92KI6Rn-7_Vai7K7V4kIUI-_nAuVY/public.png)
+
+Lastly, we'll need to create the prefab for the bullets. Add a new Sphere to the scene and call it `Bullet`. Set the position to x: 0, y: 0, z: 0 and the scale to x: 0.1, y: 0.1, z: 0.1. Add a `Realtime Transform` component so that all players can see it. Add a `RigidBody` component then drag it into the `Resources` folder to create a prefab and then delete it from the scene.
+
+> For more information, see https://www.youtube.com/watch?v=44SEReNPSx4, (but note that we are accomplishing a lot of the tasks differently).
+
+### Destroying the bullets
+
+When we shoot the bullet, we'll want to destroy it after a certain amount of time. Open the `Bullet` prefab and create a new script component called `Destruct` with the following code:
+
+```cs
+using Normal.Realtime;
+using System.Collections;
+using UnityEngine;
+
+public class Destruct : MonoBehaviour
+{
+  public void Awake()
+  {
+    StartCoroutine(SelfDestruct());
+  }
+
+  IEnumerator SelfDestruct()
+  {
+    yield return new WaitForSeconds(5f);
+    Realtime.Destroy(gameObject);
+  }
+}
+```
+
+This will automatically destroy the bullet after 5 seconds.
+
+# Something fun: adding some color
+
+Duplicate one of the guns so you have three guns. You need to do this because your game is so cool now you'll probably have another friend wanting to play with you.
+
+Create three new materials. Name them `Yellow`, `Green`, and `Blue`. Set the `Yellow` material to yellow, `Green` to green, and `Purple` to purple.
+
+![](https://rpl.cat/uploads/D6L0kkOGCTyYMgP7hzwBjApuLe_drdw-ptXCMNhrVUA/public.png)
+
+Drag those onto the guns.
+
+![](https://rpl.cat/uploads/f_m9QfY_ldvBUZQtRTbIC6LnINVYR9DGCZY_x80usmI/public.png)
+
+Let's also make the bullets white. Make another material called `White` and set it to white:
+
+![](https://rpl.cat/uploads/2jwJtwUN5olocfnvuDpSswylMOr37KDhTDtc0TWJk1Y/public.png)
+
+Open the `Bullet` prefab and drag the white material onto it.
+
+# Player names
+
+Now that we have so many players it would be nice to have a way to name them. We can do this by adding a UI text component above the player's head. Open the `Avatar` prefab and add a new `UI`, `Text - TextMesh Pro` component called `Player Name`. When you add this, it will ask if you want to import `TMP Essentials`. Click the button to import them - for now we won't need the `TMP Examples & Extras`:
+
+![](https://rpl.cat/uploads/1mXW8lkzIxgWFxGaQtzgKE0FOE4kLw651V9X5e1kCW4/public.png)
+
+Unity automatically created a `Canvas` object as well. Unfortunately, it's gigantic. Let's make it smaller. Open the `Canvas` object, and set the `Render Mode` to `World Space`.
+
+Then reset the transform, and set the scale to `Pos X`: 0, `Pos Y`: 0.3, `Pos Z`: 0. Set the `Width`: 1 and the `Height`: 1.
+
+![](https://rpl.cat/uploads/1xQMSZu4jUYdxtxBzF8mOp0hQd4VtR8kwMW4mzD8Di8/public.png)
+
+Select the actual TextMeshPro component and set the `Text` to `Player Name`. Then reset the transform, and set the scale to `Pos X`: 0, `Pos Y`: 0, `Pos Z`: 0. Set the `Width`: 1 and the `Height`: 1. Set the `Y` rotation to `180`. Set the `Font Size` to 0.1. Lastly, set the `Alignment` to center and the vertical alignment to middle:
+
+![](https://rpl.cat/uploads/OGClX1pw2MlHUFtS7IY5H7kfQEWJFGc4D6wFUv1D6RI/public.png)
+
+## Multiplayer names
+
+If you run the game, everyone will have the same name: `Player Name`. Let's change that. In order for everyone to see each player's name, we'll need to sync the player attributes through Normcore.
+
+Create a new script called `AvatarAttributesModel.cs` with the following code:
+
+```cs
+using Normal.Realtime;
+using Normal.Realtime.Serialization;
+
+[RealtimeModel]
+public partial class AvatarAttributesModel
+{
+  [RealtimeProperty(1, true, true)]
+  private string _nickname;
+}
+```
+
+This model has a single synchronized property called `_nickname`. We've indicated that the property should be `reliable` meaning that it is guaranteed to be sent to all clients (it won't be lost due to packets not being delivered). We've also indicated we want an on-change callback for this property.
+
+Return to Unity and let the script compile. Then click on the script in the assets folder:
+
+![](https://rpl.cat/uploads/eJrBL7EmLQ8LMGxoSVeiJ7kmdLaGAd1ygoaoMN2xqfg/public.png)
+
+Click `Compile Model`. This will auto-generate most of the code we'll need to record the model properties. We'll also need to handle the changes to this model. To do this, we'll create a corresponding sync class. Create a new script called `AvatarAttributesSync.cs` with the following code:
+
+```cs
+using Normal.Realtime;
+using TMPro;
+
+public class AvatarAttributesSync : RealtimeComponent<AvatarAttributesModel>
+{
+  public TextMeshProUGUI playerNameText;
+
+  private string playerName;
+
+  private static string[] adjectives = new string[] { "Magical", "Cool", "Nice", "Funny", "Fancy", "Glorious", "Weird", "Awesome" };
+
+  private static string[] nouns = new string[] { "Alvie", "Weirdo", "Guy", "Santa Claus", "Dude", "Mr. Nice Guy", "Dumbo" };
+
+  private bool _isSelf;
+
+  public string Nickname => model.nickname;
+
+  private void Start()
+  {
+    if (GetComponent<RealtimeAvatar>().isOwnedLocallyInHierarchy)
+    {
+      _isSelf = true;
+
+      // Generate a funny random name
+      playerName = adjectives[UnityEngine.Random.Range(0, adjectives.Length)] + " " + nouns[UnityEngine.Random.Range(0, nouns.Length)];
+
+      // Assign the nickname to the model which will automatically be sent to the server and broadcast to other clients
+      model.nickname = playerName;
+
+      // We don't need to see our own nickname
+      playerNameText.enabled = false;
+    }
+  }
+
+  protected override void OnRealtimeModelReplaced(AvatarAttributesModel previousModel, AvatarAttributesModel currentModel)
+  {
+    if (previousModel != null)
+    {
+      // Unregister from events
+      previousModel.nicknameDidChange -= NicknameDidChange;
+    }
+
+    if (currentModel != null)
+    {
+      if (currentModel.isFreshModel)
+      {
+        currentModel.nickname = "";
+      }
+
+      UpdatePlayerName();
+
+      currentModel.nicknameDidChange += NicknameDidChange;
+    }
+  }
+
+  private void NicknameDidChange(AvatarAttributesModel model, string nickname)
+  {
+    UpdatePlayerName();
+  }
+
+  private void UpdatePlayerName()
+  {
+    // Update the UI
+    playerNameText.text = model.nickname;
+  }
+}
+```
+
+There is a lot going on in this script, but it is mostly boilerplate change handlers. The most interesting thing is that we are generating random funny names for the players and syncing them to everyone.
+
+Back in Unity, open the Avatar prefab. Add the `AvatarAttributesSync` script to the `Avatar` object. Then drag the `Player Name` TextMeshPro component to the `Player Name Text` field:
+
+![](https://rpl.cat/uploads/uaZCpuzMSk4QaH1lv_AXIASohBNZMzS9iU_7TC0YaFE/public.png)

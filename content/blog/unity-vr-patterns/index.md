@@ -24,7 +24,6 @@ Duplicate: ctrl+d
 
 ## Importing assets and fixing the materials
 
-
 ## Adding input via a script
 
 > From https://www.youtube.com/watch?v=u6Rlr2021vw
@@ -68,8 +67,10 @@ From https://www.youtube.com/watch?v=gGYtahQjmWQ
 3. Add an `XR Grab Interactable`
 4. Add an `XR Direct Interactor` onto both controller objects
 5. Add a Sphere Collider onto both controllers
-  - set the `Radius` to `0.2`
-  - check the `Is Trigger` checkbox
+
+- set the `Radius` to `0.2`
+- check the `Is Trigger` checkbox
+
 6. Change the XR Rig Main Camera clipping planes `Near` to `0.1`
 
 If you don't want interactors to work with it change the Layer of the ball to a new layer called `Grab`. Then go to the ray interactor and change the `Raycast Mask` from `Everything` to exclude the `Grab` layer.
@@ -80,11 +81,17 @@ Go to `Edit` | `Project Settings` | `Physics` and go to the Layer Collision Matr
 
 ## Teleportation
 
-https://www.youtube.com/watch?v=fZXKGJYri1Y
+Valem: https://www.youtube.com/watch?v=fZXKGJYri1Y
+
+Or
+
+Justin P. Barnett: https://youtu.be/F4gDjCLYX88?t=1200
 
 Change the ray interactor's `Select Action Trigger` to `State` (not `State Change`).
 
 Change the Line Type to `Projectile Curve` and `Velocity` to `8`.
+
+Uncheck `Enable Interaction with UI`
 
 Haptics:
 
@@ -93,11 +100,13 @@ Haptics:
 
 You can add a `Reticle` to the `XR Interactor Line Visual`.
 
+Create a cylinder, remove the collider, scale it down to 0.6 and scale the Y down.
+
 ## Continuous movement
 
 https://www.youtube.com/watch?v=5NRTT8Tbmoc
 
-* Add a `Character Controller` component to the XR Rig.
+- Add a `Character Controller` component to the XR Rig.
   - Set the Radius to `0.15`
   - Set the Center to `0`, `1`, `0`
 
@@ -161,13 +170,13 @@ bool CheckIfGrounded() {
 
 Is it Jittery?
 
-* Edit | Project Settings | Time | set the `Fixed Timestep` to `1/90`
+- Edit | Project Settings | Time | set the `Fixed Timestep` to `1/90`
 
 Add a `Snap Turn Provider` component to the `XR Rig`
 
-* Set the `Turn Input Source` to `Primary 2D Axis`
-* Add a controller and set it to `Right Hand`
-* Reduce the `Activation Timeout` to `0.2`
+- Set the `Turn Input Source` to `Primary 2D Axis`
+- Add a controller and set it to `Right Hand`
+- Reduce the `Activation Timeout` to `0.2`
 
 ## More advanced grabbing
 
@@ -179,8 +188,8 @@ For attach transforms: create a new empty child object called "Pivot". When adju
 
 ![](https://rpl.cat/uploads/LGPIQEw8wvd9sNi1fv7s6uBrhQeSQEf-nOkEXd3K_uE/public.png)
 
- - Blue axis is forward
- - Green axis is controller handle
+- Blue axis is forward
+- Green axis is controller handle
 
 Move the pivot to the center of the handle. Then drag the Pivot object to the `Attach Transform` property of the `XR Grab Interactable` component.
 
@@ -217,8 +226,8 @@ Ray Interaction: https://www.youtube.com/watch?v=4tW7XpAiuDg
 
 Create a new UI Canvas.
 
-* Set Render Mode to `World Space`
-* Set the Event Camera to the `Main Camera`
+- Set Render Mode to `World Space`
+- Set the Event Camera to the `Main Camera`
 
 Reduce to the canvas scale to `0.001`, `0.001`, `0.001`
 
@@ -232,9 +241,6 @@ On the `Event System` object
 ## Inverse Kinematics
 
 ## Level of detail
-
-
-
 
 Adding an input
 
@@ -265,6 +271,3 @@ private void Action_performed(UnityEngine.InputSystem.InputAction.CallbackContex
   Debug.Log("Select button is pressed");
 }
 ```
-
-
-

@@ -186,7 +186,7 @@ Within that object, right click and create a new `XR Rig (Action Based)` object.
 
 ![Unity XR Rig Action Based](../../assets/unity-xr-rig-action-based.png)
 
-When you do this it will automatically remove the `Main Camera` object from the `Hierarchy`. The `XR Rig` contains prebuilt objects for tracking the position and direction of the VR headset (attached to the new sub-object called `Main Camera`). It also contains objects that track the positions of the left and right controllers. This `XR Rig` components contain everything we need to enter into virtual-reality as a player.
+When you do this it will automatically remove the `Main Camera` object from the `Hierarchy`. The `XR Rig` contains prebuilt objects for tracking the position and direction of the VR headset (attached to the new sub-object called `Main Camera`). It also contains objects that track the positions of the left and right controllers. The `XR Rig` component contains everything we need to enter into virtual-reality as a player.
 
 Select the main `XR Rig` object and then set the `Tracking Origin Mode` to `Device` in the `Inspector`.
 
