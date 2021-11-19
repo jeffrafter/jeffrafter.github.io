@@ -20,6 +20,8 @@ Image credit: <a href="https://oculus.com">Oculus Quest</a>
 
 What's better than Virtual Reality? Virtual Reality with friends. Even the most basic games become more fun when played together. Previously, we focused on [getting started with Unity and Virtual Reality](./getting-started-with-unity-and-vr). This post builds on top of that foundation: adding multiplayer support, multi-platform support, multiple controllers, and virtual reality avatars.
 
+![Dance the macarena](../../assets/macarena.gif)
+
 ## Choosing a multiplayer package
 
 There are a number of different approaches for building multiplayer games in Unity, some of the most common are:
