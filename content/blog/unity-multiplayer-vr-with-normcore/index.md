@@ -492,7 +492,7 @@ public class AvatarAttributesSync : RealtimeComponent<AvatarAttributesModel>
 
   private static string[] adjectives = new string[] { "Magical", "Cool", "Nice", "Funny", "Fancy", "Glorious", "Weird", "Awesome" };
 
-  private static string[] nouns = new string[] { "Alvie", "Weirdo", "Guy", "Santa Claus", "Dude", "Mr. Nice Guy", "Dumbo" };
+  private static string[] nouns = new string[] { "Weirdo", "Guy", "Santa Claus", "Dude", "Mr. Nice Guy", "Dumbo" };
 
   private bool _isSelf;
 
@@ -554,3 +554,204 @@ There is a lot going on in this script, but it is mostly boilerplate change hand
 Back in Unity, open the Avatar prefab. Add the `AvatarAttributesSync` script to the `Avatar` object. Then drag the `Player Name` TextMeshPro component to the `Player Name Text` field:
 
 ![](https://rpl.cat/uploads/uaZCpuzMSk4QaH1lv_AXIASohBNZMzS9iU_7TC0YaFE/public.png)
+
+# Inverse kinematics
+
+Right now, our head and hands are just cubes. We don't even have a body. We could add a body, and attach our hands to the character hands and the head to the character head, but when we move our hands and heads the body will just deform. Instead, we'll use the `Inverse Kinematics` feature to make our avatar's head and hands look like they are attached to the body and let the body solve the natural position automatically.
+
+We'll need a good looking body. Go to the Unity Asset Store and get the free [POLYGON Starter Pack - Low Poly 3D Art by Synty](https://assetstore.unity.com/packages/3d/props/polygon-starter-pack-low-poly-3d-art-by-synty-156819)[^synty].
+
+Back in Unity, open the `Package Manager` and switch to `My Assets`:
+
+![](https://rpl.cat/uploads/8hm5kOtxB_ae4DXMH_XAOcE2hU1uXI8TWE9jpVuJhUo/public.png)
+
+Then search for the `POLYGON Starter Pack - Low Poly 3D Art by Synty` package:
+
+![](https://rpl.cat/uploads/T1uuMGvOgXH4rRtLY-iMQIdgiuI7YcRvRSI3WkQoz1o/public.png)
+
+[^synty]: Why are we using the `Polygon Starter Pack`? Because it has a nice low poly body, and it's free. But more importantly the Synty assets are amazing for virtual reality. They have a large number of packages available from their store: https://syntystore.com/
+
+Click `Download`. Then click `Import`:
+
+![](https://rpl.cat/uploads/h8XuYopink_A6P5iDLreVdOZQh0tcbOceQ_NAG44Knk/public.png)
+
+Import the entire package.
+
+Once installed, you can look at the imported assets. You may notice that all of the materials and prefabs in the `Assets/PolygonStarterPack` folder are pink:
+
+![](https://rpl.cat/uploads/th2fHBMfRRU2xe2Mtxs137I8gqdNVSnr1nWdbQGp-Tg/public.png)
+
+This is because we are using the Universal Render Pipeline but the assets were prepared without that pipeline. Open the `Edit` menu, then `Render Pipeline`, `Universal Render Pipeline`, then click `Upgrade Project Materials to UniversalRP Materials`. This will upgrade all of the materials in the `Assets/PolygonStarterPack` folder to use the Universal Render Pipeline:
+
+![](https://rpl.cat/uploads/qxsa4HSMgir374frzHsuAkKPeKFT6H4ywpL_YeqyA1w/public.png)
+
+Click `Proceed` to continue. Within the Assets preview some of the assets may still appear pink, but when you use them in the scene they will be the correct color.
+
+This is a good point to save your work.
+
+## Add a character to the scene
+
+Let's add a character to the scene. Find the `SM_Character_Male_01` prefab asset and drag it into the scene. Reset the transform and rename `SM_Character_Male_01` to `Character`. Right click the object in the hierarchy and in the `Prefab` menu, click `Unpack completely`.
+
+Hold option and click the arrow next to it to fully expand all of the children.
+
+![](https://rpl.cat/uploads/393kf_6_2kq7cCKnOcFkAt0AxQMF_KQDSi8TdzodfaI/public.png)
+
+Notice that the character comes with the geometry of both the Male and Female character, we'll use this later:
+
+![](https://rpl.cat/uploads/tNqcUcJBr_VI7kBootT7sFei8xyCDp_jFAzGk1OG3hA/public.png)
+
+Now that we have a character, re-open the Package Manager, and change the filter to `Unity Registry`. Search for the `Animation Rigging` package:
+
+![](https://rpl.cat/uploads/ba_7xECxdsehcvUh3ltO9pMz3mVjJKLJcwu_aW21YBU/public.png)
+
+Click `Install`. This will give us a set of useful tools for rigging our character.
+
+## Rigging the upper body
+
+Select the `Character` game object then, in the `Animation Rigging` menu, click `Bone Renderer Setup`. Now you should see the bones in the scene:
+
+![](https://rpl.cat/uploads/E1G3CmyHqJxBpVkFJ6HXcyEZJxDqVaJHh3RZl5fHN3o/public.png)
+
+With the `Character` still selected, go to the `Animation Rigging` menu again and click `Rig Setup`. This will create a child rig named `Rig 1`. Rename the newly created rig to `Upper Body`.
+
+We'll need to create "constraints" our hands and head. Add an empty object called `IK_Hand_R` and add a `Two Bone IK Constraint` component to it.
+
+> We'll be selecting and dragging several objects at a time which can get confusing. To simplify this we'll lock the inspector to the current object (`IK_Hand_R`)
+>
+> ![](https://rpl.cat/uploads/gNoxqLkFUjupNTij7ioRs_QQaA_lPVyoth3ZuGTbYEo/public.png)
+
+Lock the inspector, then click on the right hand in the scene and drag it to the `IK_Hand_R` object `Tip` property. This is the far end of our constraint. Right click on the `Two Bone IK Constraint` component title and click `Auto Setup from Tip Transform`:
+
+![](https://rpl.cat/uploads/1H80M-3FR77F4mwpaQAW9sjhe07QT0oygOJqyEg8-Ak/public.png)
+
+This will create a target called `IK_Hand_R_target` and a _hint_[^hint] called `IK_Hand_R_hint`. We'll need to align the target and the to the hand. Select the `IK_Hand_R_target` in the hierarchy and then select the `Hand_R` object simultaneously[^multiselect] (the `Hand_R` is nested inside the `Root` object, but you can jump to it quickly by command clicking on the property value in the inspector). In the `Animation Rigging` menu, click `Align Transform`.
+
+[^hint]: When working with inverse kinematics, the "hint" is used to help the solver find the correct position of the target. The "target" is the end of the constraint. The solver can bend the bones at the joint in any number of ways when trying to solve the position, but uses the hint to help it know how to bend the bones at the joint.
+[^multiselect]: Selecting multiple objects in Unity is a bit tricky. You can select multiple objects by holding down the command key on Mac or the control key on Windows and clicking each of the objects in the hierarchy. Note: the order that you select the objects matters.
+
+We'll also need to align the hint to the elbow. Select the `IK_Hand_R_hint` and the `Elbow_R` object (used for the `Mid` property) and again click `Align Transform` in the `Animation Rigging` menu. Unlock the inspector.
+
+Human elbows tend to bend in very specific angles. Because of this, we'll want to move the hint slightly behind the elbow. Select the `IK_Hand_R_hint` and move it back. This will vary for each humanoid model, but in our case we'll set the position to: `X`: 0.8, `Y`: 0.06, `Z`: -0.5.
+
+We'll need to repeat this process for the left hand. The only difference is the the `IK_Hand_L_hint` position is reversed: `X`: -0.8, `Y`: 0.06, `Z`: -0.5.
+
+With the hands aligned, we can now create a "constraint" for the head. Add an empty object called `IK_Head` and add a `Multi-Parent Constraint` to it. Drag the `Head` object from the `Root` to the `IK_Head` object `Constrained Object` property. Lock the inspector again.
+
+There isn't a way to automatically generate a target for this constraint. Instead, create a new child empty object called `IK_Head_target`. Select it, then simultaneously select the `Head` object (under the root). In the `Animation Rigging` menu, click `Align Transform`. Unlock the inspector.
+
+Finally, drag the `IK_Head_target` to the `Source Objects` property of the `IK_Head` object.
+
+## Attaching the character to the avatar
+
+At this point we have a rigged character with all of the bones we need and all of the inverse kinematics and constraints we need to move the bones correctly. Next, we'll need to connect the character to the avatar so that there is a character controlled by every player that joins the game. To do this we'll move what we've built into the `Avatar` prefab.
+
+- Right click the `Character` object and choose `Copy`
+- Open the `Avatar` prefab from the `Resources` folder; right click the `Avatar` object and choose `Paste`
+- Close the `Avatar` prefab and delete the `Character` object from the scene (but not from the prefab)
+
+Save the scene.
+
+Even though each `Avatar` has a `Character`, it will not follow the movement of the controllers yet. Open the `Avatar` prefab again. On the `Character` object, create a new script called `Follow` with the following code:
+
+```cs
+using UnityEngine;
+
+[System.Serializable]
+public class FollowOffset
+{
+  public Transform follow;
+  public Transform target;
+  public Vector3 position;
+  public Vector3 rotation;
+
+  public void Update()
+  {
+    target.position = follow.TransformPoint(position);
+    target.rotation = follow.rotation * Quaternion.Euler(rotation);
+  }
+}
+
+public class Follow : MonoBehaviour
+{
+  public FollowOffset head;
+  public FollowOffset leftHand;
+  public FollowOffset rightHand;
+
+  public Transform headConstraint;
+  public Vector3 headBodyOffset;
+
+  void Update()
+  {
+    transform.forward = Vector3.ProjectOnPlane(headConstraint.forward, Vector3.up).normalized;
+    transform.position = headConstraint.position + headBodyOffset;
+
+    head.Update();
+    leftHand.Update();
+    rightHand.Update();
+  }
+}
+```
+
+The `Follow` script has three main properties:
+
+- Head
+- Left Hand
+- Right Hand
+
+Each of these has a _target_ which is the constraint that will be used to move the bone and a _follow_ object that we want the track - in our case the `Head`, `Left Hand` and `Right Hand` objects of our `Avatar`. Save the script and return to Unity. Connect all of the `Follow` and `Target` properties:
+
+![](https://rpl.cat/uploads/DViooK3-Nh3lwAQjj-LuAhfU0sfFIaQoEEHGcKIX-qM/public.png)
+
+Notice that we've setup a number of offsets for each of the tracked objects. These will vary for each model you use. The reason you need to have an offset is that all of our alignments are based off of the bones themselves. If we didn't have an offset, then the hand would be aligned to the center of the joint where the hand meets the forearm bone. This might be right, but for many models (espcially those with large chunky hands) that point looks and feels wrong. Adjusting the offset so it is aligned with the palm of the hand feels more natural when playing.
+
+Similarly, the center of the head is almost never aligned with the eye-line. Adjusting the head position to align with the eye-line feels more natural when playing.
+
+Lastly, we want to move the avatar slightly behind the where the headset is (`-0.65`). We do this for a couple of reasons:
+
+- We don't want to see the avatar in front of the camera.
+- Moving the headset forward helps the inverse kinematics solver account for the shape of the body.
+
+Depending on the shape and size of your avatar you might want to adjust this value.
+
+## Legs
+
+At this point we haven't done anything with the legs. There are some additional tutorials below on how to do this. For now we'll simply hide the legs. To do this, open the `Root` node and find the `UpperLeg_L` and `UpperLeg_R` objects and change the scale to `0, 0, 0`:
+
+![](https://rpl.cat/uploads/BsxDUAinC_35ABVQjqNQuZhuFgsAeF71ttlTeFss2bg/public.png)
+
+### Physics and animations
+
+One thing we should note is that the `Follow` script is performing instantaneous updates. There are several other models for tracking positions and rotations including physics and animation.
+
+If you are looking to include more animations (for example, running, walking, and idling) you might want to explore the following videos from Valem:
+
+- Inverse Kinematics - Part 1 - https://www.youtube.com/watch?v=tBYl-aSxUe0&list=RDCMUCPJlesN59MzHPPCp0Lg8sLw&index=1
+- Inverse Kinematics - Part 2 - https://www.youtube.com/watch?v=Wk2_MtYSPaM&list=RDCMUCPJlesN59MzHPPCp0Lg8sLw&index=2
+- Inverse Kinematics - Part 3 - https://www.youtube.com/watch?v=8REDoRu7Tsw&list=RDCMUCPJlesN59MzHPPCp0Lg8sLw&index=3
+
+If you are looking to have your character's hands interact with the world based on physics, you might want to explore the following videos from Justin P. Barnett:
+
+- Inverse Kinematics in Virtual Reality | VR Upper Body IK Unity Tutorial - https://www.youtube.com/watch?v=MYOjQICbd8I
+- Inverse Kinematics in Virtual Reality | VR Lower Body IK Unity Tutorial - https://www.youtube.com/watch?v=1Xr3jB8ik1g
+
+In both cases, you'll find the approaches very similar.
+
+## Hiding our placeholder avatar cubes
+
+Throughout this process we've left the gray cubes we originally used for our avatar visible. These can be really helpful when trying to adjust the offsets of the hands and head. Build and run the game on the headset, then join the game within Unity. Looking at the alignment of the cubes and hands you can quickly figure out how to adjust the offsets.
+
+Once you're satisfied with the offsets, you can hide the cubes by going to the `Avatar` prefab going to each of the `Geometry` objects and unchecking the main checkbox:
+
+![](https://rpl.cat/uploads/fCCEfQ4lAKqf1AIZw93p-ieSSMb2CaY5CQ-NSHAaLgs/public.png)
+
+## Future directions
+
+Some additional things we could explore:
+
+- Animating the legs
+- Interacting with physics
+- Switching the body
+- Hiding your own head
+- Scaling for different body sizes
+- Ghost mode
