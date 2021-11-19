@@ -745,6 +745,12 @@ Once you're satisfied with the offsets, you can hide the cubes by going to the `
 
 ![](https://rpl.cat/uploads/fCCEfQ4lAKqf1AIZw93p-ieSSMb2CaY5CQ-NSHAaLgs/public.png)
 
+# All done
+
+With this we should be able to make a fun game. Or just dance:
+
+![Dance the macarena](../../assets/macarena.gif)
+
 ## Future directions
 
 Some additional things we could explore:
