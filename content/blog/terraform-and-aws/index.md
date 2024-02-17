@@ -1122,7 +1122,7 @@ Add the following to `site.tf`:
 ```tf
 resource "aws_cloudfront_distribution" "site_distribution" {
   origin {
-    domain_name = aws_s3_bucket.site.bucket_domain_name
+    domain_name = aws_s3_bucket.site.website_endpoint
     origin_id   = var.domain
   }
 
@@ -1164,7 +1164,9 @@ resource "aws_cloudfront_distribution" "site_distribution" {
 }
 ```
 
-This is probably the most complex declaration we'll see. First we setup an `origin`. When users come to our website (via our domain) they'll actually be going to CloudFront. CloudFront maintains a number of edge nodes (servers that are distributed throughout the world to reduce network latency). When CloudFront receives a request for a file it will first check for a local copy and, if none is found, will fetch the original from the `origin` and cache it on the edge node. Because our content will be stored on S3, we've set the URL to our bucket as the `origin`.
+This is probably the most complex declaration we'll see. First we setup an `origin`. When users come to our website (via our `website_endpoint`[^website_endpoint]) they'll actually be going to CloudFront. CloudFront maintains a number of edge nodes (servers that are distributed throughout the world to reduce network latency). When CloudFront receives a request for a file it will first check for a local copy and, if none is found, will fetch the original from the `origin` and cache it on the edge node. Because our content will be stored on S3, we've set the URL to our bucket as the `origin`.
+
+[^website_endpoint]: You can choose `bucket_domain_name` or `website_endpoint` for your origin. Although you'll have additional security options if you go to the bucket via `S3` you'll quickly run into problems seeing `NoSuchKey` errors on nested paths with `index.html` files. https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/distribution-web-values-specify.html#DownloadDistValuesOrigin website_endpoint
 
 We set the `price_class` to `PriceClass_100`, the cheapest option (but also the smallest distribution). For more information, see https://aws.amazon.com/cloudfront/pricing/
 

@@ -361,3 +361,140 @@ adb install -r example.apk
 (`-d Device`)
 
 Then start the app.
+
+# Creating a security camera
+
+- Create a new Render Texture called `Security Texture`
+
+![](https://rpl.cat/uploads/d_OtSWt8NX1fhMy_eJVaDuFKVr_wup2cjVKYQooVQSE/public.png)
+
+- Create a new camera called `Security Camera`
+- Set camera's output texture to the render texture, and set the camera's `Target Eye` to `None`
+
+![](https://rpl.cat/uploads/Mhy4lKowv52nirWgaEeh6TrMBOZghCvuwL_8T3C4s0s/public.png)
+
+- Create a new material called `Security Material`
+- Drag the `Security Texture` to the material's `Base Map` property (not on the color, but on the name of the property)
+
+![](https://rpl.cat/uploads/_oy2evBnLZRrGzMuCPdkcbU0JPU5rvaF1ZwQ-Os3Iuk/public.png)
+
+- Create a new Cube GameObject called `Security Screen` and set the size:
+
+![](https://rpl.cat/uploads/wrY2UqVSA4rhTdky0hX26etOZRPKbOlxnUCj9_FLIcA/public.png)
+
+- Drag the `Security Material` onto the screen. If your screen is not square, set the Tiling Offset to whatever looks best:
+
+![](https://rpl.cat/uploads/PUPxVv9eS5nyHiKkX3uqNUo0k402-Loutn59_1XeFcc/public.png)
+
+For example, if you have a wide screen, divide the Y scale by the X scale (0.8 / 1.5 = 0.53) and set the Tiling Y to that value. Set the Offset Y to that value divided by 2 (to center).
+
+# Teleporting (Action Based)
+
+[Setting up Multiple Interactors for Unity XR](https://www.youtube.com/watch?v=9dc1zq8eH54&list=LL&index=1) by VR with Andrew.
+
+Add a layer called `Grab` (for grabbable objects, if you don't have it already) - also make sure your `XR Grab Interactable` objects have that layer set as their `Interaction Layer Mask`.
+
+Make sure you controller has an `XR Direct Interactor` and a `Sphere Collider` (only).
+
+- Add a child `Ray Interactor` game object to the controller.
+
+  - Add an `XR Controller` component to the child.
+
+    - Disable `Enable Input Tracking` (this means we are not tracking position, that is handled by the parent)
+    - Disable the `Rotate Anchor Action` and `Translate Anchor Action` (we don't want to move the interactor attach point)
+    - Set the `Select` to `Use Reference` and set the `Reference` to `XRI RightHand/Teleport Select`.
+
+  - Add a `XR Ray Interactor component` and set the `Interaction Layer Mask` to exclude `Grab` so that it can't pick up objects
+
+Create a new script `TeleportationManager.cs`:
+
+```cs
+using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.XR.Interaction.Toolkit;
+
+public class TeleportationManager : MonoBehaviour
+{
+  [SerializeField] private InputActionReference teleportModeActivate;
+  [SerializeField] private InputActionReference teleportModeSelect;
+  [SerializeField] private InputActionReference teleportModeCancel;
+  private XRRayInteractor rayInteractor;
+  private XRInteractorLineVisual interactorLineVisual;
+  private bool isEnabled = false;
+
+  private void Awake()
+  {
+    rayInteractor = GetComponent<XRRayInteractor>();
+    interactorLineVisual = GetComponent<XRInteractorLineVisual>();
+  }
+
+  private void OnEnable()
+  {
+    teleportModeActivate.action.started += OnTeleportModeActivate;
+    teleportModeActivate.action.canceled += OnTeleportModeActivate;
+    teleportModeSelect.action.performed += OnTeleportModeSelect;
+    teleportModeCancel.action.performed += OnTeleportModeCancel;
+  }
+
+  private void OnDisable()
+  {
+    teleportModeActivate.action.started -= OnTeleportModeActivate;
+    teleportModeActivate.action.canceled -= OnTeleportModeActivate;
+    teleportModeSelect.action.performed -= OnTeleportModeSelect;
+    teleportModeCancel.action.performed -= OnTeleportModeCancel;
+  }
+
+  private void OnTeleportModeActivate(InputAction.CallbackContext context)
+  {
+    Debug.Log("------------------------> TELEPORT MODE ACTIVATE");
+    isEnabled = context.control.IsPressed();
+  }
+
+  private void OnTeleportModeSelect(InputAction.CallbackContext context)
+  {
+    Debug.Log("------------------------> TELEPORT MODE SELECT");
+    // isEnabled = false;
+  }
+
+  private void OnTeleportModeCancel(InputAction.CallbackContext context)
+  {
+    Debug.Log("------------------------> TELEPORT MODE CANCEL");
+    // isEnabled = false;
+  }
+
+  void LateUpdate()
+  {
+    if (rayInteractor.enabled != isEnabled)
+    {
+      rayInteractor.enabled = isEnabled;
+
+      // Why do I need to set the reticle active/inactive, shouldn't this be automatic?
+      if (interactorLineVisual.reticle != null)
+      {
+        interactorLineVisual.reticle.SetActive(isEnabled);
+      }
+    }
+  }
+}
+```
+
+Add the script component to the game object.
+
+Set the `Teleport Mode Activate` property to the corresponding action.
+
+https://sneakydaggergames.medium.com/vr-in-unity-advanced-teleportation-system-behavior-cc50be00ea78
+
+Valem Test action controller button 15:00
+https://www.youtube.com/watch?v=u6Rlr2021vw
+
+![](https://rpl.cat/uploads/K84TWXRmhqQGSVOoGRL_A7IFAgUL6jdDMPQQBUPd_pQ/public.png)
+
+![](https://rpl.cat/uploads/vuvCdSitQKlJyIQGeB3ZjrGGPjl8_GpCTHq8Ao4V4iU/public.png)
+
+![](https://rpl.cat/uploads/n5ifeqHRj5pYrd7Kl77lJ4v0wkfqMmGQU3Kweh7k_gs/public.png)
+
+![](https://rpl.cat/uploads/ZERhS7fBFI-5MumPCq3rXE3qkSip0MA9mLC3XftDXUs/public.png)
+
+![](https://rpl.cat/uploads/X7rlhRWDCGfkevdjJfUVqU3cBiJ8NTimzYz5VcNhWXM/public.png)
+
+![](https://rpl.cat/uploads/ZOa4e9IwJbtzOXaYLVA-0hJYzPffZIz_g_CXouw3wF8/public.png)

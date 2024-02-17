@@ -1,8 +1,9 @@
 ---
 title: Bluetooth Hacking
 date: '2020-04-19T00:01:00'
-published: false
+published: true
 slug: bluetooth
+comments: https://github.com/jeffrafter/jeffrafter.github.io/issues/14
 image: ../../assets/cue-twin.jpg
 layout: post
 tags: ['bluetooth', 'hacks']
@@ -105,7 +106,9 @@ In this case we have two devices (two Raspberry Pis). We need to use two devices
 
 When setting up the devices you'll need to make sure that they have Bluetooth. Raspberry Pi Zero and Raspberry Pi 3 Model B and above all have built-in Bluetooth (and Wifi) making them ideal. If you have an older model it will still work, but will require a Bluetooth adapter and more setup.
 
-For my devices I'm using [Raspbian](https://www.raspberrypi.org/downloads/). Once you've setup the image and connected your Raspberry Pi to your network you can perform the remaining setup over SSH:
+For my devices I'm using [Raspbian](https://www.raspberrypi.org/downloads/). Once you've setup the image and connected your Raspberry Pi to your network you can perform the remaining setup over SSH[^ssh]:
+
+[^ssh]: How do you find the SSH address of your Raspberry Pi? I used `arp -a` and was able to quickly find the new device on my network. The default username is `pi` and the default password is `raspberry`.
 
 ```sh
 ssh pi@192.168.1.x
@@ -297,3 +300,13 @@ hciconfig reset
 ```
 
 And start the processes again.
+
+
+
+
+
+### Making this work on a Mac
+
+https://github.com/abandonware/noble#sandboxed-terminal
+
+On newer versions of OSX, allow bluetooth access on the terminal app: "System Preferences" —> "Security & Privacy" —> "Bluetooth" -> Add terminal app (see Sandboxed terminal)
