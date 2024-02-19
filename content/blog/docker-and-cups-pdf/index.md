@@ -27,7 +27,7 @@ But this was a fun little project and I learned a lot about Docker, CUPS-PDF and
 
 [CUPS-PDF](https://www.cups-pdf.de) is a virtual printer that allows you to print to a PDF. It's a great way to create PDFs from any application that supports printing. You can use it to create PDFs from web pages, documents, images, etc. It runs in Linux and relies on the CUPS printing system.
 
-In our previous article, [Printers, Fake Printers, and AirPrint](./printers) we used the Mac-specific RWTS-PDFWriter as a virtual printer. The setup was simple and it worked well. Unfortunately, RWTS-PDFWriter relies on the underlying system installation of CUPS. Because of this it no longer supports PostScript (as of MacOS Sonoma) and isn't using the latest version of CUPS based on the [OpenPrinting](https://openprinting.github.io/) project.
+In our previous article, [Printers, Fake Printers, and AirPrint](./printers-fake-printers-and-airprint) we used the Mac-specific RWTS-PDFWriter as a virtual printer. The setup was simple and it worked well. Unfortunately, RWTS-PDFWriter relies on the underlying system installation of CUPS. Because of this it no longer supports PostScript (as of MacOS Sonoma) and isn't using the latest version of CUPS based on the [OpenPrinting](https://openprinting.github.io/) project.
 
 [Avahi](https://avahi.org) is a zeroconf implementation that allows you to broadcast services on a local network. It's a great way to discover services on your local network without having to configure DNS or DHCP. It's used by Apple's Bonjour protocol to broadcast services like AirPrint.
 

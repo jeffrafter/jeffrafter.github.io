@@ -2,7 +2,7 @@
 title: Printers, Fake Printers, and AirPrint
 date: '2024-02-16T00:01:00'
 published: true
-slug: printers
+slug: printers-fake-printers-and-airprint
 comments: https://github.com/jeffrafter/jeffrafter.github.io/issues/64
 layout: post
 image: ../../assets/printers-continuous-ink.png

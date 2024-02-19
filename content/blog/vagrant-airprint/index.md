@@ -18,7 +18,7 @@ excerpt: I've been on a quest to setup a virtual AirPrint printer on my Mac that
 Image credit: <a href="https://vagrantup.com">HashiCorp Vagrant</a>
 </figcaption>
 
-I've been on a quest to setup a virtual AirPrint printer on my Mac that allows me to print to a PDF from my iPad. I've tried a few different things including [RWTS-PDFWriter](/printers) and [CUPS-PDF](/docker-and-cups-pdf/) and I kept falling short. The final piece of the puzzle was to use Vagrant to run a Linux VM with CUPS-PDF installed. Here's how I did it.
+I've been on a quest to setup a virtual AirPrint printer on my Mac that allows me to print to a PDF from my iPad. I've tried a few different things including [RWTS-PDFWriter](/printers-fake-printers-and-airprint) and [CUPS-PDF](/docker-and-cups-pdf/) and I kept falling short. The final piece of the puzzle was to use Vagrant to run a Linux VM with CUPS-PDF installed. Here's how I did it.
 
 # Vagrant
 
