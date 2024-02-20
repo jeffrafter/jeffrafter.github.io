@@ -18,7 +18,9 @@ excerpt: When the economy crashes and the world ends you'll find us all trading 
 Image credit: <a href="https://hackaday.com/2019/12/06/inkjet-printing-on-the-cheap-with-a-continuous-ink-system/">INKJET PRINTING ON THE CHEAP WITH A CONTINUOUS INK SYSTEM</a>
 </figcaption>
 
-When the economy crashes and the world ends you'll find us all trading ink cartridges for currency. Until then, you probably want to make amazing prints of your favorite projects and if you are like me you are afraid to spend the ink.
+When the economy crashes and the world ends you'll find us all trading ink cartridges for currency.[^flor] Until then, you probably want to make amazing prints of your favorite projects and if you are like me you are afraid to spend the ink.
+
+[^flor]: This is loosely paraphrased from [Flor Marshall](https://github.com/fdmmarshall), who said it best.
 
 When I was working on my PhotoBooth project I found myself iterating on the print design. I'd done the math and figured out that each print on my photo printer would cost me just under $1.00. I was not going to print 1000 copies of my design to get it right. I needed a way to print to a PDF to test my designs.
 
