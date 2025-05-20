@@ -113,7 +113,7 @@ const Measure: React.FC<Props> = ({data}) => {
     const url = URL.createObjectURL(blob)
     const a = document.createElement('a')
     a.href = url
-    a.download = `motion-data-ride${ride}.csv`
+    a.download = `motion-data-ride-${ride}-${new Date().toISOString()}.csv`
     a.click()
     URL.revokeObjectURL(url)
   }
@@ -121,7 +121,7 @@ const Measure: React.FC<Props> = ({data}) => {
   const shareCSV = async () => {
     const csv = buildCSV()
     const blob = new Blob([csv], {type: 'text/csv'})
-    const filesArray = [new File([blob], `motion-ride${ride}.csv`, {type: 'text/csv'})]
+    const filesArray = [new File([blob], `motion-ride-${ride}-${new Date().toISOString()}.csv`, {type: 'text/csv'})]
     if ((navigator as any).canShare?.({files: filesArray})) {
       try {
         await (navigator as any).share({
