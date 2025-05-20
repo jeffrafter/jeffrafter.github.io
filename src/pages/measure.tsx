@@ -167,16 +167,19 @@ const Measure: React.FC<Props> = ({data}) => {
           {lastSample && (
             <>
               <br />
-              <pre>
+              <pre style={{whiteSpace: 'pre-wrap', marginTop: '1rem', fontSize: '0.6rem'}}>
                 Last sample: {lastSample.timestamp}
                 Accel: {lastSample.accelX}, {lastSample.accelY}, {lastSample.accelZ}
                 Rot: {lastSample.rotAlpha}, {lastSample.rotBeta}, {lastSample.rotGamma}
               </pre>
             </>
           )}
+          <br />
+          <br />
           <button onClick={downloadCSV} disabled={samples.length === 0} style={{marginLeft: '1rem'}}>
             Download CSV
           </button>
+          <br />
           <button onClick={shareCSV} disabled={samples.length === 0} style={{marginLeft: '1rem'}}>
             Share CSV
           </button>
