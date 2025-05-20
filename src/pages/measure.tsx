@@ -168,9 +168,10 @@ const Measure: React.FC<Props> = ({data}) => {
             <>
               <br />
               <pre style={{whiteSpace: 'pre-wrap', marginTop: '1rem', fontSize: '0.6rem'}}>
-                Last sample: {lastSample.timestamp}
                 Accel: {lastSample.accelX}, {lastSample.accelY}, {lastSample.accelZ}
+                {'\n'}
                 Rot: {lastSample.rotAlpha}, {lastSample.rotBeta}, {lastSample.rotGamma}
+                {'\n'}
               </pre>
             </>
           )}
