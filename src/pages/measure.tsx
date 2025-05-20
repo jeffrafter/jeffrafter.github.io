@@ -25,14 +25,18 @@ const Measure: React.FC<Props> = ({data}) => {
   const siteTitle = data.site.siteMetadata.title
   const siteKeywords = data.site.siteMetadata.keywords
 
+  const [isClient, setIsClient] = useState(false)
   const [recording, setRecording] = useState(false)
   const [samples, setSamples] = useState<Sample[]>([])
   const [ride, setRide] = useState('')
   const [userName, setUserName] = useState('')
   const motionHandler = useRef<(e: DeviceMotionEvent) => void>()
-  const deviceInfo = navigator.userAgent
+
+  const deviceInfo = isClient ? navigator.userAgent : 'unknown'
 
   useEffect(() => {
+    setIsClient(true)
+
     // define handler once
     motionHandler.current = (e: DeviceMotionEvent) => {
       const {acceleration, rotationRate} = e
