@@ -224,9 +224,17 @@ Assets/Scenes/*.unity filter=lfs diff=lfs merge=lfs -text lockable
 *.zip filter=lfs diff=lfs merge=lfs -text
 ```
 
-This specifies which files we want to track with LFS. In order to use the settings you must install LFS:
+This specifies which files we want to track with LFS. In order to use the settings you must install LFS. On a mac you can start with:
 
-`git lfs install`
+```sh
+brew install git-lfs
+```
+
+Then you can run:
+
+```sh
+git lfs install
+```
 
 You should see:
 
