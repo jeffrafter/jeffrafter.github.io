@@ -163,17 +163,17 @@ const Measure: React.FC<Props> = ({data}) => {
         <p>
           <button onClick={recording ? stopListening : requestPermissionAndListen}>
             {recording ? 'Stop Recording' : 'Start Recording'}
-            {lastSample && (
-              <>
-                <br />
-                <small>
-                  Last sample: {lastSample.timestamp} <br />
-                  Accel: {lastSample.accelX}, {lastSample.accelY}, {lastSample.accelZ} <br />
-                  Rot: {lastSample.rotAlpha}, {lastSample.rotBeta}, {lastSample.rotGamma}
-                </small>
-              </>
-            )}
           </button>
+          {lastSample && (
+            <>
+              <br />
+              <pre>
+                Last sample: {lastSample.timestamp}
+                Accel: {lastSample.accelX}, {lastSample.accelY}, {lastSample.accelZ}
+                Rot: {lastSample.rotAlpha}, {lastSample.rotBeta}, {lastSample.rotGamma}
+              </pre>
+            </>
+          )}
           <button onClick={downloadCSV} disabled={samples.length === 0} style={{marginLeft: '1rem'}}>
             Download CSV
           </button>
