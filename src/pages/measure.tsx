@@ -37,6 +37,7 @@ const Measure: React.FC<Props> = ({data}) => {
     motionHandler.current = (e: DeviceMotionEvent) => {
       const {acceleration, rotationRate} = e
       const sample = {
+        ride,
         timestamp: Date.now(),
         accelX: acceleration?.x ?? null,
         accelY: acceleration?.y ?? null,
@@ -44,7 +45,6 @@ const Measure: React.FC<Props> = ({data}) => {
         rotAlpha: rotationRate?.alpha ?? null,
         rotBeta: rotationRate?.beta ?? null,
         rotGamma: rotationRate?.gamma ?? null,
-        ride,
         user: userName,
         device: deviceInfo,
       } as Sample
@@ -118,7 +118,7 @@ const Measure: React.FC<Props> = ({data}) => {
     const csv = buildCSV()
     const blob = new Blob([csv], {type: 'text/csv'})
     const filesArray = [new File([blob], `motion-ride${ride}.csv`, {type: 'text/csv'})]
-    if (navigator.canShare?.({files: filesArray})) {
+    if ((navigator as any).canShare?.({files: filesArray})) {
       try {
         await (navigator as any).share({
           files: filesArray,
