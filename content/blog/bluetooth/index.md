@@ -186,7 +186,7 @@ By default your Bluetooth adapter will be `hci0`. So the value should be `0` as 
 If you are using a Bluetooth Adapter it might be different. If you aren't sure, you can check:
 
 ```sh
-rfkill
+rfkill list
 ```
 
 You should see:
