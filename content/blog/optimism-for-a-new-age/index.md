@@ -173,11 +173,11 @@ This will stem from new-found efficiencies afforded by AI supported work. For ex
 
 We'll spend more time in meditation and contemplation, seeking to understand ourselves and our place in the world. We'll explore new forms of art and culture, pushing the boundaries of human creativity and expression. We'll build deeper connections with others, fostering empathy and understanding across cultures and communities.
 
-We'll do this because companies that are comprised of individuals with these skills will create products and services that resonate with people on a deeper level. They'll build brands that people feel connected to, fostering loyalty and trust. They'll create experiences that are memorable and meaningful, leading to repeat business and positive word-of-mouth. When all of the intelligence and labor advantages are commoditized, the differentiator will be the human experience.
+We'll do this because companies that are comprised of individuals with these skills will create products and services that resonate with more people on a deeper level. They'll build brands that people feel connected to, fostering loyalty and trust. They'll create experiences that are memorable and meaningful, leading to repeat business and positive word-of-mouth. When all of the intelligence and labor advantages are commoditized, the only remaining differentiator will be the human experience.
 
 Before the Industrial Revolution and the Information Age, the thinkers were philosophers, artists, and writers. They explored the human condition and sought to understand the world around them. In this new age, we may return to this focus on the human experience, but with the added benefit of advanced technology and tools to aid in our exploration.
 
-The future we are heading towards will be painful in the short term, but profoundly beautiful in the long term. The Shamans, Yogis, Priests, Mystics, Psychologists, and Artists will lead the way. It will be rich, vibrant, and fulfilling and because it will be uniquely human.
+The future we are heading towards will be painful in the short term, but profoundly beautiful in the long term. The Shamans, Yogis, Priests, Mystics, Psychologists, and Artists will lead the way. It will be rich, vibrant, and fulfilling _because_ it will be uniquely human.
 
 <!--
 # Notes
