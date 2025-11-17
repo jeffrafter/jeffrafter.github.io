@@ -157,15 +157,17 @@ In Back to the Future III, Doc Brown explains that in the Future people run for 
 
 In this way it is easier to think of AI not as a new age, but rather the end of the Information Age. The Information Age was characterized by the rise of intellectual labor and the service sector. AI threatens to replace much of this labor, leading to a potential collapse of the Information Age.
 
+<!--
 ## The Age of Robotics
 
 Robotics is the intersection of physical machines and intelligence through AI. Robots are physical embodiments of AI, capable of performing tasks that require both intelligence and physical manipulation. Robotics has the potential to revolutionize many industries, from manufacturing to healthcare to transportation.
 
 It is very possible that we will largely replace effort with robotics and machines. While this is interesting in how it combines both muscle and brain, it still does not address the full spectrum of human experience. Robots may be able to perform high effort tasks that require physical manipulation and intelligence, but it is just the industrial revolution all over again. Robots will almost definitely replace muscley-brain-things.
+-->
 
 ## A New Age
 
-The eventualities feel daunting. But, like the Information Age, something must come after Artificial Intelligence. In this new age value will not come from physical labor, intelligence or effort. It will come from the uniquely human experiences that AI cannot replicate. Here is where many people hand-wave and say "some new industry will emerge." But what industry? What new value?
+The eventualities feel daunting. But, just as the Information Age came after the Industrial Revolution, something must come after Artificial Intelligence. In this new age value will not come from physical labor, intelligence or effort. It will come from the uniquely human experiences that AI cannot replicate. Here is where many people hand-wave and say "some new industry will emerge." But what industry? What new value?
 
 If it is anything like the Industrial Revolution, the new age will likely be characterized by a shift in focus from labor to experience. People will seek out experiences that are authentic, meaningful, and fulfilling. Industries that cater to these desires will thrive.
 
