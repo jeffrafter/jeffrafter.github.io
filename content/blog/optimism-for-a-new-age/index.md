@@ -242,4 +242,13 @@ Scientists and Psychologists
 Shamans
 Eternal sunshine of the spotless mind
     Pharmacology
+
+
+Gavin notes:
+Choose book or blog tone
+Move some of the BLS to a sidebar?
+Moe about the Luddites or less?
+Make this more about the soul age
+In some places the analogy works really well but in others you speculate and I don't know if I believe you
+Do you believe that the companies that will succeed will be led by humans or can the AI determine what is valueable?
 -->
